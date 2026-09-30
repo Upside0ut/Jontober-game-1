@@ -14,3 +14,6 @@ shape = SubResource("CircleShape2D_dtglo")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1491128239]
 texture = ExtResource("2_qhqgy")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1005616557]
+target_position = Vector2(0, 79)
