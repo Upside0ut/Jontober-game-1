@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bugmfl3kw87vl"]
+
+[ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="1_6k3qi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qle8"]
+atlas = ExtResource("1_6k3qi")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p20yd"]
+atlas = ExtResource("1_6k3qi")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0ya7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qle8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p20yd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="goal" type="Node2D" unique_id=232289700]
+
+[node name="goal" type="Area2D" parent="." unique_id=798103143]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goal" unique_id=1019364807]
+shape = SubResource("CircleShape2D_u0ya7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1431033185]
+sprite_frames = SubResource("SpriteFrames_u0ya7")
+autoplay = "default"
+frame_progress = 0.92392176
