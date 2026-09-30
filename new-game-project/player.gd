@@ -13,3 +13,6 @@ func _physics_process(delta: float) -> void:
 		angular_velocity -= delta * 50 #roll left
 	if Input.is_action_pressed("right"): #if going right
 		angular_velocity += delta * 50 #roll right
+	if Input.is_action_just_pressed("jump"):
+		
+		linear_velocity.y = -800 #apply jump force

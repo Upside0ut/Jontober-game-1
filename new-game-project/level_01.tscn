@@ -20,3 +20,8 @@ shape = SubResource("RectangleShape2D_u0ya7")
 
 [node name="RigidBody2D" parent="." unique_id=581014257 instance=ExtResource("2_3imfn")]
 position = Vector2(496, 394)
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D" unique_id=1231045356]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
