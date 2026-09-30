@@ -602,3 +602,10 @@ tile_set = SubResource("TileSet_u0ya7")
 
 [node name="goal [move to where you want]" parent="." unique_id=232289700 instance=ExtResource("4_h518d")]
 position = Vector2(860, 295)
+
+[node name="background" type="ColorRect" parent="." unique_id=1516059226]
+z_index = -10
+offset_left = -22418.0
+offset_top = -14760.0
+offset_right = 24284.0
+offset_bottom = 14402.0
