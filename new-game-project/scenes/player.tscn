@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtglo"]
 radius = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
+radius = 26.076809
+
 [node name="RigidBody2D" type="RigidBody2D" unique_id=581014257]
 script = ExtResource("1_g2els")
 
@@ -17,3 +20,10 @@ texture = ExtResource("2_qhqgy")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1005616557]
 target_position = Vector2(0, 79)
+
+[node name="hitbox (spikes)" type="Area2D" parent="." unique_id=76159056]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox (spikes)" unique_id=1382862213]
+shape = SubResource("CircleShape2D_u0ya7")
+
+[connection signal="area_entered" from="hitbox (spikes)" to="." method="_on_hitbox_spikes_area_entered"]

@@ -7,9 +7,9 @@ size = Vector2(64, 64)
 
 [node name="Node2D" type="Node2D" unique_id=1868551210]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=909406058]
+[node name="spikes" type="Area2D" parent="." unique_id=909406058]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1779297493]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=1779297493]
 shape = SubResource("RectangleShape2D_u0ya7")
 debug_color = Color(0.9995133, 0, 0.12496021, 0.41960785)
 

@@ -26,3 +26,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and allow_jump: #checks if conditions are right to jump
 		allow_jump = false #stop double jumping
 		linear_velocity.y = jump_force #apply jump force
+
+
+func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
+	if area.name == "spikes":
+		
+		get_tree().reload_current_scene()
