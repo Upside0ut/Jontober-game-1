@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bufoa36k6nd25" path="res://scenes/stupid_wall.gd" id="1_atg48"]
 [ext_resource type="Texture2D" uid="uid://clpgtiq06kige" path="res://textures/walllll.png" id="1_etice"]
+[ext_resource type="Texture2D" uid="uid://d0ff05qt21vy6" path="res://frames/smokeee1.png" id="3_bofrd"]
 
 [sub_resource type="Animation" id="Animation_etice"]
 resource_name = "fall"
@@ -16,6 +17,24 @@ size = Vector2(79, 632)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p86qv"]
 size = Vector2(91, 644)
+
+[sub_resource type="Curve" id="Curve_0mnyp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.12837839, 1), 0.0, 0.0, 0, 0, Vector2(0.7297298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bofrd"]
+curve = SubResource("Curve_0mnyp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_atg48"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 325, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(0, 2, 0)
+scale_min = 6.0
+scale_max = 6.0
+alpha_curve = SubResource("CurveTexture_bofrd")
 
 [node name="stupid_wall" type="Node2D" unique_id=105343465]
 script = ExtResource("1_atg48")
@@ -44,4 +63,18 @@ shape = SubResource("RectangleShape2D_p86qv")
 
 [node name="crumble" type="AudioStreamPlayer2D" parent="." unique_id=779692301]
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1533798631]
+position = Vector2(32, -252)
+emitting = false
+amount = 32
+texture = ExtResource("3_bofrd")
+lifetime = 1.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_atg48")
+
+[node name="timer" type="Timer" parent="." unique_id=1535414369]
+wait_time = 1.25
+one_shot = true
+
 [connection signal="area_entered" from="destruct_area" to="." method="_on_destruct_area_area_entered"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

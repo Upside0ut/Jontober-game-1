@@ -16,6 +16,8 @@ var global_time = 0.0
 # the checkpoint var is reset when a level is beat
 var checkpoint: Vector2
 
+var destroyed_wall = false
+
 func _process(delta: float) -> void:
 	global_time += delta
 	
