@@ -577,9 +577,9 @@ terrain_set_0/terrain_3/name = "red"
 terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_3imfn")
 
-[node name="level 01" type="Node2D" unique_id=797776596]
+[node name="level 02" type="Node2D" unique_id=797776596]
 
-[node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_8yqd8")]
+[node name="Player" parent="." unique_id=723843310 instance=ExtResource("1_8yqd8")]
 position = Vector2(496, 378)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]

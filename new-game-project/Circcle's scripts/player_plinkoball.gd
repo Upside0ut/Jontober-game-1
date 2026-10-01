@@ -39,7 +39,3 @@ func _on_ball_dropped():
 	if impulse_dir == 0: impulse_dir = -1
 	
 	apply_impulse(Vector2(impulse_dir * h_impulse_str, 0.0))
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

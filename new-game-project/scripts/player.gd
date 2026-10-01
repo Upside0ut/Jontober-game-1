@@ -61,11 +61,11 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	
 	if area.name == "goal":
 		
-		get_tree().change_scene_to_file(Global.levels[Global.level])
+		get_tree().call_deferred("change_scene_to_file", Global.levels[Global.level])
 		Global.level += 1
 
 
-func _on_body_entered(body: Node) -> void: #when colliding with the ground
+func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)
 	bounce.volume_linear = abs(linear_velocity.x + linear_velocity.y) / 1000 + 0.01
 	bounce.play()
