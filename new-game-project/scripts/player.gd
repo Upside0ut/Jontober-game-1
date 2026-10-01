@@ -60,8 +60,11 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 			get_tree().reload_current_scene()
 	
 	if area.name == "goal":
-		
-		get_tree().call_deferred("change_scene_to_file", Global.levels[Global.level])
+		#freezes the player and adds the victory screen to the scene
+		freeze = true
+		var victory = load("res://scenes/victory_screen.tscn")
+		var instance = victory.instantiate()
+		get_tree().current_scene.add_child(instance)
 		Global.level += 1
 
 

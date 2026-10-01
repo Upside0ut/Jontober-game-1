@@ -6,3 +6,7 @@ extends CanvasLayer
 func _ready() -> void:
 	for n in confettis:
 		n.emitting = true
+
+
+func next_level() -> void:
+	get_tree().change_scene_to_file(Global.levels[Global.level])
