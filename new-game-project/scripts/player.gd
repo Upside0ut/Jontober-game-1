@@ -1,5 +1,7 @@
 extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var rollsound: AudioStreamPlayer2D = $rollsound
+@onready var bounce: AudioStreamPlayer = $Bounce
 
 #i'm not used to working in teams, hopefully these comments are enough! - UpsideOut
 const roll_speed = 50
@@ -12,8 +14,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
+	
 	if ray_cast_2d.is_colliding(): #check if player is on the floor
 		allow_jump = true
+		
+		if !rollsound.playing: #replay roll sound from beginning
+			rollsound.play()
+		rollsound.pitch_scale = abs(linear_velocity.x) / 500 + 0.01 #scale pitch of roll sound
+		rollsound.volume_linear = abs(linear_velocity.x) / 500 #scale volume of roll sound
+	else:
+		rollsound.volume_linear = 0.0
 	
 	ray_cast_2d.global_rotation = 0
 	
@@ -32,3 +43,9 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "spikes":
 		
 		get_tree().reload_current_scene()
+
+
+func _on_body_entered(body: Node) -> void: #when colliding with the ground
+	bounce.pitch_scale = randf_range(0.8,1.1)
+	bounce.volume_linear = abs(linear_velocity.x + linear_velocity.y) / 1000 + 0.01
+	bounce.play()
