@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="1_6k3qi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
+radius = 44.04543
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qle8"]
 atlas = ExtResource("1_6k3qi")

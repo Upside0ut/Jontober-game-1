@@ -4,12 +4,123 @@
 [ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="2_g2els"]
 [ext_resource type="AudioStream" uid="uid://bjbomsk14ju5x" path="res://roll.mp3" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://bounce.mp3" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://laserShoot.wav" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cj8usf4x766ox" path="res://textures/ghost.png" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://78u0ibygb41m" path="res://explosion.wav" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtglo"]
 radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
 radius = 26.076809
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ghost:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -76)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ghost:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.84313726), Color(1, 1, 1, 0.37052247), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ghost:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, -76), Vector2(14, -100), Vector2(-2, -164), Vector2(14, -220)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ghost:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.35578775, -0.33931202, 0.46095848]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
+_data = {
+&"RESET": SubResource("Animation_fjrip"),
+&"die": SubResource("Animation_smehm")
+}
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=581014257]
 contact_monitor = true
@@ -35,6 +146,21 @@ stream = ExtResource("3_qhqgy")
 
 [node name="Bounce" type="AudioStreamPlayer" parent="." unique_id=1186144664]
 stream = ExtResource("4_dqkch")
+
+[node name="jump" type="AudioStreamPlayer" parent="." unique_id=1061922137]
+stream = ExtResource("5_qlg0r")
+
+[node name="Ghost" type="Sprite2D" parent="." unique_id=465976620]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-2, -76)
+texture = ExtResource("6_tuyoq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=968979767]
+libraries/ = SubResource("AnimationLibrary_ur7pv")
+speed_scale = 0.8
+
+[node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=601741360]
+stream = ExtResource("7_fjrip")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="hitbox (spikes)" to="." method="_on_hitbox_spikes_area_entered"]

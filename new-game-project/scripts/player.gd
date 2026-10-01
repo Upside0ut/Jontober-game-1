@@ -2,11 +2,15 @@ extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var rollsound: AudioStreamPlayer2D = $rollsound
 @onready var bounce: AudioStreamPlayer = $Bounce
+@onready var jump: AudioStreamPlayer = $jump
+
+
 
 #i'm not used to working in teams, hopefully these comments are enough! - UpsideOut
 const roll_speed = 50
 const  jump_force = -800
 var allow_jump = false 
+var dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -36,13 +40,25 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and allow_jump: #checks if conditions are right to jump
 		allow_jump = false #stop double jumping
+		jump.play()
 		linear_velocity.y = jump_force #apply jump force
+	
+	
+	if dead:
+		rotation = 0
+		freeze = true
+		lock_rotation = true
 
 
 func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "spikes":
-		
-		get_tree().reload_current_scene()
+		dead = true
+		$Explosion.play()
+		$AnimationPlayer.play("die")
+		await $AnimationPlayer.animation_finished
+		if get_tree() != null:
+			get_tree().reload_current_scene()
+	
 	if area.name == "goal":
 		
 		get_tree().change_scene_to_packed(Global.levels[Global.level])
