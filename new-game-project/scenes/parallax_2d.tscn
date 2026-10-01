@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bggpuh2olvcxx"]
+
+[ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="1_8sr37"]
+[ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="2_6qoia"]
+[ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="3_a2w78"]
+
+[sub_resource type="Curve" id="Curve_ut440"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18243244, 1), 0.0, 0.0, 0, 0, Vector2(0.8513514, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8sr37"]
+curve = SubResource("Curve_ut440")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7vx6"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(250, 125, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.03
+scale_max = 0.07
+alpha_curve = SubResource("CurveTexture_8sr37")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.09999997
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hl5n1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(250, 125, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 35.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.06
+scale_max = 0.089999996
+alpha_curve = SubResource("CurveTexture_8sr37")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.049999975
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1k0cr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(250, 125, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.06
+scale_max = 0.099999994
+alpha_curve = SubResource("CurveTexture_8sr37")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.09999997
+
+[node name="Parallax2D" type="Parallax2D" unique_id=980270568]
+scale = Vector2(8, 8)
+scroll_scale = Vector2(0.08, 0.08)
+scroll_offset = Vector2(0, 100)
+repeat_size = Vector2(500, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1488977471]
+z_index = -7
+amount = 13
+texture = ExtResource("1_8sr37")
+lifetime = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a7vx6")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=965051891]
+z_index = -7
+amount = 7
+texture = ExtResource("2_6qoia")
+lifetime = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hl5n1")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1774991707]
+z_index = -7
+amount = 5
+texture = ExtResource("3_a2w78")
+lifetime = 7.5
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1k0cr")
