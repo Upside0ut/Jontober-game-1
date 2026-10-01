@@ -618,7 +618,7 @@ scale = Vector2(1.6679688, 1.6679688)
 texture = ExtResource("15_gj5ie")
 
 [node name="EToUseDynamite" type="Sprite2D" parent="." unique_id=959349228]
-position = Vector2(-704, 10.000008)
+position = Vector2(-655.00006, -100.99999)
 scale = Vector2(3.34375, 3.34375)
 texture = ExtResource("18_lwtrp")
 
