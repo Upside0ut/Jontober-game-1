@@ -5,13 +5,13 @@ var follow_player : bool = false
 
 # check the player ball script for the good debug comment
 @onready var drop_marker : Node2D = $"../Drop Marker"
-@onready var player_ball : Node2D = $"../Player Ball"
+@onready var plinko_player : Node2D = $"../Plinko Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	assert(drop_marker != null, "Drop Marker not found inside Level 02! Has the node been renamed?")
-	assert(player_ball != null, "Player Ball not found inside Level 02! Has the node been renamed?")
+	assert(plinko_player != null, "Plinko Player not found inside Level 02! Has the node been renamed?")
 	
 	starting_position = global_position
 	limit_bottom = 2300
@@ -20,9 +20,12 @@ func _ready() -> void:
 func _on_ball_dropped():
 	follow_player = true
 
+func _reset_camera():
+	follow_player = false
+	global_position = starting_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if follow_player:
-		if global_position.y < player_ball.global_position.y:
-			global_position.y = player_ball.global_position.y
+		if global_position.y < plinko_player.global_position.y:
+			global_position.y = plinko_player.global_position.y

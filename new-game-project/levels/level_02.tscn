@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_h518d"]
 [ext_resource type="PackedScene" uid="uid://motirga1dk0q" path="res://scenes/plinko_pad.tscn" id="5_didps"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_didps"]
 texture = ExtResource("3_didps")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -575,7 +575,7 @@ terrain_set_0/terrain_2/name = "white"
 terrain_set_0/terrain_2/color = Color(1, 1, 1, 1)
 terrain_set_0/terrain_3/name = "red"
 terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
-sources/0 = SubResource("TileSetAtlasSource_3imfn")
+sources/0 = SubResource("TileSetAtlasSource_didps")
 
 [node name="level 02" type="Node2D" unique_id=797776596]
 

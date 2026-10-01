@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cqu4qfdwayhvl"]
+
+[ext_resource type="Texture2D" uid="uid://bi4qqm786fjsf" path="res://textures/plinko_peg.png" id="1_3qyxv"]
+[ext_resource type="Script" uid="uid://bxvk6e41a053x" path="res://Circcle's scripts/peg_animation.gd" id="2_3qyxv"]
+[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://laserShoot.wav" id="3_phfmm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6b766"]
+radius = 63.57525
+
+[sub_resource type="Animation" id="Animation_phfmm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("plinko peg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3w4sq"]
+resource_name = "boing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("plinko peg:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnnb7"]
+_data = {
+&"RESET": SubResource("Animation_phfmm"),
+&"boing": SubResource("Animation_3w4sq")
+}
+
+[node name="plinko peg" type="StaticBody2D" unique_id=2095901817 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("2_3qyxv")
+animation_player = NodePath("plinko peg/AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=154130410]
+shape = SubResource("CircleShape2D_6b766")
+
+[node name="peg_sound" type="AudioStreamPlayer" parent="." unique_id=1656580843]
+stream = ExtResource("3_phfmm")
+
+[node name="plinko peg" type="Sprite2D" parent="." unique_id=1425628429]
+z_index = 1
+z_as_relative = false
+texture = ExtResource("1_3qyxv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plinko peg" unique_id=634958599]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_wnnb7")

@@ -1,26 +1,606 @@
-[gd_scene format=3 uid="uid://8okl7y8k2lqm"]
+[gd_scene format=4 uid="uid://8okl7y8k2lqm"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://textures/icon.svg" id="1_t1lao"]
 [ext_resource type="Script" uid="uid://cqmsh6c65sa50" path="res://Circcle's scripts/drop_marker.gd" id="2_355pt"]
 [ext_resource type="Script" uid="uid://ihfu6y8paseh" path="res://Circcle's scripts/player_plinkocamera.gd" id="3_d6eji"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="4_svm0g"]
 [ext_resource type="Script" uid="uid://brkpsrgl3hbl3" path="res://Circcle's scripts/player_plinkoball.gd" id="5_a10ca"]
+[ext_resource type="Shader" uid="uid://3swsl1r2a7ty" path="res://shader/bgrainbow.gdshader" id="6_355pt"]
+[ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="6_svm0g"]
+[ext_resource type="PackedScene" uid="uid://cqu4qfdwayhvl" path="res://scenes/plinko_peg.tscn" id="7_svm0g"]
+[ext_resource type="Script" uid="uid://w7yy17lh30nm" path="res://Circcle's scripts/plinko_conditions/victory_area.gd" id="9_a10ca"]
+[ext_resource type="Script" uid="uid://37vitbli0t7a" path="res://Circcle's scripts/plinko_conditions/lose_area.gd" id="10_rsnin"]
+[ext_resource type="Script" uid="uid://ryph18qn11lc" path="res://Circcle's scripts/plinko_conditions/neutral_area.gd" id="11_6vsvt"]
+[ext_resource type="Script" uid="uid://dt6vpkotjn3xw" path="res://Circcle's scripts/plinko_state_handler.gd" id="12_0aim8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ucrpc"]
 bounce = 0.67
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_scvo5"]
-size = Vector2(128.94534, 130)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsnin"]
+texture = ExtResource("6_svm0g")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 3
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0/terrains_peering_bit/right_side = 3
+2:0/0/terrains_peering_bit/bottom_side = 3
+2:0/0/terrains_peering_bit/left_side = 3
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 3
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 3
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0/terrains_peering_bit/right_side = 3
+4:0/0/terrains_peering_bit/bottom_side = 3
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 3
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:0/0/terrains_peering_bit/right_side = 3
+5:0/0/terrains_peering_bit/bottom_side = 3
+5:0/0/terrains_peering_bit/left_side = 3
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 3
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0/terrains_peering_bit/bottom_side = 3
+6:0/0/terrains_peering_bit/left_side = 3
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0 = 0
+8:0/0/terrain_set = 0
+8:0/0/terrain = 3
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0/terrains_peering_bit/right_side = 3
+8:0/0/terrains_peering_bit/left_side = 3
+9:0/0 = 0
+9:0/0/terrain_set = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 3
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0/terrains_peering_bit/right_side = 3
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 3
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0/terrains_peering_bit/left_side = 3
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 3
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0/terrains_peering_bit/bottom_side = 3
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 3
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:1/0/terrains_peering_bit/right_side = 3
+4:1/0/terrains_peering_bit/bottom_side = 3
+4:1/0/terrains_peering_bit/top_side = 3
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 3
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:1/0/terrains_peering_bit/right_side = 3
+5:1/0/terrains_peering_bit/bottom_side = 3
+5:1/0/terrains_peering_bit/left_side = 3
+5:1/0/terrains_peering_bit/top_side = 3
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 3
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:1/0/terrains_peering_bit/bottom_side = 3
+6:1/0/terrains_peering_bit/left_side = 3
+6:1/0/terrains_peering_bit/top_side = 3
+7:1/0 = 0
+7:1/0/terrain_set = 0
+7:1/0/terrain = 3
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:1/0/terrains_peering_bit/bottom_side = 3
+7:1/0/terrains_peering_bit/top_side = 3
+9:1/0 = 0
+9:1/0/terrain_set = 0
+9:1/0/terrain = 3
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+9:1/0/terrains_peering_bit/bottom_side = 3
+9:1/0/terrains_peering_bit/top_side = 3
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 3
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0/terrains_peering_bit/top_side = 3
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 3
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0/terrains_peering_bit/right_side = 3
+4:2/0/terrains_peering_bit/top_side = 3
+5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 3
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:2/0/terrains_peering_bit/right_side = 3
+5:2/0/terrains_peering_bit/left_side = 3
+5:2/0/terrains_peering_bit/top_side = 3
+6:2/0 = 0
+6:2/0/terrain_set = 0
+6:2/0/terrain = 3
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:2/0/terrains_peering_bit/left_side = 3
+6:2/0/terrains_peering_bit/top_side = 3
+7:2/0 = 0
+7:2/0/terrain_set = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:2/0 = 0
+8:2/0/terrain_set = 0
+8:2/0/terrain = 3
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:2/0/terrains_peering_bit/right_side = 3
+8:2/0/terrains_peering_bit/left_side = 3
+9:2/0 = 0
+9:2/0/terrain_set = 0
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 2
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:3/0/terrains_peering_bit/right_side = 2
+2:3/0/terrains_peering_bit/bottom_side = 2
+2:3/0/terrains_peering_bit/left_side = 2
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 2
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:3/0 = 0
+4:3/0/terrain_set = 0
+4:3/0/terrain = 2
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:3/0/terrains_peering_bit/right_side = 2
+4:3/0/terrains_peering_bit/bottom_side = 2
+5:3/0 = 0
+5:3/0/terrain_set = 0
+5:3/0/terrain = 2
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:3/0/terrains_peering_bit/right_side = 2
+5:3/0/terrains_peering_bit/bottom_side = 2
+5:3/0/terrains_peering_bit/left_side = 2
+6:3/0 = 0
+6:3/0/terrain_set = 0
+6:3/0/terrain = 2
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:3/0/terrains_peering_bit/bottom_side = 2
+6:3/0/terrains_peering_bit/left_side = 2
+7:3/0 = 0
+7:3/0/terrain_set = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:3/0 = 0
+8:3/0/terrain_set = 0
+8:3/0/terrain = 2
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:3/0/terrains_peering_bit/right_side = 2
+8:3/0/terrains_peering_bit/left_side = 2
+9:3/0 = 0
+9:3/0/terrain_set = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 2
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0/terrains_peering_bit/right_side = 2
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 2
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:4/0/terrains_peering_bit/left_side = 2
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 2
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0/terrains_peering_bit/bottom_side = 2
+4:4/0 = 0
+4:4/0/terrain_set = 0
+4:4/0/terrain = 2
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:4/0/terrains_peering_bit/right_side = 2
+4:4/0/terrains_peering_bit/bottom_side = 2
+4:4/0/terrains_peering_bit/top_side = 2
+5:4/0 = 0
+5:4/0/terrain_set = 0
+5:4/0/terrain = 2
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:4/0/terrains_peering_bit/right_side = 2
+5:4/0/terrains_peering_bit/bottom_side = 2
+5:4/0/terrains_peering_bit/left_side = 2
+5:4/0/terrains_peering_bit/top_side = 2
+6:4/0 = 0
+6:4/0/terrain_set = 0
+6:4/0/terrain = 2
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:4/0/terrains_peering_bit/bottom_side = 2
+6:4/0/terrains_peering_bit/left_side = 2
+6:4/0/terrains_peering_bit/top_side = 2
+7:4/0 = 0
+7:4/0/terrain_set = 0
+7:4/0/terrain = 2
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:4/0/terrains_peering_bit/bottom_side = 2
+7:4/0/terrains_peering_bit/top_side = 2
+9:4/0 = 0
+9:4/0/terrain_set = 0
+9:4/0/terrain = 2
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+9:4/0/terrains_peering_bit/bottom_side = 2
+9:4/0/terrains_peering_bit/top_side = 2
+0:5/0 = 0
+0:5/0/terrain_set = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:5/0 = 0
+1:5/0/terrain_set = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+2:5/0 = 0
+2:5/0/terrain_set = 0
+2:5/0/terrain = 2
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:5/0/terrains_peering_bit/top_side = 2
+4:5/0 = 0
+4:5/0/terrain_set = 0
+4:5/0/terrain = 2
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:5/0/terrains_peering_bit/right_side = 2
+4:5/0/terrains_peering_bit/top_side = 2
+5:5/0 = 0
+5:5/0/terrain_set = 0
+5:5/0/terrain = 2
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:5/0/terrains_peering_bit/right_side = 2
+5:5/0/terrains_peering_bit/left_side = 2
+5:5/0/terrains_peering_bit/top_side = 2
+6:5/0 = 0
+6:5/0/terrain_set = 0
+6:5/0/terrain = 2
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:5/0/terrains_peering_bit/left_side = 2
+6:5/0/terrains_peering_bit/top_side = 2
+7:5/0 = 0
+7:5/0/terrain_set = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:5/0 = 0
+8:5/0/terrain_set = 0
+8:5/0/terrain = 2
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:5/0/terrains_peering_bit/right_side = 2
+8:5/0/terrains_peering_bit/left_side = 2
+9:5/0 = 0
+9:5/0/terrain_set = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:6/0 = 0
+0:6/0/terrain_set = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
+1:6/0 = 0
+1:6/0/terrain_set = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:6/0 = 0
+2:6/0/terrain_set = 0
+2:6/0/terrain = 1
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:6/0/terrains_peering_bit/right_side = 1
+2:6/0/terrains_peering_bit/bottom_side = 1
+2:6/0/terrains_peering_bit/left_side = 1
+3:6/0 = 0
+3:6/0/terrain_set = 0
+3:6/0/terrain = 1
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:6/0 = 0
+4:6/0/terrain_set = 0
+4:6/0/terrain = 1
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:6/0/terrains_peering_bit/right_side = 1
+4:6/0/terrains_peering_bit/bottom_side = 1
+5:6/0 = 0
+5:6/0/terrain_set = 0
+5:6/0/terrain = 1
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:6/0/terrains_peering_bit/right_side = 1
+5:6/0/terrains_peering_bit/bottom_side = 1
+5:6/0/terrains_peering_bit/left_side = 1
+6:6/0 = 0
+6:6/0/terrain_set = 0
+6:6/0/terrain = 1
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:6/0/terrains_peering_bit/bottom_side = 1
+6:6/0/terrains_peering_bit/left_side = 1
+7:6/0 = 0
+7:6/0/terrain_set = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:6/0 = 0
+8:6/0/terrain_set = 0
+8:6/0/terrain = 1
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:6/0/terrains_peering_bit/right_side = 1
+8:6/0/terrains_peering_bit/left_side = 1
+9:6/0 = 0
+9:6/0/terrain_set = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:7/0 = 0
+0:7/0/terrain_set = 0
+0:7/0/terrain = 1
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:7/0/terrains_peering_bit/right_side = 1
+1:7/0 = 0
+1:7/0/terrain_set = 0
+1:7/0/terrain = 1
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:7/0/terrains_peering_bit/left_side = 1
+2:7/0 = 0
+2:7/0/terrain_set = 0
+2:7/0/terrain = 1
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:7/0/terrains_peering_bit/bottom_side = 1
+4:7/0 = 0
+4:7/0/terrain_set = 0
+4:7/0/terrain = 1
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:7/0/terrains_peering_bit/right_side = 1
+4:7/0/terrains_peering_bit/bottom_side = 1
+4:7/0/terrains_peering_bit/top_side = 1
+5:7/0 = 0
+5:7/0/terrain_set = 0
+5:7/0/terrain = 1
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:7/0/terrains_peering_bit/right_side = 1
+5:7/0/terrains_peering_bit/bottom_side = 1
+5:7/0/terrains_peering_bit/left_side = 1
+5:7/0/terrains_peering_bit/top_side = 1
+6:7/0 = 0
+6:7/0/terrain_set = 0
+6:7/0/terrain = 1
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:7/0/terrains_peering_bit/bottom_side = 1
+6:7/0/terrains_peering_bit/left_side = 1
+6:7/0/terrains_peering_bit/top_side = 1
+7:7/0 = 0
+7:7/0/terrain_set = 0
+7:7/0/terrain = 1
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:7/0/terrains_peering_bit/bottom_side = 1
+7:7/0/terrains_peering_bit/top_side = 1
+9:7/0 = 0
+9:7/0/terrain_set = 0
+9:7/0/terrain = 1
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+9:7/0/terrains_peering_bit/bottom_side = 1
+9:7/0/terrains_peering_bit/top_side = 1
+0:8/0 = 0
+0:8/0/terrain_set = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:8/0 = 0
+1:8/0/terrain_set = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+2:8/0 = 0
+2:8/0/terrain_set = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:8/0 = 0
+4:8/0/terrain_set = 0
+4:8/0/terrain = 1
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:8/0/terrains_peering_bit/right_side = 1
+4:8/0/terrains_peering_bit/top_side = 1
+5:8/0 = 0
+5:8/0/terrain_set = 0
+5:8/0/terrain = 1
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:8/0/terrains_peering_bit/right_side = 1
+5:8/0/terrains_peering_bit/left_side = 1
+5:8/0/terrains_peering_bit/top_side = 1
+6:8/0 = 0
+6:8/0/terrain_set = 0
+6:8/0/terrain = 1
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:8/0/terrains_peering_bit/left_side = 1
+6:8/0/terrains_peering_bit/top_side = 1
+7:8/0 = 0
+7:8/0/terrain_set = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:8/0 = 0
+8:8/0/terrain_set = 0
+8:8/0/terrain = 1
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:8/0/terrains_peering_bit/right_side = 1
+8:8/0/terrains_peering_bit/left_side = 1
+9:8/0 = 0
+9:8/0/terrain_set = 0
+9:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:9/0 = 0
+0:9/0/terrain_set = 0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
+1:9/0 = 0
+1:9/0/terrain_set = 0
+1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:9/0 = 0
+2:9/0/terrain_set = 0
+2:9/0/terrain = 0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:9/0/terrains_peering_bit/right_side = 0
+2:9/0/terrains_peering_bit/bottom_side = 0
+2:9/0/terrains_peering_bit/left_side = 0
+3:9/0 = 0
+3:9/0/terrain_set = 0
+3:9/0/terrain = 0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:9/0 = 0
+4:9/0/terrain_set = 0
+4:9/0/terrain = 0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:9/0/terrains_peering_bit/right_side = 0
+4:9/0/terrains_peering_bit/bottom_side = 0
+5:9/0 = 0
+5:9/0/terrain_set = 0
+5:9/0/terrain = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:9/0/terrains_peering_bit/right_side = 0
+5:9/0/terrains_peering_bit/bottom_side = 0
+5:9/0/terrains_peering_bit/left_side = 0
+6:9/0 = 0
+6:9/0/terrain_set = 0
+6:9/0/terrain = 0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:9/0/terrains_peering_bit/bottom_side = 0
+6:9/0/terrains_peering_bit/left_side = 0
+7:9/0 = 0
+7:9/0/terrain_set = 0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:9/0 = 0
+8:9/0/terrain_set = 0
+8:9/0/terrain = 0
+8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:9/0/terrains_peering_bit/right_side = 0
+8:9/0/terrains_peering_bit/left_side = 0
+9:9/0 = 0
+9:9/0/terrain_set = 0
+9:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:10/0 = 0
+0:10/0/terrain_set = 0
+0:10/0/terrain = 0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:10/0/terrains_peering_bit/right_side = 0
+1:10/0 = 0
+1:10/0/terrain_set = 0
+1:10/0/terrain = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:10/0/terrains_peering_bit/left_side = 0
+2:10/0 = 0
+2:10/0/terrain_set = 0
+2:10/0/terrain = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:10/0/terrains_peering_bit/bottom_side = 0
+4:10/0 = 0
+4:10/0/terrain_set = 0
+4:10/0/terrain = 0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:10/0/terrains_peering_bit/right_side = 0
+4:10/0/terrains_peering_bit/bottom_side = 0
+4:10/0/terrains_peering_bit/top_side = 0
+5:10/0 = 0
+5:10/0/terrain_set = 0
+5:10/0/terrain = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:10/0/terrains_peering_bit/right_side = 0
+5:10/0/terrains_peering_bit/bottom_side = 0
+5:10/0/terrains_peering_bit/left_side = 0
+5:10/0/terrains_peering_bit/top_side = 0
+6:10/0 = 0
+6:10/0/terrain_set = 0
+6:10/0/terrain = 0
+6:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:10/0/terrains_peering_bit/bottom_side = 0
+6:10/0/terrains_peering_bit/left_side = 0
+6:10/0/terrains_peering_bit/top_side = 0
+7:10/0 = 0
+7:10/0/terrain_set = 0
+7:10/0/terrain = 0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:10/0/terrains_peering_bit/bottom_side = 0
+7:10/0/terrains_peering_bit/top_side = 0
+9:10/0 = 0
+9:10/0/terrain_set = 0
+9:10/0/terrain = 0
+9:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+9:10/0/terrains_peering_bit/bottom_side = 0
+9:10/0/terrains_peering_bit/top_side = 0
+0:11/0 = 0
+0:11/0/terrain_set = 0
+0:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:11/0 = 0
+1:11/0/terrain_set = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+2:11/0 = 0
+2:11/0/terrain_set = 0
+2:11/0/terrain = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:11/0 = 0
+4:11/0/terrain_set = 0
+4:11/0/terrain = 0
+4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:11/0/terrains_peering_bit/right_side = 0
+4:11/0/terrains_peering_bit/top_side = 0
+5:11/0 = 0
+5:11/0/terrain_set = 0
+5:11/0/terrain = 0
+5:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:11/0/terrains_peering_bit/right_side = 0
+5:11/0/terrains_peering_bit/left_side = 0
+5:11/0/terrains_peering_bit/top_side = 0
+6:11/0 = 0
+6:11/0/terrain_set = 0
+6:11/0/terrain = 0
+6:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:11/0/terrains_peering_bit/left_side = 0
+6:11/0/terrains_peering_bit/top_side = 0
+7:11/0 = 0
+7:11/0/terrain_set = 0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:11/0 = 0
+8:11/0/terrain_set = 0
+8:11/0/terrain = 0
+8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:11/0/terrains_peering_bit/right_side = 0
+8:11/0/terrains_peering_bit/left_side = 0
+9:11/0 = 0
+9:11/0/terrain_set = 0
+9:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sw4k2"]
-radius = 63.57525
+[sub_resource type="TileSet" id="TileSet_c18sa"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "blue"
+terrain_set_0/terrain_0/color = Color(0.22580144, 0.33193117, 1, 1)
+terrain_set_0/terrain_1/name = "yellow"
+terrain_set_0/terrain_1/color = Color(1, 1, 0, 1)
+terrain_set_0/terrain_2/name = "white"
+terrain_set_0/terrain_2/color = Color(1, 1, 1, 1)
+terrain_set_0/terrain_3/name = "red"
+terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
+sources/0 = SubResource("TileSetAtlasSource_rsnin")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_didps"]
+shader = ExtResource("6_355pt")
+shader_parameter/shader_speed = 0.15
+shader_parameter/shader_saturation = 0.7
+shader_parameter/shader_brightness = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw4k2"]
 
 [node name="level_02" type="Node2D" unique_id=887258600]
 
 [node name="BOTTOM CAM BOUNDARY" type="Node2D" parent="." unique_id=1680615772]
 position = Vector2(0, 2300)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=711713309]
+[node name="Tutorial Text" type="RichTextLabel" parent="." unique_id=711713309]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,9 +610,9 @@ offset_right = 437.5
 offset_bottom = -1133.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "Press the Jump Key to release the Ball"
+text = "Press the Jump Key to release the Ball!"
 fit_content = true
 autowrap_mode = 0
 
@@ -48,443 +628,193 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 script = ExtResource("3_d6eji")
 
-[node name="Player Ball" parent="." unique_id=581014257 instance=ExtResource("4_svm0g")]
+[node name="Plinko Player" parent="." unique_id=581014257 instance=ExtResource("4_svm0g")]
 position = Vector2(0, -1000)
 physics_material_override = SubResource("PhysicsMaterial_ucrpc")
+max_contacts_reported = 4
 script = ExtResource("5_a10ca")
 h_impulse_str = 3
 metadata/_edit_group_ = true
 
 [node name="bounds" type="Node" parent="." unique_id=716955258]
 
-[node name="ground [placeholder]" type="Sprite2D" parent="bounds" unique_id=330663994]
-position = Vector2(-1100, 0)
-rotation = 1.5707964
-scale = Vector2(35, 1)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="bounds/ground [placeholder]" unique_id=2096187749]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/ground [placeholder]/StaticBody2D" unique_id=1632616024]
-shape = SubResource("RectangleShape2D_scvo5")
-
-[node name="ground [placeholder]2" type="Sprite2D" parent="bounds" unique_id=332719873]
-position = Vector2(1100, 0)
-rotation = 1.5707964
-scale = Vector2(35, 1)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="bounds/ground [placeholder]2" unique_id=2022110227]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/ground [placeholder]2/StaticBody2D" unique_id=501627648]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="ground tilemap" type="TileMapLayer" parent="bounds" unique_id=1909220574]
+tile_map_data = PackedByteArray("AADu/yMAAAAJAAEAAADu/yIAAAAJAAEAAADu/yEAAAAJAAEAAADu/yAAAAAHAAEAAADu/x8AAAAHAAEAAADu/x4AAAACAAEAAADu/x0AAAAGAAsAAADu/xwAAAAGAAoAAADu/xsAAAAGAAoAAADu/xoAAAAGAAoAAADu/xkAAAAGAAoAAADu/xgAAAAGAAoAAADu/xcAAAAGAAoAAADu/xYAAAAGAAoAAADu/xUAAAAGAAoAAADu/xQAAAAGAAoAAADu/xMAAAAGAAoAAADu/xIAAAAGAAoAAADu/xEAAAAGAAoAAADu/xAAAAAGAAoAAADu/w8AAAAGAAoAAADu/w4AAAAGAAoAAADu/w0AAAAGAAoAAADu/wwAAAAGAAoAAADu/wsAAAAGAAoAAADu/woAAAAGAAoAAADu/wkAAAAGAAoAAADu/wgAAAAGAAoAAADu/wcAAAAGAAoAAADu/wYAAAAGAAoAAADu/wUAAAAGAAoAAADu/wQAAAAGAAoAAADu/wMAAAAGAAoAAADu/wIAAAAGAAoAAADu/wEAAAAGAAoAAADu/wAAAAAGAAoAAADu////AAAGAAoAAADu//7/AAAGAAoAAADu//3/AAAGAAoAAADu//z/AAAGAAoAAADu//v/AAAGAAoAAADu//r/AAAGAAoAAADu//n/AAAGAAoAAADu//j/AAAGAAoAAADu//f/AAAGAAoAAADu//b/AAAGAAoAAADu//X/AAAGAAoAAADu//T/AAAGAAoAAADu//P/AAAGAAoAAADu//L/AAAGAAoAAADu//H/AAAGAAoAAADu//D/AAAGAAoAAADu/+//AAAGAAoAAADu/+7/AAAGAAoAAADu/+3/AAAGAAoAAADu/+z/AAAGAAoAAADt/yMAAAAGAAoAAADt/yIAAAAGAAoAAADt/yEAAAAGAAoAAADt/yAAAAAGAAoAAADt/x8AAAAGAAoAAADt/x4AAAAGAAoAAADt/x0AAAAFAAoAAADt/xwAAAAFAAoAAADt/xsAAAAFAAoAAADt/xoAAAAFAAoAAADt/xkAAAAFAAoAAADt/xgAAAAFAAoAAADt/xcAAAAFAAoAAADt/xYAAAAFAAoAAADt/xUAAAAFAAoAAADt/xQAAAAFAAoAAADt/xMAAAAFAAoAAADt/xIAAAAFAAoAAADt/xEAAAAFAAoAAADt/xAAAAAFAAoAAADt/w8AAAAFAAoAAADt/w4AAAAFAAoAAADt/w0AAAAFAAoAAADt/wwAAAAFAAoAAADt/wsAAAAFAAoAAADt/woAAAAFAAoAAADt/wkAAAAFAAoAAADt/wgAAAAFAAoAAADt/wcAAAAFAAoAAADt/wYAAAAFAAoAAADt/wUAAAAFAAoAAADt/wQAAAAFAAoAAADt/wMAAAAFAAoAAADt/wIAAAAFAAoAAADt/wEAAAAFAAoAAADt/wAAAAAFAAoAAADt////AAAFAAoAAADt//7/AAAFAAoAAADt//3/AAAFAAoAAADt//z/AAAFAAoAAADt//v/AAAFAAoAAADt//r/AAAFAAoAAADt//n/AAAFAAoAAADt//j/AAAFAAoAAADt//f/AAAFAAoAAADt//b/AAAFAAoAAADt//X/AAAFAAoAAADt//T/AAAFAAoAAADt//P/AAAFAAoAAADt//L/AAAFAAoAAADt//H/AAAFAAoAAADt//D/AAAFAAoAAADt/+//AAAFAAoAAADt/+7/AAAFAAoAAADt/+3/AAAFAAoAAADt/+z/AAAFAAoAAADs/yMAAAAEAAoAAADs/yIAAAAEAAoAAADs/yEAAAAEAAoAAADs/yAAAAAEAAoAAADs/x8AAAAEAAoAAADs/x4AAAAEAAoAAADs/x0AAAAEAAoAAADs/xwAAAAEAAoAAADs/xsAAAAEAAoAAADs/xoAAAAEAAoAAADs/xkAAAAEAAoAAADs/xgAAAAEAAoAAADs/xcAAAAEAAoAAADs/xYAAAAEAAoAAADs/xUAAAAEAAoAAADs/xQAAAAEAAoAAADs/xMAAAAEAAoAAADs/xIAAAAEAAoAAADs/xEAAAAEAAoAAADs/xAAAAAEAAoAAADs/w8AAAAEAAoAAADs/w4AAAAEAAoAAADs/w0AAAAEAAoAAADs/wwAAAAEAAoAAADs/wsAAAAEAAoAAADs/woAAAAEAAoAAADs/wkAAAAEAAoAAADs/wgAAAAEAAoAAADs/wcAAAAEAAoAAADs/wYAAAAEAAoAAADs/wUAAAAEAAoAAADs/wQAAAAEAAoAAADs/wMAAAAEAAoAAADs/wIAAAAEAAoAAADs/wEAAAAEAAoAAADs/wAAAAAEAAoAAADs////AAAEAAoAAADs//7/AAAEAAoAAADs//3/AAAEAAoAAADs//z/AAAEAAoAAADs//v/AAAEAAoAAADs//r/AAAEAAoAAADs//n/AAAEAAoAAADs//j/AAAEAAoAAADs//f/AAAEAAoAAADs//b/AAAEAAoAAADs//X/AAAEAAoAAADs//T/AAAEAAoAAADs//P/AAAEAAoAAADs//L/AAAEAAoAAADs//H/AAAEAAoAAADs//D/AAAEAAoAAADs/+//AAAEAAoAAADs/+7/AAAEAAoAAADs/+3/AAAEAAoAAADs/+z/AAAEAAoAAADu/+v/AAAGAAoAAADu/+r/AAAGAAoAAADu/+n/AAAGAAoAAADu/+j/AAAGAAoAAADu/+f/AAAGAAoAAADu/+b/AAAGAAoAAADu/+X/AAAGAAoAAADu/+T/AAAGAAoAAADu/+P/AAAGAAoAAADu/97/AAAGAAoAAADu/93/AAAGAAoAAADu/9z/AAAGAAoAAADt/+v/AAAFAAoAAADt/+r/AAAFAAoAAADt/+n/AAAFAAoAAADt/+j/AAAFAAoAAADt/+f/AAAFAAoAAADt/+b/AAAFAAoAAADt/+X/AAAFAAoAAADt/+T/AAAFAAoAAADt/+P/AAAFAAoAAADt/+L/AAAFAAoAAADt/+H/AAAFAAoAAADt/+D/AAAFAAoAAADt/9//AAAFAAoAAADt/97/AAAFAAoAAADt/93/AAAFAAoAAADt/9z/AAAFAAoAAADs/+v/AAAEAAoAAADs/+r/AAAEAAoAAADs/+n/AAAEAAoAAADs/+j/AAAEAAoAAADs/+f/AAAEAAoAAADs/+b/AAAEAAoAAADs/+X/AAAEAAoAAADs/+T/AAAEAAoAAADs/+P/AAAEAAoAAADs/+L/AAAEAAoAAADs/+H/AAAEAAoAAADs/+D/AAAEAAoAAADs/9//AAAEAAoAAADs/97/AAAEAAoAAADs/93/AAAEAAoAAADs/9z/AAAEAAoAAAARAN7/AAAEAAoAAAARAN3/AAAEAAoAAAARANz/AAAEAAoAAAASACMAAAAEAAoAAAASACIAAAAEAAoAAAASACEAAAAEAAoAAAASACAAAAAEAAoAAAASAB8AAAAEAAoAAAASAB4AAAAEAAoAAAASAB0AAAAFAAoAAAASABwAAAAFAAoAAAASABsAAAAFAAoAAAASABoAAAAFAAoAAAASABkAAAAFAAoAAAASABgAAAAFAAoAAAASABcAAAAFAAoAAAASABYAAAAFAAoAAAASABUAAAAFAAoAAAASABQAAAAFAAoAAAASABMAAAAFAAoAAAASABIAAAAFAAoAAAASABEAAAAFAAoAAAASAPv/AAAFAAoAAAASAPr/AAAFAAoAAAASAPn/AAAFAAoAAAASAPj/AAAFAAoAAAASAPf/AAAFAAoAAAASAPb/AAAFAAoAAAASAPX/AAAFAAoAAAASAPT/AAAFAAoAAAASAPP/AAAFAAoAAAASAPL/AAAFAAoAAAASAPH/AAAFAAoAAAASAPD/AAAFAAoAAAASAO//AAAFAAoAAAASAO7/AAAFAAoAAAARACMAAAAJAAEAAAARACIAAAAHAAEAAAARACEAAAAHAAEAAAARACAAAAAJAAEAAAARAB8AAAAJAAEAAAARAB4AAAACAAEAAAARAB0AAAAEAAsAAAARABwAAAAEAAoAAAARABsAAAAEAAoAAAARABoAAAAEAAoAAAARABkAAAAEAAoAAAARABgAAAAEAAoAAAARABcAAAAEAAoAAAARABYAAAAEAAoAAAARABUAAAAEAAoAAAARABQAAAAEAAoAAAARABMAAAAEAAoAAAARABIAAAAEAAoAAAARABEAAAAEAAoAAAARAPv/AAAEAAoAAAARAPr/AAAEAAoAAAARAPn/AAAEAAoAAAARAPj/AAAEAAoAAAARAPf/AAAEAAoAAAARAPb/AAAEAAoAAAARAPX/AAAEAAoAAAARAPT/AAAEAAoAAAARAPP/AAAEAAoAAAARAPL/AAAEAAoAAAARAPH/AAAEAAoAAAARAPD/AAAEAAoAAAARAO//AAAEAAoAAAARAO7/AAAEAAoAAAATABgAAAAGAAoAAAATABcAAAAGAAoAAAATABYAAAAGAAoAAAATABUAAAAGAAoAAAATABQAAAAGAAoAAAATABMAAAAGAAoAAAATABIAAAAGAAoAAAATABEAAAAGAAoAAAATAPv/AAAGAAoAAAATAPr/AAAGAAoAAAATAPn/AAAGAAoAAAATAPj/AAAGAAoAAAATAPf/AAAGAAoAAAATAPb/AAAGAAoAAAATAPX/AAAGAAoAAAATAPT/AAAGAAoAAAATAPP/AAAGAAoAAAATAPL/AAAGAAoAAAATAPH/AAAGAAoAAAATAPD/AAAGAAoAAAATAO//AAAGAAoAAAATAO7/AAAGAAoAAAATAO3/AAAGAAoAAAATAOz/AAAGAAoAAAATAOv/AAAGAAoAAAATAOr/AAAGAAoAAAATAOn/AAAGAAoAAAATAOj/AAAGAAoAAAATAOf/AAAGAAoAAAATAOb/AAAGAAoAAAATAOX/AAAGAAoAAAATAOT/AAAGAAoAAAATAOP/AAAGAAoAAAATAOL/AAAGAAoAAAATAOH/AAAGAAoAAAATAOD/AAAGAAoAAAATAN//AAAGAAoAAAATAN7/AAAGAAoAAAATAN3/AAAGAAoAAAATANz/AAAGAAoAAAASAO3/AAAFAAoAAAASAOz/AAAFAAoAAAASAOv/AAAFAAoAAAASAOr/AAAFAAoAAAASAOn/AAAFAAoAAAASAOj/AAAFAAoAAAASAOf/AAAFAAoAAAASAOb/AAAFAAoAAAASAOX/AAAFAAoAAAASAOT/AAAFAAoAAAASAOP/AAAFAAoAAAASAOL/AAAFAAoAAAASAOH/AAAFAAoAAAASAOD/AAAFAAoAAAASAN//AAAFAAoAAAASAN7/AAAFAAoAAAASAN3/AAAFAAoAAAASANz/AAAFAAoAAAARAO3/AAAEAAoAAAARAOz/AAAEAAoAAAARAOv/AAAEAAoAAAARAOr/AAAEAAoAAAARAOn/AAAEAAoAAAARAOj/AAAEAAoAAAARAOf/AAAEAAoAAAARAOb/AAAEAAoAAAARAOX/AAAEAAoAAAARAOT/AAAEAAoAAAARAOP/AAAEAAoAAAARAOL/AAAEAAoAAAARAOH/AAAEAAoAAAARAOD/AAAEAAoAAAARAN//AAAEAAoAAAATACMAAAAGAAoAAAATACIAAAAGAAoAAAATACEAAAAGAAoAAAATACAAAAAGAAoAAAATAB8AAAAGAAoAAAATAB4AAAAGAAoAAAATAB0AAAAGAAoAAAATABwAAAAGAAoAAAATABsAAAAGAAoAAAATABoAAAAGAAoAAAATABkAAAAGAAoAAADu/ysAAAAHAAEAAADu/yoAAAAJAAEAAADu/ykAAAAJAAEAAADu/ygAAAAJAAEAAADu/ycAAAAJAAEAAADu/yYAAAAHAAEAAADu/yUAAAAHAAEAAADu/yQAAAAJAAEAAADt/ysAAAAGAAoAAADt/yoAAAAGAAoAAADt/ykAAAAGAAoAAADt/ygAAAAGAAoAAADt/ycAAAAGAAoAAADt/yYAAAAGAAoAAADt/yUAAAAGAAoAAADt/yQAAAAGAAoAAADs/ysAAAAEAAoAAADs/yoAAAAEAAoAAADs/ykAAAAEAAoAAADs/ygAAAAEAAoAAADs/ycAAAAEAAoAAADs/yYAAAAEAAoAAADs/yUAAAAEAAoAAADs/yQAAAAEAAoAAADu/y4AAAAFAAsAAADu/y0AAAACAAkAAADu/ywAAAAEAAIAAADt/y4AAAAFAAsAAADt/y0AAAAFAAoAAADt/ywAAAAGAAoAAADs/y4AAAAEAAsAAADs/y0AAAAEAAoAAADs/ywAAAAEAAoAAAATAC4AAAAGAAsAAAATAC0AAAAGAAoAAAATACwAAAAGAAoAAAASAC4AAAAFAAsAAAASAC0AAAAFAAoAAAASACwAAAAEAAoAAAARAC4AAAAFAAsAAAARAC0AAAACAAkAAAARACwAAAAGAAIAAAAQAC4AAAAFAAsAAAAQAC0AAAAFAAkAAAAQACwAAAAIAAIAAAAPAC4AAAAFAAsAAAAPAC0AAAAFAAkAAAAPACwAAAAIAAIAAAAOAC4AAAAFAAsAAAAOAC0AAAAFAAkAAAAOACwAAAAIAAIAAAANAC4AAAAFAAsAAAANAC0AAAACAAkAAAANACwAAAAIAAIAAAAMAC4AAAAFAAsAAAAMAC0AAAACAAkAAAAMACwAAAAIAAIAAAALAC4AAAAFAAsAAAALAC0AAAACAAkAAAALACwAAAAIAAIAAAAKAC4AAAAFAAsAAAAKAC0AAAAFAAkAAAAKACwAAAAEAAIAAAAJAC4AAAAFAAsAAAAJAC0AAAAFAAoAAAAJACwAAAAGAAkAAAAIAC4AAAAFAAsAAAAIAC0AAAAFAAoAAAAIACwAAAAFAAkAAAAHAC4AAAAFAAsAAAAHAC0AAAAFAAoAAAAHACwAAAACAAkAAAAGAC4AAAAFAAsAAAAGAC0AAAAFAAoAAAAGACwAAAACAAkAAAAFAC4AAAAFAAsAAAAFAC0AAAAFAAoAAAAFACwAAAAFAAkAAAAEAC4AAAAFAAsAAAAEAC0AAAAFAAoAAAAEACwAAAAEAAkAAAADAC4AAAAFAAsAAAADAC0AAAAFAAkAAAADACwAAAAGAAgAAAACAC4AAAAFAAsAAAACAC0AAAAFAAkAAAACACwAAAAIAAYAAAABAC4AAAAFAAsAAAABAC0AAAAFAAkAAAABACwAAAAIAAYAAAAAAC4AAAAFAAsAAAAAAC0AAAACAAkAAAAAACwAAAAIAAYAAAD//y4AAAAFAAsAAAD//y0AAAAFAAkAAAD//ywAAAAIAAYAAAD+/y4AAAAFAAsAAAD+/y0AAAAFAAkAAAD+/ywAAAAIAAgAAAD9/y4AAAAFAAsAAAD9/y0AAAAFAAkAAAD9/ywAAAAIAAgAAAD8/y4AAAAFAAsAAAD8/y0AAAACAAkAAAD8/ywAAAAEAAgAAAD7/y4AAAAFAAsAAAD7/y0AAAAFAAoAAAD7/ywAAAAGAAkAAAD6/y4AAAAFAAsAAAD6/y0AAAAFAAoAAAD6/ywAAAAFAAkAAAD5/y4AAAAFAAsAAAD5/y0AAAAFAAoAAAD5/ywAAAACAAkAAAD4/y4AAAAFAAsAAAD4/y0AAAAFAAoAAAD4/ywAAAAFAAkAAAD3/y4AAAAFAAsAAAD3/y0AAAAFAAoAAAD3/ywAAAAFAAkAAAD2/y4AAAAFAAsAAAD2/y0AAAAFAAoAAAD2/ywAAAAEAAkAAAD1/y4AAAAFAAsAAAD1/y0AAAAFAAkAAAD1/ywAAAAGAAIAAAD0/y4AAAAFAAsAAAD0/y0AAAACAAkAAAD0/ywAAAAIAAAAAADz/y4AAAAFAAsAAADz/y0AAAAFAAkAAADz/ywAAAAIAAAAAADy/y4AAAAFAAsAAADy/y0AAAAFAAkAAADy/ywAAAAIAAIAAADx/y4AAAAFAAsAAADx/y0AAAACAAkAAADx/ywAAAAIAAAAAADw/y4AAAAFAAsAAADw/y0AAAAFAAkAAADw/ywAAAAIAAAAAADv/y4AAAAFAAsAAADv/y0AAAACAAkAAADv/ywAAAAIAAIAAAATACsAAAAGAAoAAAATACoAAAAGAAoAAAATACkAAAAGAAoAAAATACgAAAAGAAoAAAATACcAAAAGAAoAAAATACYAAAAGAAoAAAATACUAAAAGAAoAAAATACQAAAAGAAoAAAASACsAAAAEAAoAAAASACoAAAAEAAoAAAASACkAAAAEAAoAAAASACgAAAAEAAoAAAASACcAAAAEAAoAAAASACYAAAAEAAoAAAASACUAAAAEAAoAAAASACQAAAAEAAoAAAARACsAAAAHAAEAAAARACoAAAAJAAEAAAARACkAAAAHAAEAAAARACgAAAAHAAEAAAARACcAAAAHAAEAAAARACYAAAAHAAEAAAARACUAAAAJAAEAAAARACQAAAAJAAEAAAD1/ysAAAAHAAEAAAD1/yoAAAAJAAEAAAD1/ykAAAAJAAEAAAD1/ygAAAAHAAEAAAD1/ycAAAAHAAEAAAD1/yYAAAAJAAEAAAD1/yUAAAAHAAEAAAD1/yQAAAAJAAEAAAD1/yMAAAAJAAEAAAD1/yIAAAAJAAEAAAD1/yEAAAAJAAEAAAD1/yAAAAAHAAEAAAD1/x8AAAAHAAEAAAD1/x4AAAACAAEAAAD8/ysAAAAJAAcAAAD8/yoAAAAHAAcAAAD8/ykAAAAHAAcAAAD8/ygAAAAHAAcAAAD8/ycAAAAHAAcAAAD8/yYAAAAHAAcAAAD8/yUAAAAHAAcAAAD8/yQAAAAHAAcAAAD8/yMAAAAHAAcAAAD8/yIAAAAHAAcAAAD8/yEAAAAJAAcAAAD8/yAAAAAJAAcAAAD8/x8AAAAHAAcAAAD8/x4AAAACAAcAAAADACsAAAAJAAcAAAADACoAAAAJAAcAAAADACkAAAAHAAcAAAADACgAAAAJAAcAAAADACcAAAAJAAcAAAADACYAAAAJAAcAAAADACUAAAAJAAcAAAADACQAAAAJAAcAAAADACMAAAAHAAcAAAADACIAAAAJAAcAAAADACEAAAAJAAcAAAADACAAAAAJAAcAAAADAB8AAAAHAAcAAAADAB4AAAACAAcAAAAKACsAAAAJAAEAAAAKACoAAAAHAAEAAAAKACkAAAAHAAEAAAAKACgAAAAJAAEAAAAKACcAAAAHAAEAAAAKACYAAAAHAAEAAAAKACUAAAAHAAEAAAAKACQAAAAJAAEAAAAKACMAAAAJAAEAAAAKACIAAAAJAAEAAAAKACEAAAAHAAEAAAAKACAAAAAHAAEAAAAKAB8AAAAHAAEAAAAKAB4AAAACAAEAAADu/9v/AAAGAAoAAADu/9r/AAAGAAoAAADu/9n/AAAGAAoAAADu/9j/AAAGAAoAAADu/9f/AAAGAAoAAADu/9b/AAAGAAoAAADu/9X/AAAGAAoAAADu/9T/AAAGAAoAAADu/9P/AAAGAAoAAADu/9L/AAAGAAkAAADt/9v/AAAFAAoAAADt/9r/AAAFAAoAAADt/9n/AAAFAAoAAADt/9j/AAAFAAoAAADt/9f/AAAFAAoAAADt/9b/AAAFAAoAAADt/9X/AAAFAAoAAADt/9T/AAAFAAoAAADt/9P/AAAFAAoAAADt/9L/AAAFAAkAAADs/9v/AAAEAAoAAADs/9r/AAAEAAoAAADs/9n/AAAEAAoAAADs/9j/AAAEAAoAAADs/9f/AAAEAAoAAADs/9b/AAAEAAoAAADs/9X/AAAEAAoAAADs/9T/AAAEAAoAAADs/9P/AAAEAAoAAADs/9L/AAAEAAkAAAATANv/AAAGAAoAAAATANr/AAAGAAoAAAATANn/AAAGAAoAAAATANj/AAAGAAoAAAATANf/AAAGAAoAAAATANb/AAAGAAoAAAATANX/AAAGAAoAAAATANT/AAAGAAoAAAATANP/AAAGAAoAAAATANL/AAAGAAkAAAASANv/AAAFAAoAAAASANr/AAAFAAoAAAASANn/AAAFAAoAAAASANj/AAAFAAoAAAASANf/AAAFAAoAAAASANb/AAAFAAoAAAASANX/AAAFAAoAAAASANT/AAAFAAoAAAASANP/AAAFAAoAAAASANL/AAAFAAkAAAARANv/AAAEAAoAAAARANr/AAAEAAoAAAARANn/AAAEAAoAAAARANj/AAAEAAoAAAARANf/AAAEAAoAAAARANb/AAAEAAoAAAARANX/AAAEAAoAAAARANT/AAAEAAoAAAARANP/AAAEAAoAAAARANL/AAAEAAkAAAARAPz/AAAEAAoAAAARAP3/AAAEAAoAAAARAP7/AAAEAAoAAAARAP//AAAEAAoAAAARAAAAAAAEAAoAAAARAAEAAAAEAAoAAAARAAIAAAAEAAoAAAARAAMAAAAEAAoAAAARAAQAAAAEAAoAAAARAAUAAAAEAAoAAAARAAYAAAAEAAoAAAARAAcAAAAEAAoAAAARAAgAAAAEAAoAAAARAAkAAAAEAAoAAAARAAoAAAAEAAoAAAARAAsAAAAEAAoAAAARAAwAAAAEAAoAAAARAA0AAAAEAAoAAAARAA4AAAAEAAoAAAARAA8AAAAEAAoAAAARABAAAAAEAAoAAAASAPz/AAAFAAoAAAASAP3/AAAFAAoAAAASAP7/AAAFAAoAAAASAP//AAAFAAoAAAASAAAAAAAFAAoAAAASAAEAAAAFAAoAAAASAAIAAAAFAAoAAAASAAMAAAAFAAoAAAASAAQAAAAFAAoAAAASAAUAAAAFAAoAAAASAAYAAAAFAAoAAAASAAcAAAAFAAoAAAASAAgAAAAFAAoAAAASAAkAAAAFAAoAAAASAAoAAAAFAAoAAAASAAsAAAAFAAoAAAASAAwAAAAFAAoAAAASAA0AAAAFAAoAAAASAA4AAAAFAAoAAAASAA8AAAAFAAoAAAASABAAAAAFAAoAAAATAPz/AAAGAAoAAAATAP3/AAAGAAoAAAATAP7/AAAGAAoAAAATAP//AAAGAAoAAAATAAAAAAAGAAoAAAATAAEAAAAGAAoAAAATAAIAAAAGAAoAAAATAAMAAAAGAAoAAAATAAQAAAAGAAoAAAATAAUAAAAGAAoAAAATAAYAAAAGAAoAAAATAAcAAAAGAAoAAAATAAgAAAAGAAoAAAATAAkAAAAGAAoAAAATAAoAAAAGAAoAAAATAAsAAAAGAAoAAAATAAwAAAAGAAoAAAATAA0AAAAGAAoAAAATAA4AAAAGAAoAAAATAA8AAAAGAAoAAAATABAAAAAGAAoAAADu/+L/AAAGAAoAAADu/+H/AAAGAAoAAADu/+D/AAAGAAoAAADu/9//AAAGAAoAAAA=")
+tile_set = SubResource("TileSet_c18sa")
 
 [node name="plinko balls" type="Node" parent="." unique_id=746028618]
 
 [node name="layer2" type="Node" parent="plinko balls" unique_id=278961409]
 
-[node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/layer2" unique_id=2103004668]
+[node name="plinko peg" parent="plinko balls/layer2" unique_id=804078616 instance=ExtResource("7_svm0g")]
 position = Vector2(200, 0)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]3" unique_id=640908614]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer2/ball [placeholder]3/StaticBody2D" unique_id=785608555]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/layer2" unique_id=695607263]
+[node name="plinko peg2" parent="plinko balls/layer2" unique_id=2095901817 instance=ExtResource("7_svm0g")]
 position = Vector2(600, 0)
 rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]4" unique_id=551925995]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer2/ball [placeholder]4/StaticBody2D" unique_id=262484613]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/layer2" unique_id=151284822]
+[node name="plinko peg3" parent="plinko balls/layer2" unique_id=930632126 instance=ExtResource("7_svm0g")]
 position = Vector2(-200, 0)
 rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]7" unique_id=927364047]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer2/ball [placeholder]7/StaticBody2D" unique_id=2018011685]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/layer2" unique_id=1096915818]
+[node name="plinko peg4" parent="plinko balls/layer2" unique_id=1285896719 instance=ExtResource("7_svm0g")]
 position = Vector2(-600, 0)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]5" unique_id=1527897766]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer2/ball [placeholder]5/StaticBody2D" unique_id=811726019]
-shape = SubResource("CircleShape2D_sw4k2")
 
 [node name="layer3" type="Node" parent="plinko balls" unique_id=1361768024]
 
-[node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/layer3" unique_id=663026623]
+[node name="plinko peg" parent="plinko balls/layer3" unique_id=310482380 instance=ExtResource("7_svm0g")]
 position = Vector2(0, -400)
 rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]3" unique_id=1556891507]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer3/ball [placeholder]3/StaticBody2D" unique_id=276155127]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/layer3" unique_id=1687834010]
+[node name="plinko peg2" parent="plinko balls/layer3" unique_id=339378713 instance=ExtResource("7_svm0g")]
 position = Vector2(400, -400)
 rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]4" unique_id=485578436]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer3/ball [placeholder]4/StaticBody2D" unique_id=1514557778]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/layer3" unique_id=1266921494]
+[node name="plinko peg3" parent="plinko balls/layer3" unique_id=1525309346 instance=ExtResource("7_svm0g")]
 position = Vector2(-400, -400)
 rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]7" unique_id=1440078501]
+[node name="Repeating Layers Holder1" type="Node2D" parent="plinko balls" unique_id=1566391060]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/layer3/ball [placeholder]7/StaticBody2D" unique_id=1619661717]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="Repeating Layers Holder" type="Node2D" parent="plinko balls" unique_id=430406643]
-
-[node name="layer0 (bottom)" type="Node" parent="plinko balls/Repeating Layers Holder" unique_id=426012265]
-
-[node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=1582731819]
-position = Vector2(200, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]3" unique_id=1255892917]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]3/StaticBody2D" unique_id=1793726369]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]8" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=956317678]
-position = Vector2(600, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]8" unique_id=1568010344]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]8/StaticBody2D" unique_id=2131788752]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=754367983]
-position = Vector2(1000, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]4" unique_id=641761326]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]4/StaticBody2D" unique_id=1362830787]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=554226563]
-position = Vector2(-1000, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]7" unique_id=714569672]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]7/StaticBody2D" unique_id=1191796658]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=2036570659]
-position = Vector2(-600, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]5" unique_id=966555831]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]5/StaticBody2D" unique_id=2100125229]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=883639910]
-position = Vector2(-200, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]6" unique_id=1959855289]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]6/StaticBody2D" unique_id=135343103]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="layer1" type="Node" parent="plinko balls/Repeating Layers Holder" unique_id=1009950512]
-
-[node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1302358849]
+[node name="plinko peg" parent="plinko balls/Repeating Layers Holder1" unique_id=460227430 instance=ExtResource("7_svm0g")]
 position = Vector2(0, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]3" unique_id=796225090]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]3/StaticBody2D" unique_id=645715426]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1666667862]
+[node name="plinko peg2" parent="plinko balls/Repeating Layers Holder1" unique_id=495274294 instance=ExtResource("7_svm0g")]
 position = Vector2(400, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]4" unique_id=2045931755]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]4/StaticBody2D" unique_id=1586883599]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=171941552]
+[node name="plinko peg3" parent="plinko balls/Repeating Layers Holder1" unique_id=1711877291 instance=ExtResource("7_svm0g")]
 position = Vector2(800, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]7" unique_id=22053000]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]7/StaticBody2D" unique_id=727126879]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=158801912]
-position = Vector2(-400, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]5" unique_id=804611690]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]5/StaticBody2D" unique_id=858786393]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1942152540]
+[node name="plinko peg4" parent="plinko balls/Repeating Layers Holder1" unique_id=1245287481 instance=ExtResource("7_svm0g")]
 position = Vector2(-800, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]6" unique_id=1693397499]
+[node name="plinko peg5" parent="plinko balls/Repeating Layers Holder1" unique_id=68222369 instance=ExtResource("7_svm0g")]
+position = Vector2(-400, 400)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]6/StaticBody2D" unique_id=542071153]
-shape = SubResource("CircleShape2D_sw4k2")
+[node name="plinko peg6" parent="plinko balls/Repeating Layers Holder1" unique_id=686595543 instance=ExtResource("7_svm0g")]
+position = Vector2(200, 800)
 
-[node name="Repeating Layers Holder2" type="Node2D" parent="plinko balls" unique_id=1743472660]
+[node name="plinko peg7" parent="plinko balls/Repeating Layers Holder1" unique_id=1041274975 instance=ExtResource("7_svm0g")]
+position = Vector2(600, 800)
+
+[node name="plinko peg8" parent="plinko balls/Repeating Layers Holder1" unique_id=217066723 instance=ExtResource("7_svm0g")]
+position = Vector2(1000, 800)
+
+[node name="plinko peg9" parent="plinko balls/Repeating Layers Holder1" unique_id=606733402 instance=ExtResource("7_svm0g")]
+position = Vector2(-200, 800)
+
+[node name="plinko peg10" parent="plinko balls/Repeating Layers Holder1" unique_id=1026809159 instance=ExtResource("7_svm0g")]
+position = Vector2(-600, 800)
+
+[node name="plinko peg11" parent="plinko balls/Repeating Layers Holder1" unique_id=1514874266 instance=ExtResource("7_svm0g")]
+position = Vector2(-1000, 800)
+
+[node name="Repeating Layers Holder2" type="Node2D" parent="plinko balls" unique_id=768482898]
 position = Vector2(0, 800)
 
-[node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1298643611]
-position = Vector2(200, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]3" unique_id=2011919000]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]3/StaticBody2D" unique_id=1370496507]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]8" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1765529070]
-position = Vector2(600, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]8" unique_id=495159553]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]8/StaticBody2D" unique_id=405104857]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=565367175]
-position = Vector2(1000, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]4" unique_id=871302313]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]4/StaticBody2D" unique_id=2123809863]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1560095249]
-position = Vector2(-1000, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]7" unique_id=1513118933]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]7/StaticBody2D" unique_id=1117870385]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1974627262]
-position = Vector2(-600, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]5" unique_id=693473330]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]5/StaticBody2D" unique_id=899297639]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1297539859]
-position = Vector2(-200, 800)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]6" unique_id=1521931578]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]6/StaticBody2D" unique_id=1207199784]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]9" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=115657983]
+[node name="plinko peg" parent="plinko balls/Repeating Layers Holder2" unique_id=50267277 instance=ExtResource("7_svm0g")]
 position = Vector2(0, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]9" unique_id=1060297107]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]9/StaticBody2D" unique_id=1549464897]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]10" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1420674272]
+[node name="plinko peg2" parent="plinko balls/Repeating Layers Holder2" unique_id=1977345588 instance=ExtResource("7_svm0g")]
 position = Vector2(400, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]10" unique_id=774886008]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]10/StaticBody2D" unique_id=796284466]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]11" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1474432733]
+[node name="plinko peg3" parent="plinko balls/Repeating Layers Holder2" unique_id=1257565268 instance=ExtResource("7_svm0g")]
 position = Vector2(800, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]11" unique_id=1703498109]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]11/StaticBody2D" unique_id=264718403]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]12" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=366706857]
-position = Vector2(-400, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]12" unique_id=224400855]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]12/StaticBody2D" unique_id=772561147]
-shape = SubResource("CircleShape2D_sw4k2")
-
-[node name="ball [placeholder]13" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1751995413]
+[node name="plinko peg4" parent="plinko balls/Repeating Layers Holder2" unique_id=828833940 instance=ExtResource("7_svm0g")]
 position = Vector2(-800, 400)
-rotation = 1.5707964
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]13" unique_id=1154999249]
+[node name="plinko peg5" parent="plinko balls/Repeating Layers Holder2" unique_id=1031620776 instance=ExtResource("7_svm0g")]
+position = Vector2(-400, 400)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]13/StaticBody2D" unique_id=393674983]
-shape = SubResource("CircleShape2D_sw4k2")
+[node name="plinko peg6" parent="plinko balls/Repeating Layers Holder2" unique_id=568263446 instance=ExtResource("7_svm0g")]
+position = Vector2(200, 800)
 
-[node name="bottom holes" type="Node" parent="." unique_id=30843395]
+[node name="plinko peg7" parent="plinko balls/Repeating Layers Holder2" unique_id=1135428544 instance=ExtResource("7_svm0g")]
+position = Vector2(600, 800)
 
-[node name="ground [placeholder]4" type="Sprite2D" parent="bottom holes" unique_id=482728751]
-position = Vector2(-600, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="plinko peg8" parent="plinko balls/Repeating Layers Holder2" unique_id=502523768 instance=ExtResource("7_svm0g")]
+position = Vector2(1000, 800)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]4" unique_id=1881438913]
+[node name="plinko peg9" parent="plinko balls/Repeating Layers Holder2" unique_id=1645548975 instance=ExtResource("7_svm0g")]
+position = Vector2(-200, 800)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]4/StaticBody2D" unique_id=1960747935]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="plinko peg10" parent="plinko balls/Repeating Layers Holder2" unique_id=183334670 instance=ExtResource("7_svm0g")]
+position = Vector2(-600, 800)
 
-[node name="ground [placeholder]9" type="Sprite2D" parent="bottom holes" unique_id=314163327]
-position = Vector2(-1000, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="plinko peg11" parent="plinko balls/Repeating Layers Holder2" unique_id=1426851110 instance=ExtResource("7_svm0g")]
+position = Vector2(-1000, 800)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]9" unique_id=1563597512]
+[node name="gambling bg" type="ColorRect" parent="." unique_id=2072522590]
+z_index = -10
+material = SubResource("ShaderMaterial_didps")
+offset_left = -22418.0
+offset_top = -14760.0
+offset_right = 24284.0
+offset_bottom = 14402.0
+color = Color(0.2, 0.03529412, 0.03529412, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]9/StaticBody2D" unique_id=96837807]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="bottom_areas" type="Node" parent="." unique_id=1678609119]
 
-[node name="ground [placeholder]5" type="Sprite2D" parent="bottom holes" unique_id=2141948108]
-position = Vector2(-200, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="Victory" type="Area2D" parent="bottom_areas" unique_id=2086763193]
+position = Vector2(0, 2650)
+script = ExtResource("9_a10ca")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]5" unique_id=614177954]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Victory" unique_id=2143907427]
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_sw4k2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]5/StaticBody2D" unique_id=191205335]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="Lose" type="Area2D" parent="bottom_areas" unique_id=925365852]
+position = Vector2(-900, 2650)
+script = ExtResource("10_rsnin")
 
-[node name="ground [placeholder]6" type="Sprite2D" parent="bottom holes" unique_id=642005446]
-position = Vector2(200, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Lose" unique_id=242950214]
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_sw4k2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]6" unique_id=316827287]
+[node name="Lose2" type="Area2D" parent="bottom_areas" unique_id=1290763666]
+position = Vector2(900, 2650)
+script = ExtResource("10_rsnin")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]6/StaticBody2D" unique_id=1359575931]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Lose2" unique_id=1944430480]
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_sw4k2")
 
-[node name="ground [placeholder]7" type="Sprite2D" parent="bottom holes" unique_id=1120375255]
-position = Vector2(600, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="Nothing" type="Area2D" parent="bottom_areas" unique_id=219747177]
+position = Vector2(-450, 2650)
+script = ExtResource("11_6vsvt")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]7" unique_id=1415754503]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Nothing" unique_id=215552810]
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_sw4k2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]7/StaticBody2D" unique_id=905176552]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="Nothing2" type="Area2D" parent="bottom_areas" unique_id=217961477]
+position = Vector2(450, 2650)
+script = ExtResource("11_6vsvt")
 
-[node name="ground [placeholder]8" type="Sprite2D" parent="bottom holes" unique_id=924589602]
-position = Vector2(1000, 2100)
-rotation = 1.5707964
-scale = Vector2(3, 0.5)
-texture = ExtResource("1_t1lao")
-metadata/_edit_group_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Nothing2" unique_id=1054708838]
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_sw4k2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]8" unique_id=308007538]
+[node name="PLINKO_STATE_HANDLER" type="Node2D" parent="." unique_id=958849224 node_paths=PackedStringArray("bottom_areas", "state_text")]
+script = ExtResource("12_0aim8")
+bottom_areas = NodePath("../bottom_areas")
+state_text = NodePath("../CanvasLayer/State Text")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom holes/ground [placeholder]8/StaticBody2D" unique_id=1620234457]
-shape = SubResource("RectangleShape2D_scvo5")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=39551605]
+
+[node name="State Text" type="RichTextLabel" parent="CanvasLayer" unique_id=1965165549]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -437.5
+offset_top = -1200.0
+offset_right = 437.5
+offset_bottom = -1133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Press the Jump Key to release the Ball!"
+fit_content = true
+autowrap_mode = 0

@@ -14,3 +14,6 @@ var global_time = 0.0
 
 func _process(delta: float) -> void:
 	global_time += delta
+	
+	# if you guys use any shaders, use 'global uniform float global_shadertime' instead of TIME
+	RenderingServer.global_shader_parameter_set("global_shadertime", global_time)

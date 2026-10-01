@@ -10,19 +10,21 @@ extends Sprite2D
 
 var going_right : bool = true
 var move_speed : float = 1000.0
+var starting_position : Vector2 = Vector2.ZERO
 
 var currently_dropped : bool = false
+var can_drop : bool = true
 signal dropped
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	starting_position = global_position
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	# emits the signal to drop the ball
-	if Input.is_action_just_pressed("jump") and not currently_dropped:
+	if Input.is_action_just_pressed("jump") and not currently_dropped and can_drop:
 		dropped.emit()
 		should_move = false
 	
@@ -42,3 +44,8 @@ func move_to(target_position_x, delta):
 	if is_equal_approx(global_position.x, target_position_x): return
 	global_position.x =\
 	 move_toward(global_position.x, target_position_x, move_speed * delta)
+
+func _reset_marker():
+	should_move = true
+	global_position = starting_position
+	going_right = true
