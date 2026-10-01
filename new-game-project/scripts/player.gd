@@ -14,7 +14,9 @@ var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	print(Global.checkpoint)
+	if Global.checkpoint != Vector2(0,0):
+		global_position = Global.checkpoint
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,6 +70,7 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	
 	if area.name == "goal":
 		Global.level += 1
+		Global.checkpoint = Vector2(0, 0)
 		get_tree().change_scene_to_file("res://scenes/victory_screen.tscn")
 
 

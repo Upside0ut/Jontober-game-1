@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b7wnpvnr1lj27" path="res://BallGameJontoberSong.mp3" id="6_6hrdw"]
 [ext_resource type="PackedScene" uid="uid://xkbq3xpxpcgn" path="res://scenes/circleman.tscn" id="7_6hrdw"]
 [ext_resource type="PackedScene" uid="uid://dwy7f7ij1ye76" path="res://scenes/door.tscn" id="8_2wlag"]
+[ext_resource type="PackedScene" uid="uid://dihji23xxltkc" path="res://scenes/checkpoint.tscn" id="9_3ew82"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_ngl01")
@@ -584,6 +585,9 @@ terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_3imfn")
 sources/1 = SubResource("TileSetScenesCollectionSource_2wlag")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
+size = Vector2(20, 192)
+
 [node name="level 01" type="Node2D" unique_id=797776596]
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_85vqe")]
@@ -695,3 +699,10 @@ flip_h = true
 [node name="door16" parent="doors" unique_id=653166568 instance=ExtResource("8_2wlag")]
 position = Vector2(7948, 736)
 flip_h = true
+
+[node name="checkpoint" parent="." unique_id=655759561 instance=ExtResource("9_3ew82")]
+position = Vector2(3776, -38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint" unique_id=1690314604]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_a7vx6")

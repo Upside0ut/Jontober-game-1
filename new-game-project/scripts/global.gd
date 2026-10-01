@@ -12,6 +12,10 @@ var level = 1
 
 var global_time = 0.0
 
+# checkpoints can made using the checkpoint scene and adding collision
+# the checkpoint var is reset when a level is beat
+var checkpoint: Vector2
+
 func _process(delta: float) -> void:
 	global_time += delta
 	
