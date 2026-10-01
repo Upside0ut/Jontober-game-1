@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b1fpos4hxvt6r" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="2_g2els"]
-[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://Ball Game Gameplay Theme 1.mp3" id="2_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://bjbomsk14ju5x" path="res://roll.mp3" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://bounce.mp3" id="4_dqkch"]
 
@@ -16,10 +15,6 @@ radius = 26.076809
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_g2els")
-
-[node name="BallGameGameplayTheme1" type="AudioStreamPlayer" parent="." unique_id=1685232471]
-stream = ExtResource("2_qlg0r")
-autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=528349077]
 shape = SubResource("CircleShape2D_dtglo")

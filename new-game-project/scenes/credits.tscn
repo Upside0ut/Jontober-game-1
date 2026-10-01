@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c4xwr4jquqqv1"]
+
+[ext_resource type="Script" uid="uid://cb3kt78dls7pe" path="res://scripts/credits.gd" id="1_0bpdh"]
+
+[node name="credits" type="Node2D" unique_id=1675563908]
+script = ExtResource("1_0bpdh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1679870396]
+offset_right = 1185.0
+offset_bottom = 672.0
+color = Color(0.08193319, 0.02314996, 0.049722597, 1)
+
+[node name="Label" type="Label" parent="." unique_id=369981988]
+offset_left = 25.0
+offset_top = 52.0
+offset_right = 1125.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 54
+text = "Circcle - Art, programming, level design
+Kode - Music
+Choco - Programming, level design
+Mr. Bucket - Music
+UpsideOut - Art, Programming, level design"
+
+[node name="Button" type="Button" parent="." unique_id=455303068]
+offset_left = 14.0
+offset_top = 579.0
+offset_right = 146.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 36
+text = "<- Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

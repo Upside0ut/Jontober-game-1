@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://5q437uajs8qo"]
+
+[ext_resource type="Texture2D" uid="uid://dv8nglh1mfgx8" path="res://textures/title.png" id="1_6d6rd"]
+[ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scenes/titlescreen.gd" id="2_3jj3l"]
+
+[node name="Node2D" type="Node2D" unique_id=1984636936]
+
+[node name="Title" type="Sprite2D" parent="." unique_id=847648669]
+position = Vector2(576, 324)
+texture = ExtResource("1_6d6rd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=583852188]
+offset_left = 16.0
+offset_top = 408.0
+offset_right = 385.0
+offset_bottom = 632.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_3jj3l")
+
+[node name="play" type="Button" parent="VBoxContainer" unique_id=692935566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 71
+text = "Play
+"
+
+[node name="credits" type="Button" parent="VBoxContainer" unique_id=450366050]
+layout_mode = 2
+theme_override_font_sizes/font_size = 71
+text = "Credits
+"
+
+[node name="Label" type="Label" parent="." unique_id=1357203060]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 1105.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 110
+text = "PLACEHOLDER TITLE"
+
+[node name="Label2" type="Label" parent="." unique_id=978387728]
+offset_left = 896.0
+offset_top = 614.0
+offset_right = 1142.0
+offset_bottom = 637.0
+text = "Made in 1 day for Jontober 2026"
+
+[connection signal="pressed" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_pressed"]

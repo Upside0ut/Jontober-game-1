@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_81a5f"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_gg43x"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mllcm"]
+[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://Ball Game Gameplay Theme 1.mp3" id="6_q7ibo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_81a5f")
@@ -614,3 +615,7 @@ offset_left = -22575.0
 offset_top = -14256.0
 offset_right = 24127.0
 offset_bottom = 14906.0
+
+[node name="BallGameGameplayTheme1" type="AudioStreamPlayer" parent="." unique_id=871969722]
+stream = ExtResource("6_q7ibo")
+autoplay = true
