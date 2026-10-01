@@ -43,6 +43,10 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "spikes":
 		
 		get_tree().reload_current_scene()
+	if area.name == "goal":
+		
+		get_tree().change_scene_to_packed(Global.levels[Global.level])
+		Global.level += 1
 
 
 func _on_body_entered(body: Node) -> void: #when colliding with the ground
