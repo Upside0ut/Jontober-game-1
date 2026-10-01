@@ -579,20 +579,21 @@ sources/0 = SubResource("TileSetAtlasSource_3imfn")
 [node name="level 01" type="Node2D" unique_id=797776596]
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_85vqe")]
-position = Vector2(496, 378)
+position = Vector2(408, 378)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=846614002]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="Player/Camera2D" unique_id=844949874]
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="Player/Camera2D" unique_id=255341004]
 visible = false
 z_index = 999
-offset_left = -1258.0
-offset_top = -716.0
-offset_right = 1229.0
-offset_bottom = 726.0
+offset_left = -1282.0
+offset_top = -1511.0
+offset_right = 1601.0
+offset_bottom = 1174.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_p0vsl")
 
