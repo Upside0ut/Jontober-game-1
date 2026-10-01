@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_h518d"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_didps"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_h518d"]
+[ext_resource type="PackedScene" uid="uid://motirga1dk0q" path="res://scenes/plinko_pad.tscn" id="5_didps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_didps")
@@ -609,3 +610,5 @@ offset_left = -22418.0
 offset_top = -14760.0
 offset_right = 24284.0
 offset_bottom = 14402.0
+
+[node name="CanvasLayer" parent="." unique_id=1768494728 instance=ExtResource("5_didps")]
