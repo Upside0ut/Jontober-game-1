@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bdhesnt0kylia"]
+
+[ext_resource type="Texture2D" uid="uid://clpgtiq06kige" path="res://textures/walllll.png" id="1_etice"]
+
+[sub_resource type="Animation" id="Animation_etice"]
+resource_name = "fall"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_atg48"]
+_data = {
+&"fall": SubResource("Animation_etice")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
+size = Vector2(79, 632)
+
+[node name="stupid_wall" type="Node2D" unique_id=105343465]
+
+[node name="hinge" type="Node2D" parent="." unique_id=1150187899]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1109653282]
+position = Vector2(31.5, -252)
+scale = Vector2(4.9375, 4.9375)
+texture = ExtResource("1_etice")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=975275990]
+libraries/ = SubResource("AnimationLibrary_atg48")
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=61795799]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=140508486]
+position = Vector2(31.5, -252)
+shape = SubResource("RectangleShape2D_a7vx6")
