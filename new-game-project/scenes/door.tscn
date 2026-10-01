@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dwy7f7ij1ye76"]
+
+[ext_resource type="Texture2D" uid="uid://byufbstxoga06" path="res://textures/door.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://bga6dh3i52pgh" path="res://scenes/door.gd" id="2_uvdjg"]
+[ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://freesound_doorbang_distorted.mp3" id="3_83dcw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
+animations = [{
+"frames": [{
+"duration": 0.01,
+"texture": SubResource("AtlasTexture_uvdjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(10, 32)
+
+[node name="door" type="AnimatedSprite2D" unique_id=1709357118]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_a7vx6")
+script = ExtResource("2_uvdjg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=21337180]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1986600237]
+shape = SubResource("RectangleShape2D_hpvv5")
+
+[node name="open" type="AudioStreamPlayer2D" parent="." unique_id=1308873410]
+stream = ExtResource("3_83dcw")
+volume_db = 10.0
+
+[connection signal="body_entered" from="Area2D" to="." method="open"]

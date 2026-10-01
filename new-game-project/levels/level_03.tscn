@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_wq170"]
 [ext_resource type="AudioStream" uid="uid://b7wnpvnr1lj27" path="res://BallGameJontoberSong.mp3" id="6_6hrdw"]
 [ext_resource type="PackedScene" uid="uid://xkbq3xpxpcgn" path="res://scenes/circleman.tscn" id="7_6hrdw"]
+[ext_resource type="PackedScene" uid="uid://dwy7f7ij1ye76" path="res://scenes/door.tscn" id="8_2wlag"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_ngl01")
@@ -625,3 +626,6 @@ autoplay = true
 
 [node name="circleman" parent="." unique_id=1515179795 instance=ExtResource("7_6hrdw")]
 position = Vector2(-1134, 195)
+
+[node name="door" parent="." unique_id=1709357118 instance=ExtResource("8_2wlag")]
+position = Vector2(-268, 96.00001)

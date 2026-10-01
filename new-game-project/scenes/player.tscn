@@ -161,6 +161,7 @@ speed_scale = 0.8
 
 [node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=601741360]
 stream = ExtResource("7_fjrip")
+volume_db = -6.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="hitbox (spikes)" to="." method="_on_hitbox_spikes_area_entered"]
