@@ -42,7 +42,7 @@ func _on_ball_dropped():
 	var impulse_dir = randi_range(0,1)
 	if impulse_dir == 0: impulse_dir = -1
 	
-	apply_impulse(Vector2(impulse_dir * h_impulse_str, 0.0))
+	call_deferred("apply_impulse", Vector2(impulse_dir * h_impulse_str, 0.0))
 
 func _on_object_collided(body):
 	if body.has_method("boing"):

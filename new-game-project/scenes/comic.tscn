@@ -1,17 +1,45 @@
 [gd_scene format=3 uid="uid://dm72p6g6h7we6"]
 
 [ext_resource type="Script" uid="uid://dwx0vagl4o6sp" path="res://scripts/comic.gd" id="1_g8tsm"]
-[ext_resource type="Texture2D" uid="uid://dgl6tnri8c1jp" path="res://textures/comic.png" id="2_t2otw"]
+[ext_resource type="Texture2D" uid="uid://b62jg7oiy7ksi" path="res://textures/comic-readable-ver.png" id="2_g8tsm"]
 
-[node name="comic" type="Node2D" unique_id=732063082]
+[node name="comic" type="Control" unique_id=1558512898 node_paths=PackedStringArray("timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_g8tsm")
+timer = NodePath("Timer")
 
-[node name="Comic" type="Sprite2D" parent="." unique_id=1805885995]
-position = Vector2(576, 324)
-texture = ExtResource("2_t2otw")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1816195233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+
+[node name="Comic" type="TextureRect" parent="." unique_id=1856434914]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g8tsm")
+stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="." unique_id=1320730372]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

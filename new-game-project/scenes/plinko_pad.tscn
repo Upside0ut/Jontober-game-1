@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d02xgfa5jtwh6" path="res://textures/plinkopad.png" id="1_b8h1g"]
 [ext_resource type="Script" uid="uid://p7no6rts28q2" path="res://Circcle's scripts/sub_viewport_telephone.gd" id="2_5nvi0"]
 
-[node name="Plinko Pad" type="CanvasLayer" unique_id=1768494728 node_paths=PackedStringArray("plinko_subviewport")]
+[node name="Plinko Pad" type="CanvasLayer" unique_id=1768494728 node_paths=PackedStringArray("plinko_subviewport", "plinko_Sprite2D")]
 script = ExtResource("1_5nvi0")
 plinko_subviewport = NodePath("Control/Sprite2D/SubViewportContainer/SubViewport")
+plinko_Sprite2D = NodePath("Control/Sprite2D")
 
 [node name="Control" type="Control" parent="." unique_id=921832696]
 layout_mode = 3
@@ -39,7 +40,3 @@ sdf_scale = 2
 size = Vector2i(2385, 3175)
 render_target_update_mode = 4
 script = ExtResource("2_5nvi0")
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=812238777]
-offset_right = 40.0
-offset_bottom = 40.0

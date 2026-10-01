@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxlk431eu2r4c"
+path="res://.godot/imported/Ball Game Menu Theme.mp3-d77e4a8418a8f98eced133b530050c73.mp3str"
+
+[deps]
+
+source_file="res://Ball Game Menu Theme.mp3"
+dest_files=["res://.godot/imported/Ball Game Menu Theme.mp3-d77e4a8418a8f98eced133b530050c73.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

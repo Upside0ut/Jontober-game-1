@@ -8,6 +8,7 @@ extends Node2D
 
 signal game_won
 signal game_lost
+var game_ended : bool = false
 
 var ready_to_reset : bool = false
 
@@ -23,16 +24,24 @@ func _ready() -> void:
 	state_text.text = ""
 
 func _on_state_changed(area):
+	if game_ended: return
+	
 	if area is Victory_Area:
 		print("Plinko: Game Won!")
 		state_text.text = "Good job! You Won!"
-		await get_tree().create_timer(1.5).timeout
+		
+		_reset_all()
 		game_won.emit()
+		drop_marker.can_drop = false
+		game_ended = true
 		
 	elif area is Lose_Area:
 		print("Plinko: Game Lost!")
 		state_text.text = "Oh no! You lost!"
 		
+		_reset_all()
+		drop_marker.can_drop = false
+		game_ended = true
 		await get_tree().create_timer(3.0).timeout
 		game_lost.emit()
 		
@@ -42,7 +51,6 @@ func _on_state_changed(area):
 		state_text.text = "You didn't hit anything, try again!"
 		ready_to_reset = true
 		
-	_reset_all()
 
 func _process(delta: float) -> void:
 	if ready_to_reset:

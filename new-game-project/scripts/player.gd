@@ -68,8 +68,7 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "goal":
 		Global.level += 1
 		Global.checkpoint = Vector2(0, 0)
-		get_tree().change_scene_to_file("res://scenes/victory_screen.tscn")
-
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)
@@ -77,9 +76,11 @@ func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.play()
 
 func die():
+	if dead: return
+	
 	dead = true
 	$Explosion.play()
 	$AnimationPlayer.play("die")
 	await $AnimationPlayer.animation_finished
-	if get_tree() != null:
+	if is_inside_tree() and get_tree() != null:
 		get_tree().reload_current_scene()

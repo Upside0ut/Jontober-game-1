@@ -8,7 +8,7 @@ const levels = [
 	"res://scenes/end.tscn"
 ]
 
-var level = 1
+var level = 0
 
 var global_time = 0.0
 
