@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("right"): #if going right
 		angular_velocity += delta * roll_speed #roll right
 	
-	if Input.is_action_pressed("jump"): #checks if conditions are right to jump
+	if Input.is_action_just_pressed("jump"): #checks if conditions are right to jump
 		ray_cast_2d.force_raycast_update()
 		if ray_cast_2d.is_colliding():
 			#allow_jump = false #stop double jumping

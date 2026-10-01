@@ -12,7 +12,7 @@
 radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
-radius = 26.076809
+radius = 33.01515
 
 [sub_resource type="Animation" id="Animation_fjrip"]
 length = 0.001
@@ -134,7 +134,7 @@ shape = SubResource("CircleShape2D_dtglo")
 texture = ExtResource("2_g2els")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1005616557]
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 90)
 
 [node name="hitbox (spikes)" type="Area2D" parent="." unique_id=76159056]
 
