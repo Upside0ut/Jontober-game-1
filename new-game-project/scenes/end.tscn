@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d2msmvq0ja0cl" path="res://scripts/end_screen.gd" id="1_p7m4f"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_3d26k"]
 [ext_resource type="Script" uid="uid://cs56ejemnk02g" path="res://scripts/fade-out.gd" id="4_bvfni"]
+[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://dramatica.wav" id="5_s4tl2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d26k"]
 atlas = ExtResource("1_mwn6m")
@@ -98,5 +99,9 @@ offset_bottom = 1174.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("4_bvfni")
+
+[node name="Dramatica" type="AudioStreamPlayer" parent="." unique_id=1387636538]
+stream = ExtResource("5_s4tl2")
+autoplay = true
 
 [connection signal="animation_finished" from="Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
