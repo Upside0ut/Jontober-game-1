@@ -4,7 +4,8 @@ extends RigidBody2D
 @onready var bounce: AudioStreamPlayer = $Bounce
 @onready var jump: AudioStreamPlayer = $jump
 
-
+# situational stuff
+@export var plinko_pad : CanvasLayer
 
 #i'm not used to working in teams, hopefully these comments are enough! - UpsideOut
 const roll_speed = 50
@@ -17,6 +18,8 @@ func _ready() -> void:
 	print(Global.checkpoint)
 	if Global.checkpoint != Vector2(0,0):
 		global_position = Global.checkpoint
+	if plinko_pad:
+		plinko_pad.connect("plinko_lost", die)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			jump.play()
 			linear_velocity.y = jump_force #apply jump force
 	
-	
 	if dead:
 		rotation = 0
 		freeze = true
@@ -61,12 +63,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "spikes":
-		dead = true
-		$Explosion.play()
-		$AnimationPlayer.play("die")
-		await $AnimationPlayer.animation_finished
-		if get_tree() != null:
-			get_tree().reload_current_scene()
+		die()
 	
 	if area.name == "goal":
 		Global.level += 1
@@ -78,3 +75,11 @@ func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)
 	bounce.volume_linear = abs(linear_velocity.x + linear_velocity.y) / 1000 + 0.01
 	bounce.play()
+
+func die():
+	dead = true
+	$Explosion.play()
+	$AnimationPlayer.play("die")
+	await $AnimationPlayer.animation_finished
+	if get_tree() != null:
+		get_tree().reload_current_scene()
