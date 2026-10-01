@@ -587,10 +587,10 @@ sources/1 = SubResource("TileSetScenesCollectionSource_q7ibo")
 
 [node name="level 02" type="Node2D" unique_id=797776596]
 
-[node name="Parallax2D" parent="." unique_id=980270568 instance=ExtResource("1_jy02f")]
-z_index = -7
+[node name="Parallax2D2" parent="." unique_id=980270568 instance=ExtResource("1_jy02f")]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=62364383]
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=55664554]
+z_index = -7
 texture = ExtResource("2_jy02f")
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_81a5f")]

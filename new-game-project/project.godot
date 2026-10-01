@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="Rolling Randy - Day One"
+config/description="Made in 1 day for Jontober 2026"
 run/main_scene="uid://5q437uajs8qo"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(0.05280111, 0.018015867, 0.06870168, 1)
+boot_splash/image="uid://du1g4w782w0ba"
 config/icon="res://textures/icon.svg"
 
 [autoload]

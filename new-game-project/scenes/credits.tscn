@@ -41,7 +41,6 @@ text = "Circcle - Art, programming, level design
 Kode - Music
 Choco - Programming, level design, art,
 music
-Mr. Bucket - Music
 UpsideOut - Art, Programming, level design"
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=455303068]
