@@ -12,6 +12,7 @@ const roll_speed = 50
 const  jump_force = -800
 #var allow_jump = false 
 var dead = false
+var has_dynamite = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,7 +55,15 @@ func _physics_process(delta: float) -> void:
 			#allow_jump = false #stop double jumping
 			jump.play()
 			linear_velocity.y = jump_force #apply jump force
-	
+	if Input.is_action_just_pressed("use") and has_dynamite:
+		has_dynamite = false
+		var dynamite = load("res://scenes/dynamite.tscn")
+		var instance: RigidBody2D = dynamite.instantiate()
+		get_tree().current_scene.add_child(instance)
+		instance.linear_velocity = linear_velocity
+		instance.global_position = Vector2(global_position.x, global_position.y - 150)
+		instance.explode()
+ 
 	if dead:
 		rotation = 0
 		freeze = true
@@ -69,6 +78,7 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		Global.level += 1
 		Global.checkpoint = Vector2(0, 0)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
+	
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)
@@ -84,3 +94,11 @@ func die():
 	await $AnimationPlayer.animation_finished
 	if is_inside_tree() and get_tree() != null:
 		get_tree().reload_current_scene()
+
+
+func pickup_item(area: Area2D) -> void:
+	if area.name == "dynamite_pickup":
+		if area.get_parent().can_pickup:
+			print("boom!")
+			has_dynamite = true
+			area.get_parent().queue_free()

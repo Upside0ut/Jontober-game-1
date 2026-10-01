@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dihji23xxltkc" path="res://scenes/checkpoint.tscn" id="9_3ew82"]
 [ext_resource type="Texture2D" uid="uid://c4j780qv2fy3p" path="res://textures/theoneandonly.png" id="11_6181x"]
 [ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="14_wrb7r"]
+[ext_resource type="Texture2D" uid="uid://dd4w5adpyultc" path="res://textures/walltext.png" id="15_gj5ie"]
+[ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="16_xgj7h"]
+[ext_resource type="PackedScene" uid="uid://wemj4s1m0m1i" path="res://scenes/dynamite.tscn" id="17_l32du"]
+[ext_resource type="Texture2D" uid="uid://cnxhep5vk6yvx" path="res://textures/e_to_use_dynamite.png" id="18_lwtrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_ngl01")
@@ -608,6 +612,16 @@ position = Vector2(100.000015, 112.000015)
 scale = Vector2(3.7083333, 3.7083333)
 texture = ExtResource("11_6181x")
 
+[node name="Walltext" type="Sprite2D" parent="." unique_id=1087811129]
+position = Vector2(822, -162)
+scale = Vector2(1.6679688, 1.6679688)
+texture = ExtResource("15_gj5ie")
+
+[node name="EToUseDynamite" type="Sprite2D" parent="." unique_id=959349228]
+position = Vector2(-738.1719, 51.5)
+scale = Vector2(3.34375, 3.34375)
+texture = ExtResource("18_lwtrp")
+
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_85vqe")]
 position = Vector2(408, 378)
 
@@ -647,7 +661,7 @@ volume_db = -3.0
 autoplay = true
 
 [node name="circleman" parent="." unique_id=1515179795 instance=ExtResource("7_6hrdw")]
-position = Vector2(-1134, 195)
+position = Vector2(-1029, 195)
 
 [node name="door" parent="." unique_id=1709357118 instance=ExtResource("8_2wlag")]
 position = Vector2(-268, 96.00001)
@@ -744,3 +758,18 @@ shape = SubResource("RectangleShape2D_a7vx6")
 
 [node name="stupid_wall" parent="." unique_id=105343465 instance=ExtResource("14_wrb7r")]
 position = Vector2(1024, 320)
+
+[node name="Label" type="Label" parent="." unique_id=1500301411]
+offset_left = 279.0
+offset_top = 548.0
+offset_right = 680.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("16_xgj7h")
+theme_override_font_sizes/font_size = 32
+text = "welcome to
+choco's awesome level :3"
+
+[node name="dynamite" parent="." unique_id=1657102214 instance=ExtResource("17_l32du")]
+position = Vector2(-875, 273)
+can_pickup = true

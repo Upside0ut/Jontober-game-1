@@ -122,6 +122,9 @@ _data = {
 &"die": SubResource("Animation_smehm")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
+radius = 74.1485
+
 [node name="RigidBody2D" type="RigidBody2D" unique_id=581014257]
 contact_monitor = true
 max_contacts_reported = 1
@@ -163,5 +166,11 @@ speed_scale = 0.8
 stream = ExtResource("7_fjrip")
 volume_db = -6.0
 
+[node name="pickup_area" type="Area2D" parent="." unique_id=726209358]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_area" unique_id=1630802307]
+shape = SubResource("CircleShape2D_a7vx6")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="hitbox (spikes)" to="." method="_on_hitbox_spikes_area_entered"]
+[connection signal="area_entered" from="pickup_area" to="." method="pickup_item"]
