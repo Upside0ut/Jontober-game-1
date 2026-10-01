@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://pujirl51cm5p"]
 
 [ext_resource type="Texture2D" uid="uid://dulos8wkil0m4" path="res://textures/end.png" id="1_mwn6m"]
+[ext_resource type="Script" uid="uid://d2msmvq0ja0cl" path="res://scripts/end_screen.gd" id="1_p7m4f"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_3d26k"]
+[ext_resource type="Script" uid="uid://cs56ejemnk02g" path="res://scripts/fade-out.gd" id="4_bvfni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d26k"]
 atlas = ExtResource("1_mwn6m")
@@ -38,10 +41,62 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=718605480]
+[node name="end" type="Control" unique_id=755689193 node_paths=PackedStringArray("end_animation", "fading_rect")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p7m4f")
+end_animation = NodePath("Control/AnimatedSprite2D")
+fading_rect = NodePath("fade_to_black")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1800523470]
-position = Vector2(576, 324)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1357894024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+
+[node name="Control" type="Control" parent="." unique_id=1583067145]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=1800523470]
 sprite_frames = SubResource("SpriteFrames_u0ya7")
+autoplay = "default"
 frame = 3
 frame_progress = 1.0
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=1762241041]
+z_index = 999
+layout_mode = 0
+offset_left = -1282.0
+offset_top = -1511.0
+offset_right = 1601.0
+offset_bottom = 1174.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_3d26k")
+
+[node name="fade_to_black" type="ColorRect" parent="." unique_id=1256694007]
+z_index = 999
+layout_mode = 0
+offset_left = -1282.0
+offset_top = -1511.0
+offset_right = 1601.0
+offset_bottom = 1174.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_bvfni")
+
+[connection signal="animation_finished" from="Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
