@@ -8,3 +8,8 @@ const levels = [
 ]
 
 var level = 1
+
+var global_time = 0.0
+
+func _process(delta: float) -> void:
+	global_time += delta
