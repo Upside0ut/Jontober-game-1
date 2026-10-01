@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://motirga1dk0q"]
+
+[ext_resource type="Texture2D" uid="uid://d02xgfa5jtwh6" path="res://textures/plinkopad.png" id="1_b8h1g"]
+[ext_resource type="Script" uid="uid://p7no6rts28q2" path="res://Circcle's scripts/sub_viewport_telephone.gd" id="2_5nvi0"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1768494728]
+
+[node name="Control" type="Control" parent="." unique_id=921832696]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1515786792]
+scale = Vector2(0.35, 0.355)
+texture = ExtResource("1_b8h1g")
+offset = Vector2(600, 0)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/Sprite2D" unique_id=1831761024]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1169.0001
+offset_top = -1022.00006
+offset_right = -784.0001
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(2152, 648)
+
+[node name="SubViewport" type="SubViewport" parent="Control/Sprite2D/SubViewportContainer" unique_id=2072281570]
+handle_input_locally = false
+sdf_scale = 2
+size = Vector2i(2385, 3175)
+render_target_update_mode = 4
+script = ExtResource("2_5nvi0")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=812238777]
+offset_right = 40.0
+offset_bottom = 40.0

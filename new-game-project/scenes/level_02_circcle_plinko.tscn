@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://8okl7y8k2lqm"]
 
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_ji2ok"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_rqd2m"]
-[ext_resource type="Script" uid="uid://cqmsh6c65sa50" path="res://Circcle's scripts/drop_marker.gd" id="2_scvo5"]
-[ext_resource type="Script" uid="uid://ihfu6y8paseh" path="res://Circcle's scripts/player_plinkocamera.gd" id="3_ucrpc"]
-[ext_resource type="Script" uid="uid://brkpsrgl3hbl3" path="res://Circcle's scripts/player_plinkoball.gd" id="4_scvo5"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://textures/icon.svg" id="1_t1lao"]
+[ext_resource type="Script" uid="uid://cqmsh6c65sa50" path="res://Circcle's scripts/drop_marker.gd" id="2_355pt"]
+[ext_resource type="Script" uid="uid://ihfu6y8paseh" path="res://Circcle's scripts/player_plinkocamera.gd" id="3_d6eji"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="4_svm0g"]
+[ext_resource type="Script" uid="uid://brkpsrgl3hbl3" path="res://Circcle's scripts/player_plinkoball.gd" id="5_a10ca"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ucrpc"]
 bounce = 0.67
@@ -39,20 +39,19 @@ autowrap_mode = 0
 [node name="Drop Marker" type="Sprite2D" parent="." unique_id=913818133]
 modulate = Color(0, 1, 0.083333254, 1)
 position = Vector2(0, -1000)
-texture = ExtResource("2_rqd2m")
-script = ExtResource("2_scvo5")
+texture = ExtResource("1_t1lao")
+script = ExtResource("2_355pt")
 
 [node name="Player Camera" type="Camera2D" parent="." unique_id=76331435]
 position = Vector2(0, -800)
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
-script = ExtResource("3_ucrpc")
+script = ExtResource("3_d6eji")
 
-[node name="Player Ball" parent="." unique_id=581014257 instance=ExtResource("1_ji2ok")]
+[node name="Player Ball" parent="." unique_id=581014257 instance=ExtResource("4_svm0g")]
 position = Vector2(0, -1000)
 physics_material_override = SubResource("PhysicsMaterial_ucrpc")
-script = ExtResource("4_scvo5")
+script = ExtResource("5_a10ca")
 h_impulse_str = 3
 metadata/_edit_group_ = true
 
@@ -62,7 +61,7 @@ metadata/_edit_group_ = true
 position = Vector2(-1100, 0)
 rotation = 1.5707964
 scale = Vector2(35, 1)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bounds/ground [placeholder]" unique_id=2096187749]
@@ -74,7 +73,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(1100, 0)
 rotation = 1.5707964
 scale = Vector2(35, 1)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bounds/ground [placeholder]2" unique_id=2022110227]
@@ -89,7 +88,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 [node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/layer2" unique_id=2103004668]
 position = Vector2(200, 0)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]3" unique_id=640908614]
@@ -100,7 +99,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/layer2" unique_id=695607263]
 position = Vector2(600, 0)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]4" unique_id=551925995]
@@ -111,7 +110,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/layer2" unique_id=151284822]
 position = Vector2(-200, 0)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]7" unique_id=927364047]
@@ -122,7 +121,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/layer2" unique_id=1096915818]
 position = Vector2(-600, 0)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer2/ball [placeholder]5" unique_id=1527897766]
@@ -135,7 +134,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/layer3" unique_id=663026623]
 position = Vector2(0, -400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]3" unique_id=1556891507]
@@ -146,7 +145,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/layer3" unique_id=1687834010]
 position = Vector2(400, -400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]4" unique_id=485578436]
@@ -157,7 +156,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/layer3" unique_id=1266921494]
 position = Vector2(-400, -400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/layer3/ball [placeholder]7" unique_id=1440078501]
@@ -172,7 +171,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=1582731819]
 position = Vector2(200, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]3" unique_id=1255892917]
@@ -183,7 +182,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]8" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=956317678]
 position = Vector2(600, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]8" unique_id=1568010344]
@@ -194,7 +193,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=754367983]
 position = Vector2(1000, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]4" unique_id=641761326]
@@ -205,7 +204,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=554226563]
 position = Vector2(-1000, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]7" unique_id=714569672]
@@ -216,7 +215,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=2036570659]
 position = Vector2(-600, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]5" unique_id=966555831]
@@ -227,7 +226,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)" unique_id=883639910]
 position = Vector2(-200, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer0 (bottom)/ball [placeholder]6" unique_id=1959855289]
@@ -240,7 +239,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1302358849]
 position = Vector2(0, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]3" unique_id=796225090]
@@ -251,7 +250,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1666667862]
 position = Vector2(400, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]4" unique_id=2045931755]
@@ -262,7 +261,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=171941552]
 position = Vector2(800, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]7" unique_id=22053000]
@@ -273,7 +272,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=158801912]
 position = Vector2(-400, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]5" unique_id=804611690]
@@ -284,7 +283,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder/layer1" unique_id=1942152540]
 position = Vector2(-800, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder/layer1/ball [placeholder]6" unique_id=1693397499]
@@ -298,7 +297,7 @@ position = Vector2(0, 800)
 [node name="ball [placeholder]3" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1298643611]
 position = Vector2(200, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]3" unique_id=2011919000]
@@ -309,7 +308,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]8" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1765529070]
 position = Vector2(600, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]8" unique_id=495159553]
@@ -320,7 +319,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]4" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=565367175]
 position = Vector2(1000, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]4" unique_id=871302313]
@@ -331,7 +330,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]7" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1560095249]
 position = Vector2(-1000, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]7" unique_id=1513118933]
@@ -342,7 +341,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]5" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1974627262]
 position = Vector2(-600, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]5" unique_id=693473330]
@@ -353,7 +352,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]6" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1297539859]
 position = Vector2(-200, 800)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]6" unique_id=1521931578]
@@ -364,7 +363,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]9" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=115657983]
 position = Vector2(0, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]9" unique_id=1060297107]
@@ -375,7 +374,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]10" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1420674272]
 position = Vector2(400, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]10" unique_id=774886008]
@@ -386,7 +385,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]11" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1474432733]
 position = Vector2(800, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]11" unique_id=1703498109]
@@ -397,7 +396,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]12" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=366706857]
 position = Vector2(-400, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]12" unique_id=224400855]
@@ -408,7 +407,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 [node name="ball [placeholder]13" type="Sprite2D" parent="plinko balls/Repeating Layers Holder2" unique_id=1751995413]
 position = Vector2(-800, 400)
 rotation = 1.5707964
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="plinko balls/Repeating Layers Holder2/ball [placeholder]13" unique_id=1154999249]
@@ -422,7 +421,7 @@ shape = SubResource("CircleShape2D_sw4k2")
 position = Vector2(-600, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]4" unique_id=1881438913]
@@ -434,7 +433,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(-1000, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]9" unique_id=1563597512]
@@ -446,7 +445,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(-200, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]5" unique_id=614177954]
@@ -458,7 +457,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(200, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]6" unique_id=316827287]
@@ -470,7 +469,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(600, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]7" unique_id=1415754503]
@@ -482,7 +481,7 @@ shape = SubResource("RectangleShape2D_scvo5")
 position = Vector2(1000, 2100)
 rotation = 1.5707964
 scale = Vector2(3, 0.5)
-texture = ExtResource("2_rqd2m")
+texture = ExtResource("1_t1lao")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bottom holes/ground [placeholder]8" unique_id=308007538]
