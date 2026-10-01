@@ -13,6 +13,7 @@ func explode():
 
 func _on_anim_animation_finished() -> void:
 	if exploding:
+		$explosion_sound.play()
 		freeze = true
 		$collision.disabled = true
 		exploding = false
