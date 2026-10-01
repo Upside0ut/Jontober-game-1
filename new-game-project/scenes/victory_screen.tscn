@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://m33ql61ddleh"]
 
-[ext_resource type="Script" path="res://scripts/victory_screen.gd" id="1_66hvp"]
+[ext_resource type="Script" uid="uid://dvt6pm5l2hamx" path="res://scripts/victory_screen.gd" id="1_66hvp"]
 [ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="1_pfcnd"]
-[ext_resource type="Texture2D" path="res://textures/victory.png" id="1_ujlt3"]
-[ext_resource type="AudioStream" path="res://victoryjingle.mp3" id="2_wdgif"]
-[ext_resource type="Texture2D" path="res://frames/confetti3.png" id="4_rixwf"]
-[ext_resource type="Texture2D" path="res://frames/confetti2.png" id="5_u4hde"]
-[ext_resource type="Texture2D" path="res://frames/confetti1.png" id="6_66hvp"]
-[ext_resource type="Texture2D" path="res://frames/confetti4.png" id="7_a2cu1"]
-[ext_resource type="Texture2D" path="res://frames/confetti5.png" id="8_uycue"]
+[ext_resource type="Texture2D" uid="uid://c51esirwvylid" path="res://textures/victory.png" id="1_ujlt3"]
+[ext_resource type="AudioStream" uid="uid://c04rwfn18aksi" path="res://victoryjingle.mp3" id="2_wdgif"]
+[ext_resource type="Texture2D" uid="uid://bujgn1qhtlody" path="res://frames/confetti3.png" id="4_rixwf"]
+[ext_resource type="Texture2D" uid="uid://bp6upk5d6h5q5" path="res://frames/confetti2.png" id="5_u4hde"]
+[ext_resource type="Texture2D" uid="uid://cfm53804de4bp" path="res://frames/confetti1.png" id="6_66hvp"]
+[ext_resource type="Texture2D" uid="uid://dcb01apyahour" path="res://frames/confetti4.png" id="7_a2cu1"]
+[ext_resource type="Texture2D" uid="uid://bg4tumtmmxlhx" path="res://frames/confetti5.png" id="8_uycue"]
 
 [sub_resource type="Animation" id="Animation_pfcnd"]
 length = 0.001

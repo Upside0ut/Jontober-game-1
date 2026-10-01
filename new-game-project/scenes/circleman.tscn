@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://xkbq3xpxpcgn"]
 
+[ext_resource type="Texture2D" uid="uid://thu1ym8fra7k" path="res://frames/JohnCircle1.png" id="1_iocqs"]
+[ext_resource type="Texture2D" uid="uid://i6qlnfdsgd3p" path="res://frames/JohnCircle2.png" id="2_ov0b2"]
+[ext_resource type="Texture2D" uid="uid://dccns2v340x0u" path="res://frames/JohnCircle3.png" id="3_cqvga"]
+[ext_resource type="Texture2D" uid="uid://xseblngm3bf3" path="res://frames/JohnCircle4.png" id="4_6gnjc"]
+[ext_resource type="Texture2D" uid="uid://g0ye1bck7kyi" path="res://frames/JohnCircle5.png" id="5_pljge"]
 [ext_resource type="Texture2D" uid="uid://d107amodx1e6v" path="res://frames/speech1.png" id="6_cg6yp"]
-[ext_resource type="Script" path="res://scripts/circleman.gd" id="6_r66fj"]
+[ext_resource type="Script" uid="uid://bmfgnwfde1rk0" path="res://scripts/circleman.gd" id="6_r66fj"]
 [ext_resource type="Texture2D" uid="uid://nhmurhug5uho" path="res://frames/speech2.png" id="7_r66fj"]
 [ext_resource type="Texture2D" uid="uid://cfw7jiaixhx5s" path="res://frames/speech3.png" id="8_alm0v"]
 [ext_resource type="Texture2D" uid="uid://c6vba854ox7iq" path="res://frames/speech4.png" id="9_hqcjq"]
@@ -12,19 +17,19 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("1_iocqs")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("2_ov0b2")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("3_cqvga")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("4_6gnjc")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("5_pljge")
 }],
 "loop": 1,
 "name": &"default",
