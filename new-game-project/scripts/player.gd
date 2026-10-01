@@ -66,6 +66,8 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		var instance = victory.instantiate()
 		get_tree().current_scene.add_child(instance)
 		Global.level += 1
+#		disable collision for the goal 
+		area.get_node("CollisionShape2D").disabled = true
 
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
