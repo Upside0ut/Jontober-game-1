@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 var opened = false
 
 func open(body: Node2D):
-	if body is RigidBody2D:
-		$Area2D/CollisionShape2D.disabled = true
+	if body is RigidBody2D and !opened:
+		opened = true
 		play("default")
 		$open.play()

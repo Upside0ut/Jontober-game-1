@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c51esirwvylid" path="res://textures/victory.png" id="1_ujlt3"]
 [ext_resource type="AudioStream" uid="uid://c04rwfn18aksi" path="res://victoryjingle.mp3" id="2_wdgif"]
 [ext_resource type="Texture2D" uid="uid://bujgn1qhtlody" path="res://frames/confetti3.png" id="4_rixwf"]
+[ext_resource type="AudioStream" uid="uid://cmhsoofrk2p6q" path="res://victorysong.mp3" id="5_a2cu1"]
 [ext_resource type="Texture2D" uid="uid://bp6upk5d6h5q5" path="res://frames/confetti2.png" id="5_u4hde"]
 [ext_resource type="Texture2D" uid="uid://cfm53804de4bp" path="res://frames/confetti1.png" id="6_66hvp"]
 [ext_resource type="Texture2D" uid="uid://dcb01apyahour" path="res://frames/confetti4.png" id="7_a2cu1"]
@@ -114,6 +115,9 @@ texture = ExtResource("1_ujlt3")
 stream = ExtResource("2_wdgif")
 autoplay = true
 
+[node name="song" type="AudioStreamPlayer" parent="." unique_id=889055114]
+stream = ExtResource("5_a2cu1")
+
 [node name="confetti" type="GPUParticles2D" parent="." unique_id=1526317212]
 position = Vector2(591, 108)
 emitting = false
@@ -165,3 +169,4 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_a7vx6")
 
 [connection signal="pressed" from="play" to="." method="next_level"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

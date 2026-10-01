@@ -67,14 +67,8 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 			get_tree().reload_current_scene()
 	
 	if area.name == "goal":
-		#freezes the player and adds the victory screen to the scene
-		freeze = true
-		var victory = load("res://scenes/victory_screen.tscn")
-		var instance = victory.instantiate()
-		get_tree().current_scene.add_child(instance)
 		Global.level += 1
-#		disable collision for the goal 
-		area.get_node("CollisionShape2D").disabled = true
+		get_tree().change_scene_to_file("res://scenes/victory_screen.tscn")
 
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground

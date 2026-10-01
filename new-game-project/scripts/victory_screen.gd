@@ -6,6 +6,8 @@ extends CanvasLayer
 func _ready() -> void:
 	for n in confettis:
 		n.emitting = true
+	await get_tree().create_timer(2.5).timeout
+	$song.play()
 
 
 func next_level() -> void:
