@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bi4qqm786fjsf" path="res://textures/plinko_peg.png" id="1_3qyxv"]
 [ext_resource type="Script" uid="uid://bxvk6e41a053x" path="res://Circcle's scripts/peg_animation.gd" id="2_3qyxv"]
-[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://laserShoot.wav" id="3_phfmm"]
+[ext_resource type="AudioStream" uid="uid://bdyc215f8mw70" path="res://meowsynth_low.mp3" id="2_phfmm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b766"]
 radius = 63.57525
@@ -52,7 +52,7 @@ animation_player = NodePath("plinko peg/AnimationPlayer")
 shape = SubResource("CircleShape2D_6b766")
 
 [node name="peg_sound" type="AudioStreamPlayer" parent="." unique_id=1656580843]
-stream = ExtResource("3_phfmm")
+stream = ExtResource("2_phfmm")
 
 [node name="plinko peg" type="Sprite2D" parent="." unique_id=1425628429]
 z_index = 1

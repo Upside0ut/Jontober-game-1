@@ -7,6 +7,7 @@ extends StaticBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(peg_hit_sfx != null, "Plinko Peg didn't find the Peg Hit SFX!")
+	$peg_sound.pitch_scale = randf_range(.9, 1.1)
 
 func boing():
 	animation_player.play("boing")
