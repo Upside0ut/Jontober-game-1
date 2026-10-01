@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bi4qqm786fjsf" path="res://textures/plinko_peg.png" id="1_3qyxv"]
 [ext_resource type="Script" uid="uid://bxvk6e41a053x" path="res://Circcle's scripts/peg_animation.gd" id="2_3qyxv"]
-[ext_resource type="AudioStream" uid="uid://bdyc215f8mw70" path="res://meowsynth_low.mp3" id="2_phfmm"]
+[ext_resource type="AudioStream" uid="uid://b6ffnjp1otf7a" path="res://ding.mp3" id="2_phfmm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b766"]
 radius = 63.57525
