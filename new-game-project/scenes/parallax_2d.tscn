@@ -64,7 +64,7 @@ hue_variation_max = 0.09999997
 [node name="Parallax2D" type="Parallax2D" unique_id=980270568]
 scale = Vector2(8, 8)
 scroll_scale = Vector2(0.08, 0.08)
-scroll_offset = Vector2(0, 100)
+scroll_offset = Vector2(0, 150)
 repeat_size = Vector2(500, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1488977471]

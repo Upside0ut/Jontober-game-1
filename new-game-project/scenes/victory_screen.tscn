@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cfm53804de4bp" path="res://frames/confetti1.png" id="6_66hvp"]
 [ext_resource type="Texture2D" uid="uid://dcb01apyahour" path="res://frames/confetti4.png" id="7_a2cu1"]
 [ext_resource type="Texture2D" uid="uid://bg4tumtmmxlhx" path="res://frames/confetti5.png" id="8_uycue"]
+[ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="9_uycue"]
 
 [sub_resource type="Curve" id="Curve_ll51u"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13513514, 1), 0.0, 0.0, 0, 0, Vector2(0.9054054, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -160,6 +161,7 @@ theme_override_constants/margin_top = 475
 [node name="play" type="Button" parent="CenterContainer/MarginContainer" unique_id=1965474938]
 z_index = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("9_uycue")
 theme_override_font_sizes/font_size = 71
 action_mode = 0
 text = "Continue"
