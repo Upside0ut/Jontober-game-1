@@ -608,7 +608,7 @@ size = Vector2(20, 192)
 texture = ExtResource("2_5pqto")
 
 [node name="Theoneandonly" type="Sprite2D" parent="." unique_id=712260075]
-position = Vector2(100.000015, 112.000015)
+position = Vector2(27.000008, 110.00001)
 scale = Vector2(3.7083333, 3.7083333)
 texture = ExtResource("11_6181x")
 
@@ -618,7 +618,7 @@ scale = Vector2(1.6679688, 1.6679688)
 texture = ExtResource("15_gj5ie")
 
 [node name="EToUseDynamite" type="Sprite2D" parent="." unique_id=959349228]
-position = Vector2(-738.1719, 51.5)
+position = Vector2(-704, 10.000008)
 scale = Vector2(3.34375, 3.34375)
 texture = ExtResource("18_lwtrp")
 
@@ -661,7 +661,11 @@ volume_db = -3.0
 autoplay = true
 
 [node name="circleman" parent="." unique_id=1515179795 instance=ExtResource("7_6hrdw")]
-position = Vector2(-1029, 195)
+position = Vector2(-1114, 195)
+
+[node name="dynamite" parent="." unique_id=1657102214 instance=ExtResource("17_l32du")]
+position = Vector2(-960, 273)
+can_pickup = true
 
 [node name="door" parent="." unique_id=1709357118 instance=ExtResource("8_2wlag")]
 position = Vector2(-268, 96.00001)
@@ -769,7 +773,3 @@ theme_override_fonts/font = ExtResource("16_xgj7h")
 theme_override_font_sizes/font_size = 32
 text = "welcome to
 choco's awesome level :3"
-
-[node name="dynamite" parent="." unique_id=1657102214 instance=ExtResource("17_l32du")]
-position = Vector2(-875, 273)
-can_pickup = true
