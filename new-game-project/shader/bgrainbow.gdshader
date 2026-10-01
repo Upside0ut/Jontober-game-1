@@ -20,7 +20,7 @@ vec3 hsv2rgb(vec3 c)
 
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
-	float hue = (UV.x+UV.y) * 0.25 + mod(TIME * shader_speed, 1.0);
+	float hue = (UV.x+UV.y) * 0.25 + mod(global_shadertime * shader_speed, 1.0);
 	//float hue = -UV.y * 0.25 + mod(TIME * 0.25, 1.0);
 
 	COLOR.rgb *= hsv2rgb(vec3(hue,shader_saturation, shader_brightness));

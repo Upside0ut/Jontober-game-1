@@ -1,14 +1,13 @@
 extends Node2D
 
 @export var bottom_areas : Node
-@onready var drop_marker : Node2D = $"../Drop Marker"
-@onready var plinko_player : Node2D = $"../Plinko Player"
-@onready var player_camera : Node2D = $"../Player Camera"
+@onready var drop_marker : Node2D = $"Drop Marker"
+@onready var plinko_player : Node2D = $"Plinko Player"
+@onready var player_camera : Node2D = $"Player Camera"
 @export var state_text : RichTextLabel
 
 signal game_won
 signal game_lost
-signal game_neutral
 
 var ready_to_reset : bool = false
 
@@ -20,12 +19,23 @@ func _ready() -> void:
 	
 	for child in bottom_areas.get_children():
 		child.changed_state.connect(_on_state_changed.bind(child))
+	
+	state_text.text = ""
 
 func _on_state_changed(area):
 	if area is Victory_Area:
 		print("Plinko: Game Won!")
+		state_text.text = "Good job! You Won!"
+		await get_tree().create_timer(1.5).timeout
+		game_won.emit()
+		
 	elif area is Lose_Area:
 		print("Plinko: Game Lost!")
+		state_text.text = "Oh no! You lost!"
+		
+		await get_tree().create_timer(3.0).timeout
+		game_lost.emit()
+		
 	elif area is Neutral_Area:
 		print("Plinko: Game Neutral!")
 		

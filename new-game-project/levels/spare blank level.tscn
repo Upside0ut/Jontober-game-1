@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_yeiq4"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_xm6rd"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_kjpnd"]
+[ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="5_yeiq4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xm6rd"]
 texture = ExtResource("3_xm6rd")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -562,7 +563,10 @@ texture_region_size = Vector2i(64, 64)
 9:11/0/terrain_set = 0
 9:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSet" id="TileSet_u0ya7"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kjpnd"]
+scenes/1/scene = ExtResource("5_yeiq4")
+
+[sub_resource type="TileSet" id="TileSet_lf6dv"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 2
@@ -574,12 +578,14 @@ terrain_set_0/terrain_2/name = "white"
 terrain_set_0/terrain_2/color = Color(1, 1, 1, 1)
 terrain_set_0/terrain_3/name = "red"
 terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
-sources/0 = SubResource("TileSetAtlasSource_3imfn")
+sources/0 = SubResource("TileSetAtlasSource_xm6rd")
+sources/1 = SubResource("TileSetScenesCollectionSource_kjpnd")
 
 [node name="level 01" type="Node2D" unique_id=797776596]
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_p735j")]
 position = Vector2(496, 378)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
 zoom = Vector2(0.5, 0.5)
@@ -596,9 +602,9 @@ offset_bottom = 726.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_yeiq4")
 
-[node name="ground tilemap" type="TileMapLayer" parent="." unique_id=737613325]
-tile_map_data = PackedByteArray("AAAKAAcAAAABAAQAAAAJAAcAAAAIAAMAAAAIAAcAAAAIAAMAAAAHAAcAAAAIAAMAAAAGAAcAAAAIAAMAAAAFAAcAAAAIAAMAAAAEAAcAAAAAAAQAAAA=")
-tile_set = SubResource("TileSet_u0ya7")
+[node name="ground tilemap" type="TileMapLayer" parent="." unique_id=1320273161]
+tile_map_data = PackedByteArray("AAAEAAcAAAAAAAQAAAAFAAcAAAAIAAMAAAAGAAcAAAAIAAMAAAAHAAcAAAAIAAMAAAAIAAcAAAAIAAMAAAAJAAcAAAAIAAMAAAAKAAcAAAABAAQAAAA=")
+tile_set = SubResource("TileSet_lf6dv")
 
 [node name="goal [move to where you want]" parent="." unique_id=232289700 instance=ExtResource("4_kjpnd")]
 position = Vector2(860, 295)

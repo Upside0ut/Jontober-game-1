@@ -6,7 +6,3 @@ var plinko_scene_path := "res://scenes/level_02_circcle_plinko.tscn"
 func _ready() -> void:
 	var plinko_scene : PackedScene = load(plinko_scene_path)
 	add_child(plinko_scene.instantiate(), true)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

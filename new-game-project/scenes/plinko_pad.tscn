@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://motirga1dk0q"]
 
+[ext_resource type="Script" uid="uid://bdsav8e1ixfev" path="res://Circcle's scripts/plinko_pad.gd" id="1_5nvi0"]
 [ext_resource type="Texture2D" uid="uid://d02xgfa5jtwh6" path="res://textures/plinkopad.png" id="1_b8h1g"]
 [ext_resource type="Script" uid="uid://p7no6rts28q2" path="res://Circcle's scripts/sub_viewport_telephone.gd" id="2_5nvi0"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1768494728]
+[node name="Plinko Pad" type="CanvasLayer" unique_id=1768494728 node_paths=PackedStringArray("plinko_subviewport")]
+script = ExtResource("1_5nvi0")
+plinko_subviewport = NodePath("Control/Sprite2D/SubViewportContainer/SubViewport")
 
 [node name="Control" type="Control" parent="." unique_id=921832696]
 layout_mode = 3

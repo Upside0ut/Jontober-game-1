@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://8okl7y8k2lqm"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://textures/icon.svg" id="1_t1lao"]
+[ext_resource type="Texture2D" uid="uid://bh5jvai55t20y" path="res://textures/drop-marker..png" id="2_6vsvt"]
 [ext_resource type="Script" uid="uid://cqmsh6c65sa50" path="res://Circcle's scripts/drop_marker.gd" id="2_355pt"]
 [ext_resource type="Script" uid="uid://ihfu6y8paseh" path="res://Circcle's scripts/player_plinkocamera.gd" id="3_d6eji"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="4_svm0g"]
@@ -589,13 +589,32 @@ sources/0 = SubResource("TileSetAtlasSource_rsnin")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_didps"]
 shader = ExtResource("6_355pt")
-shader_parameter/shader_speed = 0.15
+shader_parameter/shader_speed = 0.3
 shader_parameter/shader_saturation = 0.7
 shader_parameter/shader_brightness = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw4k2"]
 
-[node name="level_02" type="Node2D" unique_id=887258600]
+[node name="level_02_plinko" type="Node2D" unique_id=887258600 node_paths=PackedStringArray("bottom_areas", "state_text")]
+script = ExtResource("12_0aim8")
+bottom_areas = NodePath("bottom_areas")
+state_text = NodePath("State Text")
+
+[node name="State Text" type="RichTextLabel" parent="." unique_id=1965165549]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -887.0
+offset_top = -1432.5
+offset_right = 887.0
+offset_bottom = -1300.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Press the Jump Key to release the Ball!"
+fit_content = true
+autowrap_mode = 0
 
 [node name="BOTTOM CAM BOUNDARY" type="Node2D" parent="." unique_id=1680615772]
 position = Vector2(0, 2300)
@@ -619,7 +638,7 @@ autowrap_mode = 0
 [node name="Drop Marker" type="Sprite2D" parent="." unique_id=913818133]
 modulate = Color(0, 1, 0.083333254, 1)
 position = Vector2(0, -1000)
-texture = ExtResource("1_t1lao")
+texture = ExtResource("2_6vsvt")
 script = ExtResource("2_355pt")
 
 [node name="Player Camera" type="Camera2D" parent="." unique_id=76331435]
@@ -651,11 +670,9 @@ position = Vector2(200, 0)
 
 [node name="plinko peg2" parent="plinko balls/layer2" unique_id=2095901817 instance=ExtResource("7_svm0g")]
 position = Vector2(600, 0)
-rotation = 1.5707964
 
 [node name="plinko peg3" parent="plinko balls/layer2" unique_id=930632126 instance=ExtResource("7_svm0g")]
 position = Vector2(-200, 0)
-rotation = 1.5707964
 
 [node name="plinko peg4" parent="plinko balls/layer2" unique_id=1285896719 instance=ExtResource("7_svm0g")]
 position = Vector2(-600, 0)
@@ -664,15 +681,12 @@ position = Vector2(-600, 0)
 
 [node name="plinko peg" parent="plinko balls/layer3" unique_id=310482380 instance=ExtResource("7_svm0g")]
 position = Vector2(0, -400)
-rotation = 1.5707964
 
 [node name="plinko peg2" parent="plinko balls/layer3" unique_id=339378713 instance=ExtResource("7_svm0g")]
 position = Vector2(400, -400)
-rotation = 1.5707964
 
 [node name="plinko peg3" parent="plinko balls/layer3" unique_id=1525309346 instance=ExtResource("7_svm0g")]
 position = Vector2(-400, -400)
-rotation = 1.5707964
 
 [node name="Repeating Layers Holder1" type="Node2D" parent="plinko balls" unique_id=1566391060]
 
@@ -795,26 +809,3 @@ script = ExtResource("11_6vsvt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Nothing2" unique_id=1054708838]
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
-
-[node name="PLINKO_STATE_HANDLER" type="Node2D" parent="." unique_id=958849224 node_paths=PackedStringArray("bottom_areas", "state_text")]
-script = ExtResource("12_0aim8")
-bottom_areas = NodePath("../bottom_areas")
-state_text = NodePath("../CanvasLayer/State Text")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=39551605]
-
-[node name="State Text" type="RichTextLabel" parent="CanvasLayer" unique_id=1965165549]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -437.5
-offset_top = -1200.0
-offset_right = 437.5
-offset_bottom = -1133.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 96
-bbcode_enabled = true
-text = "Press the Jump Key to release the Ball!"
-fit_content = true
-autowrap_mode = 0
