@@ -70,3 +70,7 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		if area.get_parent().can_pickup:
 			dyamite_count += 1
 			area.get_parent().queue_free()
+
+func sounds(type: String):
+	if type == "jump":
+		$position/sounds/jump.play()

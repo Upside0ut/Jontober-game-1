@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2_normal.tscn" id="1_l6tho"]
 [ext_resource type="Script" uid="uid://b41l45bfabdg0" path="res://scenes/player_2.gd" id="1_s551d"]
+[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="3_yjax8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 
@@ -18,6 +19,11 @@ sprite_frames = SubResource("SpriteFrames_a7vx6")
 
 [node name="position" type="Node2D" parent="." unique_id=660285826]
 
+[node name="sounds" type="Node2D" parent="position" unique_id=1000941803]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="position/sounds" unique_id=765999144]
+stream = ExtResource("3_yjax8")
+
 [node name="interact" type="Area2D" parent="position" unique_id=1428609451]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="position/interact" unique_id=632279646]
@@ -25,6 +31,7 @@ position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_s551d")
 
 [node name="Camera2D" type="Camera2D" parent="position" unique_id=1899531944]
+zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 position_smoothing_enabled = true
 

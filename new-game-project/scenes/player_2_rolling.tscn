@@ -18,4 +18,4 @@ texture = ExtResource("3_hw7yr")
 shape = SubResource("CircleShape2D_a7vx6")
 
 [node name="floor" type="RayCast2D" parent="." unique_id=1474693392]
-target_position = Vector2(0, 52)
+target_position = Vector2(0, 60)

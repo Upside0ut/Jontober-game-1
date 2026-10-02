@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 	
 	if $floor.is_colliding() and Input.is_action_just_pressed("jump"):
 		linear_velocity.y = JUMPING_POWER
+		get_parent().sounds("jump")

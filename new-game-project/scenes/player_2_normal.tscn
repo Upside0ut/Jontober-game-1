@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://c6wv0q1cg50kr" path="res://sound_effects/footsteps/randystep_1.mp3" id="2_v7tvf"]
 [ext_resource type="AudioStream" uid="uid://dhitaac5xhuke" path="res://sound_effects/footsteps/randystep_2.mp3" id="3_povjg"]
 [ext_resource type="AudioStream" uid="uid://b3ixbkm0hu02t" path="res://sound_effects/footsteps/randystep_3.mp3" id="4_hkoe6"]
-[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="5_0mr0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7vx6"]
 radius = 49.0
@@ -155,12 +154,8 @@ scale = Vector2(5.25, 5.25)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
 animation = &"walk"
 
-[node name="sounds" type="Node2D" parent="." unique_id=869129936]
-
-[node name="jump" type="AudioStreamPlayer2D" parent="sounds" unique_id=307413000]
-stream = ExtResource("5_0mr0g")
-
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="." unique_id=1716394557]
+volume_db = 2.0
 
 [node name="step_timer" type="Timer" parent="." unique_id=1470786807]
 wait_time = 0.4
