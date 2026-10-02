@@ -137,9 +137,6 @@ animations = [{
 "speed": 2.5
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
-radius = 85.98837
-
 [node name="player_2_normal" type="CharacterBody2D" unique_id=719631254]
 script = ExtResource("1_60gpe")
 footstep_sounds = Array[AudioStream]([ExtResource("2_v7tvf"), ExtResource("3_povjg"), ExtResource("4_hkoe6")])
@@ -158,12 +155,6 @@ scale = Vector2(5.25, 5.25)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
 animation = &"walk"
 
-[node name="interact" type="Area2D" parent="normal_state" unique_id=1035363519]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="normal_state/interact" unique_id=993175051]
-position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_a7vx6")
-
 [node name="sounds" type="Node2D" parent="." unique_id=869129936]
 
 [node name="jump" type="AudioStreamPlayer2D" parent="sounds" unique_id=307413000]
@@ -174,5 +165,3 @@ stream = ExtResource("5_0mr0g")
 [node name="step_timer" type="Timer" parent="." unique_id=1470786807]
 wait_time = 0.4
 one_shot = true
-
-[connection signal="area_entered" from="normal_state/interact" to="." method="_on_interact_area_entered"]

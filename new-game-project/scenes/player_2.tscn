@@ -5,6 +5,9 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s551d"]
+radius = 85.98837
+
 [node name="player_2" type="Node2D" unique_id=565748145]
 script = ExtResource("1_s551d")
 
@@ -15,6 +18,14 @@ sprite_frames = SubResource("SpriteFrames_a7vx6")
 
 [node name="position" type="Node2D" parent="." unique_id=660285826]
 
+[node name="interact" type="Area2D" parent="position" unique_id=1428609451]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="position/interact" unique_id=632279646]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_s551d")
+
 [node name="Camera2D" type="Camera2D" parent="position" unique_id=1899531944]
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[connection signal="area_entered" from="position/interact" to="." method="_on_interact_area_entered"]

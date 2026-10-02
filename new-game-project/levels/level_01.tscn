@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_gg43x"]
 [ext_resource type="Texture2D" uid="uid://du1g4w782w0ba" path="res://textures/abstract_landscape_1.png" id="2_jy02f"]
-[ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2_normal.tscn" id="3_5dxk1"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_81a5f"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_gg43x"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mllcm"]
@@ -635,6 +634,3 @@ autoplay = true
 z_index = -5
 position = Vector2(247, 201)
 texture = ExtResource("7_cg8v6")
-
-[node name="player_2" parent="." unique_id=719631254 instance=ExtResource("3_5dxk1")]
-position = Vector2(1076, 238)

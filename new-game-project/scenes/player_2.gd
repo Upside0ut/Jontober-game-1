@@ -3,6 +3,7 @@ extends Node2D
 @onready var player: Node2D = get_node("player_2_normal")
 var adjust_position = true
 var rolling = false
+var dyamite_count = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -10,6 +11,19 @@ func _process(delta: float) -> void:
 		$position.global_position = player.global_position
 	if Input.is_action_just_pressed("roll"):
 		roll()
+		
+#	dynamite
+	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position:
+		dyamite_count -= 1
+		var dynamite = load("res://scenes/dynamite.tscn")
+		var instance: RigidBody2D = dynamite.instantiate()
+		get_tree().current_scene.add_child(instance)
+		if player is RigidBody2D:
+			instance.linear_velocity = player.linear_velocity
+		else:
+			instance.linear_velocity = player.velocity
+		instance.global_position = Vector2($position.global_position.x, $position.global_position.y - 150)
+		instance.explode()
 
 func roll():
 	adjust_position = false
@@ -50,3 +64,9 @@ func roll():
 
 	print(player)
 	adjust_position = true
+
+func _on_interact_area_entered(area: Area2D) -> void:
+	if area.name == "dynamite_pickup":
+		if area.get_parent().can_pickup:
+			dyamite_count += 1
+			area.get_parent().queue_free()
