@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://u3buuxq2ve27"]
 
-[ext_resource type="Texture2D" uid="uid://dfidfbwihubnr" path="res://textures/museuminteriorplaceholder.png" id="1_4ivhd"]
+[ext_resource type="Texture2D" uid="uid://bnrybfi8kw4s5" path="res://textures/museum_interior2.png" id="1_4ivhd"]
 [ext_resource type="PackedScene" uid="uid://b6653xivhaw8b" path="res://scenes/player_2.tscn" id="2_s2h6b"]
+[ext_resource type="PackedScene" uid="uid://ce02tpdx1dpne" path="res://scenes/abstract_art.tscn" id="3_s2h6b"]
+[ext_resource type="Texture2D" uid="uid://cjcsi8ou3khii" path="res://textures/abstract_art_placeholder1.png" id="3_yru1m"]
+[ext_resource type="PackedScene" uid="uid://wemj4s1m0m1i" path="res://scenes/dynamite.tscn" id="4_fkghy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(2048, 123)
@@ -13,8 +16,17 @@ position = Vector2(959, -335)
 scale = Vector2(4, 4)
 texture = ExtResource("1_4ivhd")
 
+[node name="abstract_art" parent="." unique_id=320085406 instance=ExtResource("3_s2h6b")]
+position = Vector2(471, -82)
+
+[node name="abstract_art2" parent="." unique_id=319586905 instance=ExtResource("3_s2h6b")]
+position = Vector2(941, -132)
+
+[node name="Sprite2D" parent="abstract_art2" index="1" unique_id=1427093654]
+texture = ExtResource("3_yru1m")
+
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("2_s2h6b")]
-position = Vector2(26, -25)
+position = Vector2(122, 25)
 
 [node name="Camera2D" parent="player_2/position" parent_id_path=PackedInt32Array(565748145, 660285826) index="2" unique_id=1899531944]
 enabled = false
@@ -28,7 +40,42 @@ limit_bottom = 179
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=168665071]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2055204996]
-position = Vector2(959, 111.5)
+position = Vector2(959, 155)
 shape = SubResource("RectangleShape2D_a7vx6")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1541992353]
+position = Vector2(-127, -845)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_a7vx6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1978661888]
+position = Vector2(2044, -839)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_a7vx6")
+
+[node name="dynamite" parent="." unique_id=636339533 instance=ExtResource("4_fkghy")]
+position = Vector2(284, 26)
+can_pickup = true
+
+[node name="dynamite2" parent="." unique_id=1224041822 instance=ExtResource("4_fkghy")]
+position = Vector2(303, -109)
+can_pickup = true
+
+[node name="dynamite3" parent="." unique_id=2040169213 instance=ExtResource("4_fkghy")]
+position = Vector2(312, -298)
+can_pickup = true
+
+[node name="dynamite4" parent="." unique_id=743811812 instance=ExtResource("4_fkghy")]
+position = Vector2(331, -433)
+can_pickup = true
+
+[node name="dynamite5" parent="." unique_id=1927733921 instance=ExtResource("4_fkghy")]
+position = Vector2(141, -418)
+can_pickup = true
+
+[node name="dynamite6" parent="." unique_id=1865848195 instance=ExtResource("4_fkghy")]
+position = Vector2(160, -553)
+can_pickup = true
+
+[editable path="abstract_art2"]
 [editable path="player_2"]

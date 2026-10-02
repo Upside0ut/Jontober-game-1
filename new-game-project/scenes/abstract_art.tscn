@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ce02tpdx1dpne"]
+
+[ext_resource type="Script" uid="uid://qpifuhe507lb" path="res://scenes/abstract_art.gd" id="1_txr48"]
+[ext_resource type="Texture2D" uid="uid://c4023b17vdwc0" path="res://textures/abstract_art_placeholder2.png" id="2_e12e5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
+radius = 48.010414
+
+[node name="abstract_art" type="Node2D" unique_id=320085406]
+script = ExtResource("1_txr48")
+
+[node name="destruct_area" type="Area2D" parent="." unique_id=2051237086]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destruct_area" unique_id=2008752656]
+shape = SubResource("CircleShape2D_a7vx6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1427093654]
+scale = Vector2(4, 4)
+texture = ExtResource("2_e12e5")
+
+[connection signal="area_entered" from="destruct_area" to="." method="_on_destruct_area_area_entered"]

@@ -34,13 +34,50 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_bvfni")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_s4tl2")
 }],
 "loop": 0,
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="Animation" id="Animation_s4tl2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("question_mark:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8hmjt"]
+resource_name = "question_mark"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("question_mark:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.56666666, 3.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.44313726)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5lv4"]
+_data = {
+&"RESET": SubResource("Animation_s4tl2"),
+&"question_mark": SubResource("Animation_8hmjt")
+}
 
 [node name="end" type="Control" unique_id=755689193 node_paths=PackedStringArray("end_animation", "fading_rect")]
 layout_mode = 3
@@ -79,6 +116,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=1762241041]
+visible = false
 z_index = 999
 layout_mode = 0
 offset_left = -1282.0
@@ -90,6 +128,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_3d26k")
 
 [node name="fade_to_black" type="ColorRect" parent="." unique_id=1256694007]
+visible = false
 z_index = 999
 layout_mode = 0
 offset_left = -1282.0
@@ -103,5 +142,18 @@ script = ExtResource("4_bvfni")
 [node name="Dramatica" type="AudioStreamPlayer" parent="." unique_id=1387636538]
 stream = ExtResource("5_s4tl2")
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1890151101]
+libraries/ = SubResource("AnimationLibrary_o5lv4")
+
+[node name="question_mark" type="Label" parent="." unique_id=1020978411]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 141.0
+offset_right = 434.0
+offset_bottom = 229.0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 64
+text = "?"
 
 [connection signal="animation_finished" from="Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

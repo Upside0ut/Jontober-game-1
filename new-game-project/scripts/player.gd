@@ -12,6 +12,7 @@ const roll_speed = 50
 const  jump_force = -800
 #var allow_jump = false 
 var dead = false
+# has_dynamite becomes true when the player enters a dynamite pickup area
 var has_dynamite = false
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,10 @@ func _physics_process(delta: float) -> void:
 			#allow_jump = false #stop double jumping
 			jump.play()
 			linear_velocity.y = jump_force #apply jump force
+	# if player presses E and has_dynamite is set to true, the dynamite scene is loaded in
+	# and instanced, then the position is set to be above the player & the velocity is matched
+	# after which the dynamite is actually added into the scene
+	
 	if Input.is_action_just_pressed("use") and has_dynamite:
 		has_dynamite = false
 		var dynamite = load("res://scenes/dynamite.tscn")
@@ -95,7 +100,7 @@ func die():
 	if is_inside_tree() and get_tree() != null:
 		get_tree().reload_current_scene()
 
-
+#connected to pickup_area when another area enters it
 func pickup_item(area: Area2D) -> void:
 	if area.name == "dynamite_pickup":
 		if area.get_parent().can_pickup:

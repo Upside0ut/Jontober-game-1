@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfidfbwihubnr"
-path="res://.godot/imported/museuminteriorplaceholder.png-518037aa49789fa22bd427dc648247e1.ctex"
+uid="uid://cpfj4fwo3rff4"
+path="res://.godot/imported/shift_to_run.png-a791ae8d519bfa583389626f6ab25ee4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/museuminteriorplaceholder.png"
-dest_files=["res://.godot/imported/museuminteriorplaceholder.png-518037aa49789fa22bd427dc648247e1.ctex"]
+source_file="res://textures/shift_to_run.png"
+dest_files=["res://.godot/imported/shift_to_run.png-a791ae8d519bfa583389626f6ab25ee4.ctex"]
 
 [params]
 
