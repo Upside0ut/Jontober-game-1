@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://y4nfoiex4j30"]
 
 [ext_resource type="Script" uid="uid://b66wln3faqdn3" path="res://scenes/player_2.gd" id="1_s551d"]
-[ext_resource type="AudioStream" uid="uid://b6ffnjp1otf7a" path="res://sound_effects/ding.mp3" id="2_oc1kf"]
 [ext_resource type="Texture2D" uid="uid://flkuh0wbuqm" path="res://frames/randy_placeholder_spritesheet2.png" id="2_s551d"]
-[ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://sound_effects/bounce.mp3" id="3_yjax8"]
+[ext_resource type="AudioStream" uid="uid://c6wv0q1cg50kr" path="res://sound_effects/footsteps/randystep_1.mp3" id="2_v7tvf"]
+[ext_resource type="AudioStream" uid="uid://dhitaac5xhuke" path="res://sound_effects/footsteps/randystep_2.mp3" id="3_povjg"]
+[ext_resource type="AudioStream" uid="uid://b3ixbkm0hu02t" path="res://sound_effects/footsteps/randystep_3.mp3" id="4_hkoe6"]
 [ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="5_0mr0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjax8"]
@@ -138,7 +139,7 @@ height = 120.0
 
 [node name="player_2" type="CharacterBody2D" unique_id=719631254]
 script = ExtResource("1_s551d")
-footstep_sounds = Array[AudioStream]([ExtResource("2_oc1kf"), ExtResource("3_yjax8")])
+footstep_sounds = Array[AudioStream]([ExtResource("2_v7tvf"), ExtResource("3_povjg"), ExtResource("4_hkoe6")])
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1301709801]
 position = Vector2(3.8146973e-06, -3.8146973e-06)
@@ -160,6 +161,7 @@ position_smoothing_enabled = true
 stream = ExtResource("5_0mr0g")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="." unique_id=1716394557]
+volume_db = -10.0
 
 [node name="step_timer" type="Timer" parent="." unique_id=1470786807]
 wait_time = 0.4
