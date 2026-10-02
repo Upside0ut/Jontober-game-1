@@ -678,6 +678,9 @@ size = Vector2(20, 164)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vph1"]
 size = Vector2(2476, 1133.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p86qv"]
+size = Vector2(289, 180)
+
 [node name="museum_1" type="Node2D" unique_id=1577760695]
 script = ExtResource("1_y1hh4")
 
@@ -787,4 +790,11 @@ zoom_scale = 0.3
 position = Vector2(5314, 174.25)
 shape = SubResource("RectangleShape2D_6vph1")
 
+[node name="next_level" type="Area2D" parent="." unique_id=666806529]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_level" unique_id=94991140]
+position = Vector2(5496.5, 389)
+shape = SubResource("RectangleShape2D_p86qv")
+
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
+[connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
