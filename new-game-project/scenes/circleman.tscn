@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c6vba854ox7iq" path="res://frames/speech4.png" id="9_hqcjq"]
 [ext_resource type="Texture2D" uid="uid://c814sirk385vq" path="res://frames/speech5.png" id="10_auvck"]
 [ext_resource type="Texture2D" uid="uid://br8y4r8qu3uk7" path="res://frames/speech6.png" id="11_fc0x5"]
-[ext_resource type="AudioStream" uid="uid://cs21ctpbwyw7s" path="res://circle_speech.mp3" id="13_alm0v"]
+[ext_resource type="AudioStream" uid="uid://cs21ctpbwyw7s" path="res://sound_effects/circle_speech.mp3" id="13_alm0v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{

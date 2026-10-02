@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2msmvq0ja0cl" path="res://scripts/end_screen.gd" id="1_p7m4f"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_3d26k"]
 [ext_resource type="Script" uid="uid://cs56ejemnk02g" path="res://scripts/fade-out.gd" id="4_bvfni"]
-[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://dramatica.wav" id="5_s4tl2"]
+[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="5_s4tl2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d26k"]
 atlas = ExtResource("1_mwn6m")

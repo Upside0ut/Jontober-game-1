@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ix80li3u2lbc" path="res://frames/dynamite11.png" id="11_eo613"]
 [ext_resource type="Texture2D" uid="uid://dkckyis1p0sem" path="res://frames/dynamite12.png" id="12_j2cge"]
 [ext_resource type="Texture2D" uid="uid://45n2ov0lr2u0" path="res://frames/boom_1.png" id="14_uy6oj"]
-[ext_resource type="AudioStream" uid="uid://diev8ucfkrh7u" path="res://explosion_compression_eq.mp3" id="15_e6ku8"]
+[ext_resource type="AudioStream" uid="uid://diev8ucfkrh7u" path="res://sound_effects/explosion_compression_eq.mp3" id="15_e6ku8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{

@@ -43,6 +43,14 @@ region = Rect2(0, 64, 32, 32)
 atlas = ExtResource("2_s551d")
 region = Rect2(32, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s551d"]
+atlas = ExtResource("2_s551d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60kbs"]
+atlas = ExtResource("2_s551d")
+region = Rect2(64, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtgcc"]
 atlas = ExtResource("2_s551d")
 region = Rect2(32, 32, 32, 32)
@@ -100,6 +108,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s551d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60kbs")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wtgcc")
 }, {
 "duration": 1.0,
@@ -121,7 +140,8 @@ script = ExtResource("1_s551d")
 position = Vector2(3.8146973e-06, -3.8146973e-06)
 scale = Vector2(5.25, 5.25)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
-animation = &"walk"
+animation = &"run"
+frame_progress = 0.81056803
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1590474230]
 position = Vector2(0, 8)
@@ -130,3 +150,7 @@ shape = SubResource("CapsuleShape2D_a7vx6")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1542797032]
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="footsteps" type="Node2D" parent="." unique_id=679141741]
+
+[node name="walk_sound1" type="AudioStreamPlayer2D" parent="footsteps" unique_id=1716394557]

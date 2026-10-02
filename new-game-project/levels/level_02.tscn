@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bpw7j4ok401ns" path="res://textures/plinko_prison.png" id="7_2owmk"]
 [ext_resource type="Texture2D" uid="uid://djg0tpp8wvjql" path="res://textures/plinko_prison_background.png" id="8_cwmx8"]
 [ext_resource type="Texture2D" uid="uid://g66pwbgcuabp" path="res://textures/tutorial-export-gamble.png" id="9_cwmx8"]
-[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://Ball Game Gameplay Theme 1.mp3" id="10_05651"]
-[ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://freesound_doorbang_distorted.mp3" id="11_xxuo2"]
+[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="10_05651"]
+[ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://sound_effects/freesound_doorbang_distorted.mp3" id="11_xxuo2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmx8"]
 texture = ExtResource("3_didps")

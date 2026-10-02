@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_81a5f"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_gg43x"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mllcm"]
-[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://Ball Game Gameplay Theme 1.mp3" id="6_q7ibo"]
+[ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="6_q7ibo"]
 [ext_resource type="Texture2D" uid="uid://cxbuo4r7e57vv" path="res://textures/tutorial.png" id="7_cg8v6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]

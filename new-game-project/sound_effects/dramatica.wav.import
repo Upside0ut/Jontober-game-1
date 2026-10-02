@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://v8s4dwjyfjqr"
-path="res://.godot/imported/dramatica.wav-560ff16ab0be1efaabfdf7b7bdc3acfc.sample"
+path="res://.godot/imported/dramatica.wav-609523ba41778f6e2130a0eafb8953d7.sample"
 
 [deps]
 
-source_file="res://dramatica.wav"
-dest_files=["res://.godot/imported/dramatica.wav-560ff16ab0be1efaabfdf7b7bdc3acfc.sample"]
+source_file="res://sound_effects/dramatica.wav"
+dest_files=["res://.godot/imported/dramatica.wav-609523ba41778f6e2130a0eafb8953d7.sample"]
 
 [params]
 

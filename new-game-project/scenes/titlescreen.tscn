@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dv8nglh1mfgx8" path="res://textures/title.png" id="1_6d6rd"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="2_3jj3l"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="3_t7v6v"]
-[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://Ball Game Menu Theme.mp3" id="3_tt55a"]
+[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_tt55a"]
 
 [node name="Node2D" type="Control" unique_id=1175869620]
 layout_mode = 3

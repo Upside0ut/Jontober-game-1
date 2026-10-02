@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b1fpos4hxvt6r" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="2_g2els"]
-[ext_resource type="AudioStream" uid="uid://bjbomsk14ju5x" path="res://roll.mp3" id="3_qhqgy"]
-[ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://bounce.mp3" id="4_dqkch"]
-[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://laserShoot.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://bjbomsk14ju5x" path="res://sound_effects/roll.mp3" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://sound_effects/bounce.mp3" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cj8usf4x766ox" path="res://textures/ghost.png" id="6_tuyoq"]
-[ext_resource type="AudioStream" uid="uid://78u0ibygb41m" path="res://explosion.wav" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://78u0ibygb41m" path="res://sound_effects/explosion.wav" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtglo"]
 radius = 64.0
