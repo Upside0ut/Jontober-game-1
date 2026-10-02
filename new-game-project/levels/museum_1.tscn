@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bqfla0gefk1uw"]
+
+[ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2.tscn" id="1_d3of3"]
+[ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="2_wm5sl"]
+
+[node name="museum_1" type="Node2D" unique_id=1577760695]
+
+[node name="player_2" parent="." unique_id=719631254 instance=ExtResource("1_d3of3")]
+position = Vector2(-3, 3)
+
+[node name="stupid_wall" parent="." unique_id=105343465 instance=ExtResource("2_wm5sl")]
+position = Vector2(-244, 99.00001)
+rotation = 1.5559989
