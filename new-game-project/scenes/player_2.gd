@@ -8,6 +8,10 @@ var speed_multiplier = 1.0
 enum STATES{WALKING, RUNNING, JUMPING, IDLE, CROUCHING, FALLING}
 var state: STATES
 
+var rng = RandomNumberGenerator.new()
+var step_time: float = .4
+@export var footstep_sounds: Array[AudioStream]
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -17,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$sounds/jump.play()
 	if Input.is_action_just_pressed("left"):
 		$anim.flip_h = true
 	elif Input.is_action_just_pressed("right"):
@@ -31,11 +36,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if is_on_floor() and direction:
+		footsteps(footstep_sounds)
 		state = STATES.WALKING
 		if Input.is_action_pressed("run"):
 			state = STATES.RUNNING
 	if is_on_floor() and !direction:
 		state = STATES.IDLE
+	
 	animations()
 	move_and_slide()
 
@@ -44,9 +51,11 @@ func animations():
 		STATES.WALKING:
 			$anim.play("walk")
 			speed_multiplier = 1.0
+			step_time = .4
 		STATES.RUNNING:
 			$anim.play("run")
 			speed_multiplier = 1.6
+			step_time = .2
 		STATES.JUMPING:
 			$anim.play("jump")
 			speed_multiplier = 1.0
@@ -54,5 +63,10 @@ func animations():
 			$anim.play("idle")
 			speed_multiplier = 1.0
 
-func footsteps():
-	pass
+func footsteps(sounds):
+	if $step_timer.is_stopped() and is_on_floor() and sounds.size() > 0:
+		$walk_sound.pitch_scale = rng.randf_range(.95, 1.05)
+		$walk_sound.stream = sounds[rng.randi_range(0, sounds.size() - 1)]
+		$step_timer.wait_time = step_time
+		$walk_sound.play()
+		$step_timer.start()
