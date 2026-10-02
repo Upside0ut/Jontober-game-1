@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4xwr4jquqqv1"]
 
 [ext_resource type="Script" uid="uid://cb3kt78dls7pe" path="res://scripts/credits.gd" id="1_0bpdh"]
+[ext_resource type="Texture2D" uid="uid://5spriwbas7qr" path="res://textures/jontober_baller_game_background1.png" id="2_2ckv8"]
 
 [node name="credits" type="Control" unique_id=1646480140]
 layout_mode = 3
@@ -20,6 +21,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08193319, 0.02314996, 0.049722597, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2097277170]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -499.5879
+offset_top = -322.0
+offset_right = 502.69092
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2ckv8")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=621729771]
 layout_mode = 1
 anchors_preset = 15
@@ -36,12 +52,14 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 54
 text = "Circcle - Art, programming, level design
 Kode - Music
 Choco - Programming, level design, art,
 music
-UpsideOut - Art, Programming, level design"
+UpsideOut - Art, Programming, level design
+Ahiga - Menu & credits background"
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=455303068]
 layout_mode = 2

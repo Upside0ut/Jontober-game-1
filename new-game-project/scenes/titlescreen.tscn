@@ -1,9 +1,41 @@
 [gd_scene format=3 uid="uid://5q437uajs8qo"]
 
-[ext_resource type="Texture2D" uid="uid://dv8nglh1mfgx8" path="res://textures/title.png" id="1_6d6rd"]
+[ext_resource type="Texture2D" uid="uid://dfmwpp6mowwd8" path="res://textures/titlescreen_transparent.png" id="1_t7v6v"]
+[ext_resource type="Texture2D" uid="uid://bvocaxfwufcty" path="res://frames/jontober_baller_game_background_main_menu1.png" id="1_w77yj"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="2_3jj3l"]
+[ext_resource type="Texture2D" uid="uid://be8y4gigepbdq" path="res://frames/jontober_baller_game_background_main_menu2.png" id="2_v7hj3"]
+[ext_resource type="Texture2D" uid="uid://b8a0kwqt8m14r" path="res://frames/jontober_baller_game_background_main_menu3.png" id="3_8or72"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="3_t7v6v"]
 [ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_tt55a"]
+[ext_resource type="Texture2D" uid="uid://d27xt8n64d5lb" path="res://frames/jontober_baller_game_background_main_menu4.png" id="4_hcbn3"]
+[ext_resource type="Texture2D" uid="uid://dqrkw4giqjoor" path="res://frames/jontober_baller_game_background_main_menu5.png" id="5_ybki2"]
+[ext_resource type="Texture2D" uid="uid://cj2qjvq7vlj84" path="res://frames/jontober_baller_game_background_main_menu6.png" id="6_lsij0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w77yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v7hj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8or72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hcbn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ybki2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lsij0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Control" unique_id=1175869620]
 layout_mode = 3
@@ -21,7 +53,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.078431375, 0.0627451, 0.07450981, 1)
+color = Color(0.15963694, 0.10249782, 0.1326254, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=808096873]
+scroll_offset = Vector2(-170, 0)
+repeat_size = Vector2(1090, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax2D" unique_id=1553931548]
+position = Vector2(545.00006, 324)
+scale = Vector2(1.0093458, 1.0093458)
+sprite_frames = SubResource("SpriteFrames_a7vx6")
+autoplay = "default"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1619341709]
 layout_mode = 1
@@ -36,7 +78,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_6d6rd")
+texture = ExtResource("1_t7v6v")
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=777507616]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://7ug5oxxtps0g"]
+
+[ext_resource type="Script" uid="uid://bdyh73eod8nic" path="res://scripts/player_2_rolling.gd" id="1_woole"]
+[ext_resource type="Texture2D" uid="uid://dydd333ggioyx" path="res://textures/rollingrandy.png" id="3_hw7yr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
+radius = 49.0
+
+[node name="player_2_rolling" type="RigidBody2D" unique_id=1648980371]
+script = ExtResource("1_woole")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=280482331]
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(5.5781255, 5.5781255)
+texture = ExtResource("3_hw7yr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780465398]
+shape = SubResource("CircleShape2D_a7vx6")

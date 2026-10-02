@@ -1,178 +1,20 @@
-[gd_scene format=3 uid="uid://y4nfoiex4j30"]
+[gd_scene format=3 uid="uid://b6653xivhaw8b"]
 
-[ext_resource type="Script" uid="uid://b66wln3faqdn3" path="res://scenes/player_2.gd" id="1_s551d"]
-[ext_resource type="Texture2D" uid="uid://flkuh0wbuqm" path="res://frames/randy_placeholder_spritesheet2.png" id="2_s551d"]
-[ext_resource type="AudioStream" uid="uid://c6wv0q1cg50kr" path="res://sound_effects/footsteps/randystep_1.mp3" id="2_v7tvf"]
-[ext_resource type="AudioStream" uid="uid://dhitaac5xhuke" path="res://sound_effects/footsteps/randystep_2.mp3" id="3_povjg"]
-[ext_resource type="AudioStream" uid="uid://b3ixbkm0hu02t" path="res://sound_effects/footsteps/randystep_3.mp3" id="4_hkoe6"]
-[ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="5_0mr0g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yjax8"]
-atlas = ExtResource("2_s551d")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc1kf"]
-atlas = ExtResource("2_s551d")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mr0g"]
-atlas = ExtResource("2_s551d")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7tvf"]
-atlas = ExtResource("2_s551d")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_povjg"]
-atlas = ExtResource("2_s551d")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hkoe6"]
-atlas = ExtResource("2_s551d")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne6jw"]
-atlas = ExtResource("2_s551d")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2c7a"]
-atlas = ExtResource("2_s551d")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4ukj"]
-atlas = ExtResource("2_s551d")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4bc4"]
-atlas = ExtResource("2_s551d")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s551d"]
-atlas = ExtResource("2_s551d")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_60kbs"]
-atlas = ExtResource("2_s551d")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtgcc"]
-atlas = ExtResource("2_s551d")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbo5h"]
-atlas = ExtResource("2_s551d")
-region = Rect2(64, 32, 32, 32)
+[ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2_normal.tscn" id="1_l6tho"]
+[ext_resource type="Script" uid="uid://b41l45bfabdg0" path="res://scenes/player_2.gd" id="1_s551d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yjax8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oc1kf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mr0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v7tvf")
-}],
-"loop": 1,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_povjg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hkoe6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne6jw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b2c7a")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4ukj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t4bc4")
-}],
-"loop": 0,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s551d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_60kbs")
-}],
-"loop": 1,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtgcc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbo5h")
-}],
-"loop": 1,
-"name": &"walk",
-"speed": 2.5
-}]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7vx6"]
-radius = 49.0
-height = 120.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
-radius = 85.98837
-
-[node name="player_2" type="CharacterBody2D" unique_id=719631254]
+[node name="player_2" type="Node2D" unique_id=565748145]
 script = ExtResource("1_s551d")
-footstep_sounds = Array[AudioStream]([ExtResource("2_v7tvf"), ExtResource("3_povjg"), ExtResource("4_hkoe6")])
 
-[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1301709801]
-position = Vector2(3.8146973e-06, -3.8146973e-06)
-scale = Vector2(5.25, 5.25)
+[node name="player_2_normal" parent="." unique_id=719631254 instance=ExtResource("1_l6tho")]
+
+[node name="transform" type="AnimatedSprite2D" parent="." unique_id=148377085]
 sprite_frames = SubResource("SpriteFrames_a7vx6")
-animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1590474230]
-position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_a7vx6")
+[node name="position" type="Node2D" parent="." unique_id=660285826]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1542797032]
+[node name="Camera2D" type="Camera2D" parent="position" unique_id=1899531944]
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="sounds" type="Node2D" parent="." unique_id=869129936]
-
-[node name="jump" type="AudioStreamPlayer2D" parent="sounds" unique_id=307413000]
-stream = ExtResource("5_0mr0g")
-
-[node name="walk_sound" type="AudioStreamPlayer2D" parent="." unique_id=1716394557]
-
-[node name="step_timer" type="Timer" parent="." unique_id=1470786807]
-wait_time = 0.4
-one_shot = true
-
-[node name="interact" type="Area2D" parent="." unique_id=1035363519]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interact" unique_id=993175051]
-position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_a7vx6")
-
-[connection signal="area_entered" from="interact" to="." method="_on_interact_area_entered"]

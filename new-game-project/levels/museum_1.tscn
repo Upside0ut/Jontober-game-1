@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqfla0gefk1uw"]
 
-[ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2.tscn" id="1_d3of3"]
+[ext_resource type="PackedScene" uid="uid://b6653xivhaw8b" path="res://scenes/player_2.tscn" id="1_d3of3"]
 [ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="2_wm5sl"]
 [ext_resource type="AudioStream" uid="uid://bleisqtad10ik" path="res://music/museum_breakin_concept1.mp3" id="3_78blr"]
 [ext_resource type="AudioStream" uid="uid://bxt6k6un0odsx" path="res://sound_effects/pinknoisewindloop.mp3" id="4_ph26d"]
@@ -14,9 +14,6 @@ offset_top = -1625.0
 offset_right = 2876.0
 offset_bottom = 1665.0
 color = Color(0.0885599, 0.0885599, 0.0885599, 1)
-
-[node name="player_2" parent="." unique_id=719631254 instance=ExtResource("1_d3of3")]
-position = Vector2(-3, 3)
 
 [node name="stupid_wall" parent="." unique_id=105343465 instance=ExtResource("2_wm5sl")]
 position = Vector2(-244, 99.00001)
@@ -35,3 +32,5 @@ autoplay = true
 [node name="dynamite" parent="." unique_id=636339533 instance=ExtResource("5_4wkxd")]
 position = Vector2(248, -134)
 can_pickup = true
+
+[node name="player_2" parent="." unique_id=565748145 instance=ExtResource("1_d3of3")]
