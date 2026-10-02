@@ -12,6 +12,8 @@ var rng = RandomNumberGenerator.new()
 var step_time: float = .4
 @export var footstep_sounds: Array[AudioStream]
 
+var dyamite_count: int = 110
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -43,6 +45,16 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and !direction:
 		state = STATES.IDLE
 	
+#	dynamite
+	if Input.is_action_just_pressed("use") and dyamite_count > 0:
+		dyamite_count -= 1
+		var dynamite = load("res://scenes/dynamite.tscn")
+		var instance: RigidBody2D = dynamite.instantiate()
+		get_tree().current_scene.add_child(instance)
+		instance.linear_velocity = velocity
+		instance.global_position = Vector2(global_position.x, global_position.y - 150)
+		instance.explode()
+		
 	animations()
 	move_and_slide()
 
@@ -70,3 +82,10 @@ func footsteps(sounds):
 		$step_timer.wait_time = step_time
 		$walk_sound.play()
 		$step_timer.start()
+
+
+func _on_interact_area_entered(area: Area2D) -> void:
+	if area.name == "dynamite_pickup":
+		if area.get_parent().can_pickup:
+			dyamite_count += 1
+			area.get_parent().queue_free()

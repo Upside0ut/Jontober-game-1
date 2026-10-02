@@ -137,6 +137,9 @@ animations = [{
 radius = 49.0
 height = 120.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
+radius = 85.98837
+
 [node name="player_2" type="CharacterBody2D" unique_id=719631254]
 script = ExtResource("1_s551d")
 footstep_sounds = Array[AudioStream]([ExtResource("2_v7tvf"), ExtResource("3_povjg"), ExtResource("4_hkoe6")])
@@ -161,8 +164,15 @@ position_smoothing_enabled = true
 stream = ExtResource("5_0mr0g")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="." unique_id=1716394557]
-volume_db = -10.0
 
 [node name="step_timer" type="Timer" parent="." unique_id=1470786807]
 wait_time = 0.4
 one_shot = true
+
+[node name="interact" type="Area2D" parent="." unique_id=1035363519]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact" unique_id=993175051]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_a7vx6")
+
+[connection signal="area_entered" from="interact" to="." method="_on_interact_area_entered"]

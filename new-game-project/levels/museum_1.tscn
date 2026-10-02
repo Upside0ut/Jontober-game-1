@@ -2,8 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2.tscn" id="1_d3of3"]
 [ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="2_wm5sl"]
+[ext_resource type="AudioStream" uid="uid://bleisqtad10ik" path="res://music/museum_breakin_concept1.mp3" id="3_78blr"]
+[ext_resource type="AudioStream" uid="uid://bxt6k6un0odsx" path="res://sound_effects/pinknoisewindloop.mp3" id="4_ph26d"]
+[ext_resource type="PackedScene" uid="uid://wemj4s1m0m1i" path="res://scenes/dynamite.tscn" id="5_4wkxd"]
 
 [node name="museum_1" type="Node2D" unique_id=1577760695]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1934372059]
+offset_left = -2836.0
+offset_top = -1625.0
+offset_right = 2876.0
+offset_bottom = 1665.0
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [node name="player_2" parent="." unique_id=719631254 instance=ExtResource("1_d3of3")]
 position = Vector2(-3, 3)
@@ -11,3 +21,17 @@ position = Vector2(-3, 3)
 [node name="stupid_wall" parent="." unique_id=105343465 instance=ExtResource("2_wm5sl")]
 position = Vector2(-244, 99.00001)
 rotation = 1.5559989
+
+[node name="song" type="AudioStreamPlayer" parent="." unique_id=639363628]
+stream = ExtResource("3_78blr")
+volume_db = -12.0
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1353778058]
+stream = ExtResource("4_ph26d")
+volume_db = -20.0
+autoplay = true
+
+[node name="dynamite" parent="." unique_id=636339533 instance=ExtResource("5_4wkxd")]
+position = Vector2(248, -134)
+can_pickup = true
