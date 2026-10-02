@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://dremif2vrpwb2"]
 
 [ext_resource type="Script" uid="uid://6sfk7ociqora" path="res://scripts/mannequin.gd" id="1_18rhl"]
-[ext_resource type="Texture2D" uid="uid://dumlho6iy4oac" path="res://textures/mannequin1.png" id="2_70gl7"]
 [ext_resource type="Texture2D" uid="uid://nqhawboa48ih" path="res://textures/mannequin2.png" id="3_70gl7"]
+[ext_resource type="Texture2D" uid="uid://bc174nhmkrf22" path="res://textures/mannequin1b.png" id="3_x14gb"]
 
 [node name="mannequin" type="Sprite2D" unique_id=259008839]
 position = Vector2(0, -128)
 scale = Vector2(4, 4)
 texture = ExtResource("3_70gl7")
 script = ExtResource("1_18rhl")
-sprites = Array[Texture]([ExtResource("2_70gl7"), ExtResource("3_70gl7")])
+sprites = Array[Texture]([ExtResource("3_x14gb"), ExtResource("3_70gl7")])
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1899952496]
-rect = Rect2(-19, -27.75, 38, 59.75)
+rect = Rect2(-16.75, -32.5, 33.5, 64.5)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

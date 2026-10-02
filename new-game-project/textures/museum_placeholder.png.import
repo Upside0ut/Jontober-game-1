@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dumlho6iy4oac"
-path="res://.godot/imported/mannequin1.png-ecd6f38940db7f6f82f77475cc3896a2.ctex"
+uid="uid://jb8n0t2vq68a"
+path="res://.godot/imported/museum_placeholder.png-bce2a2dca047e1a21664951b1a0ce966.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mannequin1.png"
-dest_files=["res://.godot/imported/mannequin1.png-ecd6f38940db7f6f82f77475cc3896a2.ctex"]
+source_file="res://textures/museum_placeholder.png"
+dest_files=["res://.godot/imported/museum_placeholder.png-bce2a2dca047e1a21664951b1a0ce966.ctex"]
 
 [params]
 
