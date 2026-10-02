@@ -8,7 +8,7 @@ var dyamite_count = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if adjust_position:
-		$position.global_position = player.global_position
+		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
 		roll()
 		
@@ -42,7 +42,7 @@ func roll():
 		var scene = load("res://scenes/player_2_rolling.tscn")
 		var instance: RigidBody2D = scene.instantiate()
 		instance.linear_velocity = player.velocity
-		instance.global_position = $position.global_position
+		instance.position = $position.position
 		player.queue_free()
 		player = instance
 		instance.visible = false
@@ -55,7 +55,7 @@ func roll():
 		var scene = load("res://scenes/player_2_normal.tscn")
 		var instance: CharacterBody2D = scene.instantiate()
 		instance.velocity = player.linear_velocity
-		instance.global_position = $position.global_position
+		instance.position = $position.position
 		player.queue_free()
 		player = instance
 		instance.visible = false
