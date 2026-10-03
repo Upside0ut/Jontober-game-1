@@ -4,14 +4,22 @@ extends Node2D
 var adjust_position = true
 var rolling = false
 var dyamite_count = 0
+var can_roll = true
+#list of mannequins in which the player is in the distortion area
+var mannequin_array: Array[Area2D]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if adjust_position:
 		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
+		if can_roll:
+			roll()
+		else:
+			pass
+	
+	if rolling and !can_roll:
 		roll()
-		
 #	dynamite
 	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position:
 		dyamite_count -= 1
@@ -65,11 +73,23 @@ func roll():
 	print(player)
 	adjust_position = true
 
+
+
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area.name == "dynamite_pickup":
 		if area.get_parent().can_pickup:
 			dyamite_count += 1
 			area.get_parent().queue_free()
+	if area.name == "distortion_area":
+		can_roll = false
+		mannequin_array.append(area)
+
+func _on_interact_area_exited(area: Area2D) -> void:
+	if area.name == "distortion_area":
+		mannequin_array.erase(area)
+		if mannequin_array.size() == 0:
+			can_roll = true
+
 
 func sounds(type: String):
 	if type == "jump":
