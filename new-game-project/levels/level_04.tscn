@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_r8aof"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_rpmp5"]
 [ext_resource type="PackedScene" uid="uid://b3v2pvy76js60" path="res://scenes/splatterwall.tscn" id="6_b2w0k"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_hapfj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_b2w0k")
@@ -631,3 +632,7 @@ offset_bottom = 14402.0
 
 [node name="splatterwall" parent="." unique_id=314029043 instance=ExtResource("6_b2w0k")]
 position = Vector2(-366, 51)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=316143973]
+
+[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("10_hapfj")]

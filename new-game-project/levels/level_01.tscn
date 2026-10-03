@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mllcm"]
 [ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="6_q7ibo"]
 [ext_resource type="Texture2D" uid="uid://cxbuo4r7e57vv" path="res://textures/tutorial.png" id="7_cg8v6"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_5dxk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_81a5f")
@@ -634,3 +635,7 @@ autoplay = true
 z_index = -5
 position = Vector2(247, 201)
 texture = ExtResource("7_cg8v6")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=266646858]
+
+[node name="Node2D" parent="CanvasLayer2" unique_id=1175869620 instance=ExtResource("10_5dxk1")]

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g66pwbgcuabp" path="res://textures/tutorial-export-gamble.png" id="9_cwmx8"]
 [ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="10_05651"]
 [ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://sound_effects/freesound_doorbang_distorted.mp3" id="11_xxuo2"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="12_liqpl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmx8"]
 texture = ExtResource("3_didps")
@@ -662,3 +663,7 @@ position = Vector2(1727, -511)
 stream = ExtResource("11_xxuo2")
 volume_db = 24.0
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=360050799]
+
+[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("12_liqpl")]

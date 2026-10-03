@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="16_xgj7h"]
 [ext_resource type="PackedScene" uid="uid://wemj4s1m0m1i" path="res://scenes/dynamite.tscn" id="17_l32du"]
 [ext_resource type="Texture2D" uid="uid://cnxhep5vk6yvx" path="res://textures/e_to_use_dynamite.png" id="18_lwtrp"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="19_2la83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_ngl01")
@@ -773,3 +774,7 @@ theme_override_fonts/font = ExtResource("16_xgj7h")
 theme_override_font_sizes/font_size = 32
 text = "welcome to
 choco's awesome level :3"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=578775943]
+
+[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("19_2la83")]
