@@ -150,12 +150,6 @@ theme_override_font_sizes/font_size = 71
 text = "Play
 "
 
-[node name="levels" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2043089050]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t7v6v")
-theme_override_font_sizes/font_size = 71
-text = "Levels"
-
 [node name="options" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1475950644]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_t7v6v")
