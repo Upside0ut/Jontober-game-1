@@ -84,7 +84,9 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	
 	if area.name == "goal":
 		var config = ConfigFile.new()
-		var file: Error = config.load("user://levels.cfg")
+		var err: Error = config.load("user://levels.cfg")
+		if err != OK:
+			return
 		config.set_value("LEVELS", level_array[Global.level], true)
 		config.save("user://levels.cfg")
 		print(config.get_value("LEVELS", level_array[Global.level]))
