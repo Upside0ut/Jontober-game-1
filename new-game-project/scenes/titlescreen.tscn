@@ -114,6 +114,13 @@ theme_override_font_sizes/font_size = 71
 text = "Credits
 "
 
+[node name="lvlSelect" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1989549129]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 71
+text = "Levels
+"
+
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1357203060]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -138,3 +145,4 @@ autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/credits" to="MarginContainer/VBoxContainer" method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/lvlSelect" to="MarginContainer/VBoxContainer" method="_on_lvl_select_pressed"]

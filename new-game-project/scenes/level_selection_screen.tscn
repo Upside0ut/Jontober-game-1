@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cohdp4fwlniyj"]
+
+[ext_resource type="Script" uid="uid://dy34w5ecujo6y" path="res://scripts/lvl_selection_screen.gd" id="1_tqsy7"]
+[ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="2_ue4gc"]
+[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_io0ak"]
+
+[node name="LevelSelectionScreen" type="Control" unique_id=709358062]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1282133615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.57912743, 0.2891744, 0.046366245, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1372863847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=506972706]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 110
+text = "Level Selection"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1069208151]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 10
+theme_override_constants/separation = 10
+script = ExtResource("1_tqsy7")
+
+[node name="Lvl1" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1112100342]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+text = "Lvl - 1
+"
+
+[node name="Lvl2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1303701476]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+text = "Lvl - 2
+"
+
+[node name="Lvl3" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1971147872]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+text = "Lvl - 3
+"
+
+[node name="Lvl4" type="Button" parent="MarginContainer/VBoxContainer" unique_id=752314046]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+text = "Lvl - 4
+"
+
+[node name="BackButton" type="Button" parent="MarginContainer" unique_id=1461222704]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 36
+text = "<- Back"
+
+[node name="song" type="AudioStreamPlayer" parent="." unique_id=613041511]
+stream = ExtResource("3_io0ak")
+volume_db = -3.0
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl1" to="MarginContainer/VBoxContainer" method="_on_lvl1_press"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl2" to="MarginContainer/VBoxContainer" method="_on_lvl2_press"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl3" to="MarginContainer/VBoxContainer" method="_on_lvl3_press"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl4" to="MarginContainer/VBoxContainer" method="_on_lvl4_press"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="MarginContainer/VBoxContainer" method="_on_back_button_pressed"]
