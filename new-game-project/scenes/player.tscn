@@ -137,7 +137,7 @@ shape = SubResource("CircleShape2D_dtglo")
 texture = ExtResource("2_g2els")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1005616557]
-target_position = Vector2(0, 90)
+target_position = Vector2(0, 80)
 
 [node name="hitbox (spikes)" type="Area2D" parent="." unique_id=76159056]
 
