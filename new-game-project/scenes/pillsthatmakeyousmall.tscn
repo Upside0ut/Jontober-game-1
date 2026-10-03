@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6x41drkph5qs"]
 
+[ext_resource type="Script" uid="uid://bpbapp4s4brtp" path="res://scripts/pillsthatmakeyousmall.gd" id="1_ccg2d"]
 [ext_resource type="Texture2D" uid="uid://busopn20iaqhh" path="res://frames/0001.png" id="1_cpfeb"]
 [ext_resource type="Texture2D" uid="uid://jg3j1wgtjb77" path="res://frames/0002.png" id="2_ccg2d"]
 [ext_resource type="Texture2D" uid="uid://cdp3ovthsdffh" path="res://frames/0003.png" id="3_ydwta"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://vpsvymutiou4" path="res://frames/0010.png" id="10_4qspy"]
 [ext_resource type="Texture2D" uid="uid://m8kh3xd27kpc" path="res://frames/0011.png" id="11_mieqw"]
 [ext_resource type="Texture2D" uid="uid://doumc33d8fcau" path="res://frames/0012.png" id="12_i5o4o"]
+[ext_resource type="AudioStream" uid="uid://belbc3jatcd7u" path="res://sound_effects/234784__wubitog__crunch-bone-break-walking-on-snow.wav" id="14_ydwta"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{
@@ -61,15 +63,20 @@ animations = [{
 size = Vector2(10, 27)
 
 [node name="pillsthatmakeyousmall" type="Node2D" unique_id=327637850]
+script = ExtResource("1_ccg2d")
 
 [node name="PillsPlaceholder" type="AnimatedSprite2D" parent="." unique_id=662133227]
 position = Vector2(1, 5)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
 autoplay = "default"
-frame_progress = 0.33982667
+frame_progress = 0.688306
 
 [node name="shrink_area" type="Area2D" parent="." unique_id=867471302]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shrink_area" unique_id=1651136481]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a7vx6")
+
+[node name="nom" type="AudioStreamPlayer2D" parent="." unique_id=1939750699]
+stream = ExtResource("14_ydwta")
+volume_db = 10.0

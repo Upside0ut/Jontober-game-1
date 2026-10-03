@@ -108,7 +108,9 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		fov_multiplier -= area.zoom_scale
 	if area.name == "shrink_area":
 		shrink(true)
+		print("shrink1")
 		area.name = "used"
+		area.get_parent().consume()
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area.name == "zoom_area":

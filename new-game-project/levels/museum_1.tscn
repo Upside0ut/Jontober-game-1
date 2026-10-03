@@ -840,7 +840,10 @@ scale = Vector2(1, 1)
 flip_h = true
 
 [node name="pillsthatmakeyousmall" parent="." unique_id=327637850 instance=ExtResource("19_wlr2c")]
-position = Vector2(4049, 462)
+position = Vector2(4049, 441)
+
+[node name="pillsthatmakeyousmall2" parent="." unique_id=784893451 instance=ExtResource("19_wlr2c")]
+position = Vector2(-3738, -526)
 
 [node name="mannequin3" parent="." unique_id=136614401 instance=ExtResource("8_i24gp")]
 position = Vector2(2286, 352)
