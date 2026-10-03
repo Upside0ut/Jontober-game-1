@@ -779,12 +779,11 @@ texture = ExtResource("12_udut8")
 
 [node name="mannequin" parent="." unique_id=851826361 instance=ExtResource("8_i24gp")]
 position = Vector2(-246, -48)
-changes = false
+follows = false
 
 [node name="mannequin2" parent="." unique_id=259008839 instance=ExtResource("8_i24gp")]
 position = Vector2(485, -208)
 texture = ExtResource("9_sq1op")
-changes = false
 arms = true
 
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("1_d3of3")]
@@ -830,10 +829,12 @@ scale = Vector2(0.5, 0.5)
 [node name="door2" parent="." unique_id=977577364 instance=ExtResource("6_y1hh4")]
 position = Vector2(3885, 429)
 scale = Vector2(3.2, 3.2)
+flip_h = true
 
 [node name="door3" parent="." unique_id=1769858182 instance=ExtResource("6_y1hh4")]
 position = Vector2(4190, 464)
 scale = Vector2(1, 1)
+flip_h = true
 
 [node name="pillsthatmakeyousmall" parent="." unique_id=327637850 instance=ExtResource("19_wlr2c")]
 position = Vector2(4049, 462)
@@ -841,17 +842,16 @@ position = Vector2(4049, 462)
 [node name="mannequin3" parent="." unique_id=136614401 instance=ExtResource("8_i24gp")]
 position = Vector2(2286, 352)
 texture = ExtResource("20_4djgt")
-changes = false
 
 [node name="mannequin4" parent="." unique_id=2053007022 instance=ExtResource("8_i24gp")]
 position = Vector2(3317, 352)
 texture = ExtResource("21_j3s8s")
-changes = false
+follows = false
 
 [node name="mannequin5" parent="." unique_id=1759184838 instance=ExtResource("8_i24gp")]
 position = Vector2(992, -288)
 texture = ExtResource("22_r3ree")
-changes = false
+follows = false
 
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
