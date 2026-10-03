@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://6x41drkph5qs"]
+
+[ext_resource type="Texture2D" uid="uid://cj3k35a3h8qg0" path="res://textures/pills_placeholder.png" id="1_1upld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
+size = Vector2(10, 27)
+
+[node name="pillsthatmakeyousmall" type="Node2D" unique_id=327637850]
+
+[node name="PillsPlaceholder" type="Sprite2D" parent="." unique_id=1174786172]
+position = Vector2(1, 2)
+texture = ExtResource("1_1upld")
+
+[node name="shrink_area" type="Area2D" parent="." unique_id=867471302]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shrink_area" unique_id=1651136481]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_a7vx6")

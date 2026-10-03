@@ -3,7 +3,6 @@ extends CharacterBody2D
 const ROLL_SPEED = 50
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
-var speed_multiplier = 1.0
 
 enum STATES{WALKING, RUNNING, JUMPING, IDLE, ROLLING, FALLING}
 var state: STATES
@@ -13,6 +12,11 @@ var step_time: float = .4
 @export var footstep_sounds: Array[AudioStream]
 
 var dyamite_count: int = 0
+
+var parent: Node2D
+func _ready() -> void:
+	if get_parent().name == "player_2":
+		parent = get_parent()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,13 +32,13 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		get_parent().sounds("jump")
+		parent.sounds("jump")
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED * speed_multiplier
+		velocity.x = direction * SPEED * multiplier()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -48,25 +52,34 @@ func _physics_process(delta: float) -> void:
 	animations()
 	move_and_slide()
 	
-		
-	
+
+func multiplier():
+	var value: float = 1.0
+	match state:
+		STATES.WALKING:
+			value *= 1.0
+		STATES.RUNNING:
+			value *= 1.6
+		STATES.JUMPING:
+			value *= 1.0
+		STATES.IDLE:
+			value *= 1.0
+	if parent.shrunken:
+		value /= 2
+	return value
 
 func animations():
 	match state:
 		STATES.WALKING:
 			$normal_state/anim.play("walk")
-			speed_multiplier = 1.0
 			step_time = .4
 		STATES.RUNNING:
 			$normal_state/anim.play("run")
-			speed_multiplier = 1.6
 			step_time = .2
 		STATES.JUMPING:
 			$normal_state/anim.play("jump")
-			speed_multiplier = 1.0
 		STATES.IDLE:
 			$normal_state/anim.play("idle")
-			speed_multiplier = 1.0
 
 func footsteps(sounds):
 	if $step_timer.is_stopped() and is_on_floor() and sounds.size() > 0:

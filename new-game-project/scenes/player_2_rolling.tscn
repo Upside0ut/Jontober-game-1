@@ -19,3 +19,6 @@ shape = SubResource("CircleShape2D_a7vx6")
 
 [node name="floor" type="RayCast2D" parent="." unique_id=1474693392]
 target_position = Vector2(0, 60)
+
+[node name="ceiling" type="RayCast2D" parent="." unique_id=1292358753]
+target_position = Vector2(0, -80)

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="14_25h7y"]
 [ext_resource type="PackedScene" uid="uid://cjmif5skdbdpj" path="res://scenes/zoom_area.tscn" id="15_kufm2"]
 [ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="16_25h7y"]
+[ext_resource type="PackedScene" uid="uid://6x41drkph5qs" path="res://scenes/pillsthatmakeyousmall.tscn" id="19_wlr2c"]
 
 [sub_resource type="Gradient" id="Gradient_sq1op"]
 colors = PackedColorArray(1, 1, 1, 1, 0.12941177, 0.09411765, 0.15294118, 1)
@@ -749,7 +750,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_1k0cr")
 
 [node name="MuseumPlaceholder" type="Sprite2D" parent="." unique_id=1518801379]
-position = Vector2(5523, -14)
+position = Vector2(6811, -14)
 scale = Vector2(4, 4)
 texture = ExtResource("5_lf5pa")
 
@@ -796,21 +797,42 @@ position = Vector2(-524, -13)
 shape = SubResource("RectangleShape2D_a7vx6")
 
 [node name="zoom_area" parent="." unique_id=353697634 instance=ExtResource("15_kufm2")]
-position = Vector2(-30, -148)
-zoom_scale = 0.3
+position = Vector2(1258, -148)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="zoom_area" unique_id=905925076]
 position = Vector2(5314, 174.25)
 shape = SubResource("RectangleShape2D_6vph1")
 
 [node name="next_level" type="Area2D" parent="." unique_id=666806529]
+position = Vector2(1288, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="next_level" unique_id=94991140]
 position = Vector2(5496.5, 389)
 shape = SubResource("RectangleShape2D_p86qv")
 
-[node name="stupid_wall" parent="next_level" unique_id=105343465 instance=ExtResource("16_25h7y")]
-position = Vector2(3888, 417)
+[node name="stupid_wall" parent="." unique_id=105343465 instance=ExtResource("16_25h7y")]
+position = Vector2(3885, 346)
+scale = Vector2(0.5, 0.5)
+
+[node name="stupid_wall2" parent="." unique_id=1419146794 instance=ExtResource("16_25h7y")]
+position = Vector2(4161, 411)
+scale = Vector2(0.5, 0.58)
+
+[node name="stupid_wall3" parent="." unique_id=1033130386 instance=ExtResource("16_25h7y")]
+position = Vector2(3913, 64)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+
+[node name="door2" parent="." unique_id=977577364 instance=ExtResource("6_y1hh4")]
+position = Vector2(3885, 429)
+scale = Vector2(3.2, 3.2)
+
+[node name="door3" parent="." unique_id=1769858182 instance=ExtResource("6_y1hh4")]
+position = Vector2(4190, 464)
+scale = Vector2(1, 1)
+
+[node name="pillsthatmakeyousmall" parent="." unique_id=327637850 instance=ExtResource("19_wlr2c")]
+position = Vector2(4049, 462)
 
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
