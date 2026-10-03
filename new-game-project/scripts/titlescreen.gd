@@ -6,12 +6,12 @@ func _ready() -> void:
 		pass
 	else:
 		var config = ConfigFile.new()
-		config.set_value("LEVELS", "lvl_1", "false")
-		config.set_value("LEVELS", "lvl_2", "false")
-		config.set_value("LEVELS", "lvl_3", "false")
-		config.set_value("LEVELS", "lvl_4", "false")
-		config.set_value("LEVELS", "lvl_5", "false")
-		config.set_value("LEVELS", "lvl_6", "false")
+		config.set_value("LEVELS", "lvl_1", false)
+		config.set_value("LEVELS", "lvl_2", false)
+		config.set_value("LEVELS", "lvl_3", false)
+		config.set_value("LEVELS", "lvl_4", false)
+		config.set_value("LEVELS", "lvl_5", false)
+		config.set_value("LEVELS", "lvl_6", false)
 		config.save("user://levels.cfg")
 	
 

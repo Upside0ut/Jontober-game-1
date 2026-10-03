@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://1v8gdv4dvo4k"]
 
+[ext_resource type="Script" uid="uid://cobq4g1why0c" path="res://levels/set_global_level.gd" id="1_4c076"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_8yqd8"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_h518d"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_didps"]
@@ -592,6 +593,8 @@ sources/1 = SubResource("TileSetScenesCollectionSource_05651")
 size = Vector2(244, 247)
 
 [node name="level 02" type="Node2D" unique_id=797776596]
+script = ExtResource("1_4c076")
+current_level = 3
 
 [node name="Player" parent="." unique_id=723843310 node_paths=PackedStringArray("plinko_pad") instance=ExtResource("1_8yqd8")]
 position = Vector2(500, 350)

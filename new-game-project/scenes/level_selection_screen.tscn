@@ -50,7 +50,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 10
 theme_override_constants/separation = 10
 script = ExtResource("1_tqsy7")
-button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), null]
+button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), NodePath("Lvl4"), NodePath("Lvl5"), NodePath("Lvl6")]
 
 [node name="Lvl1" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1112100342]
 layout_mode = 2
@@ -84,6 +84,22 @@ disabled = true
 text = "Lvl - 4
 "
 
+[node name="Lvl5" type="Button" parent="MarginContainer/VBoxContainer" unique_id=196239873]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+disabled = true
+text = "Lvl - 5
+"
+
+[node name="Lvl6" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1092294726]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+disabled = true
+text = "Lvl - 6
+"
+
 [node name="BackButton" type="Button" parent="MarginContainer" unique_id=1461222704]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -100,4 +116,6 @@ autoplay = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl2" to="MarginContainer/VBoxContainer" method="_on_lvl2_press"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl3" to="MarginContainer/VBoxContainer" method="_on_lvl3_press"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl4" to="MarginContainer/VBoxContainer" method="_on_lvl4_press"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl5" to="MarginContainer/VBoxContainer" method="_on_lvl4_press"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Lvl6" to="MarginContainer/VBoxContainer" method="_on_lvl4_press"]
 [connection signal="pressed" from="MarginContainer/BackButton" to="MarginContainer/VBoxContainer" method="_on_back_button_pressed"]

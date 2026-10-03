@@ -15,6 +15,9 @@ var dead = false
 # has_dynamite becomes true when the player enters a dynamite pickup area
 var has_dynamite = false
 
+#key names for config file for saving levels.
+var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print(Global.checkpoint)
@@ -80,6 +83,11 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		die()
 	
 	if area.name == "goal":
+		var config = ConfigFile.new()
+		var file: Error = config.load("user://levels.cfg")
+		config.set_value("LEVELS", level_array[Global.level], true)
+		config.save("user://levels.cfg")
+		print(config.get_value("LEVELS", level_array[Global.level]))
 		Global.level += 1
 		Global.checkpoint = Vector2(0, 0)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")

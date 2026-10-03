@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://h3bsiefg8r8a"]
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_5p57d"]
+[ext_resource type="Script" uid="uid://cobq4g1why0c" path="res://levels/set_global_level.gd" id="1_6w184"]
 [ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="1_g141h"]
 [ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="1_rpmp5"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="2_g141h"]
@@ -587,6 +588,8 @@ sources/0 = SubResource("TileSetAtlasSource_3imfn")
 sources/1 = SubResource("TileSetScenesCollectionSource_b2w0k")
 
 [node name="level 01" type="Node2D" unique_id=797776596]
+script = ExtResource("1_6w184")
+current_level = 4
 
 [node name="Parallax2D" parent="." unique_id=980270568 instance=ExtResource("1_g141h")]
 

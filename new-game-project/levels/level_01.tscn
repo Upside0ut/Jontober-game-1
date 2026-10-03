@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_81a5f"]
 [ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="1_jy02f"]
+[ext_resource type="Script" uid="uid://cobq4g1why0c" path="res://levels/set_global_level.gd" id="1_kjd3d"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_gg43x"]
 [ext_resource type="Texture2D" uid="uid://du1g4w782w0ba" path="res://textures/abstract_landscape_1.png" id="2_jy02f"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_81a5f"]
@@ -587,6 +588,7 @@ sources/0 = SubResource("TileSetAtlasSource_3imfn")
 sources/1 = SubResource("TileSetScenesCollectionSource_q7ibo")
 
 [node name="level 02" type="Node2D" unique_id=797776596]
+script = ExtResource("1_kjd3d")
 
 [node name="Parallax2D2" parent="." unique_id=980270568 instance=ExtResource("1_jy02f")]
 
