@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c5qw1yaiwqoal" path="res://textures/ahiga_mannequin2a.png" id="20_4djgt"]
 [ext_resource type="Texture2D" uid="uid://clp6uat7eror8" path="res://textures/ahiga_mannequin1b.png" id="21_j3s8s"]
 [ext_resource type="Texture2D" uid="uid://cfqqffq7h013f" path="res://textures/ahiga_mannequin4a.png" id="22_r3ree"]
+[ext_resource type="PackedScene" uid="uid://bpa76evjb84xo" path="res://scenes/security.tscn" id="23_j3s8s"]
 
 [sub_resource type="Gradient" id="Gradient_sq1op"]
 colors = PackedColorArray(1, 1, 1, 1, 0.12941177, 0.09411765, 0.15294118, 1)
@@ -852,6 +853,9 @@ follows = false
 position = Vector2(992, -288)
 texture = ExtResource("22_r3ree")
 follows = false
+
+[node name="security" parent="." unique_id=379221453 instance=ExtResource("23_j3s8s")]
+position = Vector2(4322, 390)
 
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
