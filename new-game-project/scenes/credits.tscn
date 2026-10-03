@@ -59,7 +59,8 @@ Kode - Music
 Choco - Programming, level design, art,
 music
 UpsideOut - Art, Programming, level design
-Ahiga - Menu & credits background"
+Ahiga - Art, menu & credits background
+Crazzy_Squid -"
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=455303068]
 layout_mode = 2

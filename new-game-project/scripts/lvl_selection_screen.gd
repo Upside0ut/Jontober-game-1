@@ -1,14 +1,16 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
+@export var button_array: Array[Control]
+var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6"]
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var config = ConfigFile.new()
+	var err: Error = config.load("user://levels.cfg")
+	for n in level_array.size():
+		if config.get_value("LEVELS", level_array[n]):
+			button_array[n].disabled = false
+			
 
 func _on_lvl1_press() -> void:
 	get_tree().change_scene_to_file("res://levels/level_01.tscn")
