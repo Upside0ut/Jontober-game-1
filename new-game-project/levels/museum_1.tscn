@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://cjmif5skdbdpj" path="res://scenes/zoom_area.tscn" id="15_kufm2"]
 [ext_resource type="PackedScene" uid="uid://bdhesnt0kylia" path="res://scenes/stupid_wall.tscn" id="16_25h7y"]
 [ext_resource type="PackedScene" uid="uid://6x41drkph5qs" path="res://scenes/pillsthatmakeyousmall.tscn" id="19_wlr2c"]
+[ext_resource type="Texture2D" uid="uid://c5qw1yaiwqoal" path="res://textures/ahiga_mannequin2a.png" id="20_4djgt"]
+[ext_resource type="Texture2D" uid="uid://clp6uat7eror8" path="res://textures/ahiga_mannequin1b.png" id="21_j3s8s"]
+[ext_resource type="Texture2D" uid="uid://cfqqffq7h013f" path="res://textures/ahiga_mannequin4a.png" id="22_r3ree"]
 
 [sub_resource type="Gradient" id="Gradient_sq1op"]
 colors = PackedColorArray(1, 1, 1, 1, 0.12941177, 0.09411765, 0.15294118, 1)
@@ -782,6 +785,7 @@ changes = false
 position = Vector2(485, -208)
 texture = ExtResource("9_sq1op")
 changes = false
+arms = true
 
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("1_d3of3")]
 position = Vector2(-3868, -553)
@@ -833,6 +837,21 @@ scale = Vector2(1, 1)
 
 [node name="pillsthatmakeyousmall" parent="." unique_id=327637850 instance=ExtResource("19_wlr2c")]
 position = Vector2(4049, 462)
+
+[node name="mannequin3" parent="." unique_id=136614401 instance=ExtResource("8_i24gp")]
+position = Vector2(2286, 352)
+texture = ExtResource("20_4djgt")
+changes = false
+
+[node name="mannequin4" parent="." unique_id=2053007022 instance=ExtResource("8_i24gp")]
+position = Vector2(3317, 352)
+texture = ExtResource("21_j3s8s")
+changes = false
+
+[node name="mannequin5" parent="." unique_id=1759184838 instance=ExtResource("8_i24gp")]
+position = Vector2(992, -288)
+texture = ExtResource("22_r3ree")
+changes = false
 
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if adjust_position:
 		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
-		if can_roll and !ceiling:
+		if can_roll and !ceiling and !shrunken:
 			roll()
 		else:
 			pass
@@ -89,12 +89,10 @@ func shrink(boolean: bool):
 		player.scale = Vector2(player.scale.x / 5, player.scale.y / 5)
 		fov_multiplier += 1.5
 		shrunken = true
-		can_roll = false
 	elif shrunken:
 		player.scale = Vector2(player.scale.x / 5, player.scale.y / 5)
 		fov_multiplier -= 1.5
 		shrunken = false
-		can_roll = true
 
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area.name == "dynamite_pickup":
@@ -105,6 +103,7 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		can_roll = false
 		mannequin_array.append(area)
 		distortion_amount += .1
+		
 	if area.name == "zoom_area":
 		fov_multiplier -= area.zoom_scale
 	if area.name == "shrink_area":
@@ -119,6 +118,9 @@ func _on_interact_area_exited(area: Area2D) -> void:
 		if mannequin_array.size() == 0:
 			can_roll = true
 		distortion_amount -= .1
+
+	if area.name == "zoom_area":
+		fov_multiplier += area.zoom_scale
 
 func sounds(type: String):
 	if type == "jump":
