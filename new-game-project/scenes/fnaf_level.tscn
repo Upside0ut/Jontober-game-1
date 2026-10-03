@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://cim651ywlfajl"]
+
+[ext_resource type="Script" uid="uid://c6ap6uqaf0f8n" path="res://Circcle's scripts/fnaf scripts/fnaf_level.gd" id="1_ak6dw"]
+[ext_resource type="Texture2D" uid="uid://c3yapcb74ywam" path="res://FNAF sprites/flor.png" id="1_tw5wp"]
+[ext_resource type="Texture2D" uid="uid://k2cejwvdyllv" path="res://FNAF sprites/wal.png" id="2_q23jg"]
+[ext_resource type="Texture2D" uid="uid://brenklkd4lykp" path="res://FNAF sprites/dorbg.png" id="3_vqjt0"]
+[ext_resource type="Texture2D" uid="uid://bx7777m6yhgra" path="res://FNAF sprites/dorfg.png" id="4_ak6dw"]
+[ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="5_vqjt0"]
+[ext_resource type="Script" uid="uid://b7aa0uuaa37k8" path="res://Circcle's scripts/fnaf scripts/mouse_flashlight.gd" id="6_ak6dw"]
+[ext_resource type="Texture2D" uid="uid://dx1ahisd0lvh5" path="res://FNAF sprites/alarmlight.png" id="8_nkyd6"]
+[ext_resource type="Texture2D" uid="uid://d2a3pf3rajhw5" path="res://FNAF sprites/roomrope.png" id="10_dfx1n"]
+[ext_resource type="Script" uid="uid://ccxjh7xwqfmvm" path="res://Circcle's scripts/fnaf scripts/alarm_light.gd" id="11_ad12r"]
+[ext_resource type="Script" uid="uid://b0bcm3q60cxf6" path="res://Circcle's scripts/fnaf scripts/fnaf_pulley.gd" id="11_s1d5t"]
+[ext_resource type="Script" uid="uid://blwwq21oge042" path="res://scenes/player_cam.gd" id="12_7bxxh"]
+[ext_resource type="Texture2D" uid="uid://dkj7b7vp5pud8" path="res://FNAF sprites/agnese_door.png" id="12_dfx1n"]
+[ext_resource type="Texture2D" uid="uid://2ug4ebl8vvrt" path="res://FNAF sprites/agnese_jumpscare.png" id="13_bsc56"]
+[ext_resource type="Texture2D" uid="uid://chx40fulhkcne" path="res://FNAF sprites/randyvent.png" id="14_egjcv"]
+[ext_resource type="Texture2D" uid="uid://cckpu382m6qeq" path="res://FNAF sprites/randybol.png" id="15_7bxxh"]
+[ext_resource type="Script" uid="uid://crhxnt6cwsspa" path="res://Circcle's scripts/fnaf scripts/randy_AI.gd" id="15_g16ln"]
+[ext_resource type="Script" uid="uid://cbwyalsifijec" path="res://Circcle's scripts/fnaf scripts/agnese_AI.gd" id="16_7bxxh"]
+[ext_resource type="PackedScene" uid="uid://4x3ohdellvee" path="res://scenes/fnaf_pad.tscn" id="16_egjcv"]
+[ext_resource type="Script" uid="uid://c24s8m6iuvc1n" path="res://Circcle's scripts/fnaf scripts/jumpscares.gd" id="16_regb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pogo3"]
+atlas = ExtResource("10_dfx1n")
+region = Rect2(916.764, 0, 128.99, 1074.431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xweo3"]
+size = Vector2(108, 1068)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y8d2"]
+atlas = ExtResource("8_nkyd6")
+region = Rect2(1122, 239, 143, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw4k2"]
+atlas = ExtResource("12_dfx1n")
+region = Rect2(0, 0, 903, 1698)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bxxh"]
+atlas = ExtResource("14_egjcv")
+region = Rect2(1876, 896, 525, 529)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g16ln"]
+size = Vector2(512, 512)
+
+[node name="FNAF" type="Node2D" unique_id=254263095 node_paths=PackedStringArray("alarm_light", "alarm_rope", "fnaf_pad", "rage_bar", "pad_opener", "Agnese")]
+script = ExtResource("1_ak6dw")
+alarm_light = NodePath("Equipment/AlarmLight")
+alarm_rope = NodePath("Equipment/Rope")
+fnaf_pad = NodePath("FNAF PAD")
+rage_bar = NodePath("UI/MarginContainer/VBoxContainer/RageBar")
+pad_opener = NodePath("UI/Pad_Opener")
+Agnese = NodePath("Enemies/Agnese")
+
+[node name="Pitch Black" type="CanvasModulate" parent="." unique_id=607375231]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=337068624]
+texture = ExtResource("1_tw5wp")
+
+[node name="Walls" type="Sprite2D" parent="." unique_id=150440689]
+texture = ExtResource("2_q23jg")
+
+[node name="DoorBg" type="Sprite2D" parent="." unique_id=1605031895]
+texture = ExtResource("3_vqjt0")
+
+[node name="DoorFg" type="Sprite2D" parent="." unique_id=608090632]
+z_index = 2
+texture = ExtResource("4_ak6dw")
+
+[node name="PlayerCam" type="Camera2D" parent="." unique_id=1541620708]
+zoom = Vector2(0.5, 0.5)
+limit_left = -1358
+limit_right = 1358
+editor_draw_limits = true
+script = ExtResource("12_7bxxh")
+
+[node name="Equipment" type="Node2D" parent="." unique_id=822906563]
+
+[node name="Rope" type="Sprite2D" parent="Equipment" unique_id=1289532018]
+z_index = 2
+z_as_relative = false
+position = Vector2(-371, -424)
+texture = SubResource("AtlasTexture_pogo3")
+script = ExtResource("11_s1d5t")
+
+[node name="Area2D" type="Area2D" parent="Equipment/Rope" unique_id=1420709638]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Equipment/Rope/Area2D" unique_id=1008429022]
+shape = SubResource("RectangleShape2D_xweo3")
+
+[node name="Flashlight" type="PointLight2D" parent="Equipment" unique_id=887223672 node_paths=PackedStringArray("flashlight_bar")]
+light_mask = 3
+position = Vector2(409.21515, 91.8873)
+color = Color(0.81700015, 0.39, 1, 1)
+range_item_cull_mask = 3
+texture = ExtResource("5_vqjt0")
+texture_scale = 3.0
+script = ExtResource("6_ak6dw")
+flashlight_bar = NodePath("../../UI/MarginContainer/VBoxContainer/FlashBar")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Equipment/Flashlight" unique_id=1924605876]
+color = Color(1, 0.5628333, 0.39, 1)
+range_item_cull_mask = 3
+texture = ExtResource("5_vqjt0")
+texture_scale = 1.5
+
+[node name="AlarmLight" type="Sprite2D" parent="Equipment" unique_id=425465362 node_paths=PackedStringArray("root_node", "rage_bar")]
+modulate = Color(0.5, 0, 0, 1)
+z_index = 1
+z_as_relative = false
+position = Vector2(-218, -453)
+texture = SubResource("AtlasTexture_6y8d2")
+script = ExtResource("11_ad12r")
+root_node = NodePath("../..")
+rage_bar = NodePath("../../UI/MarginContainer/VBoxContainer/RageBar")
+
+[node name="lights" type="PointLight2D" parent="Equipment/AlarmLight" unique_id=485382216]
+visible = false
+z_index = 1
+z_as_relative = false
+scale = Vector2(50, 2)
+color = Color(1, 0, 0, 1)
+texture = ExtResource("5_vqjt0")
+texture_scale = 0.7
+
+[node name="dim_alarm_ambient" type="PointLight2D" parent="Equipment/AlarmLight" unique_id=1166622517]
+color = Color(1, 0, 0.016666412, 1)
+energy = 0.5
+texture = ExtResource("5_vqjt0")
+texture_scale = 1.5
+
+[node name="dim_alarm_ambient2" type="PointLight2D" parent="Equipment/AlarmLight" unique_id=1229601584]
+scale = Vector2(0.9, 0.7)
+color = Color(1, 0, 0.016666412, 1)
+texture = ExtResource("5_vqjt0")
+texture_scale = 0.35
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1549015366]
+
+[node name="Agnese" type="Node2D" parent="Enemies" unique_id=167797169 node_paths=PackedStringArray("door_sprite", "root_node")]
+light_mask = 2
+z_index = 5
+z_as_relative = false
+script = ExtResource("16_7bxxh")
+door_sprite = NodePath("At_Door_Agnese")
+root_node = NodePath("../..")
+
+[node name="At_Door_Agnese" type="Sprite2D" parent="Enemies/Agnese" unique_id=2086426235]
+light_mask = 2
+z_index = 2
+z_as_relative = false
+position = Vector2(-906, 0)
+texture = SubResource("AtlasTexture_sw4k2")
+
+[node name="Randy" type="Node2D" parent="Enemies" unique_id=674910852 node_paths=PackedStringArray("door_sprite", "flashlight", "light_area")]
+light_mask = 2
+z_index = 5
+z_as_relative = false
+script = ExtResource("15_g16ln")
+door_sprite = NodePath("At_Door_Randy")
+flashlight = NodePath("../../Equipment/Flashlight")
+light_area = NodePath("At_Door_Randy/R_Light_Area")
+
+[node name="At_Door_Randy" type="Sprite2D" parent="Enemies/Randy" unique_id=650982291]
+light_mask = 2
+z_index = 2
+z_as_relative = false
+position = Vector2(781, 312)
+texture = SubResource("AtlasTexture_7bxxh")
+
+[node name="R_Light_Area" type="Area2D" parent="Enemies/Randy/At_Door_Randy" unique_id=786304429]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Randy/At_Door_Randy/R_Light_Area" unique_id=91050585]
+shape = SubResource("RectangleShape2D_g16ln")
+
+[node name="Jumpscares" type="Node2D" parent="." unique_id=507004190 node_paths=PackedStringArray("Agnese", "Agnese_jumpscare", "Randy", "Randy_jumpscare")]
+script = ExtResource("16_regb1")
+Agnese = NodePath("../Enemies/Agnese")
+Agnese_jumpscare = NodePath("Agnese_JS")
+Randy = NodePath("../Enemies/Randy")
+Randy_jumpscare = NodePath("Randy_JS")
+
+[node name="Agnese_JS" type="Sprite2D" parent="Jumpscares" unique_id=775965951]
+visible = false
+light_mask = 2
+z_index = 5
+z_as_relative = false
+texture = ExtResource("13_bsc56")
+
+[node name="Randy_JS" type="Sprite2D" parent="Jumpscares" unique_id=1087639215]
+visible = false
+light_mask = 2
+z_index = 5
+z_as_relative = false
+texture = ExtResource("15_7bxxh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=965253293]
+layer = -1
+
+[node name="BackgroundBlack" type="ColorRect" parent="CanvasLayer" unique_id=1347948349]
+z_index = -15
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1088631038]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1412786586]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=94587115]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="FlashBar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer" unique_id=1653597363]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="RageBar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer" unique_id=1437342638]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="Pad_Opener" type="ColorRect" parent="UI" unique_id=1356925342]
+z_index = 3
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.41140202, 0.41140202, 0.41140202, 0.5)
+
+[node name="FNAF PAD" parent="." unique_id=1768494728 node_paths=PackedStringArray("flashlight") instance=ExtResource("16_egjcv")]
+flashlight = NodePath("../Equipment/Flashlight")

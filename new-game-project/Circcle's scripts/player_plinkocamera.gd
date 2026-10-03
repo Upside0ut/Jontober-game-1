@@ -25,7 +25,7 @@ func _reset_camera():
 	global_position = starting_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if follow_player:
 		if global_position.y < plinko_player.global_position.y:
 			global_position.y = plinko_player.global_position.y

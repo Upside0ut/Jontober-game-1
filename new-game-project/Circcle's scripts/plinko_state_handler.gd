@@ -4,7 +4,10 @@ extends Node2D
 @onready var drop_marker : Node2D = $"Drop Marker"
 @onready var plinko_player : Node2D = $"Plinko Player"
 @onready var player_camera : Node2D = $"Player Camera"
+@onready var background : ColorRect = $"gambling bg"
 @export var state_text : RichTextLabel
+
+@export var fnaf_ver := false
 
 signal game_won
 signal game_lost
@@ -21,6 +24,8 @@ func _ready() -> void:
 	for child in bottom_areas.get_children():
 		child.changed_state.connect(_on_state_changed.bind(child))
 	
+	if fnaf_ver:
+		background.visible =false
 	state_text.text = ""
 
 func _on_state_changed(area):
@@ -32,31 +37,35 @@ func _on_state_changed(area):
 		
 		_reset_all()
 		game_won.emit()
-		drop_marker.can_drop = false
-		game_ended = true
+		
+		if !fnaf_ver:
+			drop_marker.can_drop = false
+			game_ended = true
+		else:
+			_reset_after_timer()
 		
 	elif area is Lose_Area:
 		print("Plinko: Game Lost!")
 		state_text.text = "Oh no! You lost!"
 		
 		_reset_all()
-		drop_marker.can_drop = false
-		game_ended = true
-		await get_tree().create_timer(3.0).timeout
+		if !fnaf_ver:
+			drop_marker.can_drop = false
+			game_ended = true
+			await get_tree().create_timer(3.0).timeout
+		else:
+			_reset_after_timer()
 		game_lost.emit()
 		
 	elif area is Neutral_Area:
 		print("Plinko: Game Neutral!")
 		
 		state_text.text = "You didn't hit anything, try again!"
-		ready_to_reset = true
-		
-
-func _process(delta: float) -> void:
-	if ready_to_reset:
 		_reset_after_timer()
 
 func _reset_after_timer():
+	if ready_to_reset: return
+	ready_to_reset = true
 	_reset_all()
 	drop_marker.can_drop = false
 	await get_tree().create_timer(3.0).timeout

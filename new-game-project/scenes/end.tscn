@@ -47,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("question_mark:theme_override_colors/font_color")
+tracks/0/path = NodePath("Control/question_mark:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +63,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("question_mark:theme_override_colors/font_color")
+tracks/0/path = NodePath("Control/question_mark:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -109,6 +109,17 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="question_mark" type="Label" parent="Control" unique_id=1020978411]
+z_index = 1
+layout_mode = 0
+offset_left = -182.0
+offset_top = -188.0
+offset_right = -142.0
+offset_bottom = -100.0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 64
+text = "?"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=1800523470]
 sprite_frames = SubResource("SpriteFrames_u0ya7")
 autoplay = "default"
@@ -145,15 +156,5 @@ autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1890151101]
 libraries/ = SubResource("AnimationLibrary_o5lv4")
-
-[node name="question_mark" type="Label" parent="." unique_id=1020978411]
-layout_mode = 0
-offset_left = 394.0
-offset_top = 141.0
-offset_right = 434.0
-offset_bottom = 229.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_font_sizes/font_size = 64
-text = "?"
 
 [connection signal="animation_finished" from="Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

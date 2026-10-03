@@ -648,6 +648,7 @@ rotation_smoothing_enabled = true
 script = ExtResource("3_d6eji")
 
 [node name="Plinko Player" parent="." unique_id=581014257 instance=ExtResource("4_svm0g")]
+visible = false
 position = Vector2(0, -1000)
 physics_material_override = SubResource("PhysicsMaterial_ucrpc")
 max_contacts_reported = 4
@@ -762,7 +763,15 @@ color = Color(0.2, 0.03529412, 0.03529412, 1)
 position = Vector2(0, 2650)
 script = ExtResource("9_a10ca")
 
+[node name="Arrow" type="Sprite2D" parent="bottom_areas/Victory" unique_id=1534029454]
+modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(3, -528)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vsvt")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Victory" unique_id=2143907427]
+position = Vector2(0, -150)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
 
@@ -770,7 +779,15 @@ shape = SubResource("RectangleShape2D_sw4k2")
 position = Vector2(-900, 2650)
 script = ExtResource("10_rsnin")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Lose" unique_id=242950214]
+[node name="Arrow" type="Sprite2D" parent="bottom_areas/Lose" unique_id=1477228507]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(3, -528)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vsvt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottom_areas/Lose" unique_id=1421856370]
+position = Vector2(0, -150)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
 
@@ -778,7 +795,15 @@ shape = SubResource("RectangleShape2D_sw4k2")
 position = Vector2(900, 2650)
 script = ExtResource("10_rsnin")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Lose2" unique_id=1944430480]
+[node name="Arrow" type="Sprite2D" parent="bottom_areas/Lose2" unique_id=247441585]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(3, -528)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vsvt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottom_areas/Lose2" unique_id=806304728]
+position = Vector2(0, -150)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
 
@@ -786,7 +811,14 @@ shape = SubResource("RectangleShape2D_sw4k2")
 position = Vector2(-450, 2650)
 script = ExtResource("11_6vsvt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Nothing" unique_id=215552810]
+[node name="Arrow" type="Sprite2D" parent="bottom_areas/Nothing" unique_id=1742116080]
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(3, -528)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vsvt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottom_areas/Nothing" unique_id=1439442765]
+position = Vector2(0, -150)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
 
@@ -794,6 +826,13 @@ shape = SubResource("RectangleShape2D_sw4k2")
 position = Vector2(450, 2650)
 script = ExtResource("11_6vsvt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_areas/Nothing2" unique_id=1054708838]
+[node name="Arrow" type="Sprite2D" parent="bottom_areas/Nothing2" unique_id=1946068755]
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(3, -528)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vsvt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottom_areas/Nothing2" unique_id=1957565969]
+position = Vector2(0, -150)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_sw4k2")
