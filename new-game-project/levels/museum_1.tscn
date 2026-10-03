@@ -774,11 +774,11 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_udut8")
 
 [node name="mannequin" parent="." unique_id=851826361 instance=ExtResource("8_i24gp")]
-position = Vector2(-277, -48)
+position = Vector2(-246, -48)
 changes = false
 
 [node name="mannequin2" parent="." unique_id=259008839 instance=ExtResource("8_i24gp")]
-position = Vector2(526, -208)
+position = Vector2(485, -208)
 texture = ExtResource("9_sq1op")
 changes = false
 

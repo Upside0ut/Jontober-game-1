@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://y4nfoiex4j30" path="res://scenes/player_2_normal.tscn" id="1_l6tho"]
 [ext_resource type="Script" uid="uid://b41l45bfabdg0" path="res://scenes/player_2.gd" id="1_s551d"]
 [ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="3_yjax8"]
+[ext_resource type="VideoStream" uid="uid://wbdrrp7s8pv3" path="res://textures/mannequindistortionstuff1.ogv" id="4_oc1kf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 
@@ -34,6 +35,19 @@ shape = SubResource("CircleShape2D_s551d")
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="effects" type="CanvasLayer" parent="." unique_id=1988777428]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="effects" unique_id=1621060014]
+modulate = Color(1, 1, 1, 0)
+offset_left = -26.0
+offset_top = -12.0
+offset_right = 1170.4445
+offset_bottom = 661.0
+stream = ExtResource("4_oc1kf")
+autoplay = true
+expand = true
+loop = true
 
 [connection signal="area_entered" from="position/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="position/interact" to="." method="_on_interact_area_exited"]

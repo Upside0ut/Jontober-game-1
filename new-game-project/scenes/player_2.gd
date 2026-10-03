@@ -7,9 +7,11 @@ var dyamite_count = 0
 var can_roll = true
 #list of mannequins in which the player is in the distortion area
 var mannequin_array: Array[Area2D]
+var distortion_amount: float = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$effects/VideoStreamPlayer.modulate.a = lerp($effects/VideoStreamPlayer.modulate.a, distortion_amount, .12)
 	if adjust_position:
 		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
@@ -83,14 +85,15 @@ func _on_interact_area_entered(area: Area2D) -> void:
 	if area.name == "distortion_area":
 		can_roll = false
 		mannequin_array.append(area)
+		distortion_amount += .1
+		
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area.name == "distortion_area":
 		mannequin_array.erase(area)
 		if mannequin_array.size() == 0:
 			can_roll = true
-
-
+		distortion_amount -= .1
 func sounds(type: String):
 	if type == "jump":
 		$position/sounds/jump.play()
