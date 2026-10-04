@@ -12,8 +12,9 @@ var distortion_amount: float = 0.0
 var fov_multiplier: float = 1.0
 var shrunken = false
 
-var dead = false
-
+var dying = false
+var can_move = true
+var saved_from_death = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 	if adjust_position:
 		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
-		if can_roll and !ceiling and !shrunken and !dead:
+		if can_roll and !ceiling and !shrunken and can_move:
 			roll()
 		else:
 			pass
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 	if rolling and !can_roll:
 		roll()
 #	dynamite
-	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position and !dead:
+	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position and can_move:
 		dyamite_count -= 1
 		var dynamite = load("res://scenes/dynamite.tscn")
 		var instance: RigidBody2D = dynamite.instantiate()
@@ -116,7 +117,7 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		area.name = "used"
 		area.get_parent().consume()
 		
-	if area.name == "death_area":
+	if area.name == "death_area" and !dying:
 		death(area.get_parent().name)
 
 func _on_interact_area_exited(area: Area2D) -> void:
@@ -138,13 +139,18 @@ func sounds(type: String):
 		$position/sounds/jump.play()
 
 func death(cause: String):
+	dying = true
 	var timer_time: float = 0.0
 	if cause.contains("mannequin"):
 		$position/GPUParticles2D.emitting = true
 		timer_time = 1.5
+	if cause.contains("security"):
+		timer_time = 2.5
+		can_move = false
 	await get_tree().create_timer(timer_time).timeout
-	$AnimationPlayer.play("die")
-	player.visible = false
-	dead = true
-	await get_tree().create_timer(2.0).timeout
-	get_tree().reload_current_scene()
+	if !saved_from_death:
+		$AnimationPlayer.play("die")
+		player.visible = false
+		can_move = false
+		await get_tree().create_timer(2.0).timeout
+		get_tree().reload_current_scene()

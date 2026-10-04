@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		
 	$floor.global_rotation = 0
 	$ceiling.global_rotation = 0
-	if !get_parent().dead:
+	if get_parent().can_move:
 		if Input.is_action_pressed("left") and linear_velocity.x > -max_speed: #if going left
 			angular_velocity -= delta * roll_speed #roll left
 		

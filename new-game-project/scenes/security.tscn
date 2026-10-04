@@ -48,6 +48,10 @@ animations = [{
 radius = 44.0
 height = 108.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg5n2"]
+radius = 52.5
+height = 128.0
+
 [node name="security" type="CharacterBody2D" unique_id=379221453]
 script = ExtResource("1_bg5n2")
 
@@ -61,3 +65,10 @@ frame_progress = 0.61820096
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069804353]
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_a7vx6")
+
+[node name="death_area" type="Area2D" parent="." unique_id=1477414686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_area" unique_id=1261181527]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bg5n2")

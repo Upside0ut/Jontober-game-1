@@ -30,14 +30,14 @@ func _physics_process(delta: float) -> void:
 		$normal_state/anim.flip_h = false
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !parent.dead:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and parent.can_move:
 		velocity.y = JUMP_VELOCITY
 		parent.sounds("jump")
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction and !parent.dead:
+	if direction and parent.can_move:
 		velocity.x = direction * SPEED * multiplier()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
