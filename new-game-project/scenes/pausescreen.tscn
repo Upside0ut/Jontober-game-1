@@ -2,12 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://du1g4w782w0ba" path="res://textures/abstract_landscape_1.png" id="1_4ydd4"]
 [ext_resource type="Script" uid="uid://uxtif6q2vjig" path="res://scripts/pausescreen.gd" id="1_fvd0d"]
-[ext_resource type="Texture2D" uid="uid://cslcfar4aq3xc" path="res://textures/abstract_landscape_2.png" id="2_38q3y"]
 [ext_resource type="Shader" uid="uid://ydq6cogapgy2" path="res://scenes/pausescreen.gdshader" id="2_fvd0d"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="3_fvd0d"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="8_6tuom"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="9_cmpyc"]
-[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="10_b8wgs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7x0ad"]
 shader = ExtResource("2_fvd0d")
@@ -234,17 +232,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4ydd4")
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1879645736]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_38q3y")
-flip_h = true
-flip_v = true
-
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=320269715]
 layout_mode = 1
 anchors_preset = 15
@@ -253,6 +240,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fvd0d")
+flip_h = true
 flip_v = true
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=666239822]
@@ -317,11 +305,6 @@ theme_override_font_sizes/font_size = 71
 theme_override_styles/normal = SubResource("StyleBoxFlat_38q3y")
 text = "Quit
 "
-
-[node name="song" type="AudioStreamPlayer" parent="." unique_id=686435697]
-stream = ExtResource("10_b8wgs")
-volume_db = -3.0
-autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1908329826]
 libraries/ = SubResource("AnimationLibrary_v5dkp")
