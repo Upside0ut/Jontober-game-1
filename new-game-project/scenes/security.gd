@@ -11,6 +11,8 @@ var maximum_x: float
 
 var rng = RandomNumberGenerator.new()
 
+var targeting_player: bool = false
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -30,7 +32,20 @@ func _physics_process(delta: float) -> void:
 		minimum_x = $ray2.get_collision_point().x
 	else:
 		minimum_x = global_position.x - 500.0
+	for n: RayCast2D in [$ray1, $ray2]:
+		var player = false
+		if n.is_colliding():
+			if n.get_collider().name.contains("player_2"):
+				destination = n.get_collider().global_position.x
+				player = true
+		if player:
+			targeting_player = true
+		else:
+			targeting_player = false
+	
+	$Timer.paused = targeting_player
 
+	
 func _on_timer_timeout() -> void:
 	get_destination()
 	$Timer.wait_time = rng.randf_range(3.0, 6.0)
