@@ -20,6 +20,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 		texture = sprites_b[rng.randi_range(0, sprites_b.size() - 1)]
 	if follows:
 		$GPUParticles2D.emitting = true
+		$death_area/CollisionShape2D.disabled = true
 		visible = false
 		global_position = target.get_node("position").global_position
 		await get_tree().create_timer(1.0).timeout
@@ -27,3 +28,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 		if $floor.is_colliding():
 			global_position = $floor.get_collision_point()
 			global_position.y -= 128
+		$death_area/CollisionShape2D.disabled = false
+
+func death():
+	follows = false
+	$sound.stop()
+	$GPUParticles2D.emitting = false
+
+
+func _on_death_area_area_entered(area: Area2D) -> void:
+	if area.name == "soul_area":
+		death()

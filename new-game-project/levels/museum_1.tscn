@@ -715,8 +715,8 @@ scroll_scale = Vector2(0.715, 0.715)
 scroll_offset = Vector2(7302, -3716)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=481003938]
-position = Vector2(-181.5, 90)
-scale = Vector2(3, 3)
+position = Vector2(-5259.5, 1775.5)
+scale = Vector2(3.8359375, 3.8359375)
 texture = ExtResource("7_3l654")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=989279384]

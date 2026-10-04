@@ -12,13 +12,16 @@ var distortion_amount: float = 0.0
 var fov_multiplier: float = 1.0
 var shrunken = false
 
+var dead = false
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$effects/VideoStreamPlayer.modulate.a = lerp($effects/VideoStreamPlayer.modulate.a, distortion_amount, .12)
 	if adjust_position:
 		$position.position = player.position
 	if Input.is_action_just_pressed("roll"):
-		if can_roll and !ceiling and !shrunken:
+		if can_roll and !ceiling and !shrunken and !dead:
 			roll()
 		else:
 			pass
@@ -26,7 +29,7 @@ func _process(delta: float) -> void:
 	if rolling and !can_roll:
 		roll()
 #	dynamite
-	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position:
+	if Input.is_action_just_pressed("use") and dyamite_count > 0 and adjust_position and !dead:
 		dyamite_count -= 1
 		var dynamite = load("res://scenes/dynamite.tscn")
 		var instance: RigidBody2D = dynamite.instantiate()
@@ -37,6 +40,7 @@ func _process(delta: float) -> void:
 			instance.linear_velocity = player.velocity
 		instance.global_position = Vector2($position.global_position.x, $position.global_position.y - 150)
 		instance.explode()
+	
 	camera()
 
 func camera():
@@ -111,6 +115,9 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		print("shrink1")
 		area.name = "used"
 		area.get_parent().consume()
+		
+	if area.name == "death_area":
+		death(area.get_parent().name)
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area.name == "zoom_area":
@@ -123,7 +130,21 @@ func _on_interact_area_exited(area: Area2D) -> void:
 
 	if area.name == "zoom_area":
 		fov_multiplier += area.zoom_scale
+	
+
 
 func sounds(type: String):
 	if type == "jump":
 		$position/sounds/jump.play()
+
+func death(cause: String):
+	var timer_time: float = 0.0
+	if cause.contains("mannequin"):
+		$position/GPUParticles2D.emitting = true
+		timer_time = 1.5
+	await get_tree().create_timer(timer_time).timeout
+	$AnimationPlayer.play("die")
+	player.visible = false
+	dead = true
+	await get_tree().create_timer(2.0).timeout
+	get_tree().reload_current_scene()

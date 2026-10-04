@@ -18,6 +18,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(144, 118.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_024mr"]
+size = Vector2(16.5, 45)
+
 [sub_resource type="Gradient" id="Gradient_70gl7"]
 offsets = PackedFloat32Array(0.3554217, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.9734207, 0.85683936, 0.88127416, 1)
@@ -64,6 +67,12 @@ rect = Rect2(-21.5, -32.5, 43, 64.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="distortion_area" unique_id=845487047]
 shape = SubResource("RectangleShape2D_a7vx6")
 
+[node name="death_area" type="Area2D" parent="." unique_id=235696737]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_area" unique_id=1189886720]
+shape = SubResource("RectangleShape2D_024mr")
+disabled = true
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1431860891]
 emitting = false
 amount = 24
@@ -80,3 +89,4 @@ position = Vector2(0, 0.25)
 target_position = Vector2(0, 250)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="death_area" to="." method="_on_death_area_area_entered"]
