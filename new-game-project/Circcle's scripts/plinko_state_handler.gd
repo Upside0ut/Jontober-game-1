@@ -8,6 +8,7 @@ extends Node2D
 @export var state_text : RichTextLabel
 
 @export var fnaf_ver := false
+var error_chance := 0.0
 
 signal game_won
 signal game_lost
@@ -25,11 +26,38 @@ func _ready() -> void:
 		child.changed_state.connect(_on_state_changed.bind(child))
 	
 	if fnaf_ver:
+		for peg in get_tree().get_nodes_in_group("pegs"):
+			if is_ancestor_of(peg):
+				peg.peg_clicked.connect(_on_peg_clicked)
+		
 		background.visible =false
 	state_text.text = ""
 
+#region FNAF_stuff
+# YOU CAN ONLY DISABLE PEGS IN THE FNAF MODE (i suppose that could change later)
+# but do not touch this
+var disabled_peg : Node = null
+func _on_peg_clicked(peg) -> void:
+	if fnaf_ver:
+		
+		# turns already disabled peg on
+		if peg == disabled_peg:
+			peg.set_disabled(false)
+			disabled_peg = null
+			return
+		
+		# turns disabled peg back on if u clicked another one
+		if disabled_peg:
+			disabled_peg.set_disabled(false)
+			
+		# and turns this one off
+		peg.set_disabled(true)
+		disabled_peg = peg
+#endregion
+
 func _on_state_changed(area):
-	if game_ended: return
+	if !fnaf_ver:
+		if game_ended: return
 	
 	if area is Victory_Area:
 		print("Plinko: Game Won!")
@@ -40,9 +68,10 @@ func _on_state_changed(area):
 		
 		if !fnaf_ver:
 			drop_marker.can_drop = false
-			game_ended = true
 		else:
 			_reset_after_timer()
+		
+		game_ended = true
 		
 	elif area is Lose_Area:
 		print("Plinko: Game Lost!")
@@ -51,11 +80,12 @@ func _on_state_changed(area):
 		_reset_all()
 		if !fnaf_ver:
 			drop_marker.can_drop = false
-			game_ended = true
 			await get_tree().create_timer(3.0).timeout
 		else:
 			_reset_after_timer()
 		game_lost.emit()
+		
+		game_ended = true
 		
 	elif area is Neutral_Area:
 		print("Plinko: Game Neutral!")

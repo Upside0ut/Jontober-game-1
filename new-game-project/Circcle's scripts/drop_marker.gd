@@ -1,5 +1,7 @@
 extends Sprite2D
 
+@export var root_node : Node2D
+
 ## Left limit on the x axis
 @export var left_limit : float = -900.0
 ## Right limit on the x axis
@@ -25,6 +27,9 @@ func _process(delta: float) -> void:
 	
 	# emits the signal to drop the ball
 	if Input.is_action_just_pressed("jump") and not currently_dropped and can_drop:
+		if root_node.fnaf_ver: 
+			root_node.game_ended = false
+		
 		dropped.emit()
 		should_move = false
 	

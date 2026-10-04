@@ -40,6 +40,7 @@ pivot_offset = Vector2(153.5, 648)
 
 [node name="SubViewport" type="SubViewport" parent="Control/Sprite2D/SubViewportContainer" unique_id=2072281570]
 handle_input_locally = false
+physics_object_picking = true
 sdf_scale = 2
 size = Vector2i(2385, 3175)
 render_target_update_mode = 4

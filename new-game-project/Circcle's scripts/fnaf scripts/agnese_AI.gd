@@ -2,10 +2,8 @@ extends Node2D
 
 signal jumpscare
 
-
-
 @export var door_sprite : Sprite2D
-@export var ai_level := 8            # 0-20, obviously :3
+@export var ai_level := 20            # 0-20, obviously :3
 @export var move_interval := 6.0     # seconds between movement opportunities
 @export var attack_time := 6.0       # how long they wait before jumpscaring
 
@@ -53,8 +51,9 @@ func _process(delta: float) -> void:
 			else:
 				alarm_time = 0.0
 			
-			if !root_node.alarm_pauses_attack:
+			if !root_node.alarm_pauses_attack or !root_node.alarm_turned_on:
 				attack_left -= delta
+				print("Agnese attack time: ", attack_left)
 			if attack_left <= 0.0:
 				if jumpscared: return
 				jumpscared = true
@@ -69,6 +68,8 @@ func _appear_at_entrance() -> void:
 	door_sprite.visible = true
 	
 	print("- Agnese at door!")
+	
+	$Enter_SFX.play()
 	# warning sound here
 
 func _remove_from_entrance() -> void:

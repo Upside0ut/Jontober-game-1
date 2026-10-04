@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
-// Shader by muzi1983 (https://godotshaders.com/author/muzi1983/)
+// Shader by muzi1983 
+// (https://godotshaders.com/author/muzi1983/)
 // https://godotshaders.com/shader/rainbow-flowcanvasitem/
 
 global uniform float global_shadertime;

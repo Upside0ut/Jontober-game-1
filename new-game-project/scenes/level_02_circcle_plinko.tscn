@@ -635,11 +635,12 @@ text = "Press the Jump Key to release the Ball!"
 fit_content = true
 autowrap_mode = 0
 
-[node name="Drop Marker" type="Sprite2D" parent="." unique_id=913818133]
+[node name="Drop Marker" type="Sprite2D" parent="." unique_id=913818133 node_paths=PackedStringArray("root_node")]
 modulate = Color(0, 1, 0.083333254, 1)
 position = Vector2(0, -1000)
 texture = ExtResource("2_6vsvt")
 script = ExtResource("2_355pt")
+root_node = NodePath("..")
 
 [node name="Player Camera" type="Camera2D" parent="." unique_id=76331435]
 position = Vector2(0, -800)

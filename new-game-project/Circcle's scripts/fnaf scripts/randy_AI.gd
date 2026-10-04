@@ -3,10 +3,11 @@ extends Node2D
 signal jumpscare
 
 @export var door_sprite : Sprite2D
-@export var ai_level := 8            # 0-20, obviously :3
-@export var move_interval := 4.0     # seconds between movement opportunities
+@export var ai_level := 20            # 0-20, obviously :3
+@export var move_interval := 5.0     # seconds between movement opportunities
 @export var attack_time := 6.0       # how long they wait before jumpscaring
 
+@export var root_node : Node2D
 @export var flashlight : Node2D
 @export var time_to_repel := 2.0        # seconds of light needed for him to move
 @export var light_area : Area2D
@@ -55,7 +56,9 @@ func _process(delta: float) -> void:
 			else:
 				light_time = 0.0
 			
-			attack_left -= delta
+			if !root_node.light_pauses_attack or !hovered or !flashlight.visible:
+				attack_left -= delta
+				print("Randy attack time: ", attack_left)
 			if attack_left <= 0.0:
 				if jumpscared: return
 				jumpscared = true
@@ -76,6 +79,8 @@ func _appear_at_entrance() -> void:
 	door_sprite.visible = true
 	
 	print("- Randy at vent!")
+	
+	$Enter_SFX.play()
 	# warning sound here
 
 func _remove_from_entrance() -> void:

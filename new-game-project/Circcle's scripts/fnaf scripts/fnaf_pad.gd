@@ -7,7 +7,7 @@ extends CanvasLayer
 var is_moving := false
 var tween : Tween
 var plinko_root
-var pad_move_amount := 500.0
+var pad_move_amount := 400.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,7 +31,7 @@ func leave_view():
 	is_moving = true
 	plinko_root.process_mode = Node.PROCESS_MODE_DISABLED
 	tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(plinko_Sprite2D, "global_position:x", plinko_Sprite2D.global_position.x+pad_move_amount, 0.3)
 	await tween.finished
@@ -46,7 +46,7 @@ func enter_view():
 	is_moving = true
 	plinko_root.process_mode = Node.PROCESS_MODE_INHERIT 
 	tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(plinko_Sprite2D, "global_position:x", plinko_Sprite2D.global_position.x-pad_move_amount, 0.3)
 	await tween.finished
