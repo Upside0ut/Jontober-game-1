@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b6653xivhaw8b" path="res://scenes/player_2.tscn" id="2_s2h6b"]
 [ext_resource type="PackedScene" uid="uid://ce02tpdx1dpne" path="res://scenes/abstract_art.tscn" id="3_s2h6b"]
 [ext_resource type="Texture2D" uid="uid://cjcsi8ou3khii" path="res://textures/abstract_art_placeholder1.png" id="3_yru1m"]
+[ext_resource type="Texture2D" uid="uid://cfm53804de4bp" path="res://frames/confetti1.png" id="4_11vdw"]
 [ext_resource type="PackedScene" uid="uid://wemj4s1m0m1i" path="res://scenes/dynamite.tscn" id="4_fkghy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
@@ -25,17 +26,20 @@ position = Vector2(941, -132)
 [node name="Sprite2D" parent="abstract_art2" index="1" unique_id=1427093654]
 texture = ExtResource("3_yru1m")
 
+[node name="GPUParticles2D" parent="abstract_art2" index="2" unique_id=1821317890]
+texture = ExtResource("4_11vdw")
+
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("2_s2h6b")]
 position = Vector2(122, 25)
-
-[node name="Camera2D" parent="player_2/position" parent_id_path=PackedInt32Array(565748145, 660285826) index="2" unique_id=1899531944]
-enabled = false
 
 [node name="Camera2D2" type="Camera2D" parent="player_2/position" parent_id_path=PackedInt32Array(565748145, 660285826) index="3" unique_id=362919622]
 zoom = Vector2(0.7, 0.7)
 limit_left = -61
 limit_right = 1980
 limit_bottom = 179
+
+[node name="Camera2D" parent="player_2/position" parent_id_path=PackedInt32Array(565748145, 660285826) index="5" unique_id=1899531944]
+enabled = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=168665071]
 

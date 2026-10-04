@@ -2,9 +2,20 @@
 
 [ext_resource type="Script" uid="uid://qpifuhe507lb" path="res://scenes/abstract_art.gd" id="1_txr48"]
 [ext_resource type="Texture2D" uid="uid://c4023b17vdwc0" path="res://textures/abstract_art_placeholder2.png" id="2_e12e5"]
+[ext_resource type="Texture2D" uid="uid://bp6upk5d6h5q5" path="res://frames/confetti2.png" id="3_2ii0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
 radius = 48.010414
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7vx6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 50, 1)
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 53.76
+initial_velocity_max = 53.76
+gravity = Vector3(0, 98, 0)
 
 [node name="abstract_art" type="Node2D" unique_id=320085406]
 script = ExtResource("1_txr48")
@@ -17,5 +28,14 @@ shape = SubResource("CircleShape2D_a7vx6")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1427093654]
 scale = Vector2(4, 4)
 texture = ExtResource("2_e12e5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1821317890]
+emitting = false
+amount = 16
+texture = ExtResource("3_2ii0l")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a7vx6")
 
 [connection signal="area_entered" from="destruct_area" to="." method="_on_destruct_area_area_entered"]
