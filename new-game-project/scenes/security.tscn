@@ -49,8 +49,8 @@ radius = 44.0
 height = 108.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg5n2"]
-radius = 52.5
-height = 128.0
+radius = 36.0
+height = 76.0
 
 [node name="security" type="CharacterBody2D" unique_id=379221453]
 script = ExtResource("1_bg5n2")
@@ -72,3 +72,17 @@ shape = SubResource("CapsuleShape2D_a7vx6")
 position = Vector2(0, 7)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_bg5n2")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=590888887]
+
+[node name="Timer" type="Timer" parent="." unique_id=1024792136]
+wait_time = 5.0
+autostart = true
+
+[node name="ray1" type="RayCast2D" parent="." unique_id=509202085]
+target_position = Vector2(500, 0)
+
+[node name="ray2" type="RayCast2D" parent="." unique_id=655085625]
+target_position = Vector2(-500, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

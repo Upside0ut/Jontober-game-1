@@ -811,8 +811,8 @@ position = Vector2(992, -288)
 texture = ExtResource("22_r3ree")
 follows = false
 
-[node name="security" parent="." unique_id=379221453 instance=ExtResource("23_j3s8s")]
-position = Vector2(4322, 390)
+[node name="security2" parent="." unique_id=379221453 instance=ExtResource("23_j3s8s")]
+position = Vector2(-3634, -544)
 
 [connection signal="body_entered" from="music_start" to="." method="_on_music_start_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
