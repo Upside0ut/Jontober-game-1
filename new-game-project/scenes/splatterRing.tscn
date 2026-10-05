@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://qgo7iscdcgxk"]
+
+[ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="2_w1mq1"]
+[ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_hb6ii"]
+[ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_ln83t"]
+
+[sub_resource type="Curve" id="Curve_wt34f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_dtglo"]
+curve = SubResource("Curve_wt34f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0ya7"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 300.0
+emission_ring_inner_radius = 300.0
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_dtglo")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvwpn"]
+radius = 300.0
+
+[node name="splatterRing" type="Node2D" unique_id=314029043]
+skew = 0.029670598
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1267321043]
+amount = 69
+texture = ExtResource("2_w1mq1")
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=782223890]
+amount = 50
+texture = ExtResource("3_hb6ii")
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1292180420]
+amount = 30
+texture = ExtResource("4_ln83t")
+trail_lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="spikes" type="Area2D" parent="." unique_id=933651931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=884058648]
+shape = SubResource("CircleShape2D_nvwpn")

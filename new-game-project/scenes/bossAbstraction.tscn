@@ -1,6 +1,27 @@
 [gd_scene format=3 uid="uid://chp448cbirpbb"]
 
 [ext_resource type="Script" uid="uid://gohxggj1a7qf" path="res://scenes/boss_abstraction.gd" id="1_j3vxj"]
+[ext_resource type="Texture2D" uid="uid://uoucal8wf0nf" path="res://textures/bossabstractionplaceholder.png" id="2_ln3cr"]
+[ext_resource type="PackedScene" uid="uid://qgo7iscdcgxk" path="res://scenes/splatterRing.tscn" id="3_17mkm"]
 
 [node name="BossAbstraction" type="Node2D" unique_id=1086137296]
 script = ExtResource("1_j3vxj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=583160611]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 170.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ln3cr")
+
+[node name="splatterwall" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]

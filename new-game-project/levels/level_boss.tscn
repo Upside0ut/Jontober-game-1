@@ -6,8 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mbjtw"]
 [ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="5_eor1m"]
 [ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="6_q6mwf"]
-[ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="7_n7h2o"]
-[ext_resource type="Texture2D" uid="uid://colayoy64cxk1" path="res://textures/spotlight.png" id="8_i5xmo"]
+[ext_resource type="PackedScene" uid="uid://chp448cbirpbb" path="res://scenes/bossAbstraction.tscn" id="7_2e41g"]
+
+[sub_resource type="GDScript" id="GDScript_l271g"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l271g"]
 texture = ExtResource("3_vwgko")
@@ -587,35 +600,14 @@ sources/1 = SubResource("TileSetScenesCollectionSource_5fpo4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0evtg"]
 size = Vector2(50008, 2375.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l10gb"]
-atlas = ExtResource("7_n7h2o")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwg4l"]
-atlas = ExtResource("7_n7h2o")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kas5c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l10gb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwg4l")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="LevelBoss" type="Node2D" unique_id=2041486450]
+script = SubResource("GDScript_l271g")
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_l271g")]
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=84180008]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
@@ -652,19 +644,7 @@ shape = SubResource("RectangleShape2D_0evtg")
 stream = ExtResource("6_q6mwf")
 autoplay = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=16900197]
-position = Vector2(2485, 272)
-sprite_frames = SubResource("SpriteFrames_kas5c")
-autoplay = "default"
-
-[node name="Spotlight" type="Sprite2D" parent="." unique_id=12243291]
-position = Vector2(2517, 131)
-texture = ExtResource("8_i5xmo")
-
-[node name="FakeBlock" type="ColorRect" parent="." unique_id=498324545]
-offset_left = 2374.0
-offset_top = 390.0
-offset_right = 2618.0
-offset_bottom = 571.0
+[node name="BossAbstraction" parent="." unique_id=1086137296 instance=ExtResource("7_2e41g")]
+position = Vector2(2870, 1082)
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
