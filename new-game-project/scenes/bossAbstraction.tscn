@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chp448cbirpbb"]
+
+[ext_resource type="Script" uid="uid://gohxggj1a7qf" path="res://scenes/boss_abstraction.gd" id="1_j3vxj"]
+
+[node name="BossAbstraction" type="Node2D" unique_id=1086137296]
+script = ExtResource("1_j3vxj")
