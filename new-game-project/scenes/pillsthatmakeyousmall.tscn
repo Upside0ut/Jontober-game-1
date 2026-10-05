@@ -66,7 +66,8 @@ size = Vector2(10, 27)
 script = ExtResource("1_ccg2d")
 
 [node name="PillsPlaceholder" type="AnimatedSprite2D" parent="." unique_id=662133227]
-position = Vector2(1, 5)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(1.1875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
 autoplay = "default"
 frame_progress = 0.688306
@@ -74,7 +75,6 @@ frame_progress = 0.688306
 [node name="shrink_area" type="Area2D" parent="." unique_id=867471302]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shrink_area" unique_id=1651136481]
-position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a7vx6")
 
 [node name="nom" type="AudioStreamPlayer2D" parent="." unique_id=1939750699]

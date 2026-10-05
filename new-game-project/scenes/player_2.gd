@@ -92,10 +92,12 @@ func shrink(boolean: bool):
 		if rolling:
 			roll()
 		player.scale = Vector2(player.scale.x / 5, player.scale.y / 5)
+		$position.scale = Vector2($position.scale.x / 5, $position.scale.y / 5)
 		fov_multiplier += 1.5
 		shrunken = true
 	elif shrunken:
-		player.scale = Vector2(player.scale.x / 5, player.scale.y / 5)
+		player.scale = Vector2(player.scale.x * 5, player.scale.y * 5)
+		$position.scale = Vector2($position.scale.x * 5, $position.scale.y * 5)
 		fov_multiplier -= 1.5
 		shrunken = false
 
@@ -132,6 +134,11 @@ func _on_interact_area_exited(area: Area2D) -> void:
 	if area.name == "zoom_area":
 		fov_multiplier += area.zoom_scale
 	
+
+func _on_interact_body_entered(body: Node2D) -> void:
+	if body.name.contains("security"):
+		if shrunken:
+			death("security")
 
 
 func sounds(type: String):

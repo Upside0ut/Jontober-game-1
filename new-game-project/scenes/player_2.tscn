@@ -182,3 +182,4 @@ loop = true
 
 [connection signal="area_entered" from="position/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="position/interact" to="." method="_on_interact_area_exited"]
+[connection signal="body_entered" from="position/interact" to="." method="_on_interact_body_entered"]
