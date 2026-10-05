@@ -29,20 +29,21 @@ hue_variation_max = -2.2351742e-08
 
 [node name="UpwardSplatterwall" type="Node2D" unique_id=314029043]
 rotation = 1.5707964
+scale = Vector2(2, 2)
 script = ExtResource("1_ns6d4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1267321043]
-amount = 20
+amount = 40
 texture = ExtResource("2_bk0pm")
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=782223890]
-amount = 20
+amount = 40
 texture = ExtResource("3_lo1a5")
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1292180420]
-amount = 20
+amount = 40
 texture = ExtResource("4_abhrn")
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 

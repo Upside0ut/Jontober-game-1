@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://uoucal8wf0nf" path="res://textures/bossabstractionplaceholder.png" id="2_ln3cr"]
 [ext_resource type="PackedScene" uid="uid://qgo7iscdcgxk" path="res://scenes/splatterRing.tscn" id="3_17mkm"]
 
-[node name="BossAbstraction" type="Node2D" unique_id=1086137296]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
+radius = 75.0
+
+[node name="BossAbstraction" type="CharacterBody2D" unique_id=1907947351]
 script = ExtResource("1_j3vxj")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=583160611]
@@ -24,4 +27,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_ln3cr")
 
-[node name="splatterwall" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]
+[node name="SplatterRing" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=193169275]
+shape = SubResource("CircleShape2D_7x0ad")
