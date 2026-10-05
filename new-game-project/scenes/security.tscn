@@ -49,8 +49,8 @@ radius = 44.0
 height = 108.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg5n2"]
-radius = 36.0
-height = 76.0
+radius = 25.0
+height = 50.0
 
 [node name="security" type="CharacterBody2D" unique_id=379221453]
 script = ExtResource("1_bg5n2")

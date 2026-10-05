@@ -13,6 +13,9 @@ var rng = RandomNumberGenerator.new()
 
 var targeting_player: bool = false
 
+func _ready() -> void:
+	get_destination()
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
