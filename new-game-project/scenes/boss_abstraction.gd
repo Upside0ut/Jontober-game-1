@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 enum States {IDLE, HUNTING, ATTACKING}
-var state = States.IDLE
+var state
 
 var rng = RandomNumberGenerator.new()
 
@@ -14,13 +14,15 @@ func changeState(newState):
 		States.IDLE:
 			idle()
 		States.HUNTING:
-			hunting()
+			pass
 		States.ATTACKING:
 			attack()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await wait(3)
+	get_parent().get_node("BossMusic").play()
 	changeState(States.IDLE)
 
 
@@ -37,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func idle():
-	await wait(3)
+	await wait(1)
 	changeState(States.HUNTING)
 
 func hunting():
@@ -57,7 +59,8 @@ func attack():
 		3:
 			feint()
 	
-	
+	close_opening()
+	changeState(States.IDLE)
 
 func decide_attack():
 	return rng.randi_range(0, 3) #make like a bunch of checks (e.g. distance, health)
@@ -78,6 +81,7 @@ func shoot():
 	
 	create_opening(-1)
 	print("shoot")
+	await wait(3)
 
 func feint():
 	print("feint")
