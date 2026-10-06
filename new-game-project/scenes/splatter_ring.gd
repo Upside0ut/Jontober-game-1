@@ -23,6 +23,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func get_random_ring_position():
+	return possibleOpeningPositions.pick_random()
 
 func create_random_opening():
 	get_node("OpeningArea").position = possibleOpeningPositions.pick_random()
