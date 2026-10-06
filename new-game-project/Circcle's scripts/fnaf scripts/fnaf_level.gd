@@ -17,6 +17,12 @@ extends Node2D
 @export var sixam_text : RichTextLabel
 @export var fade_animation : AnimationPlayer
 
+@export_group("Audio Nodes")
+@export var drone : AudioStreamPlayer
+@export var hour_tonk : AudioStreamPlayer
+@export var weird_clanking : AudioStreamPlayer
+@export var victory_jingle : AudioStreamPlayer
+
 # I'm realizing how DUMB I am for programming this to be this way so I'm
 # using this to disable everything once the night's over
 @export var gameplay_parent : Node2D 
@@ -29,12 +35,16 @@ var passed_time := 0.0
 var level_2_child_scene : Node2D
 var pad_open := false
 var alarm_turned_on := false
+var current_hour := 0
+var last_hour := 0
 
 var night_won := false
 var night_lost := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#error_chance = NightData.get_diff("error_chance")
+	
 	pad_opener.mouse_entered.connect(_on_pad_opener)
 	
 	fnaf_pad.plinko_won.connect(_on_plinko_won)
@@ -49,7 +59,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if night_won: return
+	if night_won: 
+		weird_clanking.pitch_scale = clampf(weird_clanking.pitch_scale - delta*0.03, 0.01, 1.0)
+		weird_clanking.volume_linear = clampf(weird_clanking.volume_linear - delta*0.03, 0.00, 1.0)
+		drone.volume_linear = clampf(drone.volume_linear - delta*0.03, 0.00, 1.0)
+		return
+			
+	#this is to play a sound when the hour changes
+	hour_checker()
+	
 	
 	if passed_time >= night_length:
 		gameplay_parent.process_mode = Node.PROCESS_MODE_DISABLED
@@ -58,11 +76,23 @@ func _process(delta: float) -> void:
 		night_won = true
 	else:
 		passed_time += delta
+		
+		
+		current_hour = int(passed_time/(night_length/6))
 		night_timer.text = "(%dAM) %02d:%02d" % [
-			12 if int(passed_time/(night_length/6)) == 0 else int(passed_time/(night_length/6)),
+			12 if current_hour == 0 else current_hour,
 			int(passed_time/60), 
 			int(passed_time)%60
 			]
+
+func hour_checker():
+	if current_hour != last_hour:
+		last_hour = current_hour
+		if current_hour == 6:
+			weird_clanking.play()
+			victory_jingle.play()
+		else:
+			hour_tonk.play()
 
 func win_night():
 	fade_animation.play("fade_in")
@@ -113,7 +143,3 @@ func _on_pad_opener():
 		print("out")
 		fnaf_pad.enter_view()
 		pad_open = true
-
-func _set_ai_level():
-	pass
-	# for later
