@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
-var move_speed = 200
+var move_speed = 300
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

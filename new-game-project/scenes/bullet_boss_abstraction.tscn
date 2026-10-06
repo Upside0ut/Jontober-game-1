@@ -5,17 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_aw8g4"]
 [ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_k7fxh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
-radius = 25.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_qg1vb"]
-radius = 23.0
+radius = 18.0
 
 [node name="BulletBossAbstraction" type="CharacterBody2D" unique_id=1579566049]
+collision_layer = 2
 script = ExtResource("1_qg1vb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1825004853]
-shape = SubResource("CircleShape2D_7x0ad")
 
 [node name="TextureRectBlue" type="TextureRect" parent="." unique_id=1571455910]
 visible = false

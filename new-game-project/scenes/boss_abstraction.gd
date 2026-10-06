@@ -72,10 +72,9 @@ func shoot():
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
 	add_child(bullet)
-	bullet.position = get_random_ring_position()
-	bullet.shoot(find_player_direction())
 	
-	get_random_ring_position()
+	bullet.position = get_nearest_ring_position_to(find_player_position())
+	bullet.shoot(find_player_direction())
 	
 	create_opening(-1)
 	print("shoot")
@@ -83,7 +82,12 @@ func shoot():
 func feint():
 	print("feint")
 
+func move_toward_player():
+	velocity = find_player_direction() * move_speed
 
+
+func get_nearest_ring_position_to(target_position: Vector2):
+	return get_node("SplatterRing").get_nearest_ring_position_to(target_position)
 
 func get_random_ring_position():
 	return get_node("SplatterRing").get_random_ring_position()
@@ -97,14 +101,14 @@ func create_opening(i):
 func close_opening():
 	get_node("SplatterRing").close_opening()
 
-func move_toward_player():
-	velocity = find_player_direction() * move_speed
-
 func find_player_direction():
 	return global_position.direction_to(get_parent().get_node("Player").global_position)
 
 func find_player_distance():
 	return global_position.distance_to(get_parent().get_node("Player").global_position)
+
+func find_player_position():
+	return get_parent().get_node("Player").global_position
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
