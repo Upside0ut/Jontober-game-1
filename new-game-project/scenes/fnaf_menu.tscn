@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://8a37yrjbwoxj"]
+
+[ext_resource type="Script" uid="uid://bxthsd40a2hon" path="res://fnaf_menu.gd" id="1_42mc7"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_73xbk"]
+
+[node name="FNAF Menu" type="Control" unique_id=1247075342 node_paths=PackedStringArray("nights")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_42mc7")
+nights = NodePath("MarginContainer/VBoxContainer3/VBoxContainer/RichTextLabel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1565737037]
+z_index = -2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1308759895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer" unique_id=1522878962]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer3" unique_id=939736670]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer3/VBoxContainer2" unique_id=1127273525]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Five Night's at Randy's"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3" unique_id=446761052]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer3/VBoxContainer" unique_id=1122561307]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Night [index here]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer3/VBoxContainer" unique_id=1749041039]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Start Night"
+alignment = 0
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer3/VBoxContainer" unique_id=1288099901]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Custom Night"
+alignment = 0
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=496703942]
+z_index = 999
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_73xbk")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer3/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b1tj4mbi07mxh"]
+
+[ext_resource type="Script" uid="uid://bwyyu3fyih0t7" path="res://Circcle's scripts/fnaf scripts/death_screen.gd" id="1_dwo6e"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_mqh5l"]
+
+[node name="Death Screen" type="Control" unique_id=1334104939 node_paths=PackedStringArray("fading_red")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dwo6e")
+fading_red = NodePath("Temporary Red thingy")
+
+[node name="Black" type="ColorRect" parent="." unique_id=1270036808]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Temporary Red thingy" type="ColorRect" parent="." unique_id=821105271]
+z_index = 999
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+script = ExtResource("2_mqh5l")

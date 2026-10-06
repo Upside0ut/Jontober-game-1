@@ -648,7 +648,6 @@ offset_right = 24284.0
 offset_bottom = 14402.0
 
 [node name="Plinko Pad" parent="." unique_id=1768494728 node_paths=PackedStringArray("plinko_prison", "prison_delete") instance=ExtResource("5_didps")]
-visible = false
 plinko_prison = NodePath("../goal [move to where you want]/Plinko Prison")
 prison_delete = NodePath("../prison_delete")
 
