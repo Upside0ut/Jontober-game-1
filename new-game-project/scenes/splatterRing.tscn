@@ -139,3 +139,12 @@ shape = SubResource("CircleShape2D_7x0ad")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTopLeft" unique_id=808809165]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[connection signal="body_entered" from="OpeningTop" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningTopRight" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningRight" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningBottomRight" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningBottom" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningBottomLeft" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningLeft" to="." method="_on_opening_body_entered"]
+[connection signal="body_entered" from="OpeningTopLeft" to="." method="_on_opening_body_entered"]

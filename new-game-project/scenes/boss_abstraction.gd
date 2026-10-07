@@ -6,8 +6,11 @@ var state
 var rng = RandomNumberGenerator.new()
 
 var move_speed = 1000
-var number_of_bullets_to_spray = rng.randi_range(6, 14)
-var waiting_time_after_shots = rng.randf_range(0.5, 2)
+var health = 100
+var on_hit_depleted_health = 50
+
+var number_of_bullets_to_spray = 6 #these are randomly generated in physics process
+var waiting_time_after_shots = 0.9
 
 
 func changeState(newState: States):
@@ -32,14 +35,24 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
-
+	
 	match state:
 		States.HUNTING:
 			hunting()
 		States.ATTACKING:
+			number_of_bullets_to_spray = rng.randi_range(6, 14)
+			waiting_time_after_shots = rng.randf_range(0.5, 2)
 			attacking()
 
 	move_and_slide()
+
+func depleteHealth():
+	print("Damaged: ")
+	print(on_hit_depleted_health)
+	health -= on_hit_depleted_health
+	#play damage anymation
+	await wait(3) #TODO might not work cus other thread is still running idk (atk continues)
+	changeState(States.IDLE)
 
 func idle():
 	await wait(1)

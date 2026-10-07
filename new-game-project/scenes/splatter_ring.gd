@@ -64,3 +64,9 @@ func create_opening(index):
 func close_openings():
 	for o in opening_array:
 		o.hide()
+
+
+func _on_opening_body_entered(body: Node2D) -> void:
+	if(body != get_parent().get_parent().get_node("Player")): #TODO this is ugly af but idk
+		return
+	get_parent().depleteHealth()
