@@ -6,8 +6,8 @@ var state
 var rng = RandomNumberGenerator.new()
 
 var move_speed = 1000
-var waiting_time_after_shots = 1
-var number_of_bullets_to_spray = 3
+var number_of_bullets_to_spray = rng.randi_range(6, 14)
+var waiting_time_after_shots = rng.randf_range(0.5, 2)
 
 
 func changeState(newState: States):
@@ -46,7 +46,7 @@ func idle():
 	changeState(States.HUNTING)
 
 func hunting():
-	if (find_player_distance() > 500):
+	if (find_player_distance() > 1000):
 		move_toward_player()
 	else:
 		changeState(States.ATTACKING)
@@ -74,7 +74,7 @@ func attacking():
 func dash():
 	print("dash")
 
-func spray(number_of_bullets: int, waiting_time_after_shot: int):
+func spray(number_of_bullets: int, waiting_time_after_shot: float):
 	create_opening(-1)
 	for i in range(0, number_of_bullets):
 		await shoot_bullet()
