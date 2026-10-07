@@ -6,8 +6,11 @@ var state
 var rng = RandomNumberGenerator.new()
 
 var move_speed = 1000
+var waiting_time_after_shots = 1
+var number_of_bullets_to_spray = 3
 
-func changeState(newState):
+
+func changeState(newState: States):
 	state = newState
 	
 	match state:
@@ -53,13 +56,13 @@ func attack():
 		0:
 			changeState(States.IDLE)
 		1:
-			dash()
+			await dash()
 		2:
-			shoot()
+			await spray(number_of_bullets_to_spray, waiting_time_after_shots)
 		3:
-			feint()
+			await feint()
 	
-	close_opening()
+	close_openings()
 	changeState(States.IDLE)
 
 func decide_attack():
@@ -71,17 +74,19 @@ func attacking():
 func dash():
 	print("dash")
 
-func shoot():
+func spray(number_of_bullets: int, waiting_time_after_shot: int):
+	create_opening(-1)
+	for i in range(0, number_of_bullets):
+		await shoot_bullet()
+		await wait(waiting_time_after_shot)
+
+func shoot_bullet():
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
-	add_child(bullet)
+	add_sibling(bullet)
 	
-	bullet.position = get_nearest_ring_position_to(find_player_position())
+	bullet.global_position = get_nearest_ring_position_to(find_player_position())
 	bullet.shoot(find_player_direction())
-	
-	create_opening(-1)
-	print("shoot")
-	await wait(3)
 
 func feint():
 	print("feint")
@@ -90,20 +95,20 @@ func move_toward_player():
 	velocity = find_player_direction() * move_speed
 
 
+
 func get_nearest_ring_position_to(target_position: Vector2):
-	return get_node("SplatterRing").get_nearest_ring_position_to(target_position)
+	return get_node("SplatterRing").get_nearest_global_ring_position_to(target_position)
 
-func get_random_ring_position():
-	return get_node("SplatterRing").get_random_ring_position()
 
-func create_opening(i):
-	if(-1 < i and i < 9):
+func create_opening(i: int):
+	if(-1 < i and i < 8):
 		get_node("SplatterRing").create_opening(i)
 	else:
 		get_node("SplatterRing").create_random_opening()
 
-func close_opening():
-	get_node("SplatterRing").close_opening()
+func close_openings():
+	get_node("SplatterRing").close_openings()
+
 
 func find_player_direction():
 	return global_position.direction_to(get_parent().get_node("Player").global_position)

@@ -68,10 +68,74 @@ process_material = SubResource("ParticleProcessMaterial_u0ya7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=884058648]
 shape = SubResource("CircleShape2D_nvwpn")
 
-[node name="OpeningArea" type="Area2D" parent="." unique_id=1467807575]
+[node name="OpeningTop" type="Area2D" parent="." unique_id=1467807575]
+position = Vector2(0, -300)
 
-[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningArea" unique_id=1505604448]
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTop" unique_id=1505604448]
 shape = SubResource("CircleShape2D_7x0ad")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningArea" unique_id=1989210194]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTop" unique_id=1989210194]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningTopRight" type="Area2D" parent="." unique_id=484902016]
+position = Vector2(200, -200)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopRight" unique_id=1315349108]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTopRight" unique_id=1309042161]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningRight" type="Area2D" parent="." unique_id=706442723]
+position = Vector2(300, 0)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningRight" unique_id=1469659570]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningRight" unique_id=1728550778]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningBottomRight" type="Area2D" parent="." unique_id=1224518769]
+position = Vector2(200, 200)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomRight" unique_id=849898299]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottomRight" unique_id=611074939]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningBottom" type="Area2D" parent="." unique_id=636135488]
+position = Vector2(0, 300)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottom" unique_id=1754393642]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottom" unique_id=1675555627]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningBottomLeft" type="Area2D" parent="." unique_id=1822276765]
+position = Vector2(-200, 200)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomLeft" unique_id=1061535549]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottomLeft" unique_id=1123926778]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningLeft" type="Area2D" parent="." unique_id=383867447]
+position = Vector2(-300, 0)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningLeft" unique_id=2088609519]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningLeft" unique_id=1303949067]
+occluder = SubResource("OccluderPolygon2D_rs1r3")
+
+[node name="OpeningTopLeft" type="Area2D" parent="." unique_id=1957515551]
+position = Vector2(-200, -200)
+
+[node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopLeft" unique_id=1668636886]
+shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTopLeft" unique_id=808809165]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
