@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://5q437uajs8qo"]
 
 [ext_resource type="Texture2D" uid="uid://dfmwpp6mowwd8" path="res://textures/titlescreen_transparent.png" id="1_t7v6v"]
+[ext_resource type="Script" uid="uid://cxp7bh21q0cnm" path="res://scripts/funky.gd" id="1_v7hj3"]
 [ext_resource type="Texture2D" uid="uid://bvocaxfwufcty" path="res://frames/jontober_baller_game_background_main_menu1.png" id="1_w77yj"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="2_3jj3l"]
 [ext_resource type="Texture2D" uid="uid://be8y4gigepbdq" path="res://frames/jontober_baller_game_background_main_menu2.png" id="2_v7hj3"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d27xt8n64d5lb" path="res://frames/jontober_baller_game_background_main_menu4.png" id="4_hcbn3"]
 [ext_resource type="Texture2D" uid="uid://dqrkw4giqjoor" path="res://frames/jontober_baller_game_background_main_menu5.png" id="5_ybki2"]
 [ext_resource type="Texture2D" uid="uid://cj2qjvq7vlj84" path="res://frames/jontober_baller_game_background_main_menu6.png" id="6_lsij0"]
+[ext_resource type="Texture2D" uid="uid://cpey6das2whvk" path="res://scripts/FUNKYtitlescreen_transparent.png" id="9_hcbn3"]
+[ext_resource type="Shader" uid="uid://maog1cdx4xwh" path="res://scenes/wavy.gdshader" id="11_8or72"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{
@@ -75,6 +78,12 @@ _data = {
 &"scroll": SubResource("Animation_v7hj3")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7hj3"]
+shader = ExtResource("11_8or72")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
 [node name="Node2D" type="Control" unique_id=1175869620]
 layout_mode = 3
 anchors_preset = 15
@@ -82,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v7hj3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=913554787]
 layout_mode = 1
@@ -123,6 +133,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_t7v6v")
 stretch_mode = 5
+
+[node name="FUNKYTextureRect" type="TextureRect" parent="." unique_id=439887013]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("9_hcbn3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=777507616]
 layout_mode = 1
@@ -171,6 +188,18 @@ text = "Credits
 "
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1357203060]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 110
+text = "ROLLING RANDY"
+
+[node name="FUNKYlabel" type="Label" parent="MarginContainer" unique_id=2109052490]
+visible = false
+material = SubResource("ShaderMaterial_v7hj3")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
