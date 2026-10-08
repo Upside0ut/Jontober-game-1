@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dx225qcj8720d"]
+
+[ext_resource type="Script" uid="uid://cvgd1xm1ng30l" path="res://scripts/art_stand.gd" id="1_3s62i"]
+[ext_resource type="Texture2D" uid="uid://c6lq1ita042yp" path="res://textures/ahiga's abstract art/ahiga_art2C.png" id="2_3s62i"]
+
+[node name="art_stand" type="Node2D" unique_id=318450639]
+script = ExtResource("1_3s62i")
+
+[node name="Stand_placeholder" type="ColorRect" parent="." unique_id=2086653630]
+offset_left = -69.0
+offset_top = -34.0
+offset_right = 66.0
+offset_bottom = 34.0
+
+[node name="Label" type="Label" parent="." unique_id=1683289209]
+visible = false
+offset_left = -84.0
+offset_top = -71.0
+offset_right = 83.0
+offset_bottom = -37.0
+theme_override_colors/font_outline_color = Color(0.1422182, 0.15738872, 0.1861651, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 20
+text = "Teeth Guy"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1588222822]
+z_index = 100
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 43.0
+offset_bottom = 26.0
+texture = ExtResource("2_3s62i")
+
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="." method="_on_texture_rect_mouse_exited"]
