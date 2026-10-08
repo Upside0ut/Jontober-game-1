@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://66ss0c06v8ik" path="res://textures/ahiga's abstract art/ahiga_art1D.png" id="9_ibf6s"]
 [ext_resource type="Texture2D" uid="uid://cuyiu4ex0gked" path="res://textures/ahiga's abstract art/ahiga_art1E.png" id="10_2p7e6"]
 [ext_resource type="PackedScene" uid="uid://dx225qcj8720d" path="res://scenes/art_stand.tscn" id="11_rnusd"]
+[ext_resource type="PackedScene" uid="uid://xhi61850i46s" path="res://scenes/graffiti.tscn" id="12_ojtht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(2048, 123)
@@ -86,5 +87,7 @@ position = Vector2(16.749756, 383.63452)
 rotation = -0.04363323
 scale = Vector2(2, 2)
 art_name = "Teeth Guy"
+
+[node name="graffiti" parent="." unique_id=685184417 instance=ExtResource("12_ojtht")]
 
 [editable path="player_2"]

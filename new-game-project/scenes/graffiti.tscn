@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://xhi61850i46s"]
+
+[ext_resource type="Script" uid="uid://8mrg6q6txbxi" path="res://scripts/graffiti.gd" id="1_5dhfj"]
+
+[node name="graffiti" type="Node2D" unique_id=685184417]
+script = ExtResource("1_5dhfj")
