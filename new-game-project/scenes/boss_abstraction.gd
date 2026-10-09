@@ -1,17 +1,16 @@
 extends CharacterBody2D
 
-enum States {IDLE, HUNTING, ATTACKING}
+enum States {IDLE, HUNTING, ATTACKING, SCARED}
 var state
 
 var rng = RandomNumberGenerator.new()
 
 var move_speed = 1000
+var sprint_speed = 1700
 var health = 100
 var on_hit_depleted_health = 50
 
-var number_of_bullets_to_spray = 6 #these are randomly generated in physics process
-var waiting_time_after_shots = 0.9
-
+var standard_spray_time = 5
 
 func changeState(newState: States):
 	state = newState
@@ -20,6 +19,8 @@ func changeState(newState: States):
 		States.IDLE:
 			idle()
 		States.HUNTING:
+			pass
+		States.SCARED:
 			pass
 		States.ATTACKING:
 			attack()
@@ -36,13 +37,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
+	if health < 1:
+		die()
+	
 	match state:
+		States.IDLE:
+			pass
 		States.HUNTING:
 			hunting()
 		States.ATTACKING:
-			number_of_bullets_to_spray = rng.randi_range(6, 14)
-			waiting_time_after_shots = rng.randf_range(0.5, 2)
 			attacking()
+		States.SCARED:
+			scared()
 
 	move_and_slide()
 
@@ -51,18 +57,32 @@ func depleteHealth():
 	print(on_hit_depleted_health)
 	health -= on_hit_depleted_health
 	#play damage anymation
-	await wait(3) #TODO might not work cus other thread is still running idk (atk continues)
-	changeState(States.IDLE)
+	$Timer.stop()
+	$Timer.timeout.emit()
+	await wait(0.3)
+	$SplatterRing/spikes.set_deferred("monitorable", true)
+	changeState(States.SCARED) #TODO might not work cus other thread is still running idk (atk continues)
+
+func die():
+	print("DEAD")
+	queue_free()
 
 func idle():
-	await wait(1)
 	changeState(States.HUNTING)
 
 func hunting():
-	if (find_player_distance() > 1000):
-		move_toward_player()
+	if (find_player_distance() > 1500):
+		move_toward_player(move_speed)
 	else:
+		print("hunt to atk")
 		changeState(States.ATTACKING)
+
+func scared():
+	if (find_player_distance() < 500):
+		move_away_from_player(sprint_speed)
+	else:
+		print("scared to idle")
+		changeState(States.IDLE)
 
 func attack():
 	match 2:
@@ -71,12 +91,11 @@ func attack():
 		1:
 			await dash()
 		2:
-			await spray(number_of_bullets_to_spray, waiting_time_after_shots)
+			await spray(standard_spray_time)
 		3:
 			await feint()
 	
 	close_openings()
-	changeState(States.IDLE)
 
 func decide_attack():
 	return rng.randi_range(0, 3) #make like a bunch of checks (e.g. distance, health)
@@ -87,40 +106,43 @@ func attacking():
 func dash():
 	print("dash")
 
-func spray(number_of_bullets: int, waiting_time_after_shot: float):
+func spray(time: float):
 	create_opening(-1)
-	for i in range(0, number_of_bullets):
+	$Timer.start(time)
+	while $Timer.time_left > 0:
 		await shoot_bullet()
-		await wait(waiting_time_after_shot)
+		print("shot")
+		await wait(1)
 
 func shoot_bullet():
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
 	add_sibling(bullet)
 	
-	bullet.global_position = get_nearest_ring_position_to(find_player_position())
+	
+	bullet.global_position = $SplatterRing.get_nearest_global_ring_position_to(find_player_position(), true)
 	bullet.shoot(find_player_direction())
 
 func feint():
 	print("feint")
 
-func move_toward_player():
-	velocity = find_player_direction() * move_speed
+func move_toward_player(speed: int):
+	velocity = find_player_direction() * speed
 
+func move_away_from_player(speed: int):
+	velocity = -find_player_direction() * speed
 
-
-func get_nearest_ring_position_to(target_position: Vector2):
-	return get_node("SplatterRing").get_nearest_global_ring_position_to(target_position)
-
+func get_current_opening():
+	$SplatterRing.get_current_opening()
 
 func create_opening(i: int):
 	if(-1 < i and i < 8):
-		get_node("SplatterRing").create_opening(i)
+		$SplatterRing.create_opening(i)
 	else:
-		get_node("SplatterRing").create_random_opening()
+		$SplatterRing.create_random_opening()
 
 func close_openings():
-	get_node("SplatterRing").close_openings()
+	$SplatterRing.close_openings()
 
 
 func find_player_direction():

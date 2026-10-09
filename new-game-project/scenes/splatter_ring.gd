@@ -36,18 +36,31 @@ func _ready() -> void:
 		opening_left,
 		opening_top_left
 	]
+	
+	for o in opening_array:
+		o.body_entered.connect(_on_opening_body_entered.bind(o))
+	
+	$spikes.set_deferred("monitorable", true)
 	close_openings()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func get_current_opening():
+	for o in opening_array:
+		if o.visible:
+			return o
 
-func get_nearest_global_ring_position_to(target_position: Vector2):
+func get_nearest_global_ring_position_to(target_position: Vector2, exclude_current_opening: bool):
 	var closest_node
 	var closest_distance = INF
 	
 	for o in opening_array:
+		if (exclude_current_opening):
+			if get_current_opening() == o:
+				continue
+		
 		var distance = target_position.distance_to(o.global_position)
 		if distance < closest_distance:
 			closest_distance = distance
@@ -65,8 +78,11 @@ func close_openings():
 	for o in opening_array:
 		o.hide()
 
-
-func _on_opening_body_entered(body: Node2D) -> void:
+func _on_opening_body_entered(body: Node2D, opening: Area2D) -> void:
 	if(body != get_parent().get_parent().get_node("Player")): #TODO this is ugly af but idk
 		return
+	if(!opening.visible):
+		return
+	
+	$spikes.set_deferred("monitorable", false)
 	get_parent().depleteHealth()

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="2_w1mq1"]
 [ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_hb6ii"]
 [ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_ln83t"]
+[ext_resource type="Shape2D" uid="uid://bwc8ovaqlskcr" path="res://scenes/rectangular_opening_collision.tres" id="5_jnjwr"]
 
 [sub_resource type="Curve" id="Curve_wt34f"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -31,9 +32,6 @@ collision_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvwpn"]
 radius = 300.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
-radius = 53.515812
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rs1r3"]
 polygon = PackedVector2Array(-1.5730032, -53.02334, 27.634752, -46.020256, 46.198658, -27.01189, 52.94064, -2.0008807, 46.74198, 25.01101, 30.30589, 44.019375, 1.5730032, 53.02334, -27.634752, 46.020256, -46.228336, 26.01145, -52.851604, 5.002202, -51.44519, -15.006605, -40.068455, -36.015854, -23.424606, -48.021137)
@@ -72,16 +70,17 @@ shape = SubResource("CircleShape2D_nvwpn")
 position = Vector2(0, -300)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTop" unique_id=1505604448]
-shape = SubResource("CircleShape2D_7x0ad")
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTop" unique_id=1989210194]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningTopRight" type="Area2D" parent="." unique_id=484902016]
-position = Vector2(200, -200)
+position = Vector2(210, -210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopRight" unique_id=1315349108]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = 0.7853982
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTopRight" unique_id=1309042161]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
@@ -90,16 +89,18 @@ occluder = SubResource("OccluderPolygon2D_rs1r3")
 position = Vector2(300, 0)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningRight" unique_id=1469659570]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = 1.5707964
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningRight" unique_id=1728550778]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningBottomRight" type="Area2D" parent="." unique_id=1224518769]
-position = Vector2(200, 200)
+position = Vector2(210, 210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomRight" unique_id=849898299]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = -0.7853982
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottomRight" unique_id=611074939]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
@@ -108,16 +109,17 @@ occluder = SubResource("OccluderPolygon2D_rs1r3")
 position = Vector2(0, 300)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottom" unique_id=1754393642]
-shape = SubResource("CircleShape2D_7x0ad")
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottom" unique_id=1675555627]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningBottomLeft" type="Area2D" parent="." unique_id=1822276765]
-position = Vector2(-200, 200)
+position = Vector2(-210, 210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomLeft" unique_id=1061535549]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = 0.7853982
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningBottomLeft" unique_id=1123926778]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
@@ -126,25 +128,18 @@ occluder = SubResource("OccluderPolygon2D_rs1r3")
 position = Vector2(-300, 0)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningLeft" unique_id=2088609519]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = 1.5707964
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningLeft" unique_id=1303949067]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningTopLeft" type="Area2D" parent="." unique_id=1957515551]
-position = Vector2(-200, -200)
+position = Vector2(-210, -210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopLeft" unique_id=1668636886]
-shape = SubResource("CircleShape2D_7x0ad")
+rotation = -0.7853982
+shape = ExtResource("5_jnjwr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="OpeningTopLeft" unique_id=808809165]
 occluder = SubResource("OccluderPolygon2D_rs1r3")
-
-[connection signal="body_entered" from="OpeningTop" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningTopRight" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningRight" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningBottomRight" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningBottom" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningBottomLeft" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningLeft" to="." method="_on_opening_body_entered"]
-[connection signal="body_entered" from="OpeningTopLeft" to="." method="_on_opening_body_entered"]

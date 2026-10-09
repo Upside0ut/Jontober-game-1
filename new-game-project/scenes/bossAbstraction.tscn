@@ -34,3 +34,5 @@ shape = SubResource("CircleShape2D_7x0ad")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267220581]
 root_node = NodePath("../CollisionShape2D")
+
+[node name="Timer" type="Timer" parent="." unique_id=538739387]
