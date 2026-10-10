@@ -18,6 +18,30 @@
 [ext_resource type="Texture2D" uid="uid://dmsu42k2dlsn2" path="res://frames/bossframes/teethidle/frame_0_delay-0.1s.png" id="15_okipd"]
 [ext_resource type="Texture2D" uid="uid://cx8384d2ofh2q" path="res://frames/bossframes/teethidle/frame_1_delay-0.1s.png" id="16_qp8m4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okipd"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.22745098, 0, 0, 0.3019608)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp8m4"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.7294118, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7x0ad"]
 animations = [{
 "frames": [{
@@ -79,6 +103,22 @@ animations = [{
 [node name="BossAbstraction" type="CharacterBody2D" unique_id=1907947351]
 script = ExtResource("1_j3vxj")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=9365886]
+
+[node name="BossBar" type="ProgressBar" parent="CanvasLayer" unique_id=883288882]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 50.0
+offset_right = 350.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_okipd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qp8m4")
+value = 100.0
+show_percentage = false
+
 [node name="Timer" type="Timer" parent="." unique_id=538739387]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267220581]
@@ -116,3 +156,8 @@ speed_scale = 2.0
 
 [node name="SplatterRing" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]
 position = Vector2(0, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1776404460]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

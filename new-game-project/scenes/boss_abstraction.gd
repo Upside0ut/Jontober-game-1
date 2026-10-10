@@ -11,13 +11,16 @@ var previous_player_distance = 0
 var stuck_too_long = false
 var current_dash_point
 var dash_counter = 0
+var on_screen = false
+var bar_fully_loaded = false
 
 var move_speed = 1000
 var sprint_speed = 2000
 var health = 100
 var on_hit_depleted_health = 50
 
-var standard_spray_time = 5
+var standard_spray_time = 10
+var standard_bullet_time = 0.5
 var standard_feint_time = 5
 
 func changeState(newState: States):
@@ -37,15 +40,27 @@ func changeState(newState: States):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent().get_node("Player")
+	$CanvasLayer/BossBar.hide()
+	$CanvasLayer/BossBar.value = 0
 	
 	await wait(3)
+	
 	get_parent().get_node("BossMusic").play()
 	changeState(States.IDLE)
+	$CanvasLayer/BossBar.show()
+	
+	while($CanvasLayer/BossBar.value != 100):
+		$CanvasLayer/BossBar.value += 2
+		await wait(0.01)
+	bar_fully_loaded = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
+	
+	if(bar_fully_loaded):
+		$CanvasLayer/BossBar.value = health
 	
 	if health < 1:
 		die()
@@ -65,13 +80,6 @@ func _physics_process(delta: float) -> void:
 			dashing()
 	
 	move_and_slide()
-	
-	if state == States.HUNTING and previous_player_distance <= find_player_distance():
-		stuck_too_long = true
-		changeState(States.IDLE)
-		print("STUCK TOO LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG")
-	else:
-		stuck_too_long = false
 
 func depleteHealth():
 	print("Damaged: ")
@@ -93,7 +101,7 @@ func idle():
 		changeState(States.ATTACKING)
 		return
 	
-	if (find_player_distance() > 1500):
+	if (find_player_distance() > 1500 or !on_screen):
 		changeState(States.HUNTING)
 		return
 	
@@ -121,7 +129,7 @@ func attack():
 			await dash()
 			return
 		2:
-			await spray(standard_spray_time)
+			await spray(standard_spray_time, standard_bullet_time)
 		3:
 			await feint(standard_feint_time)
 	
@@ -168,23 +176,44 @@ func dashing():
 		changeState(States.IDLE)
 		return
 	
+	if(!on_screen):
+		changeState(States.IDLE)
+		return
+	
 	velocity = global_position.direction_to(current_dash_point.global_position) * move_speed
 
 func reached_dash_point():
 	if (state == States.DASHING):
 		changeState(States.IDLE)
 
-func spray(time: float):
+func spray(total_time: float, time_between_bullets):
 	create_opening(-1)
 	$Timer.one_shot = true
-	$Timer.start(time)
+	$Timer.start(total_time)
+	
+	var spray_while_not_on_screen_conuter = 0
 	while $Timer.time_left > 0:
+		if (!on_screen):
+			if (spray_while_not_on_screen_conuter > 5):
+				$Timer.stop()
+				$Timer.timeout.emit()
+				break
+			spray_while_not_on_screen_conuter += 1
+		
 		await shoot_bullet()
 		print($Timer.time_left)
-		await wait(1)
+		await wait(time_between_bullets)
 	$Timer.stop()
 
 func shoot_bullet():
+	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
+	var bullet = bulletScene.instantiate()
+	add_sibling(bullet)
+	
+	bullet.global_position = $SplatterRing.get_random_global_ring_position(true)
+	bullet.shoot(global_position.direction_to(bullet.global_position))
+
+func shoot_targeting_bullet():
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
 	add_sibling(bullet)
@@ -252,3 +281,10 @@ func find_player_position():
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
+
+
+func _on_screen_entered() -> void:
+	on_screen = true
+
+func _on_screen_exited() -> void:
+	on_screen = false

@@ -52,6 +52,15 @@ func get_current_opening():
 		if o.visible:
 			return o
 
+func get_random_global_ring_position(exclude_current_opening):
+	var opening = opening_array.pick_random()
+	
+	if (exclude_current_opening):
+		while get_current_opening() == opening:
+			opening = opening_array.pick_random()
+	
+	return opening.global_position
+
 func get_nearest_global_ring_position_to(target_position: Vector2, exclude_current_opening: bool):
 	var closest_node
 	var closest_distance = INF
