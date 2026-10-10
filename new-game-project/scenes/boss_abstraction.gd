@@ -5,6 +5,8 @@ var state
 
 var rng = RandomNumberGenerator.new()
 
+var player
+
 var move_speed = 1000
 var sprint_speed = 1700
 var health = 100
@@ -28,6 +30,8 @@ func changeState(newState: States):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_parent().get_node("Player")
+	
 	await wait(3)
 	get_parent().get_node("BossMusic").play()
 	changeState(States.IDLE)
@@ -61,14 +65,21 @@ func depleteHealth():
 	$Timer.timeout.emit()
 	await wait(0.3)
 	$SplatterRing/spikes.set_deferred("monitorable", true)
-	changeState(States.SCARED) #TODO might not work cus other thread is still running idk (atk continues)
+	changeState(States.SCARED)
 
 func die():
 	print("DEAD")
 	queue_free()
 
 func idle():
-	changeState(States.HUNTING)
+	if (find_player_position() > 3000):
+		changeState(States.HUNTING)
+		return
+	
+	if (clear_shot()):
+		changeState(States.ATTACKING)
+		return
+	
 
 func hunting():
 	if (find_player_distance() > 1500):
@@ -98,7 +109,23 @@ func attack():
 	close_openings()
 
 func decide_attack():
-	return rng.randi_range(0, 3) #make like a bunch of checks (e.g. distance, health)
+	if(find_player_distance() > 2000 and !clear_shot()):
+		if(clear_shot()):
+			return [1, 1, 2].pick_random()
+		else:
+			return 1
+	
+	if(find_player_distance() > 700):
+		if(clear_shot()):
+			return [2, 2, 2, 1].pick_random()
+		else:
+			return 1
+	
+	if(clear_shot()):
+		return [2, 2, 2, 1].pick_random()
+	
+	
+	
 
 func attacking():
 	pass
@@ -144,6 +171,20 @@ func create_opening(i: int):
 func close_openings():
 	$SplatterRing.close_openings()
 
+func clear_shot():
+	var space_state = get_world_2d().direct_space_state
+	
+	var params = PhysicsRayQueryParameters2D.new()
+	params.from = global_position
+	params.to = player.global_position
+	params.exclude = [] 
+	
+	
+	var result = space_state.intersect_ray(params)
+	
+	if (result):
+		return true
+	return false
 
 func find_player_direction():
 	return global_position.direction_to(get_parent().get_node("Player").global_position)
