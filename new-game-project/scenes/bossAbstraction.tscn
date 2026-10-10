@@ -1,11 +1,87 @@
 [gd_scene format=3 uid="uid://chp448cbirpbb"]
 
 [ext_resource type="Script" uid="uid://gohxggj1a7qf" path="res://scenes/boss_abstraction.gd" id="1_j3vxj"]
-[ext_resource type="Texture2D" uid="uid://uoucal8wf0nf" path="res://textures/bossabstractionplaceholder.png" id="2_ln3cr"]
+[ext_resource type="Texture2D" uid="uid://cffnoswnm0ysf" path="res://textures/boss/jontober_boss_body.png" id="2_3kr0g"]
 [ext_resource type="PackedScene" uid="uid://qgo7iscdcgxk" path="res://scenes/splatterRing.tscn" id="3_17mkm"]
+[ext_resource type="Texture2D" uid="uid://b6o4ihf57xmep" path="res://frames/bossframes/weirdLipThing/frame_00_delay-0.1s.png" id="4_kpon3"]
+[ext_resource type="Texture2D" uid="uid://7rtml3ciuqft" path="res://frames/bossframes/weirdLipThing/frame_01_delay-0.1s.png" id="5_c51kp"]
+[ext_resource type="Texture2D" uid="uid://b0sdj68nyhpuw" path="res://frames/bossframes/weirdLipThing/frame_02_delay-0.1s.png" id="6_okipd"]
+[ext_resource type="Texture2D" uid="uid://cegj8jyykbmy8" path="res://frames/bossframes/weirdLipThing/frame_03_delay-0.1s.png" id="7_qp8m4"]
+[ext_resource type="Texture2D" uid="uid://ddw2okx7wgqh0" path="res://frames/bossframes/weirdLipThing/frame_04_delay-0.1s.png" id="8_u6bdx"]
+[ext_resource type="Texture2D" uid="uid://cqkia2ky253lm" path="res://frames/bossframes/weirdLipThing/frame_05_delay-0.1s.png" id="9_70ms6"]
+[ext_resource type="Texture2D" uid="uid://bhqkj30t4yab" path="res://frames/bossframes/weirdLipThing/frame_06_delay-0.1s.png" id="10_8sxgw"]
+[ext_resource type="Texture2D" uid="uid://xtan15iat2gr" path="res://frames/bossframes/weirdLipThing/frame_07_delay-0.1s.png" id="11_33ua7"]
+[ext_resource type="Texture2D" uid="uid://bh2q0jko33vvb" path="res://frames/bossframes/weirdLipThing/frame_08_delay-0.1s.png" id="12_gpj6j"]
+[ext_resource type="Texture2D" uid="uid://cyov8srwj0tuh" path="res://frames/bossframes/weirdLipThing/frame_09_delay-0.1s.png" id="13_sqgrm"]
+[ext_resource type="Texture2D" uid="uid://788tqb10wnhw" path="res://frames/bossframes/weirdLipThing/frame_10_delay-0.1s.png" id="14_ib71g"]
+[ext_resource type="Texture2D" uid="uid://csiq5jq7tut7b" path="res://frames/bossframes/weirdLipThing/frame_11_delay-0.1s.png" id="15_lw7kb"]
+[ext_resource type="Texture2D" uid="uid://dmsu42k2dlsn2" path="res://frames/bossframes/teethidle/frame_0_delay-0.1s.png" id="15_okipd"]
+[ext_resource type="Texture2D" uid="uid://cx8384d2ofh2q" path="res://frames/bossframes/teethidle/frame_1_delay-0.1s.png" id="16_qp8m4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x0ad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kpon3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c51kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_okipd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qp8m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u6bdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_70ms6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8sxgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_33ua7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gpj6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sqgrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ib71g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lw7kb")
+}],
+"loop": 1,
+"name": &"mouththingy",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rs1r3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_okipd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qp8m4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BossAbstraction" type="CharacterBody2D" unique_id=1907947351]
 script = ExtResource("1_j3vxj")
+
+[node name="Timer" type="Timer" parent="." unique_id=538739387]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267220581]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=583160611]
 anchors_preset = 8
@@ -13,20 +89,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -250.0
-offset_right = 170.0
-offset_bottom = 168.0
+offset_left = -335.0
+offset_top = -335.0
+offset_right = 335.0
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.2, 1.2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_ln3cr")
+texture = ExtResource("2_3kr0g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317845324]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7x0ad")
+animation = &"mouththingy"
+autoplay = "mouththingy"
+frame_progress = 0.4385399
+speed_scale = 2.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=256918630]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rs1r3")
+autoplay = "default"
+frame_progress = 0.5986465
+speed_scale = 2.0
 
 [node name="SplatterRing" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267220581]
-root_node = NodePath("")
-
-[node name="Timer" type="Timer" parent="." unique_id=538739387]
+position = Vector2(0, 1)
