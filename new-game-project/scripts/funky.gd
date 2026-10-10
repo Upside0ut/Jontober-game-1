@@ -1,6 +1,8 @@
 extends Control
 
 
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$MarginContainer/FUNKYlabel.hide()
@@ -23,9 +25,12 @@ func _process(delta: float) -> void:
 		$TextureRect.hide()
 		move_texture_around()
 		
-		$MarginContainer/VBoxContainer/play.text = "FUNKY"
-		$MarginContainer/VBoxContainer/options.text = "FUNKY"
-		$MarginContainer/VBoxContainer/lvlSelect.text = "FUNKY"
+		$song.stop()
+		$FunkyBall.play()
+		
+		$MarginContainer/VBoxContainer/play.text = "FUNKYstart"
+		$MarginContainer/VBoxContainer/options.text = "FUNKYoptions"
+		$MarginContainer/VBoxContainer/lvlSelect.text = "FUNKYlevels"
 		$MarginContainer/VBoxContainer/credits.text = "FUNKYcredits"
 		switch_up_btn_positions()
 		
@@ -46,32 +51,27 @@ func switch_up_btn_positions():
 		await wait(0.3)
 
 func move_to_random_position(object):
-	var rng = RandomNumberGenerator.new()
 	var t: Tween = create_tween().set_loops()
 	
 	t.tween_property(object, "global_position", Vector2(rng.randi_range(0, 800), rng.randi_range(0, 570)), 0.2)
 
 func move_texture_around():
-	var t: Tween = create_tween().set_loops()
+	var t: Tween = create_tween()
 	
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(50, 200), 0.5)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(300, 250), 0.1)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(300, 300), 0.3)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(400, 350), 0.1)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(350, 300), 0.1)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(400, 40), 0.2)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(100, 100), 0.1)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(400, 300), 0.1)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(300, 300), 0.4)
-	t.tween_property($FUNKYTextureRect, "global_position", Vector2(20, 15), 0.1)
+	t.tween_property($FUNKYTextureRect, "global_position", Vector2(
+	rng.randi_range(-200, 400),
+	rng.randi_range(-200, 300)),
+	0.7)
+	
+	t.tween_callback(move_texture_around)
 
 func gradually_switch_colors():
 	var t: Tween = create_tween().set_loops()
-	t.tween_property($ColorRect, "modulate", Color.DEEP_PINK, 0.2)
-	t.tween_property($ColorRect, "modulate", Color.GREEN, 0.2)
-	t.tween_property($ColorRect, "modulate", Color.YELLOW, 0.2)
-	t.tween_property($ColorRect, "modulate", Color.RED, 0.2)
-	t.tween_property($ColorRect, "modulate", Color.PURPLE, 0.2)
+	t.tween_property($ColorRect, "color", Color.DEEP_PINK, 0.2)
+	t.tween_property($ColorRect, "color", Color.GREEN, 0.2)
+	t.tween_property($ColorRect, "color", Color.YELLOW, 0.2)
+	t.tween_property($ColorRect, "color", Color.RED, 0.2)
+	t.tween_property($ColorRect, "color", Color.PURPLE, 0.2)
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bngoyqt4dwfyg"
+path="res://.godot/imported/funky ball.mp3-db9a476abb73818e60ba8526eaaa3c0b.mp3str"
+
+[deps]
+
+source_file="res://music/funky ball.mp3"
+dest_files=["res://.godot/imported/funky ball.mp3-db9a476abb73818e60ba8526eaaa3c0b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

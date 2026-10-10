@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cj2qjvq7vlj84" path="res://frames/jontober_baller_game_background_main_menu6.png" id="6_lsij0"]
 [ext_resource type="Texture2D" uid="uid://cpey6das2whvk" path="res://scripts/FUNKYtitlescreen_transparent.png" id="9_hcbn3"]
 [ext_resource type="Shader" uid="uid://maog1cdx4xwh" path="res://scenes/wavy.gdshader" id="11_8or72"]
+[ext_resource type="AudioStream" uid="uid://bngoyqt4dwfyg" path="res://music/funky ball.mp3" id="14_ybki2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{
@@ -220,6 +221,10 @@ text = "Made in 1 day for Jontober 2026"
 stream = ExtResource("3_tt55a")
 volume_db = -3.0
 autoplay = true
+
+[node name="FunkyBall" type="AudioStreamPlayer" parent="." unique_id=688859283]
+stream = ExtResource("14_ybki2")
+parameters/looping = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/lvlSelect" to="MarginContainer/VBoxContainer" method="_on_lvl_select_pressed"]

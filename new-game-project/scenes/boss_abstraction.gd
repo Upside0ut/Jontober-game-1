@@ -115,7 +115,7 @@ func hunting():
 		changeState(States.ATTACKING)
 
 func scared():
-	if (find_player_distance() < 500):
+	if (find_player_distance() < 1000):
 		move_away_from_player(sprint_speed)
 	else:
 		print("scared to idle")
