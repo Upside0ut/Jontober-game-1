@@ -2,8 +2,30 @@
 
 [ext_resource type="Script" uid="uid://bxthsd40a2hon" path="res://fnaf_menu.gd" id="1_42mc7"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_73xbk"]
+[ext_resource type="Shader" uid="uid://de8m3acdiayap" path="res://shader/fnaf_menu.gdshader" id="2_yqvsr"]
+[ext_resource type="Script" uid="uid://djfr0cfakj85n" path="res://scenes/texture_rect.gd" id="3_pituf"]
+[ext_resource type="Texture2D" uid="uid://f8robg8p26u3" path="res://FNAF sprites/randymainmenu.png" id="3_tufyr"]
+[ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="6_cf7ta"]
 
-[node name="FNAF Menu" type="Control" unique_id=1247075342 node_paths=PackedStringArray("nights")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqvsr"]
+atlas = ExtResource("3_tufyr")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf7ta"]
+shader = ExtResource("2_yqvsr")
+shader_parameter/should_change = true
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw4k2"]
+shader = ExtResource("2_yqvsr")
+shader_parameter/should_change = false
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.855
+shader_parameter/outer_radius = 0.86
+
+[node name="FNAF Menu" type="Control" unique_id=1247075342 node_paths=PackedStringArray("nights", "fader")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +34,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_42mc7")
 nights = NodePath("MarginContainer/VBoxContainer3/VBoxContainer/RichTextLabel")
+fader = NodePath("fade [SHOW WHEN FINISHED LEVEL]")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1565737037]
-z_index = -2
+[node name="BG" type="ColorRect" parent="." unique_id=1565737037]
+z_index = -5
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 15
@@ -24,6 +47,60 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Randy" type="TextureRect" parent="." unique_id=1781687441]
+z_index = -3
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_right = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_yqvsr")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("3_pituf")
+
+[node name="Pulsing_Vignette" type="TextureRect" parent="." unique_id=1416370617]
+material = SubResource("ShaderMaterial_cf7ta")
+custom_minimum_size = Vector2(1152, 648)
+custom_maximum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_cf7ta")
+
+[node name="Vignette2" type="TextureRect" parent="." unique_id=800604117]
+material = SubResource("ShaderMaterial_sw4k2")
+custom_minimum_size = Vector2(1152, 648)
+custom_maximum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_cf7ta")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1308759895]
 layout_mode = 1
@@ -37,6 +114,7 @@ theme_override_constants/margin_top = 50
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer" unique_id=1522878962]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/separation = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer3" unique_id=939736670]
@@ -49,6 +127,9 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Five Night's at Randy's"
 fit_content = true
 autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer3" unique_id=376451878]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3" unique_id=446761052]
 layout_mode = 2
@@ -78,6 +159,9 @@ theme_override_font_sizes/font_size = 32
 text = "Custom Night"
 alignment = 0
 
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer3" unique_id=1802340743]
+layout_mode = 2
+
 [node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=496703942]
 z_index = 999
 layout_mode = 1
@@ -91,3 +175,4 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_73xbk")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer3/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer3/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

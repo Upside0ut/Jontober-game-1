@@ -1,9 +1,14 @@
 class_name FNAF_HANDLER
 extends Node2D
 
+@export_group("Enemies")
+@export var Agnese : Node2D
+@export var Randy : Node2D
+
 @export_group("Difficulty")
+@export var plinko_night_advance := true # reduce night length by 10 seconds
 @export var alarm_pauses_attack := true # pauses attack as in you cant be
-@export var light_pauses_attack := true # killed during doing these
+@export var flash_pauses_attack := true # killed during doing these
 @export var night_length := 270.0 # 270.0 is the same as UCN
 @export var error_chance := 0.1 # percentage, for disabling the pegs
 
@@ -17,19 +22,16 @@ extends Node2D
 @export var sixam_text : RichTextLabel
 @export var fade_animation : AnimationPlayer
 
+# I'm realizing how DUMB I am for programming this to be this way so I'm
+# using this to disable everything once the night's over
+@export var gameplay_parent : Node2D 
+
 @export_group("Audio Nodes")
 @export var drone : AudioStreamPlayer
 @export var hour_tonk : AudioStreamPlayer
 @export var weird_clanking : AudioStreamPlayer
 @export var victory_jingle : AudioStreamPlayer
-
-# I'm realizing how DUMB I am for programming this to be this way so I'm
-# using this to disable everything once the night's over
-@export var gameplay_parent : Node2D 
-
-@export_group("Enemies")
-@export var Agnese : Node2D
-@export var Randy : Node2D
+@export var ambient_audios : AudioStreamPlayer
 
 var passed_time := 0.0
 var level_2_child_scene : Node2D
@@ -41,9 +43,16 @@ var last_hour := 0
 var night_won := false
 var night_lost := false
 
+var countdown := 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#error_chance = NightData.get_diff("error_chance")
+	
+	if NightData.custom_night:
+		alarm_pauses_attack = NightData.get_diff("alarm_stall")
+		flash_pauses_attack = NightData.get_diff("flash_stall")
+		plinko_night_advance = NightData.get_diff("plinko_night_advance")
+	error_chance = NightData.get_diff("error_chance")
 	
 	pad_opener.mouse_entered.connect(_on_pad_opener)
 	
@@ -68,7 +77,13 @@ func _process(delta: float) -> void:
 	#this is to play a sound when the hour changes
 	hour_checker()
 	
+	#playing random ambience every now and then
+	countdown -= delta
+	if countdown <= 0.0:
+		ambient_audios.play()
+		countdown = randf_range(8.0, 25.0)
 	
+	passed_time = clamp(passed_time,0.0,night_length)
 	if passed_time >= night_length:
 		gameplay_parent.process_mode = Node.PROCESS_MODE_DISABLED
 		fnaf_pad.process_mode = Node.PROCESS_MODE_DISABLED
@@ -99,6 +114,23 @@ func win_night():
 	await get_tree().create_timer(2.0).timeout
 	await animate_sixam_text()
 	await get_tree().create_timer(5.0).timeout
+	if !NightData.custom_night:
+		NightData.current_night += 1
+	else:
+		if NightData.bronze_active:
+			NightData.beaten_bronze_mode = true
+		elif NightData.silver_active:
+			NightData.beaten_silver_mode = true
+		elif NightData.gold_active:
+			NightData.beaten_gold_mode = true
+		
+	NightData.save_night()
+	
+	if NightData.custom_night:
+		get_tree().change_scene_to_file("res://scenes/custom_night_menu.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/fnaf_menu.tscn")
+	
 	print("Night Done!")
 
 func animate_sixam_text():
@@ -120,6 +152,10 @@ func _on_plinko_won():
 	if !alarm_light.rage_locked and !level_2_child_scene.game_ended:
 		level_2_child_scene.game_ended = true
 		rage_bar.value -= 20
+		
+	if plinko_night_advance:
+		passed_time += 10.0
+
 func _on_plinko_lost():
 	if !alarm_light.rage_locked and !level_2_child_scene.game_ended:
 		level_2_child_scene.game_ended = true

@@ -8,13 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="5_vqjt0"]
 [ext_resource type="Script" uid="uid://b7aa0uuaa37k8" path="res://Circcle's scripts/fnaf scripts/mouse_flashlight.gd" id="6_ak6dw"]
 [ext_resource type="Texture2D" uid="uid://dx1ahisd0lvh5" path="res://FNAF sprites/alarmlight.png" id="8_nkyd6"]
+[ext_resource type="AudioStream" uid="uid://cidg3g7luc4i2" path="res://sound_effects/fnaf_sfx/unique_sfx/520200__latranz__industrial-alarm.mp3" id="9_gvigo"]
 [ext_resource type="Texture2D" uid="uid://d2a3pf3rajhw5" path="res://FNAF sprites/roomrope.png" id="10_dfx1n"]
+[ext_resource type="AudioStream" uid="uid://dd0r1p0bfna3v" path="res://sound_effects/fnaf_sfx/unique_sfx/830459__shaunhillyard__flashlight-click-on.wav" id="11_0tchg"]
 [ext_resource type="Script" uid="uid://ccxjh7xwqfmvm" path="res://Circcle's scripts/fnaf scripts/alarm_light.gd" id="11_ad12r"]
 [ext_resource type="Script" uid="uid://b0bcm3q60cxf6" path="res://Circcle's scripts/fnaf scripts/fnaf_pulley.gd" id="11_s1d5t"]
 [ext_resource type="Script" uid="uid://blwwq21oge042" path="res://scenes/player_cam.gd" id="12_7bxxh"]
 [ext_resource type="Texture2D" uid="uid://dkj7b7vp5pud8" path="res://FNAF sprites/agnese_door.png" id="12_dfx1n"]
 [ext_resource type="Texture2D" uid="uid://2ug4ebl8vvrt" path="res://FNAF sprites/agnese_jumpscare.png" id="13_bsc56"]
+[ext_resource type="AudioStream" uid="uid://bw4y3l4jg0dgt" path="res://sound_effects/fnaf_sfx/unique_sfx/396470__kev_durr__electric-sparks.wav" id="14_8xtj6"]
 [ext_resource type="Texture2D" uid="uid://chx40fulhkcne" path="res://FNAF sprites/randyvent.png" id="14_egjcv"]
+[ext_resource type="AudioStream" uid="uid://b6vj0ik8ugr4e" path="res://sound_effects/fnaf_sfx/footsteps_sfx/219303__laurenmartin236__running-on-metal.wav" id="14_nywr1"]
+[ext_resource type="AudioStream" uid="uid://gk0urc6nn2jj" path="res://sound_effects/fnaf_sfx/unique_sfx/861043__elevatorfan2020__hard-glass-break-2.mp3" id="15_5qrxj"]
 [ext_resource type="Texture2D" uid="uid://cckpu382m6qeq" path="res://FNAF sprites/randybol.png" id="15_7bxxh"]
 [ext_resource type="Script" uid="uid://crhxnt6cwsspa" path="res://Circcle's scripts/fnaf scripts/randy_AI.gd" id="15_g16ln"]
 [ext_resource type="Script" uid="uid://cbwyalsifijec" path="res://Circcle's scripts/fnaf scripts/agnese_AI.gd" id="16_7bxxh"]
@@ -23,10 +28,18 @@
 [ext_resource type="Shader" uid="uid://w42unxannn4d" path="res://shader/sixam_text.gdshader" id="20_ecvpo"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="21_t528t"]
 [ext_resource type="AudioStream" uid="uid://buq0tdsp6prwc" path="res://sound_effects/fnaf_sfx/ambient/31749__sugonaut__sugodrone_01.wav" id="22_th36h"]
-[ext_resource type="AudioStream" uid="uid://begn4med0wosc" path="res://sound_effects/fnaf_sfx/3549__eliasheuninck__tonk9.wav" id="24_aqpj2"]
-[ext_resource type="AudioStream" uid="uid://crx0m3y6ay0ty" path="res://sound_effects/fnaf_sfx/176227__markgia__clank2.wav" id="25_n2tgs"]
+[ext_resource type="AudioStream" uid="uid://begn4med0wosc" path="res://sound_effects/fnaf_sfx/unique_sfx/3549__eliasheuninck__tonk9.wav" id="24_aqpj2"]
+[ext_resource type="AudioStream" uid="uid://crx0m3y6ay0ty" path="res://sound_effects/fnaf_sfx/unique_sfx/176227__markgia__clank2.wav" id="25_n2tgs"]
 [ext_resource type="AudioStream" uid="uid://c04rwfn18aksi" path="res://sound_effects/victoryjingle.mp3" id="26_pejfj"]
 [ext_resource type="AudioStream" uid="uid://ukr2pekes8i2" path="res://sound_effects/mannequin_distortion_3.mp3" id="27_pejfj"]
+[ext_resource type="AudioStream" uid="uid://2v8jn1ju73jw" path="res://sound_effects/fnaf_sfx/footsteps_sfx/50723__rutgermuller__footsteps-metallic-muffled.wav" id="28_7gywg"]
+[ext_resource type="AudioStream" uid="uid://dftcoa183eoy4" path="res://sound_effects/fnaf_sfx/unique_sfx/668985__vestibule-door__stopwatch-beep.wav" id="29_0tchg"]
+[ext_resource type="AudioStream" uid="uid://b87uhp8g2ctwj" path="res://sound_effects/fnaf_sfx/footsteps_sfx/175215__minigunfiend__deep-tapping-or-dripping-01.wav" id="29_7r1d2"]
+[ext_resource type="AudioStream" uid="uid://bslvwnaeto7qs" path="res://sound_effects/fnaf_sfx/vent_sfx/14051__adcbicycle__51.wav" id="29_hadl0"]
+[ext_resource type="AudioStream" uid="uid://ciidhpcukq5j5" path="res://sound_effects/fnaf_sfx/vent_sfx/359135__theminkman__metal-object-movement.wav" id="30_wm2rk"]
+[ext_resource type="AudioStream" uid="uid://q6aedj131lku" path="res://sound_effects/fnaf_sfx/ambient/583303__profispiesser__fx-sasc-low-metallic-movement-impacts-hits-metal-cable-car-geofon.wav" id="31_2w8dj"]
+[ext_resource type="AudioStream" uid="uid://cvsyjweh6sokp" path="res://sound_effects/fnaf_sfx/vent_sfx/448418__lordforklift__metal-slide-2.ogg" id="32_yfyjp"]
+[ext_resource type="Script" uid="uid://dspgp32anqidv" path="res://Circcle's scripts/fnaf scripts/fade_out_tutorial.gd" id="34_yfyjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pogo3"]
 atlas = ExtResource("10_dfx1n")
@@ -68,7 +81,13 @@ atlas = ExtResource("14_egjcv")
 region = Rect2(1876, 896, 525, 529)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g16ln"]
-size = Vector2(512, 512)
+size = Vector2(640, 640)
+
+[sub_resource type="Gradient" id="Gradient_yfyjp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xweo3"]
+gradient = SubResource("Gradient_yfyjp")
 
 [sub_resource type="Animation" id="Animation_g16ln"]
 length = 0.001
@@ -117,8 +136,49 @@ shader_parameter/edge_width = 0.1
 shader_parameter/edge_color = Color(1, 0.5, 0.1, 1)
 shader_parameter/edge_hot = Color(1, 0.95, 0.6, 1)
 
-[node name="FNAF" type="Node2D" unique_id=254263095 node_paths=PackedStringArray("alarm_light", "alarm_rope", "fnaf_pad", "rage_bar", "pad_opener", "night_timer", "sixam_text", "fade_animation", "drone", "hour_tonk", "weird_clanking", "victory_jingle", "gameplay_parent", "Agnese", "Randy")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfyjp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvigo"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.28, 0.110599995, 0.095199995, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xweo3"]
+streams_count = 2
+stream_0/stream = ExtResource("28_7gywg")
+stream_1/stream = ExtResource("29_7r1d2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wsfuq"]
+streams_count = 3
+stream_0/stream = ExtResource("29_hadl0")
+stream_1/stream = ExtResource("30_wm2rk")
+stream_2/stream = ExtResource("32_yfyjp")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p7baf"]
+streams_count = 1
+stream_0/stream = ExtResource("31_2w8dj")
+
+[node name="FNAF" type="Node2D" unique_id=254263095 node_paths=PackedStringArray("Agnese", "Randy", "alarm_light", "alarm_rope", "fnaf_pad", "rage_bar", "pad_opener", "night_timer", "sixam_text", "fade_animation", "gameplay_parent", "drone", "hour_tonk", "weird_clanking", "victory_jingle", "ambient_audios")]
 script = ExtResource("1_ak6dw")
+Agnese = NodePath("Gameplay/Enemies/Agnese")
+Randy = NodePath("Gameplay/Enemies/Randy")
 error_chance = 1.0
 alarm_light = NodePath("Gameplay/Equipment/AlarmLight")
 alarm_rope = NodePath("Gameplay/Equipment/Rope")
@@ -128,13 +188,12 @@ pad_opener = NodePath("UI/Pad_Opener")
 night_timer = NodePath("UI/MarginContainer2/Time of Night")
 sixam_text = NodePath("Foreground/CenterContainer/6AM")
 fade_animation = NodePath("Foreground/Fade Animation Player")
+gameplay_parent = NodePath("Gameplay")
 drone = NodePath("Audios/Drone")
 hour_tonk = NodePath("Audios/Hour Tonk")
 weird_clanking = NodePath("Audios/Weird Clanking")
 victory_jingle = NodePath("Audios/Victory Jingle")
-gameplay_parent = NodePath("Gameplay")
-Agnese = NodePath("Gameplay/Enemies/Agnese")
-Randy = NodePath("Gameplay/Enemies/Randy")
+ambient_audios = NodePath("Audios/Ambient_Audios")
 
 [node name="Pitch Black" type="CanvasModulate" parent="." unique_id=607375231]
 color = Color(0, 0, 0, 1)
@@ -175,7 +234,7 @@ script = ExtResource("11_s1d5t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Equipment/Rope/Area2D" unique_id=1008429022]
 shape = SubResource("RectangleShape2D_xweo3")
 
-[node name="Flashlight" type="PointLight2D" parent="Gameplay/Equipment" unique_id=887223672 node_paths=PackedStringArray("flashlight_bar")]
+[node name="Flashlight" type="PointLight2D" parent="Gameplay/Equipment" unique_id=887223672 node_paths=PackedStringArray("flashlight_bar", "flashlight_click_sfx")]
 light_mask = 3
 color = Color(0.81700015, 0.39, 1, 1)
 range_item_cull_mask = 3
@@ -183,6 +242,7 @@ texture = ExtResource("5_vqjt0")
 texture_scale = 3.0
 script = ExtResource("6_ak6dw")
 flashlight_bar = NodePath("../../../UI/MarginContainer/VBoxContainer/FlashBar")
+flashlight_click_sfx = NodePath("flashlight_click_sfx")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Gameplay/Equipment/Flashlight" unique_id=1924605876]
 light_mask = 3
@@ -192,7 +252,11 @@ range_item_cull_mask = 3
 texture = ExtResource("5_vqjt0")
 texture_scale = 1.5
 
-[node name="AlarmLight" type="Sprite2D" parent="Gameplay/Equipment" unique_id=425465362 node_paths=PackedStringArray("root_node", "rage_bar")]
+[node name="flashlight_click_sfx" type="AudioStreamPlayer" parent="Gameplay/Equipment/Flashlight" unique_id=139494154]
+stream = ExtResource("11_0tchg")
+volume_db = -5.0
+
+[node name="AlarmLight" type="Sprite2D" parent="Gameplay/Equipment" unique_id=425465362 node_paths=PackedStringArray("root_node", "Randy", "uh_oh", "rage_bar")]
 modulate = Color(0.5, 0, 0, 1)
 z_index = 1
 z_as_relative = false
@@ -200,6 +264,8 @@ position = Vector2(-218, -453)
 texture = SubResource("AtlasTexture_6y8d2")
 script = ExtResource("11_ad12r")
 root_node = NodePath("../../..")
+Randy = NodePath("../../Enemies/Randy")
+uh_oh = NodePath("../../../UI/MarginContainer/VBoxContainer/uh_oh")
 rage_bar = NodePath("../../../UI/MarginContainer/VBoxContainer/RageBar")
 
 [node name="lights" type="PointLight2D" parent="Gameplay/Equipment/AlarmLight" unique_id=485382216]
@@ -207,12 +273,19 @@ visible = false
 z_index = 1
 z_as_relative = false
 scale = Vector2(50, 2)
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.16666669, 0, 0.9137255)
 texture = ExtResource("5_vqjt0")
 texture_scale = 0.7
 
+[node name="alarm_noise (VOLUME IN CODE)" type="AudioStreamPlayer2D" parent="Gameplay/Equipment/AlarmLight" unique_id=813710350]
+stream = ExtResource("9_gvigo")
+
+[node name="alarm_break_run" type="AudioStreamPlayer" parent="Gameplay/Equipment/AlarmLight" unique_id=1586843588]
+stream = ExtResource("14_nywr1")
+volume_db = -25.0
+
 [node name="dim_alarm_ambient" type="PointLight2D" parent="Gameplay/Equipment/AlarmLight" unique_id=1166622517]
-color = Color(1, 0, 0.016666412, 1)
+color = Color(1, 0, 0.23333311, 0.8156863)
 energy = 0.5
 texture = ExtResource("5_vqjt0")
 texture_scale = 1.5
@@ -223,20 +296,29 @@ color = Color(1, 0, 0.016666412, 1)
 texture = ExtResource("5_vqjt0")
 texture_scale = 0.35
 
+[node name="spark_sfx" type="AudioStreamPlayer2D" parent="Gameplay/Equipment/AlarmLight" unique_id=1465929127]
+stream = ExtResource("14_8xtj6")
+volume_db = -10.0
+
+[node name="glass_break_sfx" type="AudioStreamPlayer2D" parent="Gameplay/Equipment/AlarmLight" unique_id=284949903]
+stream = ExtResource("15_5qrxj")
+volume_db = -5.0
+
 [node name="Enemies" type="Node2D" parent="Gameplay" unique_id=1549015366]
 
-[node name="Agnese" type="Node2D" parent="Gameplay/Enemies" unique_id=167797169 node_paths=PackedStringArray("door_sprite", "root_node")]
+[node name="Agnese" type="Node2D" parent="Gameplay/Enemies" unique_id=167797169 node_paths=PackedStringArray("door_sprite", "root_node", "walk_audios")]
 light_mask = 2
 z_index = 5
 z_as_relative = false
 script = ExtResource("16_7bxxh")
 door_sprite = NodePath("At_Door_Agnese")
 root_node = NodePath("../../..")
-use_difficulty = false
+walk_audios = NodePath("../../../Audios/Walk_Audios")
 
 [node name="Enter_SFX" type="AudioStreamPlayer2D" parent="Gameplay/Enemies/Agnese" unique_id=444552383]
 position = Vector2(-906, 0)
 stream = SubResource("AudioStreamRandomizer_sw4k2")
+volume_db = -5.0
 
 [node name="At_Door_Agnese" type="Sprite2D" parent="Gameplay/Enemies/Agnese" unique_id=2086426235]
 light_mask = 2
@@ -245,7 +327,7 @@ z_as_relative = false
 position = Vector2(-906, 0)
 texture = SubResource("AtlasTexture_sw4k2")
 
-[node name="Randy" type="Node2D" parent="Gameplay/Enemies" unique_id=674910852 node_paths=PackedStringArray("door_sprite", "root_node", "flashlight", "light_area")]
+[node name="Randy" type="Node2D" parent="Gameplay/Enemies" unique_id=674910852 node_paths=PackedStringArray("door_sprite", "root_node", "flashlight", "light_area", "vent_audios")]
 light_mask = 2
 z_index = 5
 z_as_relative = false
@@ -254,11 +336,12 @@ door_sprite = NodePath("At_Door_Randy")
 root_node = NodePath("../../..")
 flashlight = NodePath("../../Equipment/Flashlight")
 light_area = NodePath("At_Door_Randy/R_Light_Area")
-use_difficulty = false
+vent_audios = NodePath("../../../Audios/Vent_Audios")
 
 [node name="Enter_SFX" type="AudioStreamPlayer2D" parent="Gameplay/Enemies/Randy" unique_id=1212557364]
 position = Vector2(781, 312)
 stream = SubResource("AudioStreamRandomizer_6y8d2")
+volume_db = -15.0
 
 [node name="At_Door_Randy" type="Sprite2D" parent="Gameplay/Enemies/Randy" unique_id=650982291]
 light_mask = 2
@@ -272,12 +355,14 @@ texture = SubResource("AtlasTexture_7bxxh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Enemies/Randy/At_Door_Randy/R_Light_Area" unique_id=91050585]
 shape = SubResource("RectangleShape2D_g16ln")
 
-[node name="Jumpscares" type="Node2D" parent="Gameplay" unique_id=507004190 node_paths=PackedStringArray("Agnese", "Agnese_jumpscare", "Randy", "Randy_jumpscare", "jumpscare_light", "jumpscare_sfx")]
+[node name="Jumpscares" type="Node2D" parent="Gameplay" unique_id=507004190 node_paths=PackedStringArray("FNAF_PAD", "Agnese", "Agnese_jumpscare", "Randy", "Randy_jumpscare", "player_cam", "jumpscare_light", "jumpscare_sfx")]
 script = ExtResource("16_regb1")
+FNAF_PAD = NodePath("../../FNAF PAD")
 Agnese = NodePath("../Enemies/Agnese")
 Agnese_jumpscare = NodePath("Agnese_JS")
 Randy = NodePath("../Enemies/Randy")
 Randy_jumpscare = NodePath("Randy_JS")
+player_cam = NodePath("../../PlayerCam")
 jumpscare_light = NodePath("jumpscare_light")
 jumpscare_sfx = NodePath("../../Audios/Jumpscare SFX")
 
@@ -299,6 +384,68 @@ texture = ExtResource("15_7bxxh")
 range_item_cull_mask = 4
 texture = ExtResource("5_vqjt0")
 texture_scale = 7.5
+
+[node name="FadeOut Tutorial" type="Node2D" parent="." unique_id=1091988888 node_paths=PackedStringArray("fade_out_nodes")]
+script = ExtResource("34_yfyjp")
+fade_out_nodes = [NodePath("ropetext"), NodePath("ropearrow"), NodePath("venttext"), NodePath("ventarrow"), NodePath("../UI/MarginContainer/VBoxContainer/padtext")]
+
+[node name="White (this is so dumb but needed)" type="PointLight2D" parent="FadeOut Tutorial" unique_id=1373885152]
+light_mask = 512
+scale = Vector2(11.414062, 1890)
+energy = 16.0
+range_item_cull_mask = 512
+shadow_item_cull_mask = 512
+texture = SubResource("GradientTexture1D_xweo3")
+
+[node name="ropetext" type="RichTextLabel" parent="FadeOut Tutorial" unique_id=1454293937]
+light_mask = 512
+offset_left = -897.0
+offset_top = -400.0
+offset_right = -403.0
+offset_bottom = -310.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Pull the rope if something stands in the doorway!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ropearrow" type="RichTextLabel" parent="FadeOut Tutorial" unique_id=1397269112]
+light_mask = 512
+offset_left = -944.0
+offset_top = -306.0
+offset_right = 195.0
+offset_bottom = -239.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "-->              <--"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="venttext" type="RichTextLabel" parent="FadeOut Tutorial" unique_id=917344966]
+light_mask = 512
+offset_left = 517.0
+offset_top = 182.0
+offset_right = 1056.0
+offset_bottom = 272.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Shine your flashlight at the vent if you see anything!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ventarrow" type="RichTextLabel" parent="FadeOut Tutorial" unique_id=715031068]
+light_mask = 512
+offset_left = 213.0
+offset_top = 306.0
+offset_right = 1352.0
+offset_bottom = 373.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "-->                      <--"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=965253293]
 layer = -1
@@ -375,12 +522,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="uh_oh" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer" unique_id=2121161964]
+light_mask = 512
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Uh oh...."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="padtext" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer" unique_id=407275446]
+light_mask = 512
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Open your plinko pad by flicking to the right, winning reduces the alarm burnout and length of the night!"
+fit_content = true
+horizontal_alignment = 1
+
 [node name="FlashBar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer" unique_id=1653597363]
 custom_minimum_size = Vector2(350, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_yfyjp")
 
 [node name="RageBar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer" unique_id=1437342638]
 modulate = Color(1, 0, 0, 1)
@@ -389,6 +555,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_gvigo")
 
 [node name="Pad_Opener" type="ColorRect" parent="UI" unique_id=1356925342]
 z_index = 3
@@ -402,6 +569,24 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 color = Color(0.41140202, 0.41140202, 0.41140202, 0.5)
+
+[node name="Pad_Opener2" type="RichTextLabel" parent="UI" unique_id=1739882172]
+z_index = 3
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+text = "O
+p
+e
+n"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI" unique_id=1992719428]
 anchors_preset = 15
@@ -419,20 +604,32 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30
-text = "TIMER ERROR: if you're seeing this please tell Circcle"
+text = "TIMER ERROR: if you're seeing this please report it"
 fit_content = true
 autowrap_mode = 0
 
-[node name="FNAF PAD" parent="." unique_id=1768494728 node_paths=PackedStringArray("flashlight") instance=ExtResource("16_egjcv")]
+[node name="FNAF PAD" parent="." unique_id=1768494728 node_paths=PackedStringArray("flashlight", "pad_opener", "pad_beep_in_sfx", "pad_beep_out_sfx") instance=ExtResource("16_egjcv")]
 flashlight = NodePath("../Gameplay/Equipment/Flashlight")
+pad_opener = NodePath("../UI/Pad_Opener2")
+pad_beep_in_sfx = NodePath("../Audios/Pad Beep In")
+pad_beep_out_sfx = NodePath("../Audios/Pad Beep Out")
 
 [node name="Audios" type="Node" parent="." unique_id=1806050005]
 
 [node name="Drone" type="AudioStreamPlayer" parent="Audios" unique_id=886030475]
 stream = ExtResource("22_th36h")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 0.2
 autoplay = true
+
+[node name="Pad Beep In" type="AudioStreamPlayer" parent="Audios" unique_id=1087886071]
+stream = ExtResource("29_0tchg")
+volume_db = 10.0
+
+[node name="Pad Beep Out" type="AudioStreamPlayer" parent="Audios" unique_id=631968911]
+stream = ExtResource("29_0tchg")
+volume_db = 7.0
+pitch_scale = 0.8
 
 [node name="Hour Tonk" type="AudioStreamPlayer" parent="Audios" unique_id=1390316981]
 stream = ExtResource("24_aqpj2")
@@ -450,3 +647,19 @@ pitch_scale = 0.3
 [node name="Jumpscare SFX" type="AudioStreamPlayer" parent="Audios" unique_id=1124937766]
 stream = ExtResource("27_pejfj")
 volume_db = -10.0
+
+[node name="Walk_Audios" type="AudioStreamPlayer2D" parent="Audios" unique_id=501062571]
+position = Vector2(-906, 0)
+stream = SubResource("AudioStreamRandomizer_xweo3")
+volume_db = -15.0
+
+[node name="Vent_Audios" type="AudioStreamPlayer2D" parent="Audios" unique_id=258897173]
+position = Vector2(781, 312)
+stream = SubResource("AudioStreamRandomizer_wsfuq")
+volume_db = -15.0
+
+[node name="Ambient_Audios" type="AudioStreamPlayer" parent="Audios" unique_id=1105869810]
+stream = SubResource("AudioStreamRandomizer_p7baf")
+volume_db = -20.0
+
+[connection signal="finished" from="Gameplay/Equipment/AlarmLight/alarm_break_run" to="Gameplay/Equipment/AlarmLight" method="_on_alarm_break_run_finished"]

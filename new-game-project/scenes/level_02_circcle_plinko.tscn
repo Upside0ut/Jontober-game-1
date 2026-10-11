@@ -595,9 +595,10 @@ shader_parameter/shader_brightness = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw4k2"]
 
-[node name="level02_plinko_handler" type="Node2D" unique_id=887258600 node_paths=PackedStringArray("bottom_areas", "state_text")]
+[node name="level02_plinko_handler" type="Node2D" unique_id=887258600 node_paths=PackedStringArray("bottom_areas", "wall_tiles", "state_text")]
 script = ExtResource("12_0aim8")
 bottom_areas = NodePath("bottom_areas")
+wall_tiles = NodePath("bounds/ground tilemap")
 state_text = NodePath("State Text")
 
 [node name="State Text" type="RichTextLabel" parent="." unique_id=1965165549]
@@ -610,11 +611,13 @@ offset_right = 887.0
 offset_bottom = -1300.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "Press the Jump Key to release the Ball!"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="BOTTOM CAM BOUNDARY" type="Node2D" parent="." unique_id=1680615772]
 position = Vector2(0, 2300)
@@ -629,15 +632,18 @@ offset_right = 437.5
 offset_bottom = -1133.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "Press the Jump Key to release the Ball!"
+text = "Press the Jump Key to release the Ball!
+"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="Drop Marker" type="Sprite2D" parent="." unique_id=913818133 node_paths=PackedStringArray("root_node")]
 modulate = Color(0, 1, 0.083333254, 1)
-position = Vector2(0, -1000)
+position = Vector2(0, -900)
 texture = ExtResource("2_6vsvt")
 script = ExtResource("2_355pt")
 root_node = NodePath("..")
@@ -756,6 +762,17 @@ offset_left = -22418.0
 offset_top = -14760.0
 offset_right = 24284.0
 offset_bottom = 14402.0
+mouse_filter = 2
+color = Color(0.2, 0.03529412, 0.03529412, 1)
+
+[node name="red bg" type="ColorRect" parent="." unique_id=624583317]
+visible = false
+z_index = -15
+offset_left = -22418.0
+offset_top = -14760.0
+offset_right = 24284.0
+offset_bottom = 14402.0
+mouse_filter = 2
 color = Color(0.2, 0.03529412, 0.03529412, 1)
 
 [node name="bottom_areas" type="Node" parent="." unique_id=1678609119]

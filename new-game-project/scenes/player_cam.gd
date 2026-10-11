@@ -3,6 +3,8 @@ extends Camera2D
 const BASE_WIDTH := 1152.0
 const PANNING_SPEED := 500.0
 
+var jumpscare := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_viewport().size_changed.connect(_update_zoom)
@@ -25,6 +27,10 @@ func _process(delta: float) -> void:
 	var half_width = get_viewport_rect().size.x / zoom.x / 2.0
 	var min_x = limit_left + half_width
 	var max_x = limit_right - half_width
+	
+	if jumpscare:
+		position.x = clamp(move_toward(position.x, 0.0, delta*PANNING_SPEED*2.0),min_x,max_x)
+		return
 	
 	if mouse_pos.x > viewport_right_third:
 		position.x = clamp(move_toward(position.x, limit_right, delta*PANNING_SPEED),min_x,max_x)

@@ -9,6 +9,7 @@ extends StaticBody2D
 @onready var colshape : CollisionShape2D = $CollisionShape2D
 @onready var peg_sprite : CanvasItem = $"plinko peg"
 @onready var error_sfx : AudioStreamPlayer = $"error_sound"
+@onready var click_sfx : AudioStreamPlayer = $"click_sound"
 
 var broken := false
 
@@ -17,12 +18,14 @@ signal peg_clicked(peg)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	assert(peg_hit_sfx != null, "Plinko Peg didn't find the Peg Hit SFX!")
 	peg_hit_sfx.pitch_scale = randf_range(.9, 1.1)
 	
 	# Fnaf version checks, don't change!
 	if owner and "fnaf_ver" in owner and owner.fnaf_ver == true:
 		input_event.connect(_on_click_disable)
+		peg_hit_sfx.volume_db = -10.0
 		add_to_group("pegs")
 
 func boing():
@@ -48,6 +51,8 @@ func _on_click_disable(_viewport: Node, event: InputEvent, _shape_idx: int) -> v
 			print("Peg error: ", self.name)
 			return
 		
+		click_sfx.pitch_scale = randf_range(.9, 1.1)
+		click_sfx.play()
 		peg_clicked.emit(self)
 		print("Disabled peg: ", self.name)
 

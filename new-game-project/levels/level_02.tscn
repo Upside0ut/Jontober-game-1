@@ -665,7 +665,6 @@ autoplay = true
 position = Vector2(1727, -511)
 stream = ExtResource("11_xxuo2")
 volume_db = 24.0
-autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=360050799]
 

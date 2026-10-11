@@ -18,6 +18,9 @@ var checkpoint: Vector2
 
 var destroyed_wall = false
 
+func _ready() -> void:
+	NightData.load_night()
+
 func _process(delta: float) -> void:
 	global_time += delta
 	
