@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bbaly71gsmywg" path="res://textures/ahiga_mannequin3b.png" id="10_orbfo"]
 [ext_resource type="Texture2D" uid="uid://bmkkh1fayov6" path="res://textures/ahiga_mannequin4b.png" id="11_muntm"]
 [ext_resource type="AudioStream" uid="uid://ukr2pekes8i2" path="res://sound_effects/mannequin_distortion_3.mp3" id="14_024mr"]
+[ext_resource type="AudioStream" uid="uid://bcjx2hp61tu2v" path="res://sound_effects/mannequin_death.mp3" id="15_mw4us"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(144, 118.5)
@@ -87,6 +88,9 @@ attenuation = 2.3784144
 [node name="floor" type="RayCast2D" parent="." unique_id=1813573284]
 position = Vector2(0, 0.25)
 target_position = Vector2(0, 250)
+
+[node name="deathsound" type="AudioStreamPlayer2D" parent="." unique_id=1016904090]
+stream = ExtResource("15_mw4us")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="death_area" to="." method="_on_death_area_area_entered"]

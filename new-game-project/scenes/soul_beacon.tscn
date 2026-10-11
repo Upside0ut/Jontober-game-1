@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cr0l7oru5gp3g"]
+
+[ext_resource type="Texture2D" uid="uid://cgqvavlwyuk6f" path="res://textures/soul_beacon_active.png" id="1_0gop6"]
+[ext_resource type="Script" uid="uid://lax7vedsty5k" path="res://scripts/soul_beacon.gd" id="1_5tn1d"]
+[ext_resource type="Texture2D" uid="uid://cyb3t44ksjaia" path="res://textures/soul_beacon.png" id="2_ae6fl"]
+[ext_resource type="Texture2D" uid="uid://c4023b17vdwc0" path="res://textures/abstract_art_placeholder2.png" id="3_ae6fl"]
+[ext_resource type="Texture2D" uid="uid://dcb01apyahour" path="res://frames/confetti4.png" id="4_2pbe0"]
+[ext_resource type="AudioStream" uid="uid://dsum5gh322o71" path="res://sound_effects/beaconstart.mp3" id="6_icdpw"]
+[ext_resource type="AudioStream" uid="uid://dbhe6gextlffs" path="res://sound_effects/beacon_loop.mp3" id="7_31536"]
+[ext_resource type="AudioStream" uid="uid://b347fonh0laci" path="res://sound_effects/beacon_loop2.mp3" id="8_icdpw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0gop6")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ae6fl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_6vph1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4391892, 0.50561804), 0.0, 0.0, 0, 0, Vector2(0.6891892, 0.32584274), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_p86qv"]
+curve = SubResource("Curve_6vph1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7vx6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 50, 1)
+gravity = Vector3(0, 98, 0)
+scale_min = 0.21
+scale_max = 0.29999998
+color = Color(1.8247963, 1.8247963, 1.8247963, 1)
+alpha_curve = SubResource("CurveTexture_p86qv")
+
+[sub_resource type="CurveTexture" id="CurveTexture_5tn1d"]
+curve = SubResource("Curve_6vph1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qeho1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(12, 32, 1)
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 15, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(2.454227, 2.454227, 2.454227, 1)
+alpha_curve = SubResource("CurveTexture_5tn1d")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7vx6"]
+radius = 1000.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vph1"]
+size = Vector2(359, 137)
+
+[node name="soul_beacon" type="Node2D" unique_id=2143210295]
+script = ExtResource("1_5tn1d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147469410]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_a7vx6")
+autoplay = "default"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1553001405]
+visible = false
+position = Vector2(10, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ae6fl")
+process_material = SubResource("ParticleProcessMaterial_a7vx6")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1519012348]
+visible = false
+position = Vector2(10, 31)
+scale = Vector2(2, 2)
+amount = 32
+texture = ExtResource("4_2pbe0")
+process_material = SubResource("ParticleProcessMaterial_qeho1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1393510397]
+stream = ExtResource("6_icdpw")
+
+[node name="loop" type="AudioStreamPlayer2D" parent="." unique_id=754192072]
+stream = ExtResource("7_31536")
+
+[node name="loop2" type="AudioStreamPlayer2D" parent="." unique_id=715394809]
+stream = ExtResource("8_icdpw")
+
+[node name="beacon_area" type="Area2D" parent="." unique_id=1211787464]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="beacon_area" unique_id=836915592]
+shape = SubResource("CircleShape2D_a7vx6")
+debug_color = Color(0, 0.15274006, 0.3172213, 0.41960785)
+
+[node name="activate_area" type="Area2D" parent="." unique_id=2013469880]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="activate_area" unique_id=1170192170]
+position = Vector2(7.5, 185.5)
+shape = SubResource("RectangleShape2D_6vph1")
+
+[connection signal="area_entered" from="beacon_area" to="." method="_on_beacon_area_area_entered"]
+[connection signal="body_entered" from="activate_area" to="." method="_on_activate_area_body_entered"]

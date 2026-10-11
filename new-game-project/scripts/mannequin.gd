@@ -32,10 +32,16 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func death():
 	follows = false
-	$sound.stop()
+	$death_area/CollisionShape2D.set_deferred("disabled", true)
+	$distortion_area/CollisionShape2D.set_deferred("disabled", true)
 	$GPUParticles2D.emitting = false
+	$sound.stop()
+	$deathsound.pitch_scale = rng.randf_range(0.9, 1.0)
+	$deathsound.play()
+	await get_tree().create_timer(1.0).timeout
+	visible = false
 
 
 func _on_death_area_area_entered(area: Area2D) -> void:
-	if area.name == "soul_area":
+	if area.name == "beacon_area":
 		death()
