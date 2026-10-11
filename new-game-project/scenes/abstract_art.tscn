@@ -13,9 +13,11 @@ emission_shape = 3
 emission_box_extents = Vector3(50, 50, 1)
 direction = Vector3(0, 1, 0)
 spread = 180.0
-initial_velocity_min = 53.76
-initial_velocity_max = 53.76
-gravity = Vector3(0, 98, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 200, 0)
+scale_min = 2.0
+scale_max = 2.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7vx6"]
 particle_flag_disable_z = true
@@ -43,6 +45,7 @@ texture = ExtResource("2_e12e5")
 [node name="shatter_1" type="GPUParticles2D" parent="." unique_id=1821317890]
 z_index = 101
 emitting = false
+amount = 4
 texture = ExtResource("3_2ii0l")
 lifetime = 5.0
 one_shot = true
@@ -52,6 +55,7 @@ process_material = SubResource("ParticleProcessMaterial_2ii0l")
 [node name="shatter_2" type="GPUParticles2D" parent="." unique_id=75198578]
 z_index = 101
 emitting = false
+amount = 4
 texture = ExtResource("3_2ii0l")
 lifetime = 5.0
 one_shot = true
@@ -61,6 +65,7 @@ process_material = SubResource("ParticleProcessMaterial_a7vx6")
 [node name="shatter_3" type="GPUParticles2D" parent="." unique_id=1394266338]
 z_index = 101
 emitting = false
+amount = 4
 texture = ExtResource("3_2ii0l")
 lifetime = 5.0
 one_shot = true
@@ -70,6 +75,7 @@ process_material = SubResource("ParticleProcessMaterial_a7vx6")
 [node name="shatter_4" type="GPUParticles2D" parent="." unique_id=1261425354]
 z_index = 101
 emitting = false
+amount = 4
 texture = ExtResource("3_2ii0l")
 lifetime = 5.0
 one_shot = true
@@ -79,6 +85,7 @@ process_material = SubResource("ParticleProcessMaterial_a7vx6")
 [node name="shatter_5" type="GPUParticles2D" parent="." unique_id=687714048]
 z_index = 101
 emitting = false
+amount = 4
 texture = ExtResource("3_2ii0l")
 lifetime = 5.0
 one_shot = true

@@ -12,6 +12,7 @@ func activate():
 		$AudioStreamPlayer2D.play()
 		$loop.play()
 		$loop2.play()
+		$Icon.visible = true
 		for n in mannequins:
 			n.death()
 

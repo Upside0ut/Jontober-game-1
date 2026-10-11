@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cuyiu4ex0gked" path="res://textures/ahiga's abstract art/ahiga_art1E.png" id="10_2p7e6"]
 [ext_resource type="PackedScene" uid="uid://dx225qcj8720d" path="res://scenes/art_stand.tscn" id="11_rnusd"]
 [ext_resource type="PackedScene" uid="uid://xhi61850i46s" path="res://scenes/graffiti.tscn" id="12_ojtht"]
+[ext_resource type="Texture2D" uid="uid://ccqyidb78hbd4" path="res://textures/ahiga's abstract art/ahiga_art5.png" id="13_1cafe"]
+[ext_resource type="Texture2D" uid="uid://daltch8lwml3g" path="res://textures/ahiga's abstract art/ahiga_art5A.png" id="14_ua6ta"]
+[ext_resource type="Texture2D" uid="uid://c6p45344gneu4" path="res://textures/ahiga's abstract art/ahiga_art5B.png" id="15_bmtdh"]
+[ext_resource type="Texture2D" uid="uid://bihov24aia0ie" path="res://textures/ahiga's abstract art/ahiga_art5C.png" id="16_q75ap"]
+[ext_resource type="Texture2D" uid="uid://b8sqn1ew1kl6d" path="res://textures/ahiga's abstract art/ahiga_art5D.png" id="17_hmgrg"]
+[ext_resource type="Texture2D" uid="uid://bpaup6qw3phg0" path="res://textures/ahiga's abstract art/ahiga_art5E.png" id="18_lkdbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(2048, 123)
@@ -76,7 +82,7 @@ position = Vector2(160, -553)
 can_pickup = true
 
 [node name="abstract_art" parent="." unique_id=320085406 instance=ExtResource("3_s2h6b")]
-position = Vector2(541.00006, -219.99998)
+position = Vector2(546, -64.999985)
 rotation = 0.04363323
 scale = Vector2(0.5, 0.5)
 art = ExtResource("5_7vdry")
@@ -87,6 +93,16 @@ position = Vector2(16.749756, 383.63452)
 rotation = -0.04363323
 scale = Vector2(2, 2)
 art_name = "Teeth Guy"
+
+[node name="abstract_art2" parent="." unique_id=651536575 instance=ExtResource("3_s2h6b")]
+position = Vector2(1192, -94)
+scale = Vector2(0.75, 0.75)
+art = ExtResource("13_1cafe")
+shatter_particles = Array[Texture]([ExtResource("14_ua6ta"), ExtResource("15_bmtdh"), ExtResource("16_q75ap"), ExtResource("17_hmgrg"), ExtResource("18_lkdbn")])
+
+[node name="art_stand" parent="abstract_art2" unique_id=604968512 instance=ExtResource("11_rnusd")]
+position = Vector2(-46.666668, 300)
+scale = Vector2(1.3333334, 1.3333334)
 
 [node name="graffiti" parent="." unique_id=685184417 instance=ExtResource("12_ojtht")]
 

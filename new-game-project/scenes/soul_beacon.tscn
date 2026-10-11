@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://dsum5gh322o71" path="res://sound_effects/beaconstart.mp3" id="6_icdpw"]
 [ext_resource type="AudioStream" uid="uid://dbhe6gextlffs" path="res://sound_effects/beacon_loop.mp3" id="7_31536"]
 [ext_resource type="AudioStream" uid="uid://b347fonh0laci" path="res://sound_effects/beacon_loop2.mp3" id="8_icdpw"]
+[ext_resource type="Shader" uid="uid://d070a4wd6e3eq" path="res://textures/soul_beacon.gdshader" id="9_3pbtw"]
+[ext_resource type="Texture2D" uid="uid://bi4qqm786fjsf" path="res://textures/plinko_peg.png" id="10_3pbtw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{
@@ -66,6 +68,23 @@ radius = 1000.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vph1"]
 size = Vector2(359, 137)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7vx6"]
+shader = ExtResource("9_3pbtw")
+shader_parameter/core_color = Color(0.29362223, 0.27459854, 0.46370798, 1)
+shader_parameter/hot_color = Color(0.6826063, 0.61915165, 1, 1)
+shader_parameter/corona_color = Color(0.38030472, 0.6204876, 1, 1)
+shader_parameter/spot_color = Color(0.19301766, 1.5786887e-05, 0.7784698, 1)
+shader_parameter/sun_radius = 0.3
+shader_parameter/corona_size = 0.18
+shader_parameter/bloom_strength = 0.0
+shader_parameter/surface_detail = 5.0
+shader_parameter/granulation = 0.55
+shader_parameter/spot_amount = 0.35
+shader_parameter/rotation_speed = 0.03
+shader_parameter/flare_detail = 4.0
+shader_parameter/flare_intensity = 1.6
+shader_parameter/flare_speed = 0.45
+
 [node name="soul_beacon" type="Node2D" unique_id=2143210295]
 script = ExtResource("1_5tn1d")
 
@@ -109,6 +128,12 @@ debug_color = Color(0, 0.15274006, 0.3172213, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="activate_area" unique_id=1170192170]
 position = Vector2(7.5, 185.5)
 shape = SubResource("RectangleShape2D_6vph1")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=96489740]
+visible = false
+material = SubResource("ShaderMaterial_a7vx6")
+scale = Vector2(25, 25)
+texture = ExtResource("10_3pbtw")
 
 [connection signal="area_entered" from="beacon_area" to="." method="_on_beacon_area_area_entered"]
 [connection signal="body_entered" from="activate_area" to="." method="_on_activate_area_body_entered"]

@@ -1,5 +1,6 @@
 extends Node2D
 
+var exploded = false
 @export var art: Texture
 @export_category("Particles - MAX 5!!!")
 @export var shatter_particles: Array[Texture]
@@ -9,7 +10,7 @@ func _ready() -> void:
 	if art:
 		$Sprite2D.texture = art
 		for n in particles:
-			n.process_material.emission_box_extents = Vector3($Sprite2D.get_rect().size.x, $Sprite2D.get_rect().size.y, 1.0)
+			n.process_material.emission_box_extents = Vector3($Sprite2D.get_rect().size.x * 1.5, $Sprite2D.get_rect().size.y * 1.5, 1.0)
 	if shatter_particles:
 		match shatter_particles.size():
 			1:
@@ -34,7 +35,8 @@ func _ready() -> void:
 				$shatter_5.texture =  shatter_particles[4]
 
 func _on_destruct_area_area_entered(area: Area2D) -> void:
-	if area.name == "explosion_area":
+	if area.name == "explosion_area" and !exploded:
+		exploded = true
 		$Sprite2D.visible = false
 		for n in particles:
 			n.emitting = true
