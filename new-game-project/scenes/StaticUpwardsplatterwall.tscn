@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cjxh3ftsnnkri"]
+
+[ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="2_ubl1o"]
+[ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_08fqn"]
+[ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_fwhbo"]
+
+[sub_resource type="Curve" id="Curve_wt34f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_dtglo"]
+curve = SubResource("Curve_wt34f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0ya7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 50000, 1)
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 1.6999999
+alpha_curve = SubResource("CurveTexture_dtglo")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_plso3"]
+
+[node name="UpwardSplatterwall" type="Node2D" unique_id=314029043]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1267321043]
+amount = 4000
+texture = ExtResource("2_ubl1o")
+visibility_rect = Rect2(-100, -25000, 200, 50000)
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=782223890]
+amount = 2000
+texture = ExtResource("3_08fqn")
+visibility_rect = Rect2(-100, -25000, 200, 50000)
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1292180420]
+amount = 1000
+texture = ExtResource("4_fwhbo")
+visibility_rect = Rect2(-100, -25000, 200, 50000)
+process_material = SubResource("ParticleProcessMaterial_u0ya7")
+
+[node name="spikes" type="Area2D" parent="." unique_id=933651931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=884058648]
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_plso3")

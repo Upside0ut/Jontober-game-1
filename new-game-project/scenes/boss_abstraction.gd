@@ -25,6 +25,8 @@ var standard_bullet_time = 0.5
 var standard_feint_time = 5
 var standard_missle_atk_time = 7
 
+var feint_cooldown_time = 20
+
 func changeState(newState: States):
 	state = newState
 	
@@ -92,8 +94,8 @@ func depleteHealth():
 	print(on_hit_depleted_health)
 	health -= on_hit_depleted_health
 	#play damage anymation
-	$Timer.stop()
-	$Timer.timeout.emit()
+	$AttackTimer.stop()
+	$AttackTimer.timeout.emit()
 	
 	$AnimationPlayer.play("shake")
 	player.process_mode = Node.PROCESS_MODE_DISABLED
@@ -137,7 +139,12 @@ func scared():
 		changeState(States.IDLE)
 
 func attack():
-	match decide_attack():
+	var decided_atk = decide_attack()
+	
+	while $FeintCooldown.time_left > 0 and decided_atk == 3:
+		decided_atk = decide_attack()
+	
+	match decided_atk:
 		0:
 			changeState(States.IDLE)
 		1:
@@ -164,16 +171,14 @@ func decide_attack():
 	
 	if(find_player_distance() > 600):
 		if(clear_shot(player)):
-			return [1, 2, 4].pick_random()
+			return [1, 2, 4,  1, 2, 4,  2, 4,  3].pick_random()
 		else:
-			return [2, 2, 2, 4, 4, 4, 1].pick_random()
+			return [2, 2, 2,  4, 4, 4,  1].pick_random()
 	
 	if(clear_shot(player)):
-		return [2, 4, 3, 3, 3].pick_random()
+		return [2, 2, 4, 3, 3].pick_random()
 	
-	return [2, 2, 2, 2, 4, 4, 4].pick_random()
-	
-	
+	return [2, 2, 2, 2, 4, 4, 4, 3].pick_random()
 
 func attacking():
 	pass
@@ -207,48 +212,42 @@ func reached_dash_point():
 
 func spray(total_time: float, time_between_bullets):
 	create_opening(-1)
-	$Timer.one_shot = true
-	$Timer.start(total_time)
+	$AttackTimer.one_shot = true
+	$AttackTimer.start(total_time)
 	
 	rotating = true
 	
 	var spray_while_not_on_screen_conuter = 0
-	while $Timer.time_left > 0:
+	while $AttackTimer.time_left > 0:
 		if (!on_screen):
 			if (spray_while_not_on_screen_conuter > 5):
-				$Timer.stop()
-				$Timer.timeout.emit()
+				$AttackTimer.stop()
+				$AttackTimer.timeout.emit()
 				break
 			spray_while_not_on_screen_conuter += 1
 		
-		await shoot_bullet()
-		await wait(time_between_bullets)
+		await shoot_bullet(time_between_bullets)
 	
 	rotating = false
-	$Timer.stop()
+	$AttackTimer.stop()
 
-func shoot_bullet():
+func shoot_bullet(time: float):
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
 	add_sibling(bullet)
 	
-	$BossShootSplatter.play()
+	bullet.get_node("AnimationPlayer").play("windUp")
 	bullet.global_position = $SplatterRing.get_random_global_ring_position(true)
-	bullet.shoot(global_position.direction_to(bullet.global_position))
-
-func shoot_targeting_bullet():
-	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
-	var bullet = bulletScene.instantiate()
-	add_sibling(bullet)
 	
-	bullet.global_position = $SplatterRing.get_nearest_opening_to(player.global_position, true).global_position
-	bullet.shoot(find_player_direction())
+	await wait(time)
+	$BossShootSplatter.play()
+	bullet.shoot(global_position.direction_to(bullet.global_position))
 
 func missile_attack(total_time):
 	await wait(0.5)
 	create_player_direction_opening()
-	$Timer.one_shot = true
-	$Timer.start(total_time)
+	$AttackTimer.one_shot = true
+	$AttackTimer.start(total_time)
 	rotating = true
 	
 	if (health > 50):
@@ -258,7 +257,7 @@ func missile_attack(total_time):
 	
 	await wait(total_time)
 	rotating = false
-	$Timer.stop()
+	$AttackTimer.stop()
 
 func shoot_normal_missile():
 	var missileScene = preload("res://scenes/missile_boss_abstraction.tscn")
@@ -281,16 +280,19 @@ func feint(time):
 	#TODO play slight tell animation
 	feinting = true
 	rotating = true
-	$Timer.start(time)
-	await $Timer.timeout
+	$AttackTimer.start(time)
+	await $AttackTimer.timeout
+	
+	$FeintCooldown.one_shot = true
+	$FeintCooldown.start(feint_cooldown_time)
 	feinting = false
 	rotating = false
 
 func feint_success():
 	#TODO play biting animation
 	#damage is anyway cus spikes
-	$Timer.stop()
-	$Timer.timeout.emit()
+	$AttackTimer.stop()
+	$AttackTimer.timeout.emit()
 	await wait(0.3)
 	changeState(States.SCARED)
 
