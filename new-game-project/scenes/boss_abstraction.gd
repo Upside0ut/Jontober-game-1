@@ -18,11 +18,12 @@ var rotating = false
 var move_speed = 1000
 var sprint_speed = 2400
 var health = 100
-var on_hit_depleted_health = 50
+var on_hit_depleted_health = 25
 
 var standard_spray_time = 10
 var standard_bullet_time = 0.5
 var standard_feint_time = 5
+var standard_missle_atk_time = 7
 
 func changeState(newState: States):
 	state = newState
@@ -101,6 +102,7 @@ func depleteHealth():
 	$AnimationPlayer.stop()
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	
+	close_openings()
 	$SplatterRing/spikes.set_deferred("monitorable", true)
 	$SplatterRing/spikes.set_deferred("monitoring", true)
 	changeState(States.SCARED)
@@ -121,7 +123,7 @@ func idle():
 	changeState(States.ATTACKING)
 
 func hunting():
-	if (find_player_distance() > 1000):
+	if (find_player_distance() > 600):
 		move_toward_player(move_speed)
 	else:
 		print("hunt to atk")
@@ -145,6 +147,8 @@ func attack():
 			await spray(standard_spray_time, standard_bullet_time)
 		3:
 			await feint(standard_feint_time)
+		4:
+			await missile_attack(standard_missle_atk_time)
 	
 	close_openings()
 	
@@ -154,20 +158,20 @@ func attack():
 func decide_attack():
 	if(find_player_distance() > 1000):
 		if(clear_shot(player)):
-			return [1, 1, 2].pick_random()
+			return [1, 2, 4, 4].pick_random()
 		else:
-			return 1
+			return [1, 1, 1, 1, 4].pick_random()
 	
 	if(find_player_distance() > 600):
 		if(clear_shot(player)):
-			return [2, 2, 2, 1].pick_random()
+			return [1, 2, 4].pick_random()
 		else:
-			return [1, 1, 2].pick_random()
+			return [2, 2, 2, 4, 4, 4, 1].pick_random()
 	
 	if(clear_shot(player)):
-		return [2, 3].pick_random()
+		return [2, 4, 3, 3, 3].pick_random()
 	
-	return [2, 3, 3, 3].pick_random()
+	return [2, 2, 2, 2, 4, 4, 4].pick_random()
 	
 	
 
@@ -237,11 +241,43 @@ func shoot_targeting_bullet():
 	var bullet = bulletScene.instantiate()
 	add_sibling(bullet)
 	
-	bullet.global_position = $SplatterRing.get_nearest_global_ring_position_to(find_player_position(), true)
+	bullet.global_position = $SplatterRing.get_nearest_opening_to(player.global_position, true).global_position
 	bullet.shoot(find_player_direction())
 
+func missile_attack(total_time):
+	await wait(0.5)
+	create_player_direction_opening()
+	$Timer.one_shot = true
+	$Timer.start(total_time)
+	rotating = true
+	
+	if (health > 50):
+		shoot_normal_missile()
+	else:
+		shoot_follow_missile()
+	
+	await wait(total_time)
+	rotating = false
+	$Timer.stop()
+
+func shoot_normal_missile():
+	var missileScene = preload("res://scenes/missile_boss_abstraction.tscn")
+	var missile = missileScene.instantiate()
+	add_sibling(missile)
+	
+	missile.global_position = $SplatterRing.get_current_opening_position()
+	missile.shoot(find_player_direction())
+
+func shoot_follow_missile():
+	var missileScene = preload("res://scenes/missile_boss_abstraction.tscn")
+	var missile = missileScene.instantiate()
+	add_sibling(missile)
+	
+	missile.global_position = $SplatterRing.get_current_opening_position()
+	missile.follow(player, 5)
+
 func feint(time):
-	create_opening(-1)
+	create_player_direction_opening()
 	#TODO play slight tell animation
 	feinting = true
 	rotating = true
@@ -273,6 +309,9 @@ func create_opening(i: int):
 	else:
 		$SplatterRing.create_random_opening()
 
+func create_player_direction_opening():
+	$SplatterRing.create_opening_close_to(player.global_position)
+
 func close_openings():
 	$SplatterRing.close_openings()
 
@@ -292,13 +331,10 @@ func clear_shot(object):
 	return false
 
 func find_player_direction():
-	return global_position.direction_to(get_parent().get_node("Player").global_position)
+	return global_position.direction_to(player.global_position)
 
 func find_player_distance():
-	return global_position.distance_to(get_parent().get_node("Player").global_position)
-
-func find_player_position():
-	return get_parent().get_node("Player").global_position
+	return global_position.distance_to(player.global_position)
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

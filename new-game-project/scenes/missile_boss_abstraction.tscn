@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b0k5njn2ge81c"]
+
+[ext_resource type="Script" uid="uid://6dtku6a1ak42" path="res://scripts/missile_boss_abstraction.gd" id="1_g5cxw"]
+[ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="2_oyj3r"]
+[ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_2kgv6"]
+[ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_0yy5s"]
+
+[sub_resource type="Curve" id="Curve_pnq5g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nyevx"]
+curve = SubResource("Curve_pnq5g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ufjy7"]
+emission_shape = 1
+emission_sphere_radius = 110.0
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.29999998
+alpha_curve = SubResource("CurveTexture_nyevx")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+collision_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckqup"]
+radius = 88.051125
+
+[node name="MissileBossAbstraction" type="CharacterBody2D" unique_id=1310347687]
+script = ExtResource("1_g5cxw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=316807564]
+amount = 150
+texture = ExtResource("2_oyj3r")
+lifetime = 0.3
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_ufjy7")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=2080594403]
+amount = 70
+texture = ExtResource("3_2kgv6")
+lifetime = 0.3
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_ufjy7")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=528922983]
+amount = 30
+texture = ExtResource("4_0yy5s")
+lifetime = 0.3
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_ufjy7")
+
+[node name="spikes" type="Area2D" parent="." unique_id=414768763]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=1504345788]
+shape = SubResource("CircleShape2D_ckqup")

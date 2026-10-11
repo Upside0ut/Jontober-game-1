@@ -167,11 +167,11 @@ libraries/ = SubResource("AnimationLibrary_u6bdx")
 
 [node name="Bossdmgsound" type="AudioStreamPlayer" parent="." unique_id=1354724693]
 stream = ExtResource("4_70ms6")
-volume_db = 11.709
+volume_db = 3.0
 
 [node name="BossShootSplatter" type="AudioStreamPlayer" parent="." unique_id=1819708209]
 stream = ExtResource("3_u6bdx")
-volume_db = -4.0
+volume_db = -5.0
 
 [node name="Body" type="Node2D" parent="." unique_id=781731260]
 
@@ -211,7 +211,7 @@ speed_scale = 2.0
 position = Vector2(0, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1776404460]
-scale = Vector2(30, 30)
+scale = Vector2(20, 20)
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
