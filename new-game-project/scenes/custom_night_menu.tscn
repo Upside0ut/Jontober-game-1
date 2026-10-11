@@ -1,0 +1,415 @@
+[gd_scene format=3 uid="uid://dh4hr1e8jtufv"]
+
+[ext_resource type="Script" uid="uid://dxl3id6a6lla8" path="res://Circcle's scripts/fnaf scripts/custom_night_menu.gd" id="1_5gw8k"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="1_7llvx"]
+[ext_resource type="Script" uid="uid://dq7sr3qxw5175" path="res://Circcle's scripts/fnaf scripts/custom_night_slider.gd" id="2_vps8v"]
+[ext_resource type="Texture2D" uid="uid://wf5q7khjy5wc" path="res://FNAF sprites/agneseimg.png" id="3_kymyu"]
+[ext_resource type="Script" uid="uid://b2eqf8tq6euj6" path="res://Circcle's scripts/fnaf scripts/error_chance_text.gd" id="3_vps8v"]
+[ext_resource type="Texture2D" uid="uid://2xm31tr5puhy" path="res://FNAF sprites/randyimg.png" id="4_sh0uk"]
+[ext_resource type="Script" uid="uid://cvo0a064kx4g1" path="res://Circcle's scripts/fnaf scripts/color_challenge_buttons.gd" id="5_aeow7"]
+[ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="6_j20bj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qle8"]
+atlas = ExtResource("6_j20bj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p20yd"]
+atlas = ExtResource("6_j20bj")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcdp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qle8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p20yd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Custom_Night_Menu" type="Control" unique_id=69436528 node_paths=PackedStringArray("fader", "agnese_diff", "randy_diff", "plinko_time_advance", "alarm_stall", "flash_stall", "error_chance_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5gw8k")
+fader = NodePath("fade [SHOW WHEN FINISHED LEVEL]")
+agnese_diff = NodePath("MAIN BOX/AI_LEVEL/Enemies/Agnese/Agnese")
+randy_diff = NodePath("MAIN BOX/AI_LEVEL/Enemies/Randy/Randy")
+plinko_time_advance = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/plinko_time_advance")
+alarm_stall = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/alarm_stall")
+flash_stall = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/flash_stall")
+error_chance_text = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1469215606]
+z_index = -2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TITLE" type="MarginContainer" parent="." unique_id=2026090541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TITLE" unique_id=442114039]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TITLE/VBoxContainer3" unique_id=1970231795]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TITLE/VBoxContainer3/VBoxContainer2" unique_id=986459447]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "CUSTOM NIGHT"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MAIN BOX" type="VBoxContainer" parent="." unique_id=1605919497]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -219.0
+offset_right = 229.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="AI_LEVEL" type="VBoxContainer" parent="MAIN BOX" unique_id=559814386]
+layout_mode = 2
+
+[node name="Enemies" type="HBoxContainer" parent="MAIN BOX/AI_LEVEL" unique_id=1314872879]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Agnese" type="VBoxContainer" parent="MAIN BOX/AI_LEVEL/Enemies" unique_id=1173228823]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MAIN BOX/AI_LEVEL/Enemies/Agnese" unique_id=1943965404]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Agnese"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Agnese" type="HBoxContainer" parent="MAIN BOX/AI_LEVEL/Enemies/Agnese" unique_id=1836942479]
+layout_mode = 2
+script = ExtResource("2_vps8v")
+
+[node name="left" type="Button" parent="MAIN BOX/AI_LEVEL/Enemies/Agnese/Agnese" unique_id=380847321]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "<"
+alignment = 0
+
+[node name="diff_num" type="RichTextLabel" parent="MAIN BOX/AI_LEVEL/Enemies/Agnese/Agnese" unique_id=1898081860]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "1"
+fit_content = true
+autowrap_mode = 0
+
+[node name="right" type="Button" parent="MAIN BOX/AI_LEVEL/Enemies/Agnese/Agnese" unique_id=1586973736]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = ">"
+alignment = 0
+
+[node name="Agnese_img" type="TextureRect" parent="MAIN BOX/AI_LEVEL/Enemies" unique_id=846685761]
+layout_mode = 2
+texture = ExtResource("3_kymyu")
+expand_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MAIN BOX/AI_LEVEL/Enemies" unique_id=1036540317]
+layout_mode = 2
+
+[node name="Randy" type="VBoxContainer" parent="MAIN BOX/AI_LEVEL/Enemies" unique_id=1175878249]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MAIN BOX/AI_LEVEL/Enemies/Randy" unique_id=341186378]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Randy"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Randy" type="HBoxContainer" parent="MAIN BOX/AI_LEVEL/Enemies/Randy" unique_id=421764585]
+layout_mode = 2
+script = ExtResource("2_vps8v")
+
+[node name="left" type="Button" parent="MAIN BOX/AI_LEVEL/Enemies/Randy/Randy" unique_id=1396495269]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "<"
+alignment = 0
+
+[node name="diff_num" type="RichTextLabel" parent="MAIN BOX/AI_LEVEL/Enemies/Randy/Randy" unique_id=291310393]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "1"
+fit_content = true
+autowrap_mode = 0
+
+[node name="right" type="Button" parent="MAIN BOX/AI_LEVEL/Enemies/Randy/Randy" unique_id=1616749724]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = ">"
+alignment = 0
+
+[node name="Randy_img" type="TextureRect" parent="MAIN BOX/AI_LEVEL/Enemies" unique_id=1613111507]
+layout_mode = 2
+texture = ExtResource("4_sh0uk")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MAIN BOX" unique_id=190999638]
+layout_mode = 2
+
+[node name="START NIGHT" type="VBoxContainer" parent="MAIN BOX" unique_id=1130273990]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MAIN BOX/START NIGHT" unique_id=2122873156]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "START NIGHT"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MAIN BOX/START NIGHT" unique_id=534996139]
+modulate = Color(1, 0.8000001, 0, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Setting the difficulties to the same as the challenges will give you the completion mark for said challenges.[/center]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="MAIN BOX" unique_id=1227059816]
+layout_mode = 2
+
+[node name="DIFFICULTY" type="HBoxContainer" parent="MAIN BOX" unique_id=1169014659]
+layout_mode = 2
+
+[node name="Data" type="VBoxContainer" parent="MAIN BOX/DIFFICULTY" unique_id=448762065]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GridContainer" type="GridContainer" parent="MAIN BOX/DIFFICULTY/Data" unique_id=1329208635]
+layout_mode = 2
+columns = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=31681615]
+layout_mode = 2
+tooltip_text = "An x% chance for the Plinko Pegs to error when trying to disable them."
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 24
+text = "Error Chance"
+fit_content = true
+autowrap_mode = 0
+
+[node name="err_chance" type="LineEdit" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=813415753]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "10%,20%..."
+keep_editing_on_text_submit = true
+context_menu_enabled = false
+emoji_menu_enabled = false
+script = ExtResource("3_vps8v")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=10595121]
+layout_mode = 2
+tooltip_text = "If you win at Plinko, the night advances by 10 seconds."
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 24
+text = "Plinko Night Advance"
+fit_content = true
+autowrap_mode = 0
+
+[node name="plinko_time_advance" type="CheckButton" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=555413185]
+layout_mode = 2
+button_pressed = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=1021463229]
+layout_mode = 2
+tooltip_text = "When the Alarm is being used, the timer for the animatronic is paused, so you can't be killed while dealing with them.
+Disabling this effectively buffs the animatronic attack speed by a significant amount."
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 24
+text = "Alarm Stalling"
+fit_content = true
+autowrap_mode = 0
+
+[node name="alarm_stall" type="CheckButton" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=598625902]
+layout_mode = 2
+button_pressed = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=253841991]
+layout_mode = 2
+tooltip_text = "When the Flashlight is being used on the animatronic, the timer for the animatronic is paused, so you can't be killed while dealing with them. 
+Disabling this effectively buffs the animatronic attack speed by a significant amount."
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 24
+text = "Flashlight Stalling"
+fit_content = true
+autowrap_mode = 0
+
+[node name="flash_stall" type="CheckButton" parent="MAIN BOX/DIFFICULTY/Data/GridContainer" unique_id=796596696]
+layout_mode = 2
+button_pressed = true
+
+[node name="VSeparator" type="VSeparator" parent="MAIN BOX/DIFFICULTY" unique_id=1068761718]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Challenges" type="GridContainer" parent="MAIN BOX/DIFFICULTY" unique_id=665362199]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+columns = 2
+script = ExtResource("5_aeow7")
+
+[node name="Star1" type="Control" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=935125347]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MAIN BOX/DIFFICULTY/Challenges/Star1" unique_id=1995594478]
+modulate = Color(1, 1, 1, 0.2)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_xcdp3")
+autoplay = "default"
+frame_progress = 0.9593542
+centered = false
+offset = Vector2(0.04, 0)
+
+[node name="Bronze" type="Button" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=1968721673]
+modulate = Color(1, 0.6686667, 0.29000002, 1)
+layout_mode = 2
+tooltip_text = "Both AIs at 20
+Plinko skips 10 seconds on a win
+Alarm stall on
+Flash stall on
+33% error chance"
+theme_override_font_sizes/font_size = 22
+text = "Bronze Challenge"
+
+[node name="Star2" type="Control" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=2136645173]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MAIN BOX/DIFFICULTY/Challenges/Star2" unique_id=911583795]
+modulate = Color(1, 1, 1, 0.2)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_xcdp3")
+autoplay = "default"
+frame_progress = 0.9593542
+centered = false
+offset = Vector2(0.04, 0)
+
+[node name="Silver" type="Button" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=1105595402]
+modulate = Color(0.57, 0.79216665, 1, 1)
+layout_mode = 2
+tooltip_text = "Both AIs at 20
+Plinko skip off
+Alarm stall on
+Flash stall on
+100% error chance"
+theme_override_font_sizes/font_size = 22
+text = "Silver Challenge"
+
+[node name="Star3" type="Control" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=1580638491]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MAIN BOX/DIFFICULTY/Challenges/Star3" unique_id=1099420096]
+modulate = Color(1, 1, 1, 0.2)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_xcdp3")
+autoplay = "default"
+frame_progress = 0.9593542
+centered = false
+offset = Vector2(0.04, 0)
+
+[node name="Gold" type="Button" parent="MAIN BOX/DIFFICULTY/Challenges" unique_id=1540401600]
+modulate = Color(1, 0.91833335, 0.3, 1)
+layout_mode = 2
+tooltip_text = "Both AIs at 20
+Plinko skip off
+Alarm stall off
+Flash stall off
+100% error chance"
+theme_override_font_sizes/font_size = 22
+text = "Gold Challenge"
+
+[node name="BACK" type="MarginContainer" parent="." unique_id=1339985020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Back" type="Button" parent="BACK" unique_id=1391353584]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=1621609976]
+z_index = 999
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_7llvx")
+
+[connection signal="pressed" from="MAIN BOX/START NIGHT/Button" to="." method="_on_button_pressed"]
+[connection signal="editing_toggled" from="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" to="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" method="_on_editing_toggled"]
+[connection signal="text_changed" from="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" to="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" method="_on_text_changed"]
+[connection signal="text_submitted" from="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" to="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" method="_on_text_submitted"]
+[connection signal="pressed" from="MAIN BOX/DIFFICULTY/Challenges/Bronze" to="." method="_on_bronze_pressed"]
+[connection signal="pressed" from="MAIN BOX/DIFFICULTY/Challenges/Silver" to="." method="_on_silver_pressed"]
+[connection signal="pressed" from="MAIN BOX/DIFFICULTY/Challenges/Gold" to="." method="_on_gold_pressed"]
+[connection signal="pressed" from="BACK/Back" to="." method="_on_back_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4x3ohdellvee"]
 
 [ext_resource type="Script" uid="uid://ch7qjbucskons" path="res://Circcle's scripts/fnaf scripts/fnaf_pad.gd" id="1_fpk7u"]
-[ext_resource type="Texture2D" uid="uid://d02xgfa5jtwh6" path="res://textures/plinkopad.png" id="2_62d66"]
+[ext_resource type="Texture2D" uid="uid://dillf0w5x7d4y" path="res://FNAF sprites/fnafpad.png" id="2_fpk7u"]
 [ext_resource type="Script" uid="uid://p7no6rts28q2" path="res://Circcle's scripts/sub_viewport_telephone.gd" id="3_otcj0"]
 
 [node name="Fnaf Pad" type="CanvasLayer" unique_id=1768494728 node_paths=PackedStringArray("plinko_subviewport", "plinko_Sprite2D")]
@@ -22,7 +22,7 @@ mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1515786792]
 scale = Vector2(0.35, 0.355)
-texture = ExtResource("2_62d66")
+texture = ExtResource("2_fpk7u")
 offset = Vector2(-600, 0)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control/Sprite2D" unique_id=1831761024]

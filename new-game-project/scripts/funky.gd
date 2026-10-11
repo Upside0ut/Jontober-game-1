@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		Input.is_action_pressed("FUNKY_N") and
 		Input.is_action_pressed("FUNKY_K") and
 		Input.is_action_pressed("FUNKY_Y")):
+		
 		$Parallax2D/AnimationPlayer.speed_scale += 1
 		$Parallax2D/AnimatedSprite2D.speed_scale += 1
 		
@@ -37,7 +38,6 @@ func _process(delta: float) -> void:
 		$MarginContainer/Label2.text = "yooooooooooooooooooooooooooooo"
 		
 		gradually_switch_colors()
-		
 
 func switch_up_btn_positions():
 	while true:
@@ -75,3 +75,11 @@ func gradually_switch_colors():
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
+
+func _input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if Input.is_key_pressed(KEY_1) \
+		and Input.is_key_pressed(KEY_9) \
+		and Input.is_key_pressed(KEY_8) \
+		and Input.is_key_pressed(KEY_7):
+			get_tree().change_scene_to_file("res://scenes/fnaf_menu.tscn")

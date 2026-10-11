@@ -1,10 +1,15 @@
 extends Node2D
 
 @export var bottom_areas : Node
+@export var wall_tiles : TileMapLayer
 @onready var drop_marker : Node2D = $"Drop Marker"
 @onready var plinko_player : Node2D = $"Plinko Player"
 @onready var player_camera : Node2D = $"Player Camera"
+
 @onready var background : ColorRect = $"gambling bg"
+@onready var red_background : ColorRect = $"red bg"
+@onready var tutorial_text : RichTextLabel = $"Tutorial Text"
+
 @export var state_text : RichTextLabel
 
 @export var fnaf_ver := false
@@ -26,11 +31,15 @@ func _ready() -> void:
 		child.changed_state.connect(_on_state_changed.bind(child))
 	
 	if fnaf_ver:
+		wall_tiles.modulate = Color("ff0000ff")
+		red_background.visible = true
+		background.visible =false
+		
+		tutorial_text.text = "Press the Jump Key to release the Ball!\nClick a Peg to turn it off!"
 		for peg in get_tree().get_nodes_in_group("pegs"):
 			if is_ancestor_of(peg):
 				peg.peg_clicked.connect(_on_peg_clicked)
 		
-		background.visible =false
 	state_text.text = ""
 
 #region FNAF_stuff
@@ -98,7 +107,10 @@ func _reset_after_timer():
 	ready_to_reset = true
 	_reset_all()
 	drop_marker.can_drop = false
-	await get_tree().create_timer(3.0).timeout
+	if !fnaf_ver:
+		await get_tree().create_timer(3.0).timeout
+	else:
+		await get_tree().create_timer(1.0).timeout
 	drop_marker.can_drop = true
 	ready_to_reset = false
 	state_text.text = ""

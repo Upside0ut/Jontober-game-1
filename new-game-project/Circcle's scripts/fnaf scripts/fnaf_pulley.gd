@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 			lerp(
 				global_position.y, 
 				mouse_pos.y-rope_half_size, 
-				delta*5),
+				delta*10),
 				-INF,
 				minimum_position)
 	else:
