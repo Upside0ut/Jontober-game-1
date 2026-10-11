@@ -786,7 +786,7 @@ texture = ExtResource("14_j3s8s")
 arms = true
 
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("1_d3of3")]
-position = Vector2(-3746, -554)
+position = Vector2(1242, -160)
 
 [node name="door" parent="." unique_id=1709357118 instance=ExtResource("6_y1hh4")]
 position = Vector2(-548, -16)
@@ -831,7 +831,7 @@ texture = ExtResource("20_4djgt")
 follows = false
 
 [node name="mannequin4" parent="." unique_id=2053007022 instance=ExtResource("8_i24gp")]
-position = Vector2(3317, 352)
+position = Vector2(3575, 352)
 texture = ExtResource("21_j3s8s")
 
 [node name="mannequin6" parent="." unique_id=1433350244 instance=ExtResource("8_i24gp")]
