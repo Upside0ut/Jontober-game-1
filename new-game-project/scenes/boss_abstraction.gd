@@ -13,9 +13,10 @@ var current_dash_point
 var dash_counter = 0
 var on_screen = false
 var bar_fully_loaded = false
+var rotating = false
 
 var move_speed = 1000
-var sprint_speed = 2000
+var sprint_speed = 2400
 var health = 100
 var on_hit_depleted_health = 50
 
@@ -65,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	if health < 1:
 		die()
 	
+	
 	match state:
 		States.IDLE:
 			pass
@@ -88,8 +90,16 @@ func depleteHealth():
 	#play damage anymation
 	$Timer.stop()
 	$Timer.timeout.emit()
+	
+	$AnimationPlayer.play("shake")
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	$Bossdmgsound.play()
 	await wait(0.3)
+	$AnimationPlayer.stop()
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	
 	$SplatterRing/spikes.set_deferred("monitorable", true)
+	$SplatterRing/spikes.set_deferred("monitoring", true)
 	changeState(States.SCARED)
 
 func die():
@@ -115,7 +125,7 @@ func hunting():
 		changeState(States.ATTACKING)
 
 func scared():
-	if (find_player_distance() < 1000):
+	if (find_player_distance() < 1500):
 		move_away_from_player(sprint_speed)
 	else:
 		print("scared to idle")
@@ -191,6 +201,8 @@ func spray(total_time: float, time_between_bullets):
 	$Timer.one_shot = true
 	$Timer.start(total_time)
 	
+	rotating = true
+	
 	var spray_while_not_on_screen_conuter = 0
 	while $Timer.time_left > 0:
 		if (!on_screen):
@@ -201,8 +213,9 @@ func spray(total_time: float, time_between_bullets):
 			spray_while_not_on_screen_conuter += 1
 		
 		await shoot_bullet()
-		print($Timer.time_left)
 		await wait(time_between_bullets)
+	
+	rotating = false
 	$Timer.stop()
 
 func shoot_bullet():
@@ -210,6 +223,7 @@ func shoot_bullet():
 	var bullet = bulletScene.instantiate()
 	add_sibling(bullet)
 	
+	$BossShootSplatter.play()
 	bullet.global_position = $SplatterRing.get_random_global_ring_position(true)
 	bullet.shoot(global_position.direction_to(bullet.global_position))
 

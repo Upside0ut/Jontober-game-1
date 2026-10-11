@@ -98,4 +98,5 @@ func _on_opening_body_entered(body: Node2D, opening: Area2D) -> void:
 		return
 	
 	$spikes.set_deferred("monitorable", false)
+	$spikes.set_deferred("monitoring", false)
 	get_parent().depleteHealth()

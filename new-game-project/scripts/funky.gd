@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		
 		gradually_switch_colors()
 		
-
+level
 func switch_up_btn_positions():
 	while true:
 		move_to_random_position($MarginContainer/VBoxContainer/play)
