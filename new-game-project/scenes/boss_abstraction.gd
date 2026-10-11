@@ -58,6 +58,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if (rotating):
+		rotate(0.01)
+	
 	velocity = Vector2.ZERO
 	
 	if(bar_fully_loaded):
@@ -144,7 +147,9 @@ func attack():
 			await feint(standard_feint_time)
 	
 	close_openings()
-	changeState(States.IDLE)
+	
+	if(state != States.SCARED):
+		changeState(States.IDLE)
 
 func decide_attack():
 	if(find_player_distance() > 1000):
@@ -239,9 +244,11 @@ func feint(time):
 	create_opening(-1)
 	#TODO play slight tell animation
 	feinting = true
+	rotating = true
 	$Timer.start(time)
 	await $Timer.timeout
 	feinting = false
+	rotating = false
 
 func feint_success():
 	#TODO play biting animation
