@@ -144,7 +144,7 @@ func attack():
 	while $FeintCooldown.time_left > 0 and decided_atk == 3:
 		decided_atk = decide_attack()
 	
-	match decided_atk:
+	match 3:
 		0:
 			changeState(States.IDLE)
 		1:
@@ -289,12 +289,29 @@ func feint(time):
 	rotating = false
 
 func feint_success():
-	#TODO play biting animation
-	#damage is anyway cus spikes
+	rotating = false
+	play_feint_move_animation()
+	await wait(0.1)
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	$Body/Teeth.play("bite")
+	await wait(0.2)
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	
+		
 	$AttackTimer.stop()
 	$AttackTimer.timeout.emit()
-	await wait(0.3)
 	changeState(States.SCARED)
+
+func play_feint_move_animation():
+	match $SplatterRing.get_current_opening().name:
+		"OpeningTop": $AnimationPlayer.play("feint_top")
+		"OpeningTopRight": $AnimationPlayer.play("feint_top_right")
+		"OpeningRight": $AnimationPlayer.play("feint_right")
+		"OpeningBottomRight": $AnimationPlayer.play("feint_bottom_right")
+		"OpeningBottom": $AnimationPlayer.play("feint_bottom")
+		"OpeningBottomLeft": $AnimationPlayer.play("feint_bottom_left")
+		"OpeningLeft": $AnimationPlayer.play("feint_left")
+		"OpeningTopLeft": $AnimationPlayer.play("feint_top_left")
 
 func move_toward_player(speed: int):
 	velocity = find_player_direction() * speed
