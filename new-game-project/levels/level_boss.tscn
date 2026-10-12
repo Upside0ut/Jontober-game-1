@@ -653,6 +653,9 @@ radius = 224.08258
 
 [node name="LevelBoss" type="Node2D" unique_id=2041486450]
 
+[node name="BossAbstraction" parent="." unique_id=1086137296 instance=ExtResource("7_2e41g")]
+position = Vector2(0, 3650)
+
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_l271g")]
 metadata/_edit_group_ = true
 
@@ -694,9 +697,6 @@ shape = SubResource("RectangleShape2D_0evtg")
 stream = ExtResource("6_2e41g")
 volume_db = 3.0
 parameters/looping = true
-
-[node name="BossAbstraction" parent="." unique_id=1086137296 instance=ExtResource("7_2e41g")]
-position = Vector2(0, 3650)
 
 [node name="DashCheckpoints" type="Node2D" parent="." unique_id=853235680]
 script = ExtResource("8_l271g")

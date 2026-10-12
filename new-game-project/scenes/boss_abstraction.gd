@@ -144,7 +144,7 @@ func attack():
 	while $FeintCooldown.time_left > 0 and decided_atk == 3:
 		decided_atk = decide_attack()
 	
-	match 3:
+	match decided_atk:
 		0:
 			changeState(States.IDLE)
 		1:
@@ -291,13 +291,13 @@ func feint(time):
 func feint_success():
 	rotating = false
 	play_feint_move_animation()
-	await wait(0.1)
-	player.process_mode = Node.PROCESS_MODE_DISABLED
+	await $AnimationPlayer.animation_finished
 	$Body/Teeth.play("bite")
-	await wait(0.2)
-	player.process_mode = Node.PROCESS_MODE_INHERIT
+	await $Body/Teeth.animation_finished
+	$AnimationPlayer.play("RESET")
+	await $AnimationPlayer.animation_finished
 	
-		
+	
 	$AttackTimer.stop()
 	$AttackTimer.timeout.emit()
 	changeState(States.SCARED)
