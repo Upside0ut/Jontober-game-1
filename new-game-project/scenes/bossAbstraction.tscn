@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qgo7iscdcgxk" path="res://scenes/splatterRing.tscn" id="3_17mkm"]
 [ext_resource type="AudioStream" uid="uid://c3846uww6veje" path="res://sound_effects/BossShootSplatter.mp3" id="3_u6bdx"]
 [ext_resource type="AudioStream" uid="uid://cp0h6v6wljc87" path="res://sound_effects/bossdmgsound.mp3" id="4_70ms6"]
+[ext_resource type="AudioStream" uid="uid://c1jqc0buu1cj3" path="res://sound_effects/bossBurp.mp3" id="4_gpj6j"]
 [ext_resource type="Texture2D" uid="uid://b6o4ihf57xmep" path="res://frames/bossframes/weirdLipThing/frame_00_delay-0.1s.png" id="4_kpon3"]
 [ext_resource type="Texture2D" uid="uid://7rtml3ciuqft" path="res://frames/bossframes/weirdLipThing/frame_01_delay-0.1s.png" id="5_c51kp"]
 [ext_resource type="Texture2D" uid="uid://b0sdj68nyhpuw" path="res://frames/bossframes/weirdLipThing/frame_02_delay-0.1s.png" id="6_okipd"]
@@ -447,6 +448,9 @@ volume_db = 3.0
 [node name="BossShootSplatter" type="AudioStreamPlayer" parent="." unique_id=1819708209]
 stream = ExtResource("3_u6bdx")
 volume_db = -5.0
+
+[node name="BossBurp" type="AudioStreamPlayer" parent="." unique_id=1712371740]
+stream = ExtResource("4_gpj6j")
 
 [node name="Body" type="Node2D" parent="." unique_id=781731260]
 

@@ -290,28 +290,41 @@ func feint(time):
 
 func feint_success():
 	rotating = false
-	play_feint_move_animation()
+	play_feint_move_animation(false)
 	await $AnimationPlayer.animation_finished
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	$Body/Teeth.play("bite")
 	await $Body/Teeth.animation_finished
-	$AnimationPlayer.play("RESET")
-	await $AnimationPlayer.animation_finished
-	
-	
-	$AttackTimer.stop()
-	$AttackTimer.timeout.emit()
-	changeState(States.SCARED)
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	player.die()#mb if this is supposed to be private or sm but it really looks ugly otherwise sooory
+	await wait(0.2)
+	play_feint_move_animation(true)
+	$Body/Teeth.play_backwards("bite")
+	$BossBurp.play()
+	await $BossBurp.finished
 
-func play_feint_move_animation():
-	match $SplatterRing.get_current_opening().name:
-		"OpeningTop": $AnimationPlayer.play("feint_top")
-		"OpeningTopRight": $AnimationPlayer.play("feint_top_right")
-		"OpeningRight": $AnimationPlayer.play("feint_right")
-		"OpeningBottomRight": $AnimationPlayer.play("feint_bottom_right")
-		"OpeningBottom": $AnimationPlayer.play("feint_bottom")
-		"OpeningBottomLeft": $AnimationPlayer.play("feint_bottom_left")
-		"OpeningLeft": $AnimationPlayer.play("feint_left")
-		"OpeningTopLeft": $AnimationPlayer.play("feint_top_left")
+func play_feint_move_animation(backwards: bool):
+	if(!backwards):
+		match $SplatterRing.get_current_opening().name:
+			"OpeningTop": $AnimationPlayer.play("feint_top")
+			"OpeningTopRight": $AnimationPlayer.play("feint_top_right")
+			"OpeningRight": $AnimationPlayer.play("feint_right")
+			"OpeningBottomRight": $AnimationPlayer.play("feint_bottom_right")
+			"OpeningBottom": $AnimationPlayer.play("feint_bottom")
+			"OpeningBottomLeft": $AnimationPlayer.play("feint_bottom_left")
+			"OpeningLeft": $AnimationPlayer.play("feint_left")
+			"OpeningTopLeft": $AnimationPlayer.play("feint_top_left")
+	else:
+		match $SplatterRing.get_current_opening().name:
+			"OpeningTop": $AnimationPlayer.play_backwards("feint_top")
+			"OpeningTopRight": $AnimationPlayer.play_backwards("feint_top_right")
+			"OpeningRight": $AnimationPlayer.play_backwards("feint_right")
+			"OpeningBottomRight": $AnimationPlayer.play_backwards("feint_bottom_right")
+			"OpeningBottom": $AnimationPlayer.play_backwards("feint_bottom")
+			"OpeningBottomLeft": $AnimationPlayer.play_backwards("feint_bottom_left")
+			"OpeningLeft": $AnimationPlayer.play_backwards("feint_left")
+			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
 
 func move_toward_player(speed: int):
 	velocity = find_player_direction() * speed
