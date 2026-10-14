@@ -127,6 +127,9 @@ func idle():
 	
 	changeState(States.ATTACKING)
 
+func hunt_dead():
+	
+
 func hunting():
 	if (find_player_distance() > 600):
 		move_toward_player(move_speed)
@@ -153,8 +156,7 @@ func attack():
 		0:
 			changeState(States.IDLE)
 		1:
-			await dash()
-			return
+			hunt_dead()
 		2:
 			await spray(standard_spray_time, standard_bullet_time)
 		3:
@@ -193,32 +195,32 @@ func decide_attack():
 func attacking():
 	pass
 
-func dash():
-	print("dash")
-	var dash_points = get_parent().get_node("DashCheckpoints").get_children()
-	dash_points.shuffle()
-	
-	for dash_point in dash_points:
-		if(clear_shot(dash_point)):
-			current_dash_point = dash_point
-			changeState(States.DASHING)
-			break
-
-func dashing():
-	if(dash_counter > 500):
-		dash_counter = 0
-		changeState(States.IDLE)
-		return
-	
-	if(!on_screen):
-		changeState(States.IDLE)
-		return
-	
-	velocity = global_position.direction_to(current_dash_point.global_position) * move_speed
-
-func reached_dash_point():
-	if (state == States.DASHING):
-		changeState(States.IDLE)
+#func dash():
+#	print("dash")
+#	var dash_points = get_parent().get_node("DashCheckpoints").get_children()
+#	dash_points.shuffle()
+#	
+#	for dash_point in dash_points:
+#		if(clear_shot(dash_point)):
+#			current_dash_point = dash_point
+#			changeState(States.DASHING)
+#			break
+#
+#func dashing():
+#	if(dash_counter > 500):
+#		dash_counter = 0
+#		changeState(States.IDLE)
+#		return
+#	
+#	if(!on_screen):
+#		changeState(States.IDLE)
+#		return
+#	
+#	velocity = global_position.direction_to(current_dash_point.global_position) * move_speed
+#
+#func reached_dash_point():
+#	if (state == States.DASHING):
+#		changeState(States.IDLE)
 
 func spray(total_time: float, time_between_bullets):
 	create_opening(-1)
