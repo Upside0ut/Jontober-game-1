@@ -655,10 +655,10 @@ radius = 224.08258
 
 [node name="background" type="ColorRect" parent="." unique_id=2084225563]
 z_index = -10
-offset_left = -18385.0
-offset_top = -10308.0
-offset_right = 17677.0
-offset_bottom = 13028.0
+offset_left = -18358.0
+offset_top = -10202.0
+offset_right = 17704.0
+offset_bottom = 13134.0
 color = Color(0.0300058, 0.008504948, 0.0123163285, 1)
 
 [node name="ground tilemap" type="TileMapLayer" parent="." unique_id=595800269]

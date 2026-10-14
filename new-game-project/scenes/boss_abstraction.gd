@@ -14,6 +14,8 @@ var dash_counter = 0
 var on_screen = false
 var bar_fully_loaded = false
 var rotating = false
+var just_hit = false
+var recently_hit = false
 
 var move_speed = 1000
 var sprint_speed = 2400
@@ -90,6 +92,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func depleteHealth():
+	just_hit = true
 	print("Damaged: ")
 	print(on_hit_depleted_health)
 	health -= on_hit_depleted_health
@@ -137,6 +140,8 @@ func scared():
 	else:
 		print("scared to idle")
 		changeState(States.IDLE)
+		just_hit = false
+		recently_hit = true
 
 func attack():
 	var decided_atk = decide_attack()
@@ -156,13 +161,18 @@ func attack():
 			await feint(standard_feint_time)
 		4:
 			await missile_attack(standard_missle_atk_time)
+		5:
+			await center_attack()
 	
 	close_openings()
 	
-	if(state != States.SCARED):
+	if(!just_hit):
 		changeState(States.IDLE)
 
 func decide_attack():
+	if(recently_hit and randi_range(1, 10) > 2):
+		return 5
+	
 	if(find_player_distance() > 1000):
 		if(clear_shot(player)):
 			return [1, 2, 4, 4].pick_random()
@@ -277,7 +287,7 @@ func shoot_follow_missile():
 
 func feint(time):
 	create_player_direction_opening()
-	#TODO play slight tell animation
+	#TODO play slight tell animation #nvm i think
 	feinting = true
 	rotating = true
 	$AttackTimer.start(time)
@@ -325,6 +335,14 @@ func play_feint_move_animation(backwards: bool):
 			"OpeningBottomLeft": $AnimationPlayer.play_backwards("feint_bottom_left")
 			"OpeningLeft": $AnimationPlayer.play_backwards("feint_left")
 			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
+
+func center_attack():
+	move_to_center
+
+
+func move_to_center(speed: int):
+	pass
+
 
 func move_toward_player(speed: int):
 	velocity = find_player_direction() * speed
