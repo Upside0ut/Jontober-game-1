@@ -6,6 +6,7 @@ var state
 var rng = RandomNumberGenerator.new()
 
 var player
+var center
 var feinting = false
 var previous_player_distance = 0
 var stuck_too_long = false
@@ -46,6 +47,7 @@ func changeState(newState: States):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent().get_node("Player")
+	center = get_parent().get_node("CenterPoint")
 	$CanvasLayer/BossBar.hide()
 	$CanvasLayer/BossBar.value = 0
 	
@@ -85,9 +87,6 @@ func _physics_process(delta: float) -> void:
 			attacking()
 		States.SCARED:
 			scared()
-		States.DASHING:
-			dash_counter += 1
-			dashing()
 	
 	move_and_slide()
 
@@ -128,7 +127,7 @@ func idle():
 	changeState(States.ATTACKING)
 
 func hunt_dead():
-	
+	pass
 
 func hunting():
 	if (find_player_distance() > 600):
@@ -339,12 +338,17 @@ func play_feint_move_animation(backwards: bool):
 			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
 
 func center_attack():
-	move_to_center
+	while(global_position != center.global_position):
+		move_toward_center(move_speed)
+	
+	$AnimationPlayer.play("shake")
 
 
-func move_to_center(speed: int):
-	pass
+func move_toward_center(speed: int):
+	velocity = find_center_direction() * speed
 
+func find_center_direction():
+	return global_position.direction_to(center.global_position)
 
 func move_toward_player(speed: int):
 	velocity = find_player_direction() * speed

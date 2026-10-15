@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="5_eor1m"]
 [ext_resource type="AudioStream" uid="uid://bhr8lmpnq80r8" path="res://music/Ball Game Boss.mp3" id="6_2e41g"]
 [ext_resource type="PackedScene" uid="uid://chp448cbirpbb" path="res://scenes/bossAbstraction.tscn" id="7_2e41g"]
-[ext_resource type="Script" uid="uid://djx4mkrrxa5i6" path="res://levels/dash_checkpoints.gd" id="8_l271g"]
+[ext_resource type="Script" uid="uid://djx4mkrrxa5i6" path="res://levels/center_point_boss_lvl.gd" id="8_l271g"]
 [ext_resource type="PackedScene" uid="uid://cjxh3ftsnnkri" path="res://scenes/StaticUpwardsplatterwall.tscn" id="9_5fpo4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2e41g"]
@@ -666,7 +666,7 @@ tile_map_data = PackedByteArray("AAD0/zoAAAAFAAcAAAD6/z4AAAAFAAcAAAD7/z4AAAAFAAc
 tile_set = SubResource("TileSet_dywen")
 
 [node name="BossAbstraction" parent="." unique_id=1086137296 instance=ExtResource("7_2e41g")]
-position = Vector2(0, 3650)
+position = Vector2(440, 5026)
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_l271g")]
 metadata/_edit_group_ = true
@@ -698,46 +698,15 @@ stream = ExtResource("6_2e41g")
 volume_db = 3.0
 parameters/looping = true
 
-[node name="DashCheckpoints" type="Node2D" parent="." unique_id=853235680]
+[node name="CenterPoint" type="Area2D" parent="." unique_id=926845027]
+position = Vector2(0, 3500)
 script = ExtResource("8_l271g")
 
-[node name="dashPoint1" type="Area2D" parent="DashCheckpoints" unique_id=215854378]
-position = Vector2(0, 1500)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheckpoints/dashPoint1" unique_id=1694524807]
-shape = SubResource("CircleShape2D_7x0ad")
-
-[node name="dashPoint2" type="Area2D" parent="DashCheckpoints" unique_id=982668380]
-position = Vector2(0, 5000)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheckpoints/dashPoint2" unique_id=168150170]
-shape = SubResource("CircleShape2D_7x0ad")
-
-[node name="dashPoint3" type="Area2D" parent="DashCheckpoints" unique_id=350398713]
-position = Vector2(-3500, 2700)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheckpoints/dashPoint3" unique_id=595679175]
-shape = SubResource("CircleShape2D_7x0ad")
-
-[node name="dashPoint4" type="Area2D" parent="DashCheckpoints" unique_id=1122770072]
-position = Vector2(3500, 2700)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheckpoints/dashPoint4" unique_id=241803886]
-shape = SubResource("CircleShape2D_7x0ad")
-
-[node name="dashPoint5" type="Area2D" parent="DashCheckpoints" unique_id=926845027]
-visible = false
-position = Vector2(0, 3500)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheckpoints/dashPoint5" unique_id=1022119532]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint" unique_id=1022119532]
 shape = SubResource("CircleShape2D_7x0ad")
 
 [node name="UpwardSplatterwall" parent="." unique_id=314029043 instance=ExtResource("9_5fpo4")]
 position = Vector2(0, 6500)
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="body_entered" from="DashCheckpoints/dashPoint1" to="DashCheckpoints" method="_on_dash_point_body_entered"]
-[connection signal="body_entered" from="DashCheckpoints/dashPoint2" to="DashCheckpoints" method="_on_dash_point_body_entered"]
-[connection signal="body_entered" from="DashCheckpoints/dashPoint3" to="DashCheckpoints" method="_on_dash_point_body_entered"]
-[connection signal="body_entered" from="DashCheckpoints/dashPoint4" to="DashCheckpoints" method="_on_dash_point_body_entered"]
-[connection signal="body_entered" from="DashCheckpoints/dashPoint5" to="DashCheckpoints" method="_on_dash_point_body_entered"]
+[connection signal="body_entered" from="CenterPoint" to="CenterPoint" method="_on_center_point_body_entered"]

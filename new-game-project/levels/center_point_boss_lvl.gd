@@ -10,8 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_dash_point_body_entered(body: Node2D) -> void:
+func _on_center_point_body_entered(body: Node2D) -> void:
 	if(body != get_parent().get_node("BossAbstraction")):
 		return
 	
-	get_parent().get_node("BossAbstraction").reached_dash_point()
+	get_parent().get_node("BossAbstraction").reached_center_point()
