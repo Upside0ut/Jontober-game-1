@@ -17,6 +17,7 @@ var bar_fully_loaded = false
 var rotating = false
 var just_hit = false
 var recently_hit = false
+var moving_to_center = false
 
 var move_speed = 1000
 var sprint_speed = 2400
@@ -172,6 +173,7 @@ func attack():
 
 func decide_attack():
 	if(recently_hit and randi_range(1, 10) > 2):
+		print("decided 5")
 		return 5
 	
 	if(find_player_distance() > 1000):
@@ -192,7 +194,8 @@ func decide_attack():
 	return [2, 2, 2, 2, 4, 4, 4, 3].pick_random()
 
 func attacking():
-	pass
+	if (moving_to_center):
+		move_toward_center(move_speed)
 
 #func dash():
 #	print("dash")
@@ -338,11 +341,15 @@ func play_feint_move_animation(backwards: bool):
 			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
 
 func center_attack():
+	moving_to_center = true
 	while(global_position != center.global_position):
-		move_toward_center(move_speed)
+		await wait(0.1)
+	moving_to_center = false
 	
-	$AnimationPlayer.play("shake")
-
+	await $AnimationPlayer.play("shake")
+	
+	
+	print("reached center")
 
 func move_toward_center(speed: int):
 	velocity = find_center_direction() * speed
