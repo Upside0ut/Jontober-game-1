@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	diff_num.text = "%02d" % current_diff
 
 func update_diff_tooltip() -> void:
-	var stats: Dictionary = NightData.get_stats(current_diff) if get_parent().name == "Agnese" else NightData.get_stats(current_diff, 0.3) 
+	var stats: Dictionary = NightData.get_stats(current_diff) 
 	
 	diff_num.tooltip_text = (
 		"AI Level: %d
@@ -49,3 +49,18 @@ func update_diff_tooltip() -> void:
 		\nAttack Time: %.1f s
 		\nTime to Repel: %.1f s" % [stats["ai_level"], stats["move_interval"], stats["attack_time"], stats["time_to_repel"]]
 	)
+	
+	if get_parent().name == "Agnese":
+		diff_num.tooltip_text = (
+		"AI Level: %d
+		\nMove Interval: %.1f s
+		\nAttack Time: %.1f s
+		\nTime to Repel: %.1f s (Agnese: -0.2)" % [stats["ai_level"], stats["move_interval"], stats["attack_time"], stats["time_to_repel"] - 0.2]
+		)
+	elif get_parent().name == "Randy":
+		diff_num.tooltip_text = (
+		"AI Level: %d
+		\nMove Interval: %.1f s (Randy: +0.235)
+		\nAttack Time: %.1f s
+		\nTime to Repel: %.1f s" % [stats["ai_level"], stats["move_interval"] + 0.235, stats["attack_time"], stats["time_to_repel"]]
+		)

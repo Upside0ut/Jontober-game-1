@@ -23,12 +23,12 @@ static var NIGHTS = [
 	{ "Agnese": get_stats(18), "Randy": get_stats(17), "error_chance": 0.33},
 ]
 
-static func get_stats(ai_level: int, move_offset := 0.0) -> Dictionary:
+static func get_stats(ai_level: int) -> Dictionary:
 	return {
 		"ai_level": ai_level,
-		"move_interval": remap(ai_level, 6, 18, 7.0, 4.7) + move_offset,
-		"attack_time": remap(ai_level, 6, 18, 7.0, 4.8),
-		"time_to_repel": remap(ai_level, 6, 18, 1.0, 2.0),
+		"move_interval": remap(ai_level, 6, 18, 6.0, 4.7),
+		"attack_time": remap(ai_level, 6, 18, 5.5, 4.8),
+		"time_to_repel": remap(ai_level, 6, 18, 1.2, 2.0),
 	}
 
 # before nerf 1: m_i = 4.0, a_t = 3.5
@@ -75,7 +75,7 @@ static var custom_data := {}
 static func start_custom(agnese_level: int, randy_level: int, error: float, plinko_night_advance: bool, alarm_stall: bool, flash_stall: bool):
 	custom_data = {
 		"Agnese": get_stats(agnese_level),
-		"Randy": get_stats(randy_level, 0.3),
+		"Randy": get_stats(randy_level),
 		"error_chance": error,
 		"plinko_night_advance": plinko_night_advance,
 		"alarm_stall": alarm_stall,

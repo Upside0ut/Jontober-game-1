@@ -39,7 +39,7 @@ func set_difficulty() -> void:
 	ai_level = data["ai_level"]
 	move_interval = data["move_interval"]
 	attack_time = data["attack_time"]
-	time_to_repel = data["time_to_repel"]
+	time_to_repel = data["time_to_repel"] - 0.2
 
 func _process(delta: float) -> void:
 	match state:
@@ -74,16 +74,21 @@ func _process(delta: float) -> void:
 				attack_left -= delta
 				print("Agnese attack time: ", attack_left)
 			if attack_left <= 0.0:
-				if jumpscared: return
-				jumpscared = true
-				get_parent().set_process(false)
-				door_sprite.visible = false
-				jumpscare.emit("Agnese")
-				print("Agnese Jumpscare")
+				_do_jumpscare()
+
+func _do_jumpscare():
+	if jumpscared: return
+	jumpscared = true
+	get_parent().set_process(false)
+	door_sprite.visible = false
+	jumpscare.emit("Agnese")
+	print("Agnese Jumpscare")
 
 func _appear_at_entrance() -> void:
 	attack_left = attack_time
 	state = State.AT_DOOR
+	
+	alarm_time = 0.0
 	door_sprite.visible = true
 	
 	print("- Agnese at door!")

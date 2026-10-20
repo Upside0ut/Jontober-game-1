@@ -355,7 +355,7 @@ texture = SubResource("AtlasTexture_7bxxh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Enemies/Randy/At_Door_Randy/R_Light_Area" unique_id=91050585]
 shape = SubResource("RectangleShape2D_g16ln")
 
-[node name="Jumpscares" type="Node2D" parent="Gameplay" unique_id=507004190 node_paths=PackedStringArray("FNAF_PAD", "Agnese", "Agnese_jumpscare", "Randy", "Randy_jumpscare", "player_cam", "jumpscare_light", "jumpscare_sfx")]
+[node name="Jumpscares" type="Node2D" parent="Gameplay" unique_id=507004190 node_paths=PackedStringArray("FNAF_PAD", "Agnese", "Agnese_jumpscare", "Randy", "Randy_jumpscare", "player_cam", "flashlight", "alarm", "jumpscare_light", "jumpscare_sfx")]
 script = ExtResource("16_regb1")
 FNAF_PAD = NodePath("../../FNAF PAD")
 Agnese = NodePath("../Enemies/Agnese")
@@ -363,6 +363,8 @@ Agnese_jumpscare = NodePath("Agnese_JS")
 Randy = NodePath("../Enemies/Randy")
 Randy_jumpscare = NodePath("Randy_JS")
 player_cam = NodePath("../../PlayerCam")
+flashlight = NodePath("../Equipment/Flashlight")
+alarm = NodePath("../Equipment/AlarmLight")
 jumpscare_light = NodePath("jumpscare_light")
 jumpscare_sfx = NodePath("../../Audios/Jumpscare SFX")
 

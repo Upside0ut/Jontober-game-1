@@ -2,15 +2,21 @@ extends Control
 
 @export var nights : RichTextLabel
 @export var fader : ColorRect
+@export var song : AudioStreamPlayer
 
 var clicked_play := false
 
 func _ready() -> void:
 	NightData.load_night()
+	
+	var original_volume = song.volume_linear
+	song.volume_linear = 0.01
+	var tween := create_tween()
+	tween.tween_property(song, "volume_linear", original_volume, 0.5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	nights.text = "Night %s" % str(NightData.current_night + 1)
+	nights.text = "Night %s" % str(clampi(NightData.current_night,0,4)+1)
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -28,6 +34,7 @@ func fade_then_change(scene_path : String) -> void:
 	fader.modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(fader, "modulate:a", 1.0, 0.3)
+	tween.tween_property(song, "volume_linear", 0.0, 0.3)
 	await tween.finished
 	
 	get_tree().change_scene_to_file(scene_path)

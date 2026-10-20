@@ -8,6 +8,7 @@ extends Control
 @export var alarm_stall : CheckButton
 @export var flash_stall : CheckButton
 @export var error_chance_text : LineEdit
+@export var song : AudioStreamPlayer
 
 var clicked_play := false
 
@@ -23,6 +24,11 @@ func _ready() -> void:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color("#222222")
 	style.set_content_margin_all(6)
+	
+	var original_volume = song.volume_linear
+	song.volume_linear = 0.01
+	var tween := create_tween()
+	tween.tween_property(song, "volume_linear", original_volume, 0.5)
 	
 	theme = Theme.new()
 	theme.set_stylebox("panel", "TooltipPanel", style)
@@ -81,12 +87,18 @@ func set_challenge_diff(diff : String):
 
 func _on_bronze_pressed() -> void:
 	set_challenge_diff("bronze")
+	randy_diff.update_diff_tooltip()
+	agnese_diff.update_diff_tooltip()
 
 func _on_silver_pressed() -> void:
 	set_challenge_diff("silver")
+	randy_diff.update_diff_tooltip()
+	agnese_diff.update_diff_tooltip()
 
 func _on_gold_pressed() -> void:
 	set_challenge_diff("gold")
+	randy_diff.update_diff_tooltip()
+	agnese_diff.update_diff_tooltip()
 
 func fade_then_change(scene_path : String) -> void:
 	if clicked_play: return
@@ -96,6 +108,7 @@ func fade_then_change(scene_path : String) -> void:
 	fader.modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(fader, "modulate:a", 1.0, 0.3)
+	tween.tween_property(song, "volume_linear", 0.0, 0.3)
 	await tween.finished
 	
 	get_tree().change_scene_to_file(scene_path)

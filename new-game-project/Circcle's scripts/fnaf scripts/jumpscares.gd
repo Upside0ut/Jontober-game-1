@@ -8,6 +8,8 @@ extends Node2D
 @export var Randy_jumpscare : Sprite2D
 
 @export var player_cam : Camera2D
+@export var flashlight : PointLight2D
+@export var alarm : Node2D
 @export var jumpscare_light : PointLight2D
 @export var jumpscare_sfx : AudioStreamPlayer
 
@@ -26,6 +28,8 @@ func _ready() -> void:
 func _on_jumpscare(enemy):
 	if dead: return
 	dead = true
+	flashlight.can_flash = false
+	alarm.can_alarm = false
 	
 	match enemy:
 		"Agnese":

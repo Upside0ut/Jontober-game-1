@@ -2,12 +2,78 @@
 
 [ext_resource type="Script" uid="uid://dxl3id6a6lla8" path="res://Circcle's scripts/fnaf scripts/custom_night_menu.gd" id="1_5gw8k"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="1_7llvx"]
+[ext_resource type="Shader" uid="uid://bi8whalg4hy0c" path="res://shader/custom_night_menu_noise.tres" id="2_hour2"]
+[ext_resource type="Shader" uid="uid://de8m3acdiayap" path="res://shader/fnaf_menu.gdshader" id="2_ioefm"]
 [ext_resource type="Script" uid="uid://dq7sr3qxw5175" path="res://Circcle's scripts/fnaf scripts/custom_night_slider.gd" id="2_vps8v"]
+[ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="3_hour2"]
 [ext_resource type="Texture2D" uid="uid://wf5q7khjy5wc" path="res://FNAF sprites/agneseimg.png" id="3_kymyu"]
 [ext_resource type="Script" uid="uid://b2eqf8tq6euj6" path="res://Circcle's scripts/fnaf scripts/error_chance_text.gd" id="3_vps8v"]
 [ext_resource type="Texture2D" uid="uid://2xm31tr5puhy" path="res://FNAF sprites/randyimg.png" id="4_sh0uk"]
 [ext_resource type="Script" uid="uid://cvo0a064kx4g1" path="res://Circcle's scripts/fnaf scripts/color_challenge_buttons.gd" id="5_aeow7"]
 [ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="6_j20bj"]
+[ext_resource type="AudioStream" uid="uid://co2dgmc2t6rck" path="res://music/custom_night_theme.wav" id="9_xcdp3"]
+
+[sub_resource type="Gradient" id="Gradient_hour2"]
+offsets = PackedFloat32Array(0, 0.99850297)
+colors = PackedColorArray(0, 0, 0.003921569, 1, 0, 0.7166667, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_regwl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8dno4"]
+noise = SubResource("FastNoiseLite_regwl")
+color_ramp = SubResource("Gradient_hour2")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6y8d2"]
+shader = ExtResource("2_hour2")
+shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_8dno4")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sw4k2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spnln"]
+shader = ExtResource("2_ioefm")
+shader_parameter/should_change = true
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.2
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Shader" id="Shader_hour2"]
+code = "shader_type canvas_item;
+
+uniform bool should_change = false;
+uniform float alpha = 1.0;
+uniform float inner_radius = 0.0;
+uniform float outer_radius = 1.0;
+
+void fragment() {
+	
+	
+	
+	float x = abs(UV.r-.5)*2.0;
+	float y = abs(UV.g-.5)*2.0;
+	float q = 0.0;
+	
+	
+	if (should_change)
+	{
+		float changing = mix(0.9,1.1,abs(sin(TIME*2.0)));
+		q = 1.0-(1.0-sqrt(x*x+y*y)/changing+0.2)/(1.0-inner_radius);
+	}
+	else
+	{
+		q = 1.0-(1.0-sqrt(x*x+y*y)/outer_radius+0.2)/(1.0-inner_radius);
+	}
+	
+	COLOR = vec4(0, 0, 0, q*alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqljo"]
+shader = SubResource("Shader_hour2")
+shader_parameter/should_change = false
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.6
+shader_parameter/outer_radius = 0.8
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qle8"]
 atlas = ExtResource("6_j20bj")
@@ -31,7 +97,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Custom_Night_Menu" type="Control" unique_id=69436528 node_paths=PackedStringArray("fader", "agnese_diff", "randy_diff", "plinko_time_advance", "alarm_stall", "flash_stall", "error_chance_text")]
+[node name="Custom_Night_Menu" type="Control" unique_id=69436528 node_paths=PackedStringArray("fader", "agnese_diff", "randy_diff", "plinko_time_advance", "alarm_stall", "flash_stall", "error_chance_text", "song")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +112,7 @@ plinko_time_advance = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/plinko_ti
 alarm_stall = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/alarm_stall")
 flash_stall = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/flash_stall")
 error_chance_text = NodePath("MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance")
+song = NodePath("song")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1469215606]
 z_index = -2
@@ -58,6 +125,59 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Noise" type="TextureRect" parent="." unique_id=2141255755]
+z_index = -2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6y8d2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -252.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99, 0.99)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("PlaceholderTexture2D_sw4k2")
+stretch_mode = 5
+
+[node name="Pulsing_Vignette" type="TextureRect" parent="." unique_id=1398987038]
+material = SubResource("ShaderMaterial_spnln")
+custom_minimum_size = Vector2(1152, 648)
+custom_maximum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hour2")
+
+[node name="Vignette2" type="TextureRect" parent="." unique_id=1296738681]
+material = SubResource("ShaderMaterial_eqljo")
+custom_minimum_size = Vector2(1152, 648)
+custom_maximum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hour2")
 
 [node name="TITLE" type="MarginContainer" parent="." unique_id=2026090541]
 layout_mode = 1
@@ -375,6 +495,14 @@ Flash stall off
 theme_override_font_sizes/font_size = 22
 text = "Gold Challenge"
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="MAIN BOX" unique_id=642431153]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Despite a lot of testing, the challenges may be impossible. They are [color=red]VERY[/color] difficult.[/center]"
+fit_content = true
+
 [node name="BACK" type="MarginContainer" parent="." unique_id=1339985020]
 layout_mode = 1
 anchors_preset = 15
@@ -394,6 +522,7 @@ theme_override_font_sizes/font_size = 32
 text = "Back"
 
 [node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=1621609976]
+visible = false
 z_index = 999
 layout_mode = 1
 anchors_preset = 15
@@ -404,6 +533,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_7llvx")
+
+[node name="song" type="AudioStreamPlayer" parent="." unique_id=1431482093]
+stream = ExtResource("9_xcdp3")
+volume_db = -7.0
+autoplay = true
 
 [connection signal="pressed" from="MAIN BOX/START NIGHT/Button" to="." method="_on_button_pressed"]
 [connection signal="editing_toggled" from="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" to="MAIN BOX/DIFFICULTY/Data/GridContainer/err_chance" method="_on_editing_toggled"]

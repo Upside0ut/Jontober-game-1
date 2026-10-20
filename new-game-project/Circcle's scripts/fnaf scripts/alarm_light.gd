@@ -16,6 +16,8 @@ extends Sprite2D
 @export var rage_bar : ProgressBar
 var rage_locked := false
 
+var can_alarm := true
+
 var death_imminent_sfx_played := false
 
 const MAX_RAGE_TIME := 45.0
@@ -29,7 +31,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if root_node.alarm_turned_on and !rage_locked:
+	if root_node.alarm_turned_on and !rage_locked and can_alarm:
 		lights.visible = true
 		if !alarm_noise.playing:
 			alarm_noise.volume_linear = 0.4

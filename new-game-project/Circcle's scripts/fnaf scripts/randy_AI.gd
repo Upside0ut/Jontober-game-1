@@ -39,9 +39,9 @@ func _ready() -> void:
 	move_timer = move_interval
 
 func set_difficulty() -> void:
-	var data = NightData.get_diff("Agnese")
+	var data = NightData.get_diff("Randy")
 	ai_level = data["ai_level"]
-	move_interval = data["move_interval"]
+	move_interval = data["move_interval"] + 0.235
 	attack_time = data["attack_time"]
 	time_to_repel = data["time_to_repel"]
 
@@ -74,16 +74,19 @@ func _process(delta: float) -> void:
 			else:
 				light_time = 0.0
 			
-			if !root_node.alarm_pauses_attack or !hovered or !flashlight.visible:
+			if !root_node.flash_pauses_attack or !hovered or !flashlight.visible:
 				attack_left -= delta
 				print("Randy attack time: ", attack_left)
 			if attack_left <= 0.0:
-				if jumpscared: return
-				jumpscared = true
-				get_parent().set_process(false)
-				door_sprite.visible = false
-				jumpscare.emit("Randy")
-				print("Randy Jumpscare")
+				_do_jumpscare()
+
+func _do_jumpscare():
+	if jumpscared: return
+	jumpscared = true
+	get_parent().set_process(false)
+	door_sprite.visible = false
+	jumpscare.emit("Randy")
+	print("Randy Jumpscare")
 
 func _on_area_2d_mouse_entered() -> void:
 	hovered = true
@@ -94,6 +97,8 @@ func _on_area_2d_mouse_exited() -> void:
 func _appear_at_entrance() -> void:
 	attack_left = attack_time
 	state = State.AT_DOOR
+	
+	light_time = 0.0
 	door_sprite.visible = true
 	
 	print("- Randy at vent!")

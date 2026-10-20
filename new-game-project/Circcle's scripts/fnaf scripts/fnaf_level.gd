@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 func hour_checker():
 	if current_hour != last_hour:
 		last_hour = current_hour
-		if current_hour == 6:
+		if current_hour >= 6 or passed_time >= night_length:
 			weird_clanking.play()
 			victory_jingle.play()
 		else:
@@ -115,7 +115,7 @@ func win_night():
 	await animate_sixam_text()
 	await get_tree().create_timer(5.0).timeout
 	if !NightData.custom_night:
-		NightData.current_night += 1
+		NightData.current_night = clampi(NightData.current_night+1, 0, 4)
 	else:
 		if NightData.bronze_active:
 			NightData.beaten_bronze_mode = true
@@ -154,7 +154,7 @@ func _on_plinko_won():
 		rage_bar.value -= 20
 		
 	if plinko_night_advance:
-		passed_time += 10.0
+		passed_time = clamp(passed_time+10.0, 0.0, night_length-0.1)
 
 func _on_plinko_lost():
 	if !alarm_light.rage_locked and !level_2_child_scene.game_ended:
