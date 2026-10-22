@@ -17,7 +17,7 @@ var can_move = true
 var saved_from_death = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$effects/VideoStreamPlayer.modulate.a = lerp($effects/VideoStreamPlayer.modulate.a, distortion_amount, .12)
 	if adjust_position:
 		$position.position = player.position

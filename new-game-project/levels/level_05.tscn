@@ -652,7 +652,6 @@ position = Vector2(0, 1000)
 position = Vector2(0, 1000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1315027753]
-visible = false
 
 [node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("7_n8w53")]
 

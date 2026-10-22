@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		if ray_cast_2d.is_colliding():
 			#allow_jump = false #stop double jumping
 			jump.play()
+			print(Global.level)
 			linear_velocity.y = jump_force #apply jump force
 		
 	# if player presses E and has_dynamite is set to true, the dynamite scene is loaded in
@@ -94,7 +95,7 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 			return
 		config.set_value("LEVELS", level_array[Global.level], true)
 		config.save("user://levels.cfg")
-		print(config.get_value("LEVELS", level_array[Global.level]))
+		print("Level set to true in file: ", level_array[Global.level])
 		Global.level += 1
 		Global.checkpoint = Vector2(0, 0)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")

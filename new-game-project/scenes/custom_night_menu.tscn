@@ -130,18 +130,16 @@ color = Color(0, 0, 0, 1)
 z_index = -2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_6y8d2")
+custom_maximum_size = Vector2(1156, 648)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -252.0
-offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.99, 0.99)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("PlaceholderTexture2D_sw4k2")
-stretch_mode = 5
 
 [node name="Pulsing_Vignette" type="TextureRect" parent="." unique_id=1398987038]
 material = SubResource("ShaderMaterial_spnln")

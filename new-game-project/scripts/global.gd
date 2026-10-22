@@ -2,8 +2,8 @@ extends Node
 
 const levels = [
 	"res://levels/level_01.tscn",
-	"res://levels/level_03.tscn",
 	"res://levels/level_02.tscn",
+	"res://levels/level_03.tscn",
 	"res://levels/level_04.tscn",
 	"res://levels/final_level.tscn"
 ]
@@ -120,4 +120,4 @@ func clear_progress():
 	skins = default_skins.duplicate()
 	achievements = default_achievements.duplicate()
 	save_achievement_progress()
-	achievement_changed.emit()
+	achievements_cleared.emit()
