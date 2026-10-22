@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sine03s5rme1"
-path="res://.godot/imported/player.png-ce289a19efa81f268b1bb13630e9f80b.ctex"
+uid="uid://ns8om4ra01ml"
+path="res://.godot/imported/randy_bluedy.png-3dbd6a1768084e67c30b1924affc8f49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player.png"
-dest_files=["res://.godot/imported/player.png-ce289a19efa81f268b1bb13630e9f80b.ctex"]
+source_file="res://Skins/randy_bluedy.png"
+dest_files=["res://.godot/imported/randy_bluedy.png-3dbd6a1768084e67c30b1924affc8f49.ctex"]
 
 [params]
 

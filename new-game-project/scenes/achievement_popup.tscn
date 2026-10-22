@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bs8empsbb6myx"]
+
+[ext_resource type="Script" uid="uid://b8ldneaol4v5b" path="res://scripts/achievement_popup.gd" id="1_g3gl2"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://textures/icon.svg" id="2_uqeqe"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_g3gl2"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 5.0
+content_margin_bottom = 4.0
+color = Color(0.5, 0.5, 0.5, 1)
+thickness = 4
+vertical = true
+
+[node name="AchContainer" type="CanvasLayer" unique_id=2133385517]
+
+[node name="AchievementPopup" type="Control" parent="." unique_id=2125596048 node_paths=PackedStringArray("achievement_texture", "v_separator", "achievement_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_g3gl2")
+achievement_texture = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/TextureRect")
+v_separator = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VSeparator")
+achievement_text = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="AchievementPopup" unique_id=1361380076]
+layout_mode = 0
+offset_right = 365.0
+offset_bottom = 100.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="AchievementPopup/MarginContainer" unique_id=2047127023]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AchievementPopup/MarginContainer/Panel" unique_id=1540850262]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AchievementPopup/MarginContainer/Panel/MarginContainer" unique_id=1109917630]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="AchievementPopup/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=636389894]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_uqeqe")
+expand_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="AchievementPopup/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1575015268]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxLine_g3gl2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AchievementPopup/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1065574145]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "test achievement text"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

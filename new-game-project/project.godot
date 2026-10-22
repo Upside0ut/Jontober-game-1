@@ -21,6 +21,7 @@ config/icon="res://textures/icon.svg"
 [autoload]
 
 Global="*uid://c4euqaqklpp1o"
+AchievementPopup="*uid://bs8empsbb6myx"
 
 [display]
 

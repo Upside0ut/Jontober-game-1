@@ -12,6 +12,7 @@ func _ready() -> void:
 	for n in level_array.size():
 		if config.get_value("LEVELS", level_array[n]) == true:
 			button_array[n].disabled = false
+			button_array[n].pressed.connect(go_to_level.bind(Global.levels[n]))
 
 func go_to_level(path: String):
 	get_tree().change_scene_to_file(path)

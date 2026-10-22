@@ -2,9 +2,7 @@ extends VBoxContainer
 
 
 func _ready() -> void:
-	if FileAccess.file_exists("user://levels.cfg"):
-		pass
-	else:
+	if !FileAccess.file_exists("user://levels.cfg"):
 		var config = ConfigFile.new()
 		config.set_value("LEVELS", "lvl_1", false)
 		config.set_value("LEVELS", "lvl_2", false)
@@ -25,3 +23,6 @@ func _on_credits_pressed() -> void:
 
 func _on_lvl_select_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/level_selection_screen.tscn")
+
+func _on_skins_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/skin_selection_screen.tscn")

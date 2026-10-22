@@ -19,22 +19,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.08193319, 0.02314996, 0.049722597, 1)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2097277170]
+modulate = Color(0.6, 0.54, 0.56600004, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -499.5879
-offset_top = -322.0
-offset_right = 502.69092
-offset_bottom = 324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_2ckv8")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=621729771]
 layout_mode = 1
@@ -43,17 +42,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=369981988]
+[node name="Control" type="Control" parent="MarginContainer" unique_id=260408973]
 layout_mode = 2
-size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Circcle_Hover" type="Label" parent="MarginContainer/Control" unique_id=584939332]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "...Hint 2: ...hold down THOSE 4 numbers in the menu..."
+mouse_filter = 0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Circcle"
+
+[node name="Label" type="Label" parent="MarginContainer/Control" unique_id=369981988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 54
+theme_override_font_sizes/font_size = 48
 text = "Circcle - Art, programming, level design
 Kode - Music
 Choco - Programming, level design, art,
@@ -67,6 +92,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 36
-text = "<- Back"
+text = "Back"
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

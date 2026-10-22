@@ -1,15 +1,66 @@
 [gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://b1fpos4hxvt6r" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://Skins/player.png" id="2_a38lo"]
+[ext_resource type="Texture2D" uid="uid://ns8om4ra01ml" path="res://Skins/randy_bluedy.png" id="3_4ni07"]
 [ext_resource type="AudioStream" uid="uid://bjbomsk14ju5x" path="res://sound_effects/roll.mp3" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c6jk21nal5hkd" path="res://sound_effects/bounce.mp3" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://b6p7ginh6ilec" path="res://Skins/randy_shadow.png" id="4_l71n6"]
+[ext_resource type="Texture2D" uid="uid://wqhmdqb12pqb" path="res://Skins/randy_sonic.png" id="5_ke2ow"]
 [ext_resource type="AudioStream" uid="uid://ckxpiwypiwmj2" path="res://sound_effects/laserShoot.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cj8usf4x766ox" path="res://textures/ghost.png" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://comkshvixxbc" path="res://Skins/randy_steelball.png" id="6_ujl30"]
+[ext_resource type="Texture2D" uid="uid://kvuhhq78f4lp" path="res://Skins/randy_verity.png" id="7_31cv2"]
 [ext_resource type="AudioStream" uid="uid://78u0ibygb41m" path="res://sound_effects/explosion.wav" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bhqrrlh51jhcl" path="res://Skins/randy_wheatley.png" id="8_pf23h"]
+[ext_resource type="Texture2D" uid="uid://bcvutjm1kfehw" path="res://Skins/randy_white_gal.png" id="9_dt7fs"]
+[ext_resource type="Texture2D" uid="uid://faoomelgk5u8" path="res://Skins/randy_boss.png" id="10_wqfne"]
+[ext_resource type="Texture2D" uid="uid://cs0pm5tx0e3jv" path="res://Skins/randy_falliing_guy.png" id="11_wnwbv"]
+[ext_resource type="Texture2D" uid="uid://b1mjn5cbtamm0" path="res://Skins/randy_free.png" id="12_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://dqavchnuuq4gp" path="res://Skins/randy_kirby_wheel.png" id="13_487ah"]
+[ext_resource type="Texture2D" uid="uid://dgs5ol8c7xff3" path="res://Skins/randy_leliel.png" id="14_md1ol"]
+[ext_resource type="Texture2D" uid="uid://c16gcjd8rnkeg" path="res://Skins/randy_merch.png" id="15_bj30b"]
+[ext_resource type="Texture2D" uid="uid://blfg08djrbq42" path="res://Skins/randy_nubby.png" id="16_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://cv2ie1b1uh2r4" path="res://Skins/randy_punished.png" id="17_hax0n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtglo"]
 radius = 64.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6y8d2"]
+frames = 16
+pause = true
+speed_scale = 0.0
+frame_0/texture = ExtResource("2_a38lo")
+frame_1/texture = ExtResource("3_4ni07")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("10_wqfne")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("11_wnwbv")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("12_gl8cc")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("13_487ah")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("14_md1ol")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("15_bj30b")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("16_jc3p3")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("17_hax0n")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("4_l71n6")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("5_ke2ow")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("6_ujl30")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("7_31cv2")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("8_pf23h")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("9_dt7fs")
+frame_15/duration = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
 radius = 33.01515
@@ -134,7 +185,7 @@ script = ExtResource("1_g2els")
 shape = SubResource("CircleShape2D_dtglo")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1491128239]
-texture = ExtResource("2_g2els")
+texture = SubResource("AnimatedTexture_6y8d2")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1005616557]
 target_position = Vector2(0, 76)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://m33ql61ddleh"]
 
 [ext_resource type="Script" uid="uid://dvt6pm5l2hamx" path="res://scripts/victory_screen.gd" id="1_66hvp"]
-[ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://textures/player.png" id="1_pfcnd"]
+[ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://Skins/player.png" id="1_pfcnd"]
 [ext_resource type="Texture2D" uid="uid://c51esirwvylid" path="res://textures/victory.png" id="1_ujlt3"]
 [ext_resource type="AudioStream" uid="uid://c04rwfn18aksi" path="res://sound_effects/victoryjingle.mp3" id="2_wdgif"]
 [ext_resource type="Texture2D" uid="uid://bujgn1qhtlody" path="res://frames/confetti3.png" id="4_rixwf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dcb01apyahour" path="res://frames/confetti4.png" id="7_a2cu1"]
 [ext_resource type="Texture2D" uid="uid://bg4tumtmmxlhx" path="res://frames/confetti5.png" id="8_uycue"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="9_uycue"]
+[ext_resource type="Script" uid="uid://b83rvbn0lmbkp" path="res://scripts/victory_player.gd" id="11_ox400"]
 
 [sub_resource type="Curve" id="Curve_ll51u"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13513514, 1), 0.0, 0.0, 0, 0, Vector2(0.9054054, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -182,6 +183,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("1_pfcnd")
 stretch_mode = 5
+script = ExtResource("11_ox400")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=607805978]
 libraries/ = SubResource("AnimationLibrary_ll51u")

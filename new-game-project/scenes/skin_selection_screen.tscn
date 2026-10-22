@@ -1,0 +1,440 @@
+[gd_scene format=3 uid="uid://dt8boo6vdjjvq"]
+
+[ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="1_oxwvk"]
+[ext_resource type="Script" uid="uid://dcdg2o6qgw2pr" path="res://scripts/skin_selection_screen.gd" id="2_5db2g"]
+[ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://Skins/player.png" id="3_7twin"]
+[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_b85ur"]
+[ext_resource type="StyleBox" uid="uid://dirgqhldlckj6" path="res://styles/skin_choose_highlight.tres" id="3_ihryo"]
+[ext_resource type="Texture2D" uid="uid://ns8om4ra01ml" path="res://Skins/randy_bluedy.png" id="4_ga18s"]
+[ext_resource type="StyleBox" uid="uid://pe803ievs5w8" path="res://styles/skin_hover_highlight.tres" id="4_oxmot"]
+[ext_resource type="Texture2D" uid="uid://faoomelgk5u8" path="res://Skins/randy_boss.png" id="5_ihryo"]
+[ext_resource type="Texture2D" uid="uid://cs0pm5tx0e3jv" path="res://Skins/randy_falliing_guy.png" id="6_oxmot"]
+[ext_resource type="Texture2D" uid="uid://b1mjn5cbtamm0" path="res://Skins/randy_free.png" id="7_ok6uc"]
+[ext_resource type="Texture2D" uid="uid://dqavchnuuq4gp" path="res://Skins/randy_kirby_wheel.png" id="8_t3ei7"]
+[ext_resource type="Texture2D" uid="uid://dgs5ol8c7xff3" path="res://Skins/randy_leliel.png" id="9_k8hun"]
+[ext_resource type="Texture2D" uid="uid://c16gcjd8rnkeg" path="res://Skins/randy_merch.png" id="10_msw4u"]
+[ext_resource type="Texture2D" uid="uid://blfg08djrbq42" path="res://Skins/randy_nubby.png" id="11_7xdma"]
+[ext_resource type="Texture2D" uid="uid://cv2ie1b1uh2r4" path="res://Skins/randy_punished.png" id="12_14l8f"]
+[ext_resource type="Texture2D" uid="uid://b6p7ginh6ilec" path="res://Skins/randy_shadow.png" id="13_l58tp"]
+[ext_resource type="Texture2D" uid="uid://wqhmdqb12pqb" path="res://Skins/randy_sonic.png" id="14_1d4u6"]
+[ext_resource type="Texture2D" uid="uid://comkshvixxbc" path="res://Skins/randy_steelball.png" id="15_btgco"]
+[ext_resource type="Texture2D" uid="uid://kvuhhq78f4lp" path="res://Skins/randy_verity.png" id="16_12xpa"]
+[ext_resource type="Texture2D" uid="uid://bhqrrlh51jhcl" path="res://Skins/randy_wheatley.png" id="17_s2ld1"]
+[ext_resource type="Texture2D" uid="uid://bcvutjm1kfehw" path="res://Skins/randy_white_gal.png" id="18_gl7os"]
+[ext_resource type="Script" uid="uid://3g8e0lu0380q" path="res://scripts/debug_skin_button.gd" id="22_oxmot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7twin"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.46, 0.13800001, 0.13800001, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8f14o"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f0s3x"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oxmot"]
+size = Vector2(0, 0)
+
+[node name="SkinSelectionScreen" type="Control" unique_id=1072295231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=331350537]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.57912743, 0.2891744, 0.046366245, 1)
+
+[node name="TITLE" type="MarginContainer" parent="." unique_id=2015520630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 15
+
+[node name="Label" type="Label" parent="TITLE" unique_id=2079601227]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 64
+text = "Skin Selection"
+
+[node name="MAIN BOX" type="Control" parent="." unique_id=1088799523]
+propagate_maximum_size = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MAIN BOX" unique_id=1106187926]
+custom_minimum_size = Vector2(1152, 518.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_position = Vector2(15.045, 0)
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7twin")
+follow_focus = true
+draw_focus_border = true
+scroll_horizontal_custom_step = 25.0
+scroll_vertical_custom_step = 25.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MAIN BOX/ScrollContainer" unique_id=809022798 node_paths=PackedStringArray("default_skin")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+columns = 2
+script = ExtResource("2_5db2g")
+default_skin = NodePath("default")
+
+[node name="default" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1163838713]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+text = "name
+not
+found"
+icon = ExtResource("3_7twin")
+
+[node name="haprandy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1946335175]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("4_ga18s")
+
+[node name="boss_skin" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=334640528]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+tooltip_text = "Beat the Boss to unlock this skin!"
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("5_ihryo")
+
+[node name="falling_guy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1393645607]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("6_oxmot")
+
+[node name="free_randy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=946334895]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+tooltip_text = "Beat the game to unlock this skin!"
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("7_ok6uc")
+
+[node name="wheel" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=101959854]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("8_t3ei7")
+
+[node name="angel_randy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=554301954]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("9_k8hun")
+
+[node name="bad_merch" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1902274080]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("10_msw4u")
+
+[node name="nubby" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1829917124]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("11_7xdma")
+
+[node name="punished_randy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=960792990]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("12_14l8f")
+
+[node name="edgeball" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1314063142]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("13_l58tp")
+
+[node name="speedball" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1102082052]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("14_1d4u6")
+
+[node name="steelball" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1180453222]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("15_btgco")
+
+[node name="randerity" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=2093839756]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("16_12xpa")
+
+[node name="moron_randy" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=1346810905]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("17_s2ld1")
+
+[node name="agnese" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=499984927]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+tooltip_text = "Beat the...FNAF mode? wait what?
+
+...Hint 1: Hover the FNAF mode's creator's name in the Credits"
+theme_override_fonts/font = ExtResource("1_oxwvk")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = ExtResource("3_ihryo")
+theme_override_styles/hover = ExtResource("4_oxmot")
+theme_override_styles/hover_pressed = ExtResource("3_ihryo")
+theme_override_icons/checked = SubResource("PlaceholderTexture2D_8f14o")
+theme_override_icons/unchecked = SubResource("PlaceholderTexture2D_f0s3x")
+theme_override_icons/unchecked_disabled = SubResource("PlaceholderTexture2D_oxmot")
+disabled = true
+text = "name
+not
+found"
+icon = ExtResource("18_gl7os")
+
+[node name="song" type="AudioStreamPlayer" parent="." unique_id=2022320672]
+stream = ExtResource("3_b85ur")
+volume_db = -3.0
+autoplay = true
+
+[node name="BACK" type="MarginContainer" parent="." unique_id=51334302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BACK" unique_id=643073717]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BackButton" type="Button" parent="BACK/HBoxContainer" unique_id=1779373782]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="DEBUG" type="Button" parent="BACK/HBoxContainer" unique_id=451792423]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "DEBUG ONLY (auto-removed on export)"
+script = ExtResource("22_oxmot")
+
+[connection signal="pressed" from="BACK/HBoxContainer/BackButton" to="MAIN BOX/ScrollContainer/GridContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BACK/HBoxContainer/DEBUG" to="BACK/HBoxContainer/DEBUG" method="_on_pressed"]

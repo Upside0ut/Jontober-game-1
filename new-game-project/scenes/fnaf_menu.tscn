@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8a37yrjbwoxj"]
 
-[ext_resource type="Script" uid="uid://bxthsd40a2hon" path="res://fnaf_menu.gd" id="1_42mc7"]
+[ext_resource type="Script" uid="uid://bxthsd40a2hon" path="res://Circcle's scripts/fnaf scripts/fnaf_menu.gd" id="1_42mc7"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_73xbk"]
 [ext_resource type="Shader" uid="uid://de8m3acdiayap" path="res://shader/fnaf_menu.gdshader" id="2_yqvsr"]
 [ext_resource type="Script" uid="uid://djfr0cfakj85n" path="res://scenes/texture_rect.gd" id="3_pituf"]

@@ -154,40 +154,6 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=583852188]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 10
-theme_override_constants/separation = 10
-script = ExtResource("2_3jj3l")
-
-[node name="play" type="Button" parent="MarginContainer/VBoxContainer" unique_id=692935566]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t7v6v")
-theme_override_font_sizes/font_size = 71
-text = "Play
-"
-
-[node name="options" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1475950644]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t7v6v")
-theme_override_font_sizes/font_size = 71
-text = "Options"
-
-[node name="lvlSelect" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1989549129]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t7v6v")
-theme_override_font_sizes/font_size = 71
-text = "Levels
-"
-
-[node name="credits" type="Button" parent="MarginContainer/VBoxContainer" unique_id=450366050]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t7v6v")
-theme_override_font_sizes/font_size = 71
-text = "Credits
-"
-
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1357203060]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -217,6 +183,52 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("3_t7v6v")
 text = "Made in 1 day for Jontober 2026"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1040683957]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=583852188]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 10
+script = ExtResource("2_3jj3l")
+
+[node name="play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=692935566]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 64
+text = "Play
+"
+
+[node name="options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1475950644]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 64
+text = "Options"
+
+[node name="lvlSelect" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1989549129]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 64
+text = "Levels
+"
+
+[node name="credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=450366050]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 64
+text = "Credits
+"
+
+[node name="skins" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1922029720]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_t7v6v")
+theme_override_font_sizes/font_size = 32
+text = "Skin Select"
+
 [node name="song" type="AudioStreamPlayer" parent="." unique_id=686435697]
 stream = ExtResource("3_tt55a")
 volume_db = -3.0
@@ -226,6 +238,7 @@ autoplay = true
 stream = ExtResource("14_ybki2")
 parameters/looping = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer" method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/lvlSelect" to="MarginContainer/VBoxContainer" method="_on_lvl_select_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/credits" to="MarginContainer/VBoxContainer" method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/lvlSelect" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_lvl_select_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/skins" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_skins_pressed"]

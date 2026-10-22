@@ -20,6 +20,10 @@ var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if Global.current_skin_name and $Icon.texture != Global.current_skin_png:
+		$Icon.texture = Global.current_skin_png
+	
 	print(Global.checkpoint)
 	if Global.checkpoint != Vector2(0,0):
 		global_position = Global.checkpoint
@@ -59,6 +63,7 @@ func _physics_process(delta: float) -> void:
 			#allow_jump = false #stop double jumping
 			jump.play()
 			linear_velocity.y = jump_force #apply jump force
+		
 	# if player presses E and has_dynamite is set to true, the dynamite scene is loaded in
 	# and instanced, then the position is set to be above the player & the velocity is matched
 	# after which the dynamite is actually added into the scene

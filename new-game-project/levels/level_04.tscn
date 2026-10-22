@@ -604,17 +604,6 @@ zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="Player/Camera2D" unique_id=1246135719]
-visible = false
-z_index = 999
-offset_left = -1282.0
-offset_top = -1511.0
-offset_right = 1601.0
-offset_bottom = 1174.0
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("2_r8aof")
-
 [node name="BallGameGameplayTheme1" type="AudioStreamPlayer" parent="." unique_id=346710762]
 stream = ExtResource("1_rpmp5")
 autoplay = true
@@ -639,3 +628,18 @@ position = Vector2(-366, 51)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=316143973]
 
 [node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("10_hapfj")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1238552005]
+layer = 999
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="CanvasLayer2" unique_id=1295449982]
+visible = false
+z_index = 999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_r8aof")

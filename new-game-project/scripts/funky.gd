@@ -1,5 +1,6 @@
 extends Control
 
+var funky_mode := false
 
 var rng = RandomNumberGenerator.new()
 
@@ -10,12 +11,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if funky_mode: return
 	if (Input.is_action_pressed("FUNKY_F") and
 		Input.is_action_pressed("FUNKY_U") and
 		Input.is_action_pressed("FUNKY_N") and
 		Input.is_action_pressed("FUNKY_K") and
 		Input.is_action_pressed("FUNKY_Y")):
-		
+		funky_mode = true
 		$Parallax2D/AnimationPlayer.speed_scale += 1
 		$Parallax2D/AnimatedSprite2D.speed_scale += 1
 		
@@ -29,10 +31,10 @@ func _process(delta: float) -> void:
 		$song.stop()
 		$FunkyBall.play()
 		
-		$MarginContainer/VBoxContainer/play.text = "FUNKYstart"
-		$MarginContainer/VBoxContainer/options.text = "FUNKYoptions"
-		$MarginContainer/VBoxContainer/lvlSelect.text = "FUNKYlevels"
-		$MarginContainer/VBoxContainer/credits.text = "FUNKYcredits"
+		$MarginContainer/HBoxContainer/VBoxContainer/play.text = "FUNKYstart"
+		$MarginContainer/HBoxContainer/VBoxContainer/options.text = "FUNKYoptions"
+		$MarginContainer/HBoxContainer/VBoxContainer/lvlSelect.text = "FUNKYlevels"
+		$MarginContainer/HBoxContainer/VBoxContainer/credits .text = "FUNKYcredits"
 		switch_up_btn_positions()
 		
 		$MarginContainer/Label2.text = "yooooooooooooooooooooooooooooo"
@@ -41,13 +43,15 @@ func _process(delta: float) -> void:
 
 func switch_up_btn_positions():
 	while true:
-		move_to_random_position($MarginContainer/VBoxContainer/play)
+		move_to_random_position($MarginContainer/HBoxContainer/VBoxContainer/play)
 		await wait(0.3)
-		move_to_random_position($MarginContainer/VBoxContainer/options)
+		move_to_random_position($MarginContainer/HBoxContainer/VBoxContainer/options)
 		await wait(0.3)
-		move_to_random_position($MarginContainer/VBoxContainer/lvlSelect)
+		move_to_random_position($MarginContainer/HBoxContainer/VBoxContainer/lvlSelect)
 		await wait(0.3)
-		move_to_random_position($MarginContainer/VBoxContainer/credits)
+		move_to_random_position($MarginContainer/HBoxContainer/VBoxContainer/credits)
+		await wait(0.3)
+		move_to_random_position($MarginContainer/HBoxContainer/skins)
 		await wait(0.3)
 
 func move_to_random_position(object):
