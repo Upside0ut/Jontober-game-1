@@ -15,7 +15,6 @@ var dash_counter = 0
 var on_screen = false
 var bar_fully_loaded = false
 var rotating = false
-var just_hit = false
 var recently_hit = false
 var moving_to_center = false
 
@@ -24,25 +23,37 @@ var sprint_speed = 2400
 var health = 100
 var on_hit_depleted_health = 25
 
+var hunt_distance = rng.randi_range(500, 1500)
+
 var standard_spray_time = 10
 var standard_bullet_time = 0.5
 var standard_feint_time = 5
-var standard_missle_atk_time = 7
+var standard_missile_atk_time = 10
 
 var feint_cooldown_time = 20
 
 func changeState(newState: States):
+	print("State:")
+	print(state)
+	print("New State:")
+	print(newState)
+	if (state == newState):
+		print("NAHH")
+		return
+	
 	state = newState
 	
 	match state:
 		States.IDLE:
-			idle()
+			await idle()
 		States.HUNTING:
-			pass
+			hunt_distance = rng.randi_range(500, 1300) - rng.randi_range(0, 100) #added like an offset i think is smoother now
+			print("Hunt Distance:")
+			print(hunt_distance)
 		States.SCARED:
 			pass
 		States.ATTACKING:
-			attack()
+			await attack()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,7 +66,7 @@ func _ready() -> void:
 	await wait(3)
 	
 	get_parent().get_node("BossMusic").play()
-	changeState(States.IDLE)
+	await changeState(States.IDLE)
 	$CanvasLayer/BossBar.show()
 	
 	while($CanvasLayer/BossBar.value != 100):
@@ -92,7 +103,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func depleteHealth():
-	just_hit = true
 	print("Damaged: ")
 	print(on_hit_depleted_health)
 	health -= on_hit_depleted_health
@@ -110,51 +120,51 @@ func depleteHealth():
 	close_openings()
 	$SplatterRing/spikes.set_deferred("monitorable", true)
 	$SplatterRing/spikes.set_deferred("monitoring", true)
-	changeState(States.SCARED)
+	await changeState(States.SCARED)
 
 func die():
 	print("DEAD")
 	queue_free()
 
 func idle():
-	if (stuck_too_long):
-		changeState(States.ATTACKING)
-		return
+	if recently_hit:
+		await changeState(States.ATTACKING)
 	
 	if (find_player_distance() > 1500 or !on_screen):
-		changeState(States.HUNTING)
+		await changeState(States.HUNTING)
 		return
 	
-	changeState(States.ATTACKING)
+	await changeState(States.ATTACKING)
 
 func hunt_dead():
 	pass
 
 func hunting():
-	if (find_player_distance() > 600):
+	if (!on_screen):
+		move_toward_player(move_speed)
+	elif (find_player_distance() > hunt_distance):
 		move_toward_player(move_speed)
 	else:
 		print("hunt to atk")
-		changeState(States.ATTACKING)
+		await changeState(States.ATTACKING)
 
 func scared():
 	if (find_player_distance() < 1500):
 		move_away_from_player(sprint_speed)
 	else:
 		print("scared to idle")
-		changeState(States.IDLE)
-		just_hit = false
 		recently_hit = true
+		await changeState(States.IDLE)
 
 func attack():
 	var decided_atk = decide_attack()
 	
-	while $FeintCooldown.time_left > 0 and decided_atk == 3:
+	while (($FeintCooldown.time_left > 0 or health > 50) and decided_atk == 3):
 		decided_atk = decide_attack()
 	
 	match decided_atk:
 		0:
-			changeState(States.IDLE)
+			await changeState(States.IDLE)
 		1:
 			hunt_dead()
 		2:
@@ -162,19 +172,20 @@ func attack():
 		3:
 			await feint(standard_feint_time)
 		4:
-			await missile_attack(standard_missle_atk_time)
+			await missile_attack(standard_missile_atk_time)
 		5:
 			await center_attack()
 	
 	close_openings()
 	
-	if(!just_hit):
-		changeState(States.IDLE)
+	await changeState(States.IDLE)
 
 func decide_attack():
 	if(recently_hit and randi_range(1, 10) > 2):
 		print("decided 5")
+		recently_hit = false
 		return 5
+	recently_hit = false
 	
 	if(find_player_distance() > 1000):
 		if(clear_shot(player)):
@@ -196,33 +207,6 @@ func decide_attack():
 func attacking():
 	if (moving_to_center):
 		move_toward_center(move_speed)
-
-#func dash():
-#	print("dash")
-#	var dash_points = get_parent().get_node("DashCheckpoints").get_children()
-#	dash_points.shuffle()
-#	
-#	for dash_point in dash_points:
-#		if(clear_shot(dash_point)):
-#			current_dash_point = dash_point
-#			changeState(States.DASHING)
-#			break
-#
-#func dashing():
-#	if(dash_counter > 500):
-#		dash_counter = 0
-#		changeState(States.IDLE)
-#		return
-#	
-#	if(!on_screen):
-#		changeState(States.IDLE)
-#		return
-#	
-#	velocity = global_position.direction_to(current_dash_point.global_position) * move_speed
-#
-#func reached_dash_point():
-#	if (state == States.DASHING):
-#		changeState(States.IDLE)
 
 func spray(total_time: float, time_between_bullets):
 	create_opening(-1)
@@ -264,6 +248,7 @@ func missile_attack(total_time):
 	$AttackTimer.start(total_time)
 	rotating = true
 	
+	await wait(0.3)
 	if (health > 50):
 		shoot_normal_missile()
 	else:
@@ -342,12 +327,10 @@ func play_feint_move_animation(backwards: bool):
 
 func center_attack():
 	moving_to_center = true
-	while(global_position != center.global_position):
-		await wait(0.1)
+	await center.boss_entered_signal
 	moving_to_center = false
 	
-	await $AnimationPlayer.play("shake")
-	
+	$AnimationPlayer.play("shake")
 	
 	print("reached center")
 

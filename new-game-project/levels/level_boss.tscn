@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="5_eor1m"]
 [ext_resource type="AudioStream" uid="uid://bhr8lmpnq80r8" path="res://music/Ball Game Boss.mp3" id="6_2e41g"]
 [ext_resource type="PackedScene" uid="uid://chp448cbirpbb" path="res://scenes/bossAbstraction.tscn" id="7_2e41g"]
+[ext_resource type="Script" uid="uid://dmh2p3yin7obk" path="res://scripts/boss_level_center_point.gd" id="8_5fpo4"]
 [ext_resource type="PackedScene" uid="uid://cjxh3ftsnnkri" path="res://scenes/StaticUpwardsplatterwall.tscn" id="9_5fpo4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2e41g"]
@@ -648,7 +649,7 @@ pattern_14 = SubResource("TileMapPattern_i2i27")
 size = Vector2(50008, 2375.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
-radius = 224.08258
+radius = 41.01219
 
 [node name="LevelBoss" type="Node2D" unique_id=2041486450]
 
@@ -699,6 +700,9 @@ parameters/looping = true
 
 [node name="CenterPoint" type="Area2D" parent="." unique_id=926845027]
 position = Vector2(0, 3600)
+collision_layer = 32769
+collision_mask = 32769
+script = ExtResource("8_5fpo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint" unique_id=1022119532]
 shape = SubResource("CircleShape2D_7x0ad")
