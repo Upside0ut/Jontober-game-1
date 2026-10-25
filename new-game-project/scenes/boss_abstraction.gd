@@ -17,6 +17,8 @@ var bar_fully_loaded = false
 var rotating = false
 var recently_hit = false
 var moving_to_center = false
+var mid_attack = false
+var done_hunting = false
 
 var move_speed = 1000
 var sprint_speed = 2400
@@ -33,14 +35,6 @@ var standard_missile_atk_time = 10
 var feint_cooldown_time = 20
 
 func changeState(newState: States):
-	print("State:")
-	print(state)
-	print("New State:")
-	print(newState)
-	if (state == newState):
-		print("NAHH")
-		return
-	
 	state = newState
 	
 	match state:
@@ -53,7 +47,8 @@ func changeState(newState: States):
 		States.SCARED:
 			pass
 		States.ATTACKING:
-			await attack()
+			if (!mid_attack):
+				await attack()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -130,14 +125,15 @@ func idle():
 	if recently_hit:
 		await changeState(States.ATTACKING)
 	
+	if (done_hunting):
+		done_hunting = false
+		changeState(States.ATTACKING)
+	
 	if (find_player_distance() > 1500 or !on_screen):
 		await changeState(States.HUNTING)
 		return
 	
 	await changeState(States.ATTACKING)
-
-func hunt_dead():
-	pass
 
 func hunting():
 	if (!on_screen):
@@ -145,8 +141,8 @@ func hunting():
 	elif (find_player_distance() > hunt_distance):
 		move_toward_player(move_speed)
 	else:
-		print("hunt to atk")
-		await changeState(States.ATTACKING)
+		done_hunting = true
+		await changeState(States.IDLE)
 
 func scared():
 	if (find_player_distance() < 1500):
@@ -157,6 +153,7 @@ func scared():
 		await changeState(States.IDLE)
 
 func attack():
+	mid_attack = true
 	var decided_atk = decide_attack()
 	
 	while (($FeintCooldown.time_left > 0 or health > 50) and decided_atk == 3):
@@ -166,7 +163,7 @@ func attack():
 		0:
 			await changeState(States.IDLE)
 		1:
-			hunt_dead()
+			pass
 		2:
 			await spray(standard_spray_time, standard_bullet_time)
 		3:
@@ -179,6 +176,7 @@ func attack():
 	close_openings()
 	
 	await changeState(States.IDLE)
+	mid_attack = false
 
 func decide_attack():
 	if(recently_hit and randi_range(1, 10) > 2):
@@ -248,7 +246,6 @@ func missile_attack(total_time):
 	$AttackTimer.start(total_time)
 	rotating = true
 	
-	await wait(0.3)
 	if (health > 50):
 		shoot_normal_missile()
 	else:
@@ -331,8 +328,13 @@ func center_attack():
 	moving_to_center = false
 	
 	$AnimationPlayer.play("shake")
+	await move_walls()
+	$AnimationPlayer.stop()
 	
 	print("reached center")
+
+func move_walls():
+	await wait(3)
 
 func move_toward_center(speed: int):
 	velocity = find_center_direction() * speed

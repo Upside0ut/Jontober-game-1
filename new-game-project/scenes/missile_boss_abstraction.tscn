@@ -23,7 +23,6 @@ scale_max = 0.29999998
 alpha_curve = SubResource("CurveTexture_nyevx")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
-collision_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ckqup"]
 radius = 88.051125
@@ -34,21 +33,21 @@ script = ExtResource("1_g5cxw")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=316807564]
 amount = 150
 texture = ExtResource("2_oyj3r")
-lifetime = 0.3
+lifetime = 0.2
 visibility_rect = Rect2(-325, -325, 650, 650)
 process_material = SubResource("ParticleProcessMaterial_ufjy7")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=2080594403]
 amount = 70
 texture = ExtResource("3_2kgv6")
-lifetime = 0.3
+lifetime = 0.2
 visibility_rect = Rect2(-325, -325, 650, 650)
 process_material = SubResource("ParticleProcessMaterial_ufjy7")
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=528922983]
 amount = 30
 texture = ExtResource("4_0yy5s")
-lifetime = 0.3
+lifetime = 0.2
 visibility_rect = Rect2(-325, -325, 650, 650)
 process_material = SubResource("ParticleProcessMaterial_ufjy7")
 

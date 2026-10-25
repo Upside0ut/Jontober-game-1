@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy34w5ecujo6y" path="res://scripts/lvl_selection_screen.gd" id="1_tqsy7"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="2_ue4gc"]
-[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_io0ak"]
+[ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="3_tqsy7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqsy7"]
 content_margin_left = 50.0
@@ -174,9 +174,9 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 36
 text = "Back"
 
-[node name="song" type="AudioStreamPlayer" parent="." unique_id=613041511]
-stream = ExtResource("3_io0ak")
-volume_db = -3.0
+[node name="BallGameLevelSelector" type="AudioStreamPlayer" parent="." unique_id=1795145920]
+stream = ExtResource("3_tqsy7")
 autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="BACK/BackButton" to="MAIN BOX/ScrollContainer/VBoxContainer" method="_on_back_button_pressed"]
