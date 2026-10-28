@@ -1,8 +1,84 @@
 [gd_scene format=3 uid="uid://cohdp4fwlniyj"]
 
 [ext_resource type="Script" uid="uid://dy34w5ecujo6y" path="res://scripts/lvl_selection_screen.gd" id="1_tqsy7"]
+[ext_resource type="Texture2D" uid="uid://bd77isblvksqq" path="res://frames/purple_moving_background/frame_000.png" id="2_eu2r0"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="2_ue4gc"]
+[ext_resource type="Texture2D" uid="uid://cgcxxxkrc8yiu" path="res://frames/purple_moving_background/frame_001.png" id="3_mrrkq"]
 [ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="3_tqsy7"]
+[ext_resource type="Texture2D" uid="uid://co5xghw0bc5bi" path="res://frames/purple_moving_background/frame_002.png" id="4_bmfla"]
+[ext_resource type="Texture2D" uid="uid://dha45popefk38" path="res://frames/purple_moving_background/frame_003.png" id="5_lxkyv"]
+[ext_resource type="Texture2D" uid="uid://brjxxqsdbxgdt" path="res://frames/purple_moving_background/frame_004.png" id="6_synsy"]
+[ext_resource type="Texture2D" uid="uid://don7e163nxge4" path="res://frames/purple_moving_background/frame_005.png" id="7_kwr6x"]
+[ext_resource type="Texture2D" uid="uid://cjtuu8om5okw3" path="res://frames/purple_moving_background/frame_006.png" id="8_7ff00"]
+[ext_resource type="Texture2D" uid="uid://dshpuc5mvtj3d" path="res://frames/purple_moving_background/frame_007.png" id="9_qw2qr"]
+[ext_resource type="Texture2D" uid="uid://stw1r5gxh2b5" path="res://frames/purple_moving_background/frame_008.png" id="10_t1yv2"]
+[ext_resource type="Texture2D" uid="uid://5lnxshriqv58" path="res://frames/purple_moving_background/frame_009.png" id="11_iehgy"]
+[ext_resource type="Texture2D" uid="uid://mpbwhjcl1iaq" path="res://frames/purple_moving_background/frame_010.png" id="12_a0jwv"]
+[ext_resource type="Texture2D" uid="uid://cryhrdknqaeyy" path="res://frames/purple_moving_background/frame_011.png" id="13_5bgn4"]
+[ext_resource type="Texture2D" uid="uid://cexmkyx84helt" path="res://frames/purple_moving_background/frame_012.png" id="14_vcty6"]
+[ext_resource type="Texture2D" uid="uid://bgcge1j26r1sh" path="res://frames/purple_moving_background/frame_013.png" id="15_84pvl"]
+[ext_resource type="Texture2D" uid="uid://0dlhsil70qye" path="res://frames/purple_moving_background/frame_014.png" id="16_m2jo5"]
+[ext_resource type="Texture2D" uid="uid://b02emlbgmjfrw" path="res://frames/purple_moving_background/frame_015.png" id="17_trby7"]
+[ext_resource type="Texture2D" uid="uid://d4i2ijgfrbkrn" path="res://frames/purple_moving_background/frame_016.png" id="18_j0p2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x0ad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eu2r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mrrkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bmfla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lxkyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_synsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kwr6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ff00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qw2qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t1yv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_iehgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_a0jwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5bgn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vcty6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_84pvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_m2jo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_trby7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j0p2n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqsy7"]
 content_margin_left = 4.0
@@ -27,15 +103,11 @@ grow_vertical = 2
 script = ExtResource("1_tqsy7")
 button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), NodePath("Lvl4"), NodePath("Lvl5"), NodePath("Lvl6")]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1282133615]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.57912743, 0.2891744, 0.046366245, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2020937857]
+scale = Vector2(1.0666667, 1)
+sprite_frames = SubResource("SpriteFrames_7x0ad")
+autoplay = "default"
+centered = false
 
 [node name="TITLE" type="MarginContainer" parent="." unique_id=1288680644]
 layout_mode = 1
