@@ -154,7 +154,7 @@ script = ExtResource("1_tqsy7")
 button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), NodePath("Lvl4"), NodePath("Lvl5"), NodePath("Lvl6")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2020937857]
-scale = Vector2(1.0666667, 1)
+scale = Vector2(1.0666667, 1.0093458)
 sprite_frames = SubResource("SpriteFrames_7x0ad")
 autoplay = "default"
 centered = false

@@ -1,34 +1,110 @@
 [gd_scene format=3 uid="uid://dt8boo6vdjjvq"]
 
+[ext_resource type="Texture2D" uid="uid://bd77isblvksqq" path="res://frames/purple_moving_background/frame_000.png" id="1_mgnbk"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="1_oxwvk"]
 [ext_resource type="Script" uid="uid://dcdg2o6qgw2pr" path="res://scripts/skin_selection_screen.gd" id="2_5db2g"]
+[ext_resource type="Texture2D" uid="uid://cgcxxxkrc8yiu" path="res://frames/purple_moving_background/frame_001.png" id="2_y6oaj"]
 [ext_resource type="Texture2D" uid="uid://sine03s5rme1" path="res://Skins/player.png" id="3_7twin"]
-[ext_resource type="AudioStream" uid="uid://cxlk431eu2r4c" path="res://music/Ball Game Menu Theme.mp3" id="3_b85ur"]
 [ext_resource type="StyleBox" uid="uid://dirgqhldlckj6" path="res://styles/skin_choose_highlight.tres" id="3_ihryo"]
+[ext_resource type="Texture2D" uid="uid://co5xghw0bc5bi" path="res://frames/purple_moving_background/frame_002.png" id="3_n82w0"]
 [ext_resource type="Texture2D" uid="uid://ns8om4ra01ml" path="res://Skins/randy_bluedy.png" id="4_ga18s"]
+[ext_resource type="Texture2D" uid="uid://dha45popefk38" path="res://frames/purple_moving_background/frame_003.png" id="4_nqk7u"]
 [ext_resource type="StyleBox" uid="uid://pe803ievs5w8" path="res://styles/skin_hover_highlight.tres" id="4_oxmot"]
 [ext_resource type="Texture2D" uid="uid://faoomelgk5u8" path="res://Skins/randy_boss.png" id="5_ihryo"]
+[ext_resource type="Texture2D" uid="uid://brjxxqsdbxgdt" path="res://frames/purple_moving_background/frame_004.png" id="5_phcct"]
 [ext_resource type="Texture2D" uid="uid://cs0pm5tx0e3jv" path="res://Skins/randy_falliing_guy.png" id="6_oxmot"]
+[ext_resource type="Texture2D" uid="uid://don7e163nxge4" path="res://frames/purple_moving_background/frame_005.png" id="6_rnhu7"]
+[ext_resource type="Texture2D" uid="uid://cjtuu8om5okw3" path="res://frames/purple_moving_background/frame_006.png" id="7_mv81p"]
 [ext_resource type="Texture2D" uid="uid://b1mjn5cbtamm0" path="res://Skins/randy_free.png" id="7_ok6uc"]
+[ext_resource type="Texture2D" uid="uid://dshpuc5mvtj3d" path="res://frames/purple_moving_background/frame_007.png" id="8_ltlxk"]
 [ext_resource type="Texture2D" uid="uid://dqavchnuuq4gp" path="res://Skins/randy_kirby_wheel.png" id="8_t3ei7"]
 [ext_resource type="Texture2D" uid="uid://dgs5ol8c7xff3" path="res://Skins/randy_leliel.png" id="9_k8hun"]
+[ext_resource type="Texture2D" uid="uid://stw1r5gxh2b5" path="res://frames/purple_moving_background/frame_008.png" id="9_tqvvj"]
+[ext_resource type="Texture2D" uid="uid://5lnxshriqv58" path="res://frames/purple_moving_background/frame_009.png" id="10_4fgw8"]
 [ext_resource type="Texture2D" uid="uid://c16gcjd8rnkeg" path="res://Skins/randy_merch.png" id="10_msw4u"]
 [ext_resource type="Texture2D" uid="uid://blfg08djrbq42" path="res://Skins/randy_nubby.png" id="11_7xdma"]
+[ext_resource type="Texture2D" uid="uid://mpbwhjcl1iaq" path="res://frames/purple_moving_background/frame_010.png" id="11_vv7ct"]
 [ext_resource type="Texture2D" uid="uid://cv2ie1b1uh2r4" path="res://Skins/randy_punished.png" id="12_14l8f"]
+[ext_resource type="Texture2D" uid="uid://cryhrdknqaeyy" path="res://frames/purple_moving_background/frame_011.png" id="12_lbdfl"]
+[ext_resource type="Texture2D" uid="uid://cexmkyx84helt" path="res://frames/purple_moving_background/frame_012.png" id="13_kmoh6"]
 [ext_resource type="Texture2D" uid="uid://b6p7ginh6ilec" path="res://Skins/randy_shadow.png" id="13_l58tp"]
 [ext_resource type="Texture2D" uid="uid://wqhmdqb12pqb" path="res://Skins/randy_sonic.png" id="14_1d4u6"]
+[ext_resource type="Texture2D" uid="uid://bgcge1j26r1sh" path="res://frames/purple_moving_background/frame_013.png" id="14_x6y10"]
+[ext_resource type="Texture2D" uid="uid://0dlhsil70qye" path="res://frames/purple_moving_background/frame_014.png" id="15_1s42k"]
 [ext_resource type="Texture2D" uid="uid://comkshvixxbc" path="res://Skins/randy_steelball.png" id="15_btgco"]
+[ext_resource type="Texture2D" uid="uid://b02emlbgmjfrw" path="res://frames/purple_moving_background/frame_015.png" id="16_6kx65"]
 [ext_resource type="Texture2D" uid="uid://kvuhhq78f4lp" path="res://Skins/randy_verity.png" id="16_12xpa"]
 [ext_resource type="Texture2D" uid="uid://bhqrrlh51jhcl" path="res://Skins/randy_wheatley.png" id="17_s2ld1"]
+[ext_resource type="Texture2D" uid="uid://d4i2ijgfrbkrn" path="res://frames/purple_moving_background/frame_016.png" id="17_sjuha"]
 [ext_resource type="Texture2D" uid="uid://bcvutjm1kfehw" path="res://Skins/randy_white_gal.png" id="18_gl7os"]
 [ext_resource type="Script" uid="uid://3g8e0lu0380q" path="res://scripts/debug_skin_button.gd" id="22_oxmot"]
+[ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="38_jsvar"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2ksa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mgnbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6oaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n82w0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nqk7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_phcct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rnhu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mv81p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ltlxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tqvvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4fgw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vv7ct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lbdfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kmoh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x6y10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1s42k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6kx65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sjuha")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7twin"]
 content_margin_left = 50.0
 content_margin_top = 50.0
 content_margin_right = 50.0
 content_margin_bottom = 50.0
-bg_color = Color(0.46, 0.13800001, 0.13800001, 1)
+bg_color = Color(0.3254902, 0.050980393, 0.37254903, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -52,18 +128,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=331350537]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.57912743, 0.2891744, 0.046366245, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1125874690]
+scale = Vector2(1.0666666, 1.0093458)
+sprite_frames = SubResource("SpriteFrames_b2ksa")
+autoplay = "default"
+centered = false
 
-[node name="TITLE" type="MarginContainer" parent="." unique_id=2015520630]
+[node name="TITLE" type="MarginContainer" parent="." unique_id=1136517068]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,15 +144,16 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 15
 
-[node name="Label" type="Label" parent="TITLE" unique_id=2079601227]
+[node name="Label" type="Label" parent="TITLE" unique_id=753891898]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.49019608, 0, 0, 1)
 theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("1_oxwvk")
 theme_override_font_sizes/font_size = 64
-text = "Skin Selection"
+text = "Skin Selection
+"
 
 [node name="MAIN BOX" type="Control" parent="." unique_id=1088799523]
 propagate_maximum_size = true
@@ -401,10 +473,10 @@ not
 found"
 icon = ExtResource("18_gl7os")
 
-[node name="song" type="AudioStreamPlayer" parent="." unique_id=2022320672]
-stream = ExtResource("3_b85ur")
-volume_db = -3.0
+[node name="BallGameLevelSelector" type="AudioStreamPlayer" parent="." unique_id=500179657]
+stream = ExtResource("38_jsvar")
 autoplay = true
+parameters/looping = true
 
 [node name="BACK" type="MarginContainer" parent="." unique_id=51334302]
 layout_mode = 1

@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://c4xwr4jquqqv1"]
 
 [ext_resource type="Script" uid="uid://cb3kt78dls7pe" path="res://scripts/credits.gd" id="1_0bpdh"]
+[ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="2_0ctdu"]
 [ext_resource type="Texture2D" uid="uid://5spriwbas7qr" path="res://textures/jontober_baller_game_background1.png" id="2_2ckv8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ckv8"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0, 0, 0, 0.38039216)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="credits" type="Control" unique_id=1646480140]
 layout_mode = 3
@@ -12,18 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0bpdh")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1679870396]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.08193319, 0.02314996, 0.049722597, 1)
+[node name="BallGameLevelSelector" type="AudioStreamPlayer" parent="." unique_id=1550444869]
+stream = ExtResource("2_0ctdu")
+volume_db = -8.265
+pitch_scale = 0.7
+autoplay = true
+parameters/looping = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2097277170]
-modulate = Color(0.6, 0.54, 0.56600004, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,44 +56,70 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Control" type="Control" parent="MarginContainer" unique_id=260408973]
+[node name="MAIN BOX" type="Control" parent="MarginContainer" unique_id=456339057]
+propagate_maximum_size = true
 layout_mode = 2
-mouse_filter = 2
+size_flags_vertical = 3
 
-[node name="Circcle_Hover" type="Label" parent="MarginContainer/Control" unique_id=584939332]
-modulate = Color(1, 1, 1, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MAIN BOX" unique_id=1288101635]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "...Hint 2: ...hold down THOSE 4 numbers in the menu..."
+scale = Vector2(0.8, 0.8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_position = Vector2(15.045, 0)
 mouse_filter = 0
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 48
-text = "Circcle"
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ckv8")
+follow_focus = true
+draw_focus_border = true
+scroll_horizontal_custom_step = 25.0
+scroll_vertical_custom_step = 25.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control" unique_id=369981988]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="Label" type="Label" parent="MarginContainer/MAIN BOX/ScrollContainer" unique_id=369981988]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 48
-text = "Circcle - Art, programming, level design
-Kode - Music
-Choco - Programming, level design, art,
-music
-UpsideOut - Art, Programming, level design
-Ahiga - Art, menu & credits background
-Crazzy_Squid -"
+theme_override_font_sizes/font_size = 44
+text = "CREDITS
+
+Programming/Level-design:
+
+Choco
+Circcle
+Crazzy_Squid
+UpsideOut
+
+Art:
+
+Ahiga
+Circcle
+Choco
+UpsideOut
+
+Music:
+
+A Nova Who Can Sing
+Kode
+Lucascdesou
+Choco
+
+Special Apperances:
+John Circle
+
+
+THANKS SO MUCH FOR PLAYING!
+
+Playing:
+You - hopefully <3"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=455303068]
 layout_mode = 2
