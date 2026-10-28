@@ -5,23 +5,27 @@
 [ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="3_tqsy7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqsy7"]
-content_margin_left = 50.0
-content_margin_top = 50.0
-content_margin_right = 50.0
-content_margin_bottom = 50.0
-bg_color = Color(0.46, 0.13800001, 0.13800001, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0)
 
-[node name="LevelSelectionScreen" type="Control" unique_id=709358062]
+[node name="LevelSelectionScreen" type="Control" unique_id=709358062 node_paths=PackedStringArray("button_array")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tqsy7")
+button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), NodePath("Lvl4"), NodePath("Lvl5"), NodePath("Lvl6")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1282133615]
 layout_mode = 1
@@ -54,102 +58,77 @@ theme_override_font_sizes/font_size = 64
 text = "Level Selection
 "
 
-[node name="MAIN BOX" type="Control" parent="." unique_id=1200577152]
-propagate_maximum_size = true
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MAIN BOX" unique_id=1608890683]
-custom_minimum_size = Vector2(1152, 518.4)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-offset_transform_position = Vector2(15.045, 0)
-mouse_filter = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tqsy7")
-follow_focus = true
-draw_focus_border = true
-scroll_horizontal_custom_step = 25.0
-scroll_vertical_custom_step = 25.0
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 2
-
-[node name="VBoxContainer" type="FlowContainer" parent="MAIN BOX/ScrollContainer" unique_id=1809474570 node_paths=PackedStringArray("button_array")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-alignment = 1
-last_wrap_alignment = 1
-script = ExtResource("1_tqsy7")
-button_array = [NodePath("Lvl1"), NodePath("Lvl2"), NodePath("Lvl3"), NodePath("Lvl4"), NodePath("Lvl5"), NodePath("Lvl6")]
-
-[node name="Lvl1" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=1428289251]
-custom_minimum_size = Vector2(220, 0)
-custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+[node name="Lvl1" type="Button" parent="." unique_id=1428289251]
+custom_maximum_size = Vector2(1000, 1000)
+layout_mode = 0
+offset_left = 500.0
+offset_top = 200.0
+offset_right = 695.0
+offset_bottom = 291.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqsy7")
 disabled = true
-text = "Lvl - 1
-"
 
-[node name="Lvl2" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=922118475]
+[node name="Lvl2" type="Button" parent="." unique_id=922118475]
 custom_minimum_size = Vector2(220, 0)
 custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+layout_mode = 0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
 disabled = true
 text = "Lvl - 2
 "
 
-[node name="Lvl3" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=1313095489]
+[node name="Lvl3" type="Button" parent="." unique_id=1313095489]
 custom_minimum_size = Vector2(220, 0)
 custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+layout_mode = 0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
 disabled = true
 text = "Lvl - 3
 "
 
-[node name="Lvl4" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=1343117513]
+[node name="Lvl4" type="Button" parent="." unique_id=1343117513]
 custom_minimum_size = Vector2(220, 0)
 custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+layout_mode = 0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
 disabled = true
 text = "Lvl - 4
 "
 
-[node name="Lvl5" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=204616795]
+[node name="Lvl5" type="Button" parent="." unique_id=204616795]
 custom_minimum_size = Vector2(220, 0)
 custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+layout_mode = 0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
 disabled = true
 text = "Lvl - 5
 "
 
-[node name="Lvl6" type="Button" parent="MAIN BOX/ScrollContainer/VBoxContainer" unique_id=334530387]
+[node name="Lvl6" type="Button" parent="." unique_id=334530387]
 custom_minimum_size = Vector2(220, 0)
 custom_maximum_size = Vector2(220, -1)
-layout_mode = 2
+layout_mode = 0
+offset_top = 15.0
+offset_right = 220.0
+offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
 disabled = true
@@ -178,5 +157,3 @@ text = "Back"
 stream = ExtResource("3_tqsy7")
 autoplay = true
 parameters/looping = true
-
-[connection signal="pressed" from="BACK/BackButton" to="MAIN BOX/ScrollContainer/VBoxContainer" method="_on_back_button_pressed"]
