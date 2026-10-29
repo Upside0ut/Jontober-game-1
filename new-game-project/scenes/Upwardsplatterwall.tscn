@@ -35,16 +35,19 @@ script = ExtResource("1_ns6d4")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1267321043]
 amount = 40
 texture = ExtResource("2_bk0pm")
+visibility_rect = Rect2(-200, -1500, 400, 3000)
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=782223890]
 amount = 40
 texture = ExtResource("3_lo1a5")
+visibility_rect = Rect2(-200, -1500, 400, 3000)
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1292180420]
 amount = 40
 texture = ExtResource("4_abhrn")
+visibility_rect = Rect2(-200, -1500, 400, 3000)
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
 [node name="spikes" type="Area2D" parent="." unique_id=933651931]

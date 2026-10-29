@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.y = get_parent().get_node("UpwardSplatterwall").position.y + 200
+	global_position.y = get_parent().get_node("UpwardSplatterwall").position.y + 100
