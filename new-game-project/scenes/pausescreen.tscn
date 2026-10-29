@@ -5,80 +5,24 @@
 [ext_resource type="Shader" uid="uid://ydq6cogapgy2" path="res://scenes/pausescreen.gdshader" id="2_fvd0d"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="3_fvd0d"]
 [ext_resource type="PackedScene" uid="uid://cqud6q2o5lkja" path="res://scenes/options.tscn" id="7_38q3y"]
+[ext_resource type="StyleBox" uid="uid://dbo73a3tt6nx6" path="res://styles/pause_button1.tres" id="7_v5dkp"]
+[ext_resource type="StyleBox" uid="uid://dad11t5c4a4nr" path="res://styles/pause_button1_pressed.tres" id="8_6ef3m"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="8_6tuom"]
+[ext_resource type="StyleBox" uid="uid://8hnsnqc3w77n" path="res://styles/pause_button1_hover.tres" id="8_iarw2"]
+[ext_resource type="StyleBox" uid="uid://c15c1h22xafbj" path="res://styles/pause_button3_hover.tres" id="8_whwj3"]
+[ext_resource type="StyleBox" uid="uid://cevt7n0rf27y3" path="res://styles/pause_button2.tres" id="8_yh2qw"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="9_cmpyc"]
+[ext_resource type="StyleBox" uid="uid://bsm2jy4wfnqsk" path="res://styles/pause_button3.tres" id="9_iarw2"]
+[ext_resource type="StyleBox" uid="uid://kbtuu050e5jl" path="res://styles/pause_button4.tres" id="10_5yulf"]
+[ext_resource type="StyleBox" uid="uid://cotdaoieg6ri5" path="res://styles/pause_button2_hover.tres" id="10_iarw2"]
+[ext_resource type="StyleBox" uid="uid://ctuhvf7s3khan" path="res://styles/pause_button2_pressed.tres" id="11_sra8a"]
+[ext_resource type="StyleBox" uid="uid://d057enxicpj8b" path="res://styles/pause_button4_hover.tres" id="13_5yulf"]
+[ext_resource type="StyleBox" uid="uid://coeym6bkjyvdv" path="res://styles/pause_button3_pressed.tres" id="14_u7y1p"]
+[ext_resource type="StyleBox" uid="uid://dr6my4p2yxepc" path="res://styles/pause_button4_pressed.tres" id="17_2n2pn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7x0ad"]
 shader = ExtResource("2_fvd0d")
 shader_parameter/lod = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgnu2"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.56078434, 0.6784314, 0.8, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.85490197, 0.48235294, 0.42352942, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5dkp"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.9607843, 0.5411765, 0.7294118, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.90588236, 0.36078432, 0.8666667, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ydd4"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 0.70980394, 0.6, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.85490197, 0.48235294, 0.42352942, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38q3y"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.9843137, 0.8509804, 0.40392157, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.90588236, 0.36078432, 0.8666667, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
 
 [sub_resource type="Animation" id="Animation_fvd0d"]
 length = 0.001
@@ -281,7 +225,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
 theme_override_font_sizes/font_size = 71
-theme_override_styles/normal = SubResource("StyleBoxFlat_rgnu2")
+theme_override_styles/normal = ExtResource("7_v5dkp")
+theme_override_styles/pressed = ExtResource("8_6ef3m")
+theme_override_styles/hover = ExtResource("8_iarw2")
 text = "Continue
 "
 
@@ -290,7 +236,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
 theme_override_font_sizes/font_size = 71
-theme_override_styles/normal = SubResource("StyleBoxFlat_v5dkp")
+theme_override_styles/normal = ExtResource("8_yh2qw")
+theme_override_styles/pressed = ExtResource("11_sra8a")
+theme_override_styles/hover = ExtResource("10_iarw2")
 text = "Options"
 
 [node name="restart" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=1989549129]
@@ -298,7 +246,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
 theme_override_font_sizes/font_size = 71
-theme_override_styles/normal = SubResource("StyleBoxFlat_4ydd4")
+theme_override_styles/normal = ExtResource("9_iarw2")
+theme_override_styles/pressed = ExtResource("14_u7y1p")
+theme_override_styles/hover = ExtResource("8_whwj3")
 text = "Restart
 "
 
@@ -307,7 +257,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
 theme_override_font_sizes/font_size = 71
-theme_override_styles/normal = SubResource("StyleBoxFlat_38q3y")
+theme_override_styles/normal = ExtResource("10_5yulf")
+theme_override_styles/pressed = ExtResource("17_2n2pn")
+theme_override_styles/hover = ExtResource("13_5yulf")
 text = "Quit
 "
 
