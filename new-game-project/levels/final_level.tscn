@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="6_a6mss"]
 [ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="7_5bn7i"]
 [ext_resource type="Texture2D" uid="uid://colayoy64cxk1" path="res://textures/spotlight.png" id="8_vieql"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="9_5bn7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3e3d"]
 texture = ExtResource("3_h87kb")
@@ -674,5 +675,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_a6mss")
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("9_5bn7i")]
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

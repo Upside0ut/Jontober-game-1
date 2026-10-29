@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 		if ray_cast_2d.is_colliding():
 			#allow_jump = false #stop double jumping
 			jump.play()
-			print(Global.level)
 			linear_velocity.y = jump_force #apply jump force
 		
 	# if player presses E and has_dynamite is set to true, the dynamite scene is loaded in

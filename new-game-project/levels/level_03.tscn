@@ -587,7 +587,7 @@ terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_3imfn")
 sources/1 = SubResource("TileSetScenesCollectionSource_b2w0k")
 
-[node name="level 01" type="Node2D" unique_id=797776596]
+[node name="level 03" type="Node2D" unique_id=797776596]
 script = ExtResource("1_6w184")
 current_level = 4
 
@@ -625,10 +625,6 @@ offset_bottom = 14402.0
 [node name="splatterwall" parent="." unique_id=314029043 instance=ExtResource("6_b2w0k")]
 position = Vector2(-366, 51)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=316143973]
-
-[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("10_hapfj")]
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1238552005]
 layer = 999
 
@@ -643,3 +639,5 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_r8aof")
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("10_hapfj")]

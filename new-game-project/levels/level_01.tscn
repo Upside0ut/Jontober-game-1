@@ -628,10 +628,6 @@ z_index = -5
 position = Vector2(247, 201)
 texture = ExtResource("7_cg8v6")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=266646858]
-
-[node name="Node2D" parent="CanvasLayer2" unique_id=1175869620 instance=ExtResource("10_5dxk1")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=292293287]
 layer = 999
 
@@ -654,3 +650,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TouchControls" parent="Control" unique_id=1837735795 instance=ExtResource("12_qdeet")]
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("10_5dxk1")]

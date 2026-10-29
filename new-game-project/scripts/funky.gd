@@ -10,7 +10,7 @@ func _ready() -> void:
 	$FUNKYTextureRect.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if funky_mode: return
 	if (Input.is_action_pressed("FUNKY_F") and
 		Input.is_action_pressed("FUNKY_U") and
@@ -34,12 +34,14 @@ func _process(delta: float) -> void:
 		$MarginContainer/HBoxContainer/VBoxContainer/play.text = "FUNKYstart"
 		$MarginContainer/HBoxContainer/VBoxContainer/options.text = "FUNKYoptions"
 		$MarginContainer/HBoxContainer/VBoxContainer/lvlSelect.text = "FUNKYlevels"
-		$MarginContainer/HBoxContainer/VBoxContainer/credits .text = "FUNKYcredits"
+		$MarginContainer/HBoxContainer/VBoxContainer/credits.text = "FUNKYcredits"
+		$MarginContainer/HBoxContainer/skins.text = "FUNKYskins"
 		switch_up_btn_positions()
 		
 		$MarginContainer/Label2.text = "yooooooooooooooooooooooooooooo"
 		
-		gradually_switch_colors()
+		$ColorRect.color = Color.WHITE
+		gradually_switch_colors([$ColorRect,$Parallax2D/AnimatedSprite2D])
 
 func switch_up_btn_positions():
 	while true:
@@ -69,13 +71,14 @@ func move_texture_around():
 	
 	t.tween_callback(move_texture_around)
 
-func gradually_switch_colors():
-	var t: Tween = create_tween().set_loops()
-	t.tween_property($ColorRect, "color", Color.DEEP_PINK, 0.2)
-	t.tween_property($ColorRect, "color", Color.GREEN, 0.2)
-	t.tween_property($ColorRect, "color", Color.YELLOW, 0.2)
-	t.tween_property($ColorRect, "color", Color.RED, 0.2)
-	t.tween_property($ColorRect, "color", Color.PURPLE, 0.2)
+func gradually_switch_colors(nodes : Array):
+	for node in nodes:
+		var t: Tween = create_tween().set_loops()
+		t.tween_property(node, "modulate", Color.DEEP_PINK, 0.2)
+		t.tween_property(node, "modulate", Color.GREEN, 0.2)
+		t.tween_property(node, "modulate", Color.YELLOW, 0.2)
+		t.tween_property(node, "modulate", Color.RED, 0.2)
+		t.tween_property(node, "modulate", Color.PURPLE, 0.2)
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://uxtif6q2vjig" path="res://scripts/pausescreen.gd" id="1_fvd0d"]
 [ext_resource type="Shader" uid="uid://ydq6cogapgy2" path="res://scenes/pausescreen.gdshader" id="2_fvd0d"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="3_fvd0d"]
+[ext_resource type="PackedScene" uid="uid://cqud6q2o5lkja" path="res://scenes/options.tscn" id="7_38q3y"]
 [ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="8_6tuom"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="9_cmpyc"]
 
@@ -202,7 +203,12 @@ _data = {
 &"blur": SubResource("Animation_rgnu2")
 }
 
-[node name="PauseScreen" type="Control" unique_id=1175869620]
+[node name="Pause Menu" type="CanvasLayer" unique_id=1060973747]
+process_mode = 3
+layer = 1001
+script = ExtResource("1_fvd0d")
+
+[node name="PauseScreen" type="Control" parent="." unique_id=1175869620]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
@@ -211,9 +217,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fvd0d")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=913554787]
+[node name="ColorRect" type="ColorRect" parent="PauseScreen" unique_id=913554787]
 material = SubResource("ShaderMaterial_7x0ad")
 layout_mode = 1
 anchors_preset = 15
@@ -223,7 +228,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=830278183]
+[node name="TextureRect" type="TextureRect" parent="PauseScreen" unique_id=830278183]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,7 +237,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4ydd4")
 
-[node name="TextureRect3" type="TextureRect" parent="." unique_id=320269715]
+[node name="TextureRect3" type="TextureRect" parent="PauseScreen" unique_id=320269715]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,7 +248,7 @@ texture = ExtResource("3_fvd0d")
 flip_h = true
 flip_v = true
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=666239822]
+[node name="MarginContainer" type="MarginContainer" parent="PauseScreen" unique_id=666239822]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,7 +258,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=1357203060]
+[node name="Label" type="Label" parent="PauseScreen/MarginContainer" unique_id=1357203060]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -264,14 +269,14 @@ theme_override_fonts/font = ExtResource("9_cmpyc")
 theme_override_font_sizes/font_size = 110
 text = "PAUSE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=583852188]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/MarginContainer" unique_id=583852188]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 10
 script = ExtResource("8_6tuom")
 
-[node name="continue" type="Button" parent="MarginContainer/VBoxContainer" unique_id=692935566]
+[node name="continue" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=692935566]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
@@ -280,7 +285,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rgnu2")
 text = "Continue
 "
 
-[node name="options" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1475950644]
+[node name="options" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=1475950644]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
@@ -288,7 +293,7 @@ theme_override_font_sizes/font_size = 71
 theme_override_styles/normal = SubResource("StyleBoxFlat_v5dkp")
 text = "Options"
 
-[node name="restart" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1989549129]
+[node name="restart" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=1989549129]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
@@ -297,7 +302,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4ydd4")
 text = "Restart
 "
 
-[node name="quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=450366050]
+[node name="quit" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=450366050]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.101960786, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("9_cmpyc")
@@ -306,10 +311,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38q3y")
 text = "Quit
 "
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1908329826]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen" unique_id=1908329826]
 libraries/ = SubResource("AnimationLibrary_v5dkp")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[node name="Options Menu" parent="." unique_id=1889404676 instance=ExtResource("7_38q3y")]
+
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/continue" to="PauseScreen" method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/options" to="PauseScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/restart" to="PauseScreen" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/quit" to="PauseScreen" method="_on_quit_pressed"]

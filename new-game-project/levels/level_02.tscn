@@ -602,9 +602,11 @@ size = Vector2(6.453369, 37.825394)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(20, 192)
 
-[node name="level 03" type="Node2D" unique_id=797776596]
+[node name="level 02" type="Node2D" unique_id=797776596]
 script = ExtResource("1_myllq")
 current_level = 2
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("19_2la83")]
 
 [node name="Parallax2D" parent="." unique_id=980270568 instance=ExtResource("1_j4ks3")]
 
@@ -766,10 +768,6 @@ theme_override_fonts/font = ExtResource("16_xgj7h")
 theme_override_font_sizes/font_size = 32
 text = "welcome to
 choco's awesome level :3"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=578775943]
-
-[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("19_2la83")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=331244121]
 layer = 999

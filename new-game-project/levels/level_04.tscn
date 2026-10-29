@@ -592,7 +592,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_05651")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw4k2"]
 size = Vector2(244, 247)
 
-[node name="level 02" type="Node2D" unique_id=797776596]
+[node name="level 04" type="Node2D" unique_id=797776596]
 script = ExtResource("1_4c076")
 current_level = 3
 
@@ -656,10 +656,6 @@ position = Vector2(1727, -511)
 stream = ExtResource("11_xxuo2")
 volume_db = 24.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=360050799]
-
-[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("12_liqpl")]
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=2087209451]
 layer = 999
 
@@ -674,3 +670,5 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_h518d")
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("12_liqpl")]
