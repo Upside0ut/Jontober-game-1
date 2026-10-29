@@ -592,19 +592,24 @@ zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="Player/Camera2D" unique_id=844949874]
-visible = false
-z_index = 999
-offset_left = -1258.0
-offset_top = -716.0
-offset_right = 1229.0
-offset_bottom = 726.0
-color = Color(0, 0, 0, 1)
-script = ExtResource("2_yeiq4")
-
 [node name="ground tilemap" type="TileMapLayer" parent="." unique_id=1320273161]
 tile_map_data = PackedByteArray("AAAEAAcAAAAAAAQAAAAFAAcAAAAIAAMAAAAGAAcAAAAIAAMAAAAHAAcAAAAIAAMAAAAIAAcAAAAIAAMAAAAJAAcAAAAIAAMAAAAKAAcAAAABAAQAAAA=")
 tile_set = SubResource("TileSet_lf6dv")
 
 [node name="goal [move to where you want]" parent="." unique_id=232289700 instance=ExtResource("4_kjpnd")]
 position = Vector2(860, 295)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2053612961]
+layer = 999
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="CanvasLayer" unique_id=730393612]
+visible = false
+z_index = 999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_yeiq4")

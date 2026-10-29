@@ -676,16 +676,6 @@ zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="Player/Camera2D" unique_id=116333005]
-visible = false
-z_index = 999
-offset_left = -1258.0
-offset_top = -716.0
-offset_right = 1229.0
-offset_bottom = 726.0
-color = Color(0, 0, 0, 1)
-script = ExtResource("2_5fpo4")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=972882891]
 script = ExtResource("5_eor1m")
 
@@ -717,6 +707,21 @@ rotation = 3.1415927
 [node name="RightSplatterwall" parent="." unique_id=528328311 instance=ExtResource("9_5fpo4")]
 position = Vector2(7000, 3600)
 rotation = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1578566950]
+layer = 999
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="CanvasLayer" unique_id=202410448]
+visible = false
+z_index = 999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_5fpo4")
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="CenterPoint" to="CenterPoint" method="_on_center_point_body_entered"]
