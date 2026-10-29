@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ntfy3ktno5gr"]
+
+[ext_resource type="Script" uid="uid://d0imercs6j47k" path="res://scenes/pre_boss.gd" id="1_2an6b"]
+[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="2_2an6b"]
+
+[node name="screen" type="Control" unique_id=1558512898]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2an6b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1816195233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1320730372]
+wait_time = 4.0
+autostart = true
+
+[node name="Dramatica" type="AudioStreamPlayer" parent="." unique_id=682437229]
+stream = ExtResource("2_2an6b")
+pitch_scale = 0.4
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

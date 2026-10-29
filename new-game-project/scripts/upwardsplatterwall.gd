@@ -1,7 +1,8 @@
 extends Node2D
 
 const SPEED = 220
-const HIGHEST_POSITION_Y = -6200
+const HIGHEST_POSITION_Y = -5500
+@export var reached_highest_position_y = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +13,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(global_position.y > HIGHEST_POSITION_Y):
 		global_position.y -= delta * SPEED
+	else:
+		reached_highest_position_y = true

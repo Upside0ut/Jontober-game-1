@@ -13,4 +13,9 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "hitbox (spikes)":
-		get_tree().call_deferred("change_scene_to_file", "res://levels/level_boss.tscn")
+		get_parent().get_node("Player").die()
+		await wait(0.1)
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/pre_boss.tscn")
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout

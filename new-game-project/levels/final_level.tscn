@@ -4,10 +4,6 @@
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_a6mss"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_h87kb"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_a3e3d"]
-[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="6_a3e3d"]
-[ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="6_a6mss"]
-[ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="7_5bn7i"]
-[ext_resource type="Texture2D" uid="uid://colayoy64cxk1" path="res://textures/spotlight.png" id="8_vieql"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="9_5bn7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3e3d"]
@@ -585,31 +581,6 @@ terrain_set_0/terrain_3/color = Color(1, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_a3e3d")
 sources/1 = SubResource("TileSetScenesCollectionSource_5bn7i")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l10gb"]
-size = Vector2(50008, 2375.5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l10gb"]
-atlas = ExtResource("7_5bn7i")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwg4l"]
-atlas = ExtResource("7_5bn7i")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bwg4l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l10gb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwg4l")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Final level" type="Node2D" unique_id=797776596]
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_h1ypa")]
@@ -634,33 +605,6 @@ offset_right = 24142.0
 offset_bottom = 18585.0
 color = Color(0.0300058, 0.008504948, 0.0123163285, 1)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=836223843]
-position = Vector2(-142, -425)
-script = ExtResource("6_a6mss")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=231394431]
-position = Vector2(-321, 14290)
-shape = SubResource("RectangleShape2D_l10gb")
-
-[node name="Dramatica" type="AudioStreamPlayer" parent="." unique_id=710553920]
-stream = ExtResource("6_a3e3d")
-autoplay = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1547727035]
-position = Vector2(2343, -153)
-sprite_frames = SubResource("SpriteFrames_bwg4l")
-autoplay = "default"
-
-[node name="Spotlight" type="Sprite2D" parent="." unique_id=427224912]
-position = Vector2(2375, -294)
-texture = ExtResource("8_vieql")
-
-[node name="FakeBlock" type="ColorRect" parent="." unique_id=1658573747]
-offset_left = 2232.0
-offset_top = -35.0
-offset_right = 2476.0
-offset_bottom = 146.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=324936275]
 layer = 999
 
@@ -677,5 +621,3 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_a6mss")
 
 [node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("9_5bn7i")]
-
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
