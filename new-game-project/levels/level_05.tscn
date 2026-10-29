@@ -623,7 +623,7 @@ radius = 39.012817
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdo1k"]
 size = Vector2(58.5, 91.5)
 
-[node name="level 01" type="Node2D" unique_id=797776596]
+[node name="level 05" type="Node2D" unique_id=797776596]
 
 [node name="Parallax2D" parent="." unique_id=980270568 instance=ExtResource("1_6q6br")]
 
@@ -710,10 +710,6 @@ position = Vector2(0, 1000)
 [node name="UpwardSplatterwall3" parent="." unique_id=1360921780 instance=ExtResource("6_g3bu7")]
 position = Vector2(0, 1000)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1315027753]
-
-[node name="PauseScreen" parent="CanvasLayer" unique_id=1175869620 instance=ExtResource("7_n8w53")]
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=87506143]
 layer = 999
 
@@ -736,5 +732,7 @@ offset_top = -14858.0
 offset_right = 24278.0
 offset_bottom = 14304.0
 color = Color(0, 0, 0, 1)
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("7_n8w53")]
 
 [connection signal="body_entered" from="SecretEntranceWhite/Area2D" to="SecretEntranceWhite" method="_on_area_2d_body_entered"]

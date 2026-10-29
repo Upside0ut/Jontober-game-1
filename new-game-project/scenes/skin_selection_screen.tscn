@@ -39,65 +39,44 @@
 [ext_resource type="Texture2D" uid="uid://bcvutjm1kfehw" path="res://Skins/randy_white_gal.png" id="18_gl7os"]
 [ext_resource type="Script" uid="uid://3g8e0lu0380q" path="res://scripts/debug_skin_button.gd" id="22_oxmot"]
 [ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="38_jsvar"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="40_y6oaj"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b2ksa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_mgnbk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_y6oaj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_n82w0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_nqk7u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_phcct")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_rnhu7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_mv81p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ltlxk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_tqvvj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_4fgw8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_vv7ct")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_lbdfl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_kmoh6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_x6y10")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_1s42k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_6kx65")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_sjuha")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sw4k2"]
+frames = 17
+speed_scale = 5.0
+frame_0/texture = ExtResource("1_mgnbk")
+frame_1/texture = ExtResource("2_y6oaj")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_n82w0")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_nqk7u")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_phcct")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_rnhu7")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_mv81p")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_ltlxk")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("9_tqvvj")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("10_4fgw8")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("11_vv7ct")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("12_lbdfl")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("13_kmoh6")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("14_x6y10")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("15_1s42k")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("16_6kx65")
+frame_15/duration = 1.0
+frame_16/texture = ExtResource("17_sjuha")
+frame_16/duration = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7twin"]
 content_margin_left = 50.0
@@ -128,11 +107,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1125874690]
-scale = Vector2(1.0666666, 1.0093458)
-sprite_frames = SubResource("SpriteFrames_b2ksa")
-autoplay = "default"
-centered = false
+[node name="Animated Background" type="TextureRect" parent="." unique_id=256849128]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_sw4k2")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="TITLE" type="MarginContainer" parent="." unique_id=1136517068]
 layout_mode = 1
@@ -458,7 +443,7 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 tooltip_text = "Beat the...FNAF mode? wait what?
 
-...Hint 1: Hover the FNAF mode's creator's name in the Credits"
+...Hint: hold down 4 specific number in the main menu, you know which ones.."
 theme_override_fonts/font = ExtResource("1_oxwvk")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/pressed = ExtResource("3_ihryo")
@@ -507,6 +492,19 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "DEBUG ONLY (auto-removed on export)"
 script = ExtResource("22_oxmot")
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=1907304511]
+visible = false
+z_index = 999
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("40_y6oaj")
 
 [connection signal="pressed" from="BACK/HBoxContainer/BackButton" to="MAIN BOX/ScrollContainer/GridContainer" method="_on_back_button_pressed"]
 [connection signal="pressed" from="BACK/HBoxContainer/DEBUG" to="BACK/HBoxContainer/DEBUG" method="_on_pressed"]

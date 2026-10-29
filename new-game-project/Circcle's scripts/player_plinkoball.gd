@@ -13,6 +13,9 @@ var starting_position : Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	if Global.current_skin_name and $Icon.texture != Global.current_skin_png:
+		$Icon.texture = Global.current_skin_png
+	
 	# shouts at u if drop_marker returns as null (a.k.a it wasn't found)
 	assert(drop_marker != null, "Drop Marker not found inside Level 02! Has the node been renamed?")
 	

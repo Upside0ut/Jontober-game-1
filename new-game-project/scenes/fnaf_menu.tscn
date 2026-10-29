@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://djfr0cfakj85n" path="res://scenes/texture_rect.gd" id="3_pituf"]
 [ext_resource type="Texture2D" uid="uid://f8robg8p26u3" path="res://FNAF sprites/randymainmenu.png" id="3_tufyr"]
 [ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="6_cf7ta"]
+[ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="6_hxqqk"]
 [ext_resource type="AudioStream" uid="uid://c1uurj0rql3gr" path="res://music/fnaf_menu_theme.mp3" id="7_iq6cr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqvsr"]
@@ -113,6 +114,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer" unique_id=1522878962]
 layout_mode = 2
@@ -126,7 +129,8 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 32
-text = "Five Night's at Randy's"
+bbcode_enabled = true
+text = "[font_size=32][i]Five Night's at [color=red]Randy's[/color][/i][/font_size]"
 fit_content = true
 autowrap_mode = 0
 
@@ -163,6 +167,13 @@ alignment = 0
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer3" unique_id=1802340743]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer" unique_id=1240981433]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_hxqqk")
+text = "Quit this menu by holding '1987'"
 
 [node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="." unique_id=496703942]
 visible = false

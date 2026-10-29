@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://q6aedj131lku" path="res://sound_effects/fnaf_sfx/ambient/583303__profispiesser__fx-sasc-low-metallic-movement-impacts-hits-metal-cable-car-geofon.wav" id="31_2w8dj"]
 [ext_resource type="AudioStream" uid="uid://cvsyjweh6sokp" path="res://sound_effects/fnaf_sfx/vent_sfx/448418__lordforklift__metal-slide-2.ogg" id="32_yfyjp"]
 [ext_resource type="Script" uid="uid://dspgp32anqidv" path="res://Circcle's scripts/fnaf scripts/fade_out_tutorial.gd" id="34_yfyjp"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="41_e4ypw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pogo3"]
 atlas = ExtResource("10_dfx1n")
@@ -663,5 +664,7 @@ volume_db = -15.0
 [node name="Ambient_Audios" type="AudioStreamPlayer" parent="Audios" unique_id=1105869810]
 stream = SubResource("AudioStreamRandomizer_p7baf")
 volume_db = -20.0
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("41_e4ypw")]
 
 [connection signal="finished" from="Gameplay/Equipment/AlarmLight/alarm_break_run" to="Gameplay/Equipment/AlarmLight" method="_on_alarm_break_run_finished"]

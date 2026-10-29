@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://faywb66n2leb" path="res://textures/security_post_concept.png" id="4_cs1h4"]
 [ext_resource type="PackedScene" uid="uid://6x41drkph5qs" path="res://scenes/pillsthatmakeyousmall.tscn" id="5_gybi6"]
 [ext_resource type="Texture2D" uid="uid://jb8n0t2vq68a" path="res://textures/museum_placeholder.png" id="6_04lvm"]
+[ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="8_yot8l"]
+[ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="9_16dah"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjxvm"]
 texture = ExtResource("1_v15j0")
@@ -87,5 +89,22 @@ position = Vector2(3083, 217)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextlevel" unique_id=1859606927]
 position = Vector2(5, 15)
 shape = SubResource("RectangleShape2D_a7vx6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1028188026]
+layer = 999
+
+[node name="fade [SHOW WHEN FINISHED LEVEL]" type="ColorRect" parent="CanvasLayer" unique_id=1862087012]
+visible = false
+z_index = 999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("8_yot8l")
+
+[node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("9_16dah")]
 
 [connection signal="body_entered" from="nextlevel" to="." method="_on_nextlevel_body_entered"]
