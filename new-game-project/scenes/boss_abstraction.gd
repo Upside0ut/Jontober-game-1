@@ -159,11 +159,14 @@ func attack():
 	while (($FeintCooldown.time_left > 0 or health > 50) and decided_atk == 3):
 		decided_atk = decide_attack()
 	
+	print("Decided Attack: ")
+	print(decided_atk)
+	
 	match decided_atk:
 		0:
 			await changeState(States.IDLE)
 		1:
-			pass
+			await wait(0.1)
 		2:
 			await spray(standard_spray_time, standard_bullet_time)
 		3:
@@ -179,10 +182,10 @@ func attack():
 	mid_attack = false
 
 func decide_attack():
-	if(recently_hit and randi_range(1, 10) > 2):
-		print("decided 5")
-		recently_hit = false
-		return 5
+	#if(recently_hit and randi_range(1, 10) > 2):
+		#print("decided 5")
+		#recently_hit = false
+		#return 5
 	recently_hit = false
 	
 	if(find_player_distance() > 1000):

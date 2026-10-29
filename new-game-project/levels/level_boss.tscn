@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://b0wrnp3ds7eew"]
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_l271g"]
-[ext_resource type="PackedScene" uid="uid://dihji23xxltkc" path="res://scenes/checkpoint.tscn" id="1_mbjtw"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_5fpo4"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_vwgko"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mbjtw"]
@@ -11,9 +10,6 @@
 [ext_resource type="Script" uid="uid://dmh2p3yin7obk" path="res://scripts/boss_level_center_point.gd" id="8_5fpo4"]
 [ext_resource type="PackedScene" uid="uid://cjxh3ftsnnkri" path="res://scenes/StaticUpwardsplatterwall.tscn" id="9_5fpo4"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_vwgko"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eor1m"]
-size = Vector2(58.5, 91.5)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2e41g"]
 tile_data = PackedInt32Array(327680, 131072, 0, 327681, 131072, 0, 327682, 131072, 0, 327683, 524288, 2, 262148, 0, 0, 327684, 327680, 2, 196613, 0, 0, 262149, 327680, 1, 327685, 393216, 2, 131078, 0, 0, 196614, 327680, 1, 262150, 393216, 2, 65543, 0, 0, 131079, 327680, 1, 196615, 393216, 2, 8, 0, 0, 65544, 327680, 1, 131080, 393216, 2, 9, 327680, 0, 65545, 393216, 2, 10, 65536, 1)
@@ -657,12 +653,6 @@ size = Vector2(50008, 2375.5)
 radius = 41.01219
 
 [node name="LevelBoss" type="Node2D" unique_id=2041486450]
-
-[node name="checkpoint1" parent="." unique_id=655759561 instance=ExtResource("1_mbjtw")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint1" unique_id=1540211843]
-position = Vector2(-2, -2)
-shape = SubResource("RectangleShape2D_eor1m")
 
 [node name="background" type="ColorRect" parent="." unique_id=2084225563]
 z_index = -10
