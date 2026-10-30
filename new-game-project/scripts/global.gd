@@ -1,14 +1,42 @@
 extends Node
 
-const levels = [
-	"res://levels/level_01.tscn",
-	"res://levels/level_02.tscn",
-	"res://levels/level_03.tscn",
-	"res://levels/level_04.tscn",
-	"res://levels/level_05.tscn"
-]
+class Level:
+	var lvl_name
+	var path
+	
+	var is_current_level = false
+	
+	func _init(lvl_name:String, path:String):
+		self.lvl_name = lvl_name
+		self.path = path
+	
+	func set_current_level():
+		if (Global.current_level == self):
+			printerr("could not set, lvl is current already")
+			print(self.lvl_name)
+			return
+			
+		if (Global.current_level == null):
+			print("Setting from menu, level: ")
+			print(self.lvl_name)
+		else:
+			print("changing lvl current: ")
+			print(Global.current_level)
+			print("to new: ")
+			print(self.lvl_name)
+		
+		Global.current_level = self
 
-var level = 0
+@onready var level1 = Level.new("level1", "res://levels/level_01.tscn")
+@onready var level2 = Level.new("level2", "res://levels/level_02.tscn")
+@onready var level3 = Level.new("level3", "res://levels/level_03.tscn")
+@onready var level4 = Level.new("level4", "res://levels/level_04.tscn")
+@onready var level4_hard = Level.new("level4_hard", "res://levels/level_04_hard_version.tscn")
+@onready var level5 = Level.new("level5", "res://levels/level_05.tscn")
+@onready var level_boss = Level.new("level_boss", "res://levels/level_boss.tscn")
+@onready var level_museum = Level.new("level_museum", "res://levels/museum_1.tscn")
+
+var current_level:Level = null
 
 var global_time = 0.0
 
