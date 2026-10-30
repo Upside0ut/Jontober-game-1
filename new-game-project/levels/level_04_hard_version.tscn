@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_w27nt"]
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="5_5potq"]
 [ext_resource type="Texture2D" uid="uid://bpw7j4ok401ns" path="res://textures/plinko_prison.png" id="6_8isyk"]
+[ext_resource type="PackedScene" uid="uid://dwy7f7ij1ye76" path="res://scenes/door.tscn" id="7_4xpc2"]
 [ext_resource type="Texture2D" uid="uid://djg0tpp8wvjql" path="res://textures/plinko_prison_background.png" id="7_djxdp"]
 [ext_resource type="PackedScene" uid="uid://motirga1dk0q" path="res://scenes/plinko_pad.tscn" id="8_qumwt"]
 [ext_resource type="Texture2D" uid="uid://g66pwbgcuabp" path="res://textures/tutorial-export-gamble.png" id="9_4qcck"]
 [ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="10_rv5lv"]
 [ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://sound_effects/freesound_doorbang_distorted.mp3" id="11_fydex"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="11_olut7"]
+[ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="14_igl1g"]
+[ext_resource type="Texture2D" uid="uid://du1g4w782w0ba" path="res://textures/abstract_landscape_1.png" id="15_fcrwg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmx8"]
 texture = ExtResource("3_dej1r")
@@ -594,7 +597,7 @@ size = Vector2(244, 247)
 [node name="level 02 hard" type="Node2D" unique_id=797776596]
 
 [node name="Player" parent="." unique_id=723843310 node_paths=PackedStringArray("plinko_pad") instance=ExtResource("1_ykeap")]
-position = Vector2(500, 350)
+position = Vector2(670, 350)
 plinko_pad = NodePath("../Plinko Pad")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
@@ -629,10 +632,14 @@ texture = ExtResource("7_djxdp")
 
 [node name="background" type="ColorRect" parent="." unique_id=1516059226]
 z_index = -10
-offset_left = -22418.0
-offset_top = -14760.0
-offset_right = 24284.0
-offset_bottom = 14402.0
+offset_left = -23831.0
+offset_top = -15189.0
+offset_right = 22871.0
+offset_bottom = 13973.0
+
+[node name="door" parent="." unique_id=1709357118 instance=ExtResource("7_4xpc2")]
+position = Vector2(670, 353)
+flip_h = true
 
 [node name="Plinko Pad" parent="." unique_id=1768494728 node_paths=PackedStringArray("plinko_prison", "prison_delete") instance=ExtResource("8_qumwt")]
 plinko_prison = NodePath("../goal [move to where you want]/Plinko Prison")
@@ -674,3 +681,9 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_olut7")
 
 [node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("11_olut7")]
+
+[node name="Parallax2D2" parent="." unique_id=980270568 instance=ExtResource("14_igl1g")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=1495008919]
+z_index = -7
+texture = ExtResource("15_fcrwg")
