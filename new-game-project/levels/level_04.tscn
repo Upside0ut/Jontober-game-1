@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://g66pwbgcuabp" path="res://textures/tutorial-export-gamble.png" id="9_cwmx8"]
 [ext_resource type="PackedScene" uid="uid://dwy7f7ij1ye76" path="res://scenes/door.tscn" id="9_kf744"]
 [ext_resource type="AudioStream" uid="uid://br34ddxkcgtoq" path="res://music/Ball Game Gameplay Theme 1.mp3" id="10_05651"]
+[ext_resource type="Script" uid="uid://cjborvybt31j8" path="res://levels/level_04.gd" id="11_7qqq0"]
 [ext_resource type="AudioStream" uid="uid://dvi7lvny0jxbl" path="res://sound_effects/freesound_doorbang_distorted.mp3" id="11_xxuo2"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="12_liqpl"]
 [ext_resource type="PackedScene" uid="uid://dl4ibjff8dtbe" path="res://scenes/touch_controls.tscn" id="14_b3fh1"]
@@ -671,7 +672,10 @@ position = Vector2(3150, -2050)
 position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_kf744")
 
-[node name="door" parent="." unique_id=1709357118 instance=ExtResource("9_kf744")]
+[node name="Node2D" type="Node2D" parent="." unique_id=579714869]
+script = ExtResource("11_7qqq0")
+
+[node name="door" parent="Node2D" unique_id=1709357118 instance=ExtResource("9_kf744")]
 position = Vector2(-305, -1376)
 flip_h = true
 
