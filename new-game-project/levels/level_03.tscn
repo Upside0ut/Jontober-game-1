@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bugmfl3kw87vl" path="res://scenes/goal.tscn" id="4_rpmp5"]
 [ext_resource type="PackedScene" uid="uid://b3v2pvy76js60" path="res://scenes/splatterwall.tscn" id="6_b2w0k"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_hapfj"]
+[ext_resource type="PackedScene" uid="uid://dl4ibjff8dtbe" path="res://scenes/touch_controls.tscn" id="12_j4ks3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3imfn"]
 texture = ExtResource("3_b2w0k")
@@ -641,3 +642,11 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_r8aof")
 
 [node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("10_hapfj")]
+
+[node name="Control" type="Control" parent="." unique_id=1955237230]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TouchControls" parent="Control" unique_id=1837735795 instance=ExtResource("12_j4ks3")]

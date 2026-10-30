@@ -18,7 +18,6 @@ var has_dynamite = false
 #key names for config file for saving levels.
 var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6"]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	if Global.current_skin_name and $Icon.texture != Global.current_skin_png:
