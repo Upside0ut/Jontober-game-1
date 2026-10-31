@@ -1,7 +1,7 @@
 extends Node
 
 @export var button_array: Array[Control]
-var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6"]
+var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6", "lvl_7"]
 
 signal zoomed
 

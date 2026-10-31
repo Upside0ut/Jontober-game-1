@@ -10,6 +10,7 @@ func _ready() -> void:
 		config.set_value("LEVELS", "lvl_4", false)
 		config.set_value("LEVELS", "lvl_5", false)
 		config.set_value("LEVELS", "lvl_6", false)
+		config.set_value("LEVELS", "lvl_7", false)
 		config.save("user://levels.cfg")
 	
 

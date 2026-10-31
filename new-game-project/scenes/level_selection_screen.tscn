@@ -131,7 +131,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tqsy7")
-button_array = [NodePath("TITLE/Label/Control/Lvl1"), NodePath("TITLE/Label/Control/Lvl2"), NodePath("TITLE/Label/Control/Lvl3"), NodePath("TITLE/Label/Control/Lvl4"), NodePath("TITLE/Label/Control/Lvl5"), NodePath("TITLE/Label/Control/Lvl6")]
+button_array = [NodePath("TITLE/Label/Control/Lvl1"), NodePath("TITLE/Label/Control/Lvl2"), NodePath("TITLE/Label/Control/Lvl3"), NodePath("TITLE/Label/Control/Lvl4"), NodePath("TITLE/Label/Control/Lvl5"), NodePath("TITLE/Label/Control/Lvl6"), NodePath("TITLE/Label/Control/Lvl7")]
 
 [node name="Animated Background" type="TextureRect" parent="." unique_id=118826649]
 z_index = -5
@@ -277,6 +277,22 @@ offset_left = 804.0
 offset_top = 274.0
 offset_right = 959.0
 offset_bottom = 349.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+theme_override_styles/normal = SubResource("StyleBoxFlat_bmfla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_synsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kwr6x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lxkyv")
+disabled = true
+expand_icon = true
+
+[node name="Lvl7" type="Button" parent="TITLE/Label/Control" unique_id=702406221]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 408.0
+offset_right = 573.0
+offset_bottom = 483.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_ue4gc")
 theme_override_font_sizes/font_size = 71
