@@ -25,7 +25,7 @@ class Level:
 			print("to new: ")
 			print(self.lvl_name)
 		
-		Global.current_level = self
+		Global.change_to_level(self)
 
 @onready var level1 = Level.new("level1", "res://levels/level_01.tscn")
 @onready var level2 = Level.new("level2", "res://levels/level_02.tscn")
@@ -35,6 +35,17 @@ class Level:
 @onready var level5 = Level.new("level5", "res://levels/level_05.tscn")
 @onready var level_boss = Level.new("level_boss", "res://levels/level_boss.tscn")
 @onready var level_museum = Level.new("level_museum", "res://levels/museum_1.tscn")
+
+@onready var level_array = [
+	level1,
+	level2,
+	level3,
+	level4,
+	level4_hard,
+	level5,
+	level_boss,
+	level_museum
+]
 
 var current_level:Level = null
 
@@ -55,6 +66,43 @@ func _process(delta: float) -> void:
 	
 	# if you guys use any shaders, use 'global uniform float global_shadertime' instead of TIME
 	RenderingServer.global_shader_parameter_set("global_shadertime", global_time)
+
+func change_to_level(level:Level):
+	get_tree().call_deferred("change_scene_to_file", level.path)
+	current_level = level
+
+func change_to_boss_fancy():
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/pre_boss.tscn")
+
+func add_current_level_to_config():
+	var config = ConfigFile.new()
+	var err: Error = config.load("user://levels.cfg")
+	if err != OK:
+		return
+	config.set_value("LEVELS", current_level.name, true)
+	config.save("user://levels.cfg")
+	print("Level set to true in file: ", current_level.name)
+
+func switch_to_next_level():
+	print("switching current lvl:")
+	print(current_level)
+	match current_level:
+		level1: change_to_level(level2)
+		level2: change_to_level(level3)
+		level3: change_to_level(level4)
+		level4: change_to_level(level5)
+		level5: change_to_boss_fancy()
+	print("to next (should be different):")
+	print(current_level)
+
+func switch_to_b_route():
+	match current_level:
+		level4: level4_hard.set_current_level()
+		#level1: level1_hard.set...etc
+
+func reset_checkpoint():
+	checkpoint = Vector2(0, 0)
+	print("reset checkpoint to 0, 0")
 
 # used in the achievement display
 var achievement_queue := []

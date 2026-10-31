@@ -87,14 +87,10 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		die()
 	
 	if area.name == "goal":
-		var config = ConfigFile.new()
-		var err: Error = config.load("user://levels.cfg")
-		if err != OK:
-			return
-		config.set_value("LEVELS", level_array[Global.level], true)
-		config.save("user://levels.cfg")
-		print("Level set to true in file: ", level_array[Global.level])
-		Global.level += 1
+		Global.add_current_level_to_config()
+		Global.switch_to_next_level()
+		Global.reset_checkpoint()
+		
 		Global.checkpoint = Vector2(0, 0)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
 	
