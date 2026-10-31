@@ -13,3 +13,8 @@ func _on_music_start_body_entered(body: Node2D) -> void:
 func _on_next_level_body_entered(body: Node2D) -> void:
 	if body.name.contains("player"):
 		get_tree().call_deferred("change_scene_to_file", "res://levels/security_level.tscn")
+
+
+func _on_restart_area_body_entered(body: Node2D) -> void:
+	if body.name.contains("player"):
+		get_tree().call_deferred("reload_current_scene")

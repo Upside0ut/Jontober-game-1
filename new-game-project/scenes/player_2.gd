@@ -152,7 +152,7 @@ func death(cause: String):
 		$position/GPUParticles2D.emitting = true
 		timer_time = 1.5
 	if cause.contains("security"):
-		timer_time = 2.5
+		timer_time = 1.0
 		can_move = false
 	await get_tree().create_timer(timer_time).timeout
 	if !saved_from_death:
