@@ -121,6 +121,7 @@ stream = ExtResource("8_icdpw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="beacon_area" unique_id=836915592]
 shape = SubResource("CircleShape2D_a7vx6")
+disabled = true
 debug_color = Color(0, 0.15274006, 0.3172213, 0.41960785)
 
 [node name="activate_area" type="Area2D" parent="." unique_id=2013469880]

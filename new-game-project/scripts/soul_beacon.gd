@@ -13,6 +13,7 @@ func activate():
 		$loop.play()
 		$loop2.play()
 		$Icon.visible = true
+		$beacon_area/CollisionShape2D.disabled = true
 		for n in mannequins:
 			n.death()
 
