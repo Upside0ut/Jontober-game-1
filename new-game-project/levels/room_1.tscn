@@ -18,6 +18,23 @@
 [ext_resource type="Texture2D" uid="uid://bihov24aia0ie" path="res://textures/ahiga's abstract art/ahiga_art5C.png" id="16_q75ap"]
 [ext_resource type="Texture2D" uid="uid://b8sqn1ew1kl6d" path="res://textures/ahiga's abstract art/ahiga_art5D.png" id="17_hmgrg"]
 [ext_resource type="Texture2D" uid="uid://bpaup6qw3phg0" path="res://textures/ahiga's abstract art/ahiga_art5E.png" id="18_lkdbn"]
+[ext_resource type="Texture2D" uid="uid://dqxjb1tu23pht" path="res://textures/ahiga's abstract art/ahiga_art6.png" id="18_rr2ht"]
+[ext_resource type="Texture2D" uid="uid://nsihabde4b46" path="res://textures/ahiga's abstract art/ahiga_art6A.png" id="19_obwrx"]
+[ext_resource type="Texture2D" uid="uid://crd6euuweiit1" path="res://textures/ahiga's abstract art/ahiga_art6B.png" id="20_famdo"]
+[ext_resource type="Texture2D" uid="uid://b6lrtvtcqwo1j" path="res://textures/ahiga's abstract art/ahiga_art6C.png" id="21_6fsst"]
+[ext_resource type="Texture2D" uid="uid://dold5tpo6kg60" path="res://textures/ahiga's abstract art/ahiga_art6D.png" id="22_bwx41"]
+[ext_resource type="Texture2D" uid="uid://6m8wur3fm80h" path="res://textures/ahiga's abstract art/ahiga_art4.png" id="23_r3r61"]
+[ext_resource type="Texture2D" uid="uid://b8s34kyrd2ooc" path="res://textures/ahiga's abstract art/ahiga_art4A.png" id="24_gs3k2"]
+[ext_resource type="Texture2D" uid="uid://bclwioryc1did" path="res://textures/ahiga's abstract art/ahiga_art4B.png" id="25_djiif"]
+[ext_resource type="Texture2D" uid="uid://b5xsc7myktp6j" path="res://textures/ahiga's abstract art/ahiga_art4C.png" id="26_ty16x"]
+[ext_resource type="Texture2D" uid="uid://7f6ygsw7ghli" path="res://textures/ahiga's abstract art/ahiga_art4D.png" id="27_762v6"]
+[ext_resource type="Texture2D" uid="uid://c1rg7oewj2ews" path="res://textures/ahiga's abstract art/ahiga_art2.png" id="28_t8exd"]
+[ext_resource type="Texture2D" uid="uid://docrv67rh63hj" path="res://textures/ahiga's abstract art/ahiga_art2A.png" id="29_2mpb2"]
+[ext_resource type="Texture2D" uid="uid://bnes47ilmb341" path="res://textures/underconstructionmuseum.png" id="29_gs3k2"]
+[ext_resource type="Texture2D" uid="uid://dii3j8igpc5qi" path="res://textures/ahiga's abstract art/ahiga_art2B.png" id="30_odan1"]
+[ext_resource type="Texture2D" uid="uid://c6lq1ita042yp" path="res://textures/ahiga's abstract art/ahiga_art2C.png" id="31_6r62e"]
+[ext_resource type="Texture2D" uid="uid://co5v4roysylgy" path="res://textures/ahiga's abstract art/ahiga_art2D.png" id="32_hh7w3"]
+[ext_resource type="Texture2D" uid="uid://dvwss0t7wfsq2" path="res://textures/preslmb2grafiti.png" id="33_2mpb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7vx6"]
 size = Vector2(2048, 123)
@@ -25,9 +42,14 @@ size = Vector2(2048, 123)
 [node name="room_1" type="Node2D" unique_id=398967836]
 
 [node name="Museuminteriorplaceholder" type="Sprite2D" parent="." unique_id=526843292]
-position = Vector2(959, -335)
+position = Vector2(958, -335)
 scale = Vector2(4, 4)
 texture = ExtResource("1_4ivhd")
+
+[node name="Underconstructionmuseum" type="Sprite2D" parent="." unique_id=471686272]
+position = Vector2(1870.0001, -63)
+scale = Vector2(4.6041665, 4.604167)
+texture = ExtResource("29_gs3k2")
 
 [node name="player_2" parent="." unique_id=565748145 instance=ExtResource("2_s2h6b")]
 position = Vector2(122, 25)
@@ -62,15 +84,15 @@ position = Vector2(284, 26)
 can_pickup = true
 
 [node name="dynamite2" parent="." unique_id=1224041822 instance=ExtResource("4_fkghy")]
-position = Vector2(303, -109)
+position = Vector2(6, -112)
 can_pickup = true
 
 [node name="dynamite3" parent="." unique_id=2040169213 instance=ExtResource("4_fkghy")]
-position = Vector2(312, -298)
+position = Vector2(15, -301)
 can_pickup = true
 
 [node name="dynamite4" parent="." unique_id=743811812 instance=ExtResource("4_fkghy")]
-position = Vector2(331, -433)
+position = Vector2(34, -436)
 can_pickup = true
 
 [node name="dynamite5" parent="." unique_id=1927733921 instance=ExtResource("4_fkghy")]
@@ -82,7 +104,7 @@ position = Vector2(160, -553)
 can_pickup = true
 
 [node name="abstract_art" parent="." unique_id=320085406 instance=ExtResource("3_s2h6b")]
-position = Vector2(546, -64.999985)
+position = Vector2(603, -64.999985)
 rotation = 0.04363323
 scale = Vector2(0.5, 0.5)
 art = ExtResource("5_7vdry")
@@ -95,7 +117,7 @@ scale = Vector2(2, 2)
 art_name = "Teeth Guy"
 
 [node name="abstract_art2" parent="." unique_id=651536575 instance=ExtResource("3_s2h6b")]
-position = Vector2(1192, -94)
+position = Vector2(1120, -94)
 scale = Vector2(0.75, 0.75)
 art = ExtResource("13_1cafe")
 shatter_particles = Array[Texture]([ExtResource("14_ua6ta"), ExtResource("15_bmtdh"), ExtResource("16_q75ap"), ExtResource("17_hmgrg"), ExtResource("18_lkdbn")])
@@ -103,6 +125,41 @@ shatter_particles = Array[Texture]([ExtResource("14_ua6ta"), ExtResource("15_bmt
 [node name="art_stand" parent="abstract_art2" unique_id=604968512 instance=ExtResource("11_rnusd")]
 position = Vector2(-46.666668, 300)
 scale = Vector2(1.3333334, 1.3333334)
+
+[node name="abstract_art3" parent="." unique_id=63656416 instance=ExtResource("3_s2h6b")]
+position = Vector2(1421, -198)
+scale = Vector2(0.55, 0.55)
+art = ExtResource("18_rr2ht")
+shatter_particles = Array[Texture]([ExtResource("19_obwrx"), ExtResource("20_famdo"), ExtResource("21_6fsst"), ExtResource("22_bwx41")])
+
+[node name="art_stand" parent="abstract_art3" unique_id=1942267848 instance=ExtResource("11_rnusd")]
+position = Vector2(-46.666668, 300)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="abstract_art4" parent="." unique_id=1555470623 instance=ExtResource("3_s2h6b")]
+position = Vector2(826.99994, -109)
+scale = Vector2(0.4, 0.4)
+art = ExtResource("23_r3r61")
+shatter_particles = Array[Texture]([ExtResource("24_gs3k2"), ExtResource("25_djiif"), ExtResource("26_ty16x"), ExtResource("27_762v6")])
+
+[node name="art_stand" parent="abstract_art4" unique_id=701134876 instance=ExtResource("11_rnusd")]
+position = Vector2(11.999953, 198.00003)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="abstract_art5" parent="." unique_id=565889288 instance=ExtResource("3_s2h6b")]
+position = Vector2(366, -113)
+scale = Vector2(0.4, 0.4)
+art = ExtResource("28_t8exd")
+shatter_particles = Array[Texture]([ExtResource("29_2mpb2"), ExtResource("30_odan1"), ExtResource("31_6r62e"), ExtResource("32_hh7w3")])
+
+[node name="art_stand" parent="abstract_art5" unique_id=1245843053 instance=ExtResource("11_rnusd")]
+position = Vector2(67.499985, 257.5)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="Preslmb2Grafiti" type="Sprite2D" parent="abstract_art5" unique_id=719442375]
+position = Vector2(-515, -562.5)
+scale = Vector2(6.59375, 6.59375)
+texture = ExtResource("33_2mpb2")
 
 [node name="graffiti" parent="." unique_id=685184417 instance=ExtResource("12_ojtht")]
 
