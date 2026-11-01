@@ -603,7 +603,6 @@ size = Vector2(58.5, 91.5)
 
 [node name="level 04" type="Node2D" unique_id=797776596]
 script = ExtResource("1_4c076")
-current_level = 3
 
 [node name="Parallax2D" parent="." unique_id=980270568 instance=ExtResource("2_hdakc")]
 
@@ -618,7 +617,7 @@ offset_right = 22515.0
 offset_bottom = 15560.0
 
 [node name="Player" parent="." unique_id=723843310 node_paths=PackedStringArray("plinko_pad") instance=ExtResource("1_8yqd8")]
-position = Vector2(2700, -1800)
+position = Vector2(200, -1800)
 plinko_pad = NodePath("../Plinko Pad")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
@@ -722,3 +721,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TouchControls" parent="Control" unique_id=1837735795 instance=ExtResource("14_b3fh1")]
+
+[connection signal="just_opened" from="Node2D/door" to="Node2D" method="_on_door_just_opened"]

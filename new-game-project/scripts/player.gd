@@ -15,9 +15,6 @@ var dead = false
 # has_dynamite becomes true when the player enters a dynamite pickup area
 var has_dynamite = false
 
-#key names for config file for saving levels.
-var level_array: Array[String] = ["lvl_1", "lvl_2", "lvl_3", "lvl_4", "lvl_5", "lvl_6"]
-
 func _ready() -> void:
 	
 	if Global.current_skin_name and $Icon.texture != Global.current_skin_png:
@@ -87,12 +84,11 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		die()
 	
 	if area.name == "goal":
-		Global.add_current_level_to_config()
-		Global.switch_to_next_level_via_victory_screen()
-		Global.reset_checkpoint()
+		if(Global.current_level.is_b)
 		
-		Global.checkpoint = Vector2(0, 0)
-	
+		Global.add_current_level_to_config()
+		Global.switch_levels_via_victory_screen()
+		Global.reset_checkpoint()
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)

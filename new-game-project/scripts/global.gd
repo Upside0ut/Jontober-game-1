@@ -3,10 +3,11 @@ extends Node
 class Level:
 	var lvl_name
 	var path
+	var is_b_route
 	
 	var is_current_level = false
 	
-	func _init(lvl_name:String, path:String):
+	func _init(lvl_name:String, path:String, is_b_route:bool):
 		self.lvl_name = lvl_name
 		self.path = path
 	
@@ -28,14 +29,14 @@ class Level:
 		Global.current_level = self
 		return true
 
-@onready var level1 = Level.new("level1", "res://levels/level_01.tscn")
-@onready var level2 = Level.new("level2", "res://levels/level_02.tscn")
-@onready var level3 = Level.new("level3", "res://levels/level_03.tscn")
-@onready var level4 = Level.new("level4", "res://levels/level_04.tscn")
-@onready var level4_hard = Level.new("level4_hard", "res://levels/level_04_hard_version.tscn")
-@onready var level5 = Level.new("level5", "res://levels/level_05.tscn")
-@onready var level_boss = Level.new("level_boss", "res://levels/level_boss.tscn")
-@onready var level_museum = Level.new("level_museum", "res://levels/museum_1.tscn")
+@onready var level1 = Level.new("level1", "res://levels/level_01.tscn", false)
+@onready var level2 = Level.new("level2", "res://levels/level_02.tscn", false)
+@onready var level3 = Level.new("level3", "res://levels/level_03.tscn", false)
+@onready var level4 = Level.new("level4", "res://levels/level_04.tscn", false)
+@onready var level4_hard = Level.new("level4_hard", "res://levels/level_04_hard_version.tscn", true)
+@onready var level5 = Level.new("level5", "res://levels/level_05.tscn", false)
+@onready var level_boss = Level.new("level_boss", "res://levels/level_boss.tscn", false)
+@onready var level_museum = Level.new("level_museum", "res://levels/museum_1.tscn", false)
 
 @onready var level_array = [
 	level1,
@@ -72,10 +73,10 @@ func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
 	
-	if !FileAccess.file_exists("user://levels.cfg"):
+	if FileAccess.file_exists("user://levels.cfg"):
 		var config = ConfigFile.new()
 		for level in level_array:
-			config.set_value("LEVELS", level.lvl_name, false)
+			config.set_value("LEVELS", level.lvl_name, true)
 		config.set_value("LEVELS", level1.lvl_name, true)
 		
 		config.save("user://levels.cfg")
@@ -116,7 +117,7 @@ func add_current_level_to_config():
 	config.save("user://levels.cfg")
 	print("Level set to true in file: ", current_level.lvl_name)
 
-func switch_to_next_level_via_victory_screen():
+func switch_levels_via_victory_screen():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
 
 func switch_to_next_level():
@@ -127,10 +128,20 @@ func switch_to_next_level():
 		level4: change_to_level(level5)
 		level5: change_to_boss_fancy()
 
+func toggle_b_route():
+	if (current_level.is_b_route):
+		switch_back_from_b_route()
+	else:
+		switch_to_b_route()
+
 func switch_to_b_route():
 	match current_level:
-		level4: level4_hard.set_current_level()
+		level4: change_to_level(level4_hard)
 		#level1: level1_hard.set...etc
+
+func switch_back_from_b_route():
+	match current_level:
+		level4_hard: change_to_level(level4)
 
 func reset_checkpoint():
 	checkpoint = Vector2(0, 0)
