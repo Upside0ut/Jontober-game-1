@@ -11,4 +11,4 @@ func _ready() -> void:
 
 
 func next_level() -> void:
-	get_tree().change_scene_to_file(Global.levels[Global.level])
+	Global.switch_to_next_level()

@@ -48,4 +48,4 @@ func _on_restart_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	resume()
-	get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
+	Global.change_from_lvl_to_menu("res://scenes/titlescreen.tscn")

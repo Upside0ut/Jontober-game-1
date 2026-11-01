@@ -123,7 +123,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 shadow_color = Color(0, 0, 0, 0)
 
-[node name="LevelSelectionScreen" type="Control" unique_id=709358062 node_paths=PackedStringArray("button_array")]
+[node name="LevelSelectionScreen" type="Control" unique_id=709358062]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,7 +131,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tqsy7")
-button_array = [NodePath("TITLE/Label/Control/Lvl1"), NodePath("TITLE/Label/Control/Lvl2"), NodePath("TITLE/Label/Control/Lvl3"), NodePath("TITLE/Label/Control/Lvl4"), NodePath("TITLE/Label/Control/Lvl5"), NodePath("TITLE/Label/Control/Lvl6")]
 
 [node name="Animated Background" type="TextureRect" parent="." unique_id=118826649]
 z_index = -5

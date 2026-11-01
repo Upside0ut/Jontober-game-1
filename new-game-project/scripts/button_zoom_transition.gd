@@ -13,7 +13,7 @@ func _ready() -> void:
 	else:
 		printerr("Zoom signaling node not set!")
 
-func _on_zoom_to_button(path,button_center):
+func _on_zoom_to_button(level, button_center):
 	var zoom_to_use := 2.0
 	
 	# the reason this is needed is because the camera's anchor mode is set
@@ -21,7 +21,7 @@ func _on_zoom_to_button(path,button_center):
 	var zoom_calc = button_center - get_viewport_rect().size / (2.0  * zoom_to_use)
 	
 	zoom_to_target(zoom_to_use,zoom_calc)
-	fade_then_change(path)
+	fade_then_change(level)
 
 func zoom_to_target(zoom_to_use,zoom_calc):
 	var tween := create_tween()
@@ -29,7 +29,7 @@ func zoom_to_target(zoom_to_use,zoom_calc):
 	tween.tween_property(self,"zoom",Vector2.ONE * zoom_to_use,fade_time)
 	tween.tween_property(self,"global_position",zoom_calc,fade_time)
 
-func fade_then_change(scene_path : String) -> void:
+func fade_then_change(level) -> void:
 	if clicked_play: return
 	clicked_play = true
 	
@@ -40,4 +40,4 @@ func fade_then_change(scene_path : String) -> void:
 	tween.tween_property(song, "volume_linear", 0.0, fade_time)
 	await tween.finished
 	
-	get_tree().change_scene_to_file(scene_path)
+	Global.change_to_level(level)

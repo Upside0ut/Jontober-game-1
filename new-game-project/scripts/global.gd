@@ -10,22 +10,23 @@ class Level:
 		self.lvl_name = lvl_name
 		self.path = path
 	
-	func set_current_level():
+	func set_current_level() -> bool:
 		if (Global.current_level == self):
 			printerr("could not set, lvl is current already")
 			print(self.lvl_name)
-			return
+			return false
 			
 		if (Global.current_level == null):
 			print("Setting from menu, level: ")
 			print(self.lvl_name)
 		else:
 			print("changing lvl current: ")
-			print(Global.current_level)
+			print(Global.current_level.lvl_name)
 			print("to new: ")
 			print(self.lvl_name)
 		
-		Global.change_to_level(self)
+		Global.current_level = self
+		return true
 
 @onready var level1 = Level.new("level1", "res://levels/level_01.tscn")
 @onready var level2 = Level.new("level2", "res://levels/level_02.tscn")
@@ -47,6 +48,16 @@ class Level:
 	level_museum
 ]
 
+@onready var level_array_hard_excluded = [
+	level1,
+	level2,
+	level3,
+	level4,
+	level5,
+	level_boss,
+	level_museum
+]
+
 var current_level:Level = null
 
 var global_time = 0.0
@@ -60,6 +71,14 @@ var destroyed_wall = false
 func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
+	
+	if !FileAccess.file_exists("user://levels.cfg"):
+		var config = ConfigFile.new()
+		for level in level_array:
+			config.set_value("LEVELS", level.lvl_name, false)
+		config.set_value("LEVELS", level1.lvl_name, true)
+		
+		config.save("user://levels.cfg")
 
 func _process(delta: float) -> void:
 	global_time += delta
@@ -68,8 +87,22 @@ func _process(delta: float) -> void:
 	RenderingServer.global_shader_parameter_set("global_shadertime", global_time)
 
 func change_to_level(level:Level):
-	get_tree().call_deferred("change_scene_to_file", level.path)
-	current_level = level
+	if level.set_current_level(): #returns true if worked
+		get_tree().call_deferred("change_scene_to_file", level.path)
+	else:
+		printerr("smth went wrong when changing lvls, going back to title.")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/titlescreen.tscn")
+
+func change_from_lvl_to_menu(path: String):
+	for lvl in level_array:
+		if path == lvl.path:
+			printerr("could not go to scene, path is level path")
+			return
+	
+	if current_level != null:
+		current_level = null
+		get_tree().call_deferred("change_scene_to_file", path)
+		print("current level is now null")
 
 func change_to_boss_fancy():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/pre_boss.tscn")
@@ -79,21 +112,20 @@ func add_current_level_to_config():
 	var err: Error = config.load("user://levels.cfg")
 	if err != OK:
 		return
-	config.set_value("LEVELS", current_level.name, true)
+	config.set_value("LEVELS", current_level.lvl_name, true)
 	config.save("user://levels.cfg")
-	print("Level set to true in file: ", current_level.name)
+	print("Level set to true in file: ", current_level.lvl_name)
+
+func switch_to_next_level_via_victory_screen():
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
 
 func switch_to_next_level():
-	print("switching current lvl:")
-	print(current_level)
 	match current_level:
 		level1: change_to_level(level2)
 		level2: change_to_level(level3)
 		level3: change_to_level(level4)
 		level4: change_to_level(level5)
 		level5: change_to_boss_fancy()
-	print("to next (should be different):")
-	print(current_level)
 
 func switch_to_b_route():
 	match current_level:

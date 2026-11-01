@@ -605,7 +605,6 @@ size = Vector2(20, 192)
 
 [node name="level 02" type="Node2D" unique_id=797776596]
 script = ExtResource("1_myllq")
-current_level = 2
 
 [node name="Pause Menu" parent="." unique_id=1060973747 instance=ExtResource("19_2la83")]
 

@@ -88,11 +88,10 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	
 	if area.name == "goal":
 		Global.add_current_level_to_config()
-		Global.switch_to_next_level()
+		Global.switch_to_next_level_via_victory_screen()
 		Global.reset_checkpoint()
 		
 		Global.checkpoint = Vector2(0, 0)
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")
 	
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
