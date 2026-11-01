@@ -17,7 +17,7 @@ class Level:
 			printerr("could not set, lvl is current already")
 			print(self.lvl_name)
 			return false
-			
+		
 		if (Global.current_level == null):
 			print("Setting from menu, level: ")
 			print(self.lvl_name)
@@ -61,6 +61,7 @@ class Level:
 ]
 
 var current_level:Level = null
+@onready var highest_unlocked_level:Level = level1 #add smth to count up and then start this instead of always 1, but i dont wanna
 
 var global_time = 0.0
 
