@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://6bb7ahoqtusc"]
+
+[ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="1_cni48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l10gb"]
+atlas = ExtResource("1_cni48")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwg4l"]
+atlas = ExtResource("1_cni48")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2vd2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l10gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwg4l")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5iuy"]
+radius = 56.0357
+
+[node name="bRouteGoal" type="Node2D" unique_id=1126335732]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=768431707]
+sprite_frames = SubResource("SpriteFrames_2vd2o")
+autoplay = "default"
+
+[node name="bRouteGoal" type="Area2D" parent="." unique_id=1905305993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bRouteGoal" unique_id=733454175]
+shape = SubResource("CircleShape2D_g5iuy")

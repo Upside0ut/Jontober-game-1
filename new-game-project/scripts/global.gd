@@ -10,6 +10,7 @@ class Level:
 	func _init(lvl_name:String, path:String, is_b_route:bool):
 		self.lvl_name = lvl_name
 		self.path = path
+		self.is_b_route = is_b_route
 	
 	func set_current_level() -> bool:
 		if (Global.current_level == self):

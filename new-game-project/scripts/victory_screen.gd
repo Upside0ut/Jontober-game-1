@@ -11,4 +11,7 @@ func _ready() -> void:
 
 
 func next_level() -> void:
-	Global.switch_to_next_level()
+	if(Global.current_level.is_b_route):
+		Global.switch_back_from_b_route()
+	else:
+		Global.switch_to_next_level()
