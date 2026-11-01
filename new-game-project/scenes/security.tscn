@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://lna37kvqnrsl" path="res://textures/security_spritesheet1.png" id="1_417ia"]
 [ext_resource type="Script" uid="uid://bg5dd4xswlixn" path="res://scenes/security.gd" id="1_bg5n2"]
+[ext_resource type="Texture2D" uid="uid://dw8tf7mfclgpo" path="res://textures/ghostsuit2.png" id="3_d8tyo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bg5n2"]
 atlas = ExtResource("1_417ia")
@@ -60,7 +61,6 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_a7vx6")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.61820096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069804353]
 position = Vector2(0, 12)
@@ -84,5 +84,11 @@ target_position = Vector2(500, 0)
 
 [node name="ray2" type="RayCast2D" parent="." unique_id=655085625]
 target_position = Vector2(-500, 0)
+
+[node name="Ghostsuit" type="Sprite2D" parent="." unique_id=1451459013]
+visible = false
+position = Vector2(-1, 17)
+scale = Vector2(4.6875, 4.0625)
+texture = ExtResource("3_d8tyo")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

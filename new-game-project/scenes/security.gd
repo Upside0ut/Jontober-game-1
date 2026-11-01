@@ -4,6 +4,7 @@ extends CharacterBody2D
 const speed = 10000.0
 const JUMP_VELOCITY = -400.0
 @export var destination_node: Node2D
+@export var ghost: bool
 @onready var destination: float
 
 var minimum_x: float
@@ -15,6 +16,8 @@ var targeting_player: bool = false
 
 func _ready() -> void:
 	get_destination()
+	if ghost:
+		$Ghostsuit.visible = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
