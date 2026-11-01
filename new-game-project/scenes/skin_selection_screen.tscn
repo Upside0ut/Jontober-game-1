@@ -215,7 +215,7 @@ not
 found"
 icon = ExtResource("4_ga18s")
 
-[node name="boss_skin" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=334640528]
+[node name="iris" type="CheckBox" parent="MAIN BOX/ScrollContainer/GridContainer" unique_id=334640528]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 tooltip_text = "Beat the Boss to unlock this skin!"

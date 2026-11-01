@@ -89,6 +89,34 @@ func create_opening(index):
 func create_opening_close_to(target_position: Vector2):
 	get_nearest_opening_to(target_position, false).show()
 
+func create_tripple_opening_close_to(target_position: Vector2):
+	get_nearest_opening_to(target_position, false).show()
+	match get_nearest_opening_to(target_position, false):
+		opening_top:
+			opening_top_left.show()
+			opening_top_right.show()
+		opening_top_right:
+			opening_top.show()
+			opening_right.show()
+		opening_right:
+			opening_top_right.show()
+			opening_bottom_right.show()
+		opening_bottom_right:
+			opening_bottom.show()
+			opening_right.show()
+		opening_bottom:
+			opening_bottom_right.show()
+			opening_bottom_left.show()
+		opening_bottom_left:
+			opening_bottom.show()
+			opening_left.show()
+		opening_left:
+			opening_bottom_left.show()
+			opening_top_left.show()
+		opening_top_left:
+			opening_left.show()
+			opening_top.show()
+
 func close_openings():
 	for o in opening_array:
 		o.hide()

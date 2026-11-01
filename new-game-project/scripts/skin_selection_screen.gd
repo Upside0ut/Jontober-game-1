@@ -66,5 +66,6 @@ func _on_pressed(pressed_node):
 	Global.current_skin_name = turned_on.name
 	Global.current_skin_png = turned_on.icon
 	print(Global.current_skin_name)
+
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")

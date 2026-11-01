@@ -386,6 +386,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs1r3"]
+radius = 63.507874
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_rs1r3"]
 animations = [{
 "frames": [{
@@ -486,6 +489,11 @@ autoplay = "mouththingy"
 frame_progress = 0.4385399
 speed_scale = 2.0
 
+[node name="teeth_area" type="Area2D" parent="Body/Head" unique_id=1953475357]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Head/teeth_area" unique_id=1255082592]
+shape = SubResource("CircleShape2D_rs1r3")
+
 [node name="Teeth" type="AnimatedSprite2D" parent="Body" unique_id=256918630]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rs1r3")
@@ -502,5 +510,6 @@ scale = Vector2(15, 15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1400846276]
 shape = SubResource("CircleShape2D_7x0ad")
 
+[connection signal="body_entered" from="Body/Head/teeth_area" to="." method="_on_teeth_area_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

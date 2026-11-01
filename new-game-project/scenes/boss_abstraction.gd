@@ -19,6 +19,8 @@ var recently_hit = false
 var moving_to_center = false
 var mid_attack = false
 var done_hunting = false
+var munching = false
+var middle_opening_name = null
 
 var move_speed = 1000
 var sprint_speed = 2400
@@ -29,6 +31,7 @@ var hunt_distance = rng.randi_range(500, 1500)
 
 var standard_spray_time = 10
 var standard_bullet_time = 0.5
+var standard_munch_time = 7
 var standard_feint_time = 5
 var standard_missile_atk_time = 10
 
@@ -110,6 +113,8 @@ func depleteHealth():
 	$Bossdmgsound.play()
 	await wait(0.3)
 	$AnimationPlayer.stop()
+	if munching:
+		play_feint_move_animation(true, middle_opening_name)
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	close_openings()
@@ -162,11 +167,11 @@ func attack():
 	print("Decided Attack: ")
 	print(decided_atk)
 	
-	match decided_atk:
+	match 1:
 		0:
 			await changeState(States.IDLE)
 		1:
-			await wait(0.1)
+			await munch(standard_munch_time)
 		2:
 			await spray(standard_spray_time, standard_bullet_time)
 		3:
@@ -178,8 +183,8 @@ func attack():
 	
 	close_openings()
 	
-	await changeState(States.IDLE)
 	mid_attack = false
+	await changeState(States.IDLE)
 
 func decide_attack():
 	#if(recently_hit and randi_range(1, 10) > 2):
@@ -296,16 +301,16 @@ func feint_success():
 	$Body/Teeth.play("bite")
 	await $Body/Teeth.animation_finished
 	player.process_mode = Node.PROCESS_MODE_INHERIT
-	player.die()#mb if this is supposed to be private or sm but it really looks ugly otherwise sooory
+	player.die() #mb if this is supposed to be private or sm but it really looks ugly otherwise sooory
 	await wait(0.2)
 	play_feint_move_animation(true)
 	$Body/Teeth.play_backwards("bite")
 	$BossBurp.play()
 	await $BossBurp.finished
 
-func play_feint_move_animation(backwards: bool):
+func play_feint_move_animation(backwards: bool, opening:String = $SplatterRing.get_current_opening().name):
 	if(!backwards):
-		match $SplatterRing.get_current_opening().name:
+		match opening:
 			"OpeningTop": $AnimationPlayer.play("feint_top")
 			"OpeningTopRight": $AnimationPlayer.play("feint_top_right")
 			"OpeningRight": $AnimationPlayer.play("feint_right")
@@ -315,7 +320,7 @@ func play_feint_move_animation(backwards: bool):
 			"OpeningLeft": $AnimationPlayer.play("feint_left")
 			"OpeningTopLeft": $AnimationPlayer.play("feint_top_left")
 	else:
-		match $SplatterRing.get_current_opening().name:
+		match opening:
 			"OpeningTop": $AnimationPlayer.play_backwards("feint_top")
 			"OpeningTopRight": $AnimationPlayer.play_backwards("feint_top_right")
 			"OpeningRight": $AnimationPlayer.play_backwards("feint_right")
@@ -324,6 +329,30 @@ func play_feint_move_animation(backwards: bool):
 			"OpeningBottomLeft": $AnimationPlayer.play_backwards("feint_bottom_left")
 			"OpeningLeft": $AnimationPlayer.play_backwards("feint_left")
 			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
+
+func munch(time):
+	munching = true
+	create_tripple_player_direction_opening()
+	middle_opening_name = $SplatterRing.get_nearest_opening_to(player.position, false).name
+	play_feint_move_animation(false, middle_opening_name)
+	$AttackTimer.start(time)
+	await $AttackTimer.timeout
+	munching = false
+
+func munch_success():
+	$AttackTimer.stop()
+	$AttackTimer.timeout.emit()
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	$Body/Teeth.play("bite")
+	await $Body/Teeth.animation_finished
+	player.die()
+	await wait(0.2)
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	print("MIGHT CRASH RN, IF NAME NULL CUS I FUCKED UP")
+	play_feint_move_animation(true, middle_opening_name)
+	$Body/Teeth.play_backwards("bite")
+	$BossBurp.play()
+	await $BossBurp.finished
 
 func center_attack():
 	moving_to_center = true
@@ -363,6 +392,9 @@ func create_opening(i: int):
 func create_player_direction_opening():
 	$SplatterRing.create_opening_close_to(player.global_position)
 
+func create_tripple_player_direction_opening():
+	$SplatterRing.create_tripple_opening_close_to(player.global_position)
+
 func close_openings():
 	$SplatterRing.close_openings()
 
@@ -390,9 +422,14 @@ func find_player_distance():
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
-
 func _on_screen_entered() -> void:
 	on_screen = true
 
 func _on_screen_exited() -> void:
 	on_screen = false
+
+func _on_teeth_area_body_entered(body: Node2D) -> void:
+	$Body/Head/teeth_area.queue_free()
+	if(body == player and munching):
+		munching = false
+		munch_success()

@@ -87,7 +87,6 @@ func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 		Global.set_achievement(Global.get_lvl_corresponding_achievement(Global.current_level))
 		Global.add_current_level_to_config()
 		Global.switch_levels_via_victory_screen()
-		Global.reset_checkpoint()
 
 func _on_body_entered(_body: Node) -> void: #when colliding with the ground
 	bounce.pitch_scale = randf_range(0.8,1.1)

@@ -66,7 +66,7 @@ var current_level:Level = null
 var global_time = 0.0
 
 # checkpoints can made using the checkpoint scene and adding collision
-# the checkpoint var is reset by calling reset_checkpoint, happens in player.gd
+# the checkpoint var is reset by calling reset_checkpoint
 var checkpoint: Vector2
 
 var destroyed_wall = false
@@ -106,8 +106,9 @@ func force_all_true_reset_user_config():
 	config.save("user://levels.cfg")
 
 func change_to_level(level:Level):
-	if level.set_current_level(): #returns true if worked
+	if level.set_current_level():
 		get_tree().call_deferred("change_scene_to_file", level.path)
+		Global.reset_checkpoint()
 	else:
 		printerr("smth went wrong when changing lvls, going back to title.")
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/titlescreen.tscn")
