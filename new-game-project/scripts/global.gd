@@ -66,7 +66,7 @@ var current_level:Level = null
 var global_time = 0.0
 
 # checkpoints can made using the checkpoint scene and adding collision
-# the checkpoint var is reset when a level is beat
+# the checkpoint var is reset by calling reset_checkpoint, happens in player.gd
 var checkpoint: Vector2
 
 var destroyed_wall = false
@@ -75,7 +75,7 @@ func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
 	
-	reset_user_config()
+	force_all_true_reset_user_config()
 
 func _process(delta: float) -> void:
 	global_time += delta
@@ -95,6 +95,13 @@ func force_reset_user_config():
 	var config = ConfigFile.new()
 	for level in level_array:
 		config.set_value("LEVELS", level.lvl_name, false)
+	
+	config.save("user://levels.cfg")
+
+func force_all_true_reset_user_config():
+	var config = ConfigFile.new()
+	for level in level_array:
+		config.set_value("LEVELS", level.lvl_name, true)
 	
 	config.save("user://levels.cfg")
 
@@ -172,9 +179,16 @@ func switch_back_from_b_route():
 	match current_level:
 		level4_hard: change_to_level(level4)
 
+
 func reset_checkpoint():
 	checkpoint = Vector2(0, 0)
 	print("reset checkpoint to 0, 0")
+
+## returns string of the achievement that corresponds to the given level or null if no achievement is connected to beating the lvl
+func get_lvl_corresponding_achievement(level:Level):
+	match level:
+		level4_hard: return "lvl4_b_route_beaten"
+		_: return null
 
 # used in the achievement display
 var achievement_queue := []
@@ -188,6 +202,10 @@ static var achievements = {
 	"night_five_beaten" : false,
 	# gives free randy
 	"game_beaten" : false,
+	# gives nubby
+	"lvl4_b_route_beaten" : false,
+	# gives moron randy
+	"lvl5_secret_entrance"  : false
 }
 
 static var skins = {
@@ -199,13 +217,13 @@ static var skins = {
 "wheel" : true,
 "angel_randy" : true,
 "bad_merch" : true,
-"nubby" : true,
+"nubby" : false,
 "punished_randy" : true,
 "edgeball" : true,
 "speedball" : true,
 "steelball" : true,
 "randerity" : true,
-"moron_randy" : true,
+"moron_randy" : false,
 "agnese" : false,
 }
 
@@ -217,8 +235,9 @@ var default_skins := skins.duplicate()
 
 ## sets Achievement_Key (String) to Value (Bool), which is true by default
 func set_achievement(achievement_key : String, value : bool = true):
-	if value and not achievements[achievement_key]:
-		Global.achievement_queue.append(achievement_key)
+	if(achievements.has(achievement_key)):
+		if value and not achievements[achievement_key]:
+			Global.achievement_queue.append(achievement_key)
 	
 	achievements[achievement_key] = value
 	update_rewards(achievement_key)
@@ -234,6 +253,10 @@ func update_rewards(achievement_key):
 			skins["agnese"] = true
 		"game_beaten":
 			skins["free_randy"] = true
+		"lvl4_b_route_beaten":
+			skins["nubby"] = true
+		"lvl5_secret_entrance":
+			skins["moron_randy"] = true
 
 func save_achievement_progress():
 	var config = ConfigFile.new()

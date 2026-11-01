@@ -706,6 +706,7 @@ shape = SubResource("RectangleShape2D_nb100")
 texture = ExtResource("12_6q6br")
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_7d3dm")]
+position = Vector2(400, -1500)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]

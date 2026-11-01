@@ -12,4 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("unlock skin")
+	Global.set_achievement("lvl5_secret_entrance")
+	print("moron unlooockekdkdk")

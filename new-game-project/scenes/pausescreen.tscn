@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cqud6q2o5lkja" path="res://scenes/options.tscn" id="7_38q3y"]
 [ext_resource type="StyleBox" uid="uid://dbo73a3tt6nx6" path="res://styles/pause_button1.tres" id="7_v5dkp"]
 [ext_resource type="StyleBox" uid="uid://dad11t5c4a4nr" path="res://styles/pause_button1_pressed.tres" id="8_6ef3m"]
-[ext_resource type="Script" uid="uid://cojjngm2r0hdy" path="res://scripts/titlescreen.gd" id="8_6tuom"]
 [ext_resource type="StyleBox" uid="uid://8hnsnqc3w77n" path="res://styles/pause_button1_hover.tres" id="8_iarw2"]
 [ext_resource type="StyleBox" uid="uid://c15c1h22xafbj" path="res://styles/pause_button3_hover.tres" id="8_whwj3"]
 [ext_resource type="StyleBox" uid="uid://cevt7n0rf27y3" path="res://styles/pause_button2.tres" id="8_yh2qw"]
@@ -218,7 +217,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 10
-script = ExtResource("8_6tuom")
 
 [node name="continue" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer" unique_id=692935566]
 layout_mode = 2
@@ -275,4 +273,3 @@ libraries/ = SubResource("AnimationLibrary_v5dkp")
 [connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/restart" to="PauseScreen" method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="PauseScreen/MarginContainer/VBoxContainer/quit" to="PauseScreen" method="_on_quit_pressed"]
