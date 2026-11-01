@@ -7,7 +7,8 @@ func _ready() -> void:
 		return
 	
 	if (config.get_value("LEVELS", Global.level4_hard.lvl_name) == true):
-		$door.opened = true
+		pass
+		#maybe make it so you dont come in, but then what if you wanna replay it... idk so leaving this
 
 func _on_door_just_opened() -> void:
 	await wait(0.1)

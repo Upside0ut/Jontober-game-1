@@ -610,7 +610,7 @@ tile_map_data = PackedByteArray("AAAKAAcAAAABAAQAAAAJAAcAAAAIAAMAAAAIAAcAAAAIAAM
 tile_set = SubResource("TileSet_u0ya7")
 
 [node name="goal [move to where you want]" parent="." unique_id=232289700 instance=ExtResource("4_gg43x")]
-position = Vector2(840.93774, 189.98523)
+position = Vector2(0, -2800)
 
 [node name="background" type="ColorRect" parent="." unique_id=1932786835]
 z_index = -10

@@ -74,19 +74,28 @@ func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
 	
-	if FileAccess.file_exists("user://levels.cfg"):
-		var config = ConfigFile.new()
-		for level in level_array:
-			config.set_value("LEVELS", level.lvl_name, true)
-		config.set_value("LEVELS", level1.lvl_name, true)
-		
-		config.save("user://levels.cfg")
+	force_reset_user_config()
 
 func _process(delta: float) -> void:
 	global_time += delta
 	
 	# if you guys use any shaders, use 'global uniform float global_shadertime' instead of TIME
 	RenderingServer.global_shader_parameter_set("global_shadertime", global_time)
+
+func reset_user_config():
+	if !FileAccess.file_exists("user://levels.cfg"):
+		var config = ConfigFile.new()
+		for level in level_array:
+			config.set_value("LEVELS", level.lvl_name, false)
+		
+		config.save("user://levels.cfg")
+
+func force_reset_user_config():
+	var config = ConfigFile.new()
+	for level in level_array:
+		config.set_value("LEVELS", level.lvl_name, false)
+	
+	config.save("user://levels.cfg")
 
 func change_to_level(level:Level):
 	if level.set_current_level(): #returns true if worked
@@ -117,6 +126,24 @@ func add_current_level_to_config():
 	config.set_value("LEVELS", current_level.lvl_name, true)
 	config.save("user://levels.cfg")
 	print("Level set to true in file: ", current_level.lvl_name)
+
+func check_previous_level_beaten(level: Level):
+	var config = ConfigFile.new()
+	var err: Error = config.load("user://levels.cfg")
+	if err != OK:
+		return
+	
+	var selected_lvl
+	
+	match level:
+		level1: return true
+		level2: selected_lvl = level1
+		level3: selected_lvl = level2
+		level4: selected_lvl = level3
+		level5: selected_lvl = level4
+		level_boss: selected_lvl = level5
+	
+	return config.get_value("LEVELS", selected_lvl.lvl_name)
 
 func switch_levels_via_victory_screen():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/victory_screen.tscn")

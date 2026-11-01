@@ -24,7 +24,7 @@ func _ready() -> void:
 	if err != OK:
 		return
 	for btn in btn_to_lvl_dict.keys():
-		if config.get_value("LEVELS", btn_to_lvl_dict.get(btn).lvl_name) == true:
+		if Global.check_previous_level_beaten(btn_to_lvl_dict.get(btn)):
 			btn.disabled = false
 			btn.pressed.connect(go_to_level.bind(btn, btn_to_lvl_dict.get(btn)))
 
