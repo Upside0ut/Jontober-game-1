@@ -75,7 +75,7 @@ func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
 	
-	force_reset_user_config()
+	reset_user_config()
 
 func _process(delta: float) -> void:
 	global_time += delta

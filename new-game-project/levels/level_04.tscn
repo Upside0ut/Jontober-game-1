@@ -617,7 +617,7 @@ offset_right = 22515.0
 offset_bottom = 15560.0
 
 [node name="Player" parent="." unique_id=723843310 node_paths=PackedStringArray("plinko_pad") instance=ExtResource("1_8yqd8")]
-position = Vector2(200, -1800)
+position = Vector2(670, 350)
 plinko_pad = NodePath("../Plinko Pad")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
