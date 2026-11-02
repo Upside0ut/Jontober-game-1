@@ -75,7 +75,7 @@ func _ready() -> void:
 	load_achievement_progress()
 	NightData.load_night()
 	
-	force_all_true_reset_user_config()
+	reset_user_config()
 
 func _process(delta: float) -> void:
 	global_time += delta
@@ -154,6 +154,7 @@ func check_previous_level_beaten(level: Level):
 		level4: selected_lvl = level3
 		level5: selected_lvl = level4
 		level_boss: selected_lvl = level5
+		level_museum: selected_lvl = level_boss
 	
 	return config.get_value("LEVELS", selected_lvl.lvl_name)
 
@@ -167,6 +168,7 @@ func switch_to_next_level():
 		level3: change_to_level(level4)
 		level4: change_to_level(level5)
 		level5: change_to_boss_fancy()
+		level_boss: change_to_museum_fancy()
 
 func toggle_b_route():
 	if (current_level.is_b_route):
@@ -192,6 +194,8 @@ func reset_checkpoint():
 func get_lvl_corresponding_achievement(level:Level):
 	match level:
 		level4_hard: return "lvl4_b_route_beaten"
+		level_boss: return "boss_beaten"
+		level_museum: return "game_beaten"
 		_: return null
 
 # used in the achievement display

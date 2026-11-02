@@ -5,13 +5,11 @@
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_5fpo4"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_vwgko"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mbjtw"]
-[ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="5_eor1m"]
 [ext_resource type="AudioStream" uid="uid://bhr8lmpnq80r8" path="res://music/Ball Game Boss.mp3" id="6_2e41g"]
 [ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="6_eor1m"]
 [ext_resource type="PackedScene" uid="uid://chp448cbirpbb" path="res://scenes/bossAbstraction.tscn" id="7_2e41g"]
 [ext_resource type="Script" uid="uid://dmh2p3yin7obk" path="res://scripts/boss_level_center_point.gd" id="8_5fpo4"]
 [ext_resource type="PackedScene" uid="uid://cjxh3ftsnnkri" path="res://scenes/StaticUpwardsplatterwall.tscn" id="9_5fpo4"]
-[ext_resource type="Script" uid="uid://bw02qgmrk13px" path="res://levels/success_trigger_area.gd" id="9_eor1m"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_vwgko"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2e41g"]
@@ -649,6 +647,28 @@ pattern_12 = SubResource("TileMapPattern_0evtg")
 pattern_13 = SubResource("TileMapPattern_kas5c")
 pattern_14 = SubResource("TileMapPattern_i2i27")
 
+[sub_resource type="GDScript" id="GDScript_mbjtw"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == \"hitbox (spikes)\":
+		get_parent().get_node(\"Player\").die()
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0evtg"]
 size = Vector2(50008, 2375.5)
 
@@ -684,7 +704,7 @@ rotation_smoothing_enabled = true
 position = Vector2(0, 3600)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=972882891]
-script = ExtResource("5_eor1m")
+script = SubResource("GDScript_mbjtw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1843678269]
 position = Vector2(-321, 14290)
@@ -707,11 +727,10 @@ script = ExtResource("8_5fpo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint" unique_id=1022119532]
 shape = SubResource("CircleShape2D_7x0ad")
 
-[node name="SuccessTriggerArea" type="Area2D" parent="." unique_id=1639921912]
+[node name="goal" type="Area2D" parent="." unique_id=1639921912]
 position = Vector2(0, 7000)
-script = ExtResource("9_eor1m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SuccessTriggerArea" unique_id=936053526]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goal" unique_id=936053526]
 shape = SubResource("WorldBoundaryShape2D_7x0ad")
 
 [node name="BottomSplatterwall" parent="." unique_id=314029043 instance=ExtResource("9_5fpo4")]
@@ -744,4 +763,3 @@ script = ExtResource("2_5fpo4")
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="CenterPoint" to="CenterPoint" method="_on_center_point_body_entered"]
-[connection signal="body_entered" from="SuccessTriggerArea" to="SuccessTriggerArea" method="_on_body_entered"]

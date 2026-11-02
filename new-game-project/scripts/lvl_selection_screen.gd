@@ -6,6 +6,7 @@ extends Node
 @onready var btn_lvl_4 = $TITLE/Label/Control/Lvl4
 @onready var btn_lvl_5 = $TITLE/Label/Control/Lvl5
 @onready var btn_lvl_boss = $TITLE/Label/Control/Lvl6
+@onready var btn_lvl_museum = $TITLE/Label/Control/Lvl7
 
 @onready var btn_to_lvl_dict: Dictionary[Button, Global.Level] = {
 	btn_lvl_1: Global.level1,
@@ -13,7 +14,8 @@ extends Node
 	btn_lvl_3: Global.level3,
 	btn_lvl_4: Global.level4,
 	btn_lvl_5: Global.level5,
-	btn_lvl_boss: Global.level_boss
+	btn_lvl_boss: Global.level_boss,
+	btn_lvl_museum: Global.level_museum
 }
 
 signal zoomed

@@ -286,6 +286,22 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_lxkyv")
 disabled = true
 expand_icon = true
 
+[node name="Lvl7" type="Button" parent="TITLE/Label/Control" unique_id=1363280175]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 410.0
+offset_right = 571.0
+offset_bottom = 480.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_ue4gc")
+theme_override_font_sizes/font_size = 71
+theme_override_styles/normal = SubResource("StyleBoxFlat_bmfla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_synsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kwr6x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lxkyv")
+disabled = true
+expand_icon = true
+
 [node name="BACK" type="MarginContainer" parent="." unique_id=1935868934]
 layout_mode = 1
 anchors_preset = 15

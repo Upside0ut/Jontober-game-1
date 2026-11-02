@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cnckhk67vch5s" path="res://levels/level_05.gd" id="1_0vajx"]
 [ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="1_6q6br"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_7d3dm"]
-[ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="1_htwx1"]
 [ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="2_0vajx"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_g3bu7"]
 [ext_resource type="Texture2D" uid="uid://colayoy64cxk1" path="res://textures/spotlight.png" id="3_j10hr"]
@@ -692,11 +691,10 @@ offset_right = 48961.0
 offset_bottom = 19480.0
 color = Color(0, 0, 0, 1)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=753114825]
+[node name="goal" type="Area2D" parent="." unique_id=753114825]
 position = Vector2(20000, -5550)
-script = ExtResource("1_htwx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1382720761]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goal" unique_id=1382720761]
 position = Vector2(3710, 0)
 shape = SubResource("RectangleShape2D_nb100")
 
@@ -706,7 +704,6 @@ shape = SubResource("RectangleShape2D_nb100")
 texture = ExtResource("12_6q6br")
 
 [node name="Player" parent="." unique_id=581014257 instance=ExtResource("1_7d3dm")]
-position = Vector2(400, -1500)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1231045356]
@@ -830,5 +827,4 @@ offset_bottom = 40.0
 
 [node name="TouchControls" parent="Control" unique_id=1837735795 instance=ExtResource("18_0vajx")]
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="SecretEntranceWhite/Area2D" to="SecretEntranceWhite" method="_on_area_2d_body_entered"]

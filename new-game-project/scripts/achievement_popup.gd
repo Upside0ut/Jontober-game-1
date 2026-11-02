@@ -33,13 +33,16 @@ func _on_achievement():
 		match popped_achievement:
 			"boss_beaten" :
 				achievement_texture.texture = load("res://Skins/randy_boss.png")
-				achievement_text.text = "You unlocked Glamour Randy! (Skin)"
+				achievement_text.text = "You unlocked Iris! (Skin)"
 			"lvl4_b_route_beaten" :
 				achievement_texture.texture = load("res://Skins/randy_nubby.png")
-				achievement_text.text = "You unlocked Nubby Randy! (Skin)"
+				achievement_text.text = "You unlocked Nubby! (Skin)"
 			"lvl5_secret_entrance" :
 				achievement_texture.texture = load("res://Skins/randy_wheatley.png")
 				achievement_text.text = "You unlocked Moron Randy! (Skin)"
+			"game_beaten" :
+				achievement_texture.texture = load("res://Skins/randy_free.png")
+				achievement_text.text = "You unlocked Free Randy! (Skin)"
 			_:
 				achievement_texture.texture = PlaceholderTexture2D.new()
 				achievement_text.text = "Unrecognized achievement (not set): %s" % popped_achievement
