@@ -1,14 +1,17 @@
 [gd_scene format=4 uid="uid://b0wrnp3ds7eew"]
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_l271g"]
+[ext_resource type="Script" uid="uid://chyuebt0fe6jw" path="res://levels/level_boss_free_me.gd" id="1_q6mwf"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_5fpo4"]
 [ext_resource type="Texture2D" uid="uid://cpve1vnqmdq2c" path="res://textures/tilemap.png" id="3_vwgko"]
 [ext_resource type="PackedScene" uid="uid://yu4gbjvruiq6" path="res://scenes/spikes.tscn" id="4_mbjtw"]
 [ext_resource type="Script" uid="uid://dd4nlnb0vi5by" path="res://levels/end_area.gd" id="5_eor1m"]
 [ext_resource type="AudioStream" uid="uid://bhr8lmpnq80r8" path="res://music/Ball Game Boss.mp3" id="6_2e41g"]
+[ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="6_eor1m"]
 [ext_resource type="PackedScene" uid="uid://chp448cbirpbb" path="res://scenes/bossAbstraction.tscn" id="7_2e41g"]
 [ext_resource type="Script" uid="uid://dmh2p3yin7obk" path="res://scripts/boss_level_center_point.gd" id="8_5fpo4"]
 [ext_resource type="PackedScene" uid="uid://cjxh3ftsnnkri" path="res://scenes/StaticUpwardsplatterwall.tscn" id="9_5fpo4"]
+[ext_resource type="Script" uid="uid://bw02qgmrk13px" path="res://levels/success_trigger_area.gd" id="9_eor1m"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="10_vwgko"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2e41g"]
@@ -652,7 +655,10 @@ size = Vector2(50008, 2375.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
 radius = 41.01219
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7x0ad"]
+
 [node name="LevelBoss" type="Node2D" unique_id=2041486450]
+script = ExtResource("1_q6mwf")
 
 [node name="background" type="ColorRect" parent="." unique_id=2084225563]
 z_index = -10
@@ -684,6 +690,9 @@ script = ExtResource("5_eor1m")
 position = Vector2(-321, 14290)
 shape = SubResource("RectangleShape2D_0evtg")
 
+[node name="Dramatica" type="AudioStreamPlayer" parent="." unique_id=1756564607]
+stream = ExtResource("6_eor1m")
+
 [node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=1954585959]
 stream = ExtResource("6_2e41g")
 volume_db = 3.0
@@ -697,6 +706,13 @@ script = ExtResource("8_5fpo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint" unique_id=1022119532]
 shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="SuccessTriggerArea" type="Area2D" parent="." unique_id=1639921912]
+position = Vector2(0, 7000)
+script = ExtResource("9_eor1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuccessTriggerArea" unique_id=936053526]
+shape = SubResource("WorldBoundaryShape2D_7x0ad")
 
 [node name="BottomSplatterwall" parent="." unique_id=314029043 instance=ExtResource("9_5fpo4")]
 position = Vector2(0, 6500)
@@ -728,3 +744,4 @@ script = ExtResource("2_5fpo4")
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="CenterPoint" to="CenterPoint" method="_on_center_point_body_entered"]
+[connection signal="body_entered" from="SuccessTriggerArea" to="SuccessTriggerArea" method="_on_body_entered"]

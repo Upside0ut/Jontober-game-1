@@ -28,7 +28,7 @@ var dead = false
 var move_speed = 1000
 var sprint_speed = 2400
 var health = 100
-var on_hit_depleted_health = 100
+var on_hit_depleted_health = 20
 
 var hunt_distance = rng.randi_range(500, 1500)
 var attacking_while_not_on_screen_threshhold = 60 * 3
@@ -42,6 +42,9 @@ var standard_missile_atk_time = 10
 var feint_cooldown_time = 20
 
 func changeState(newState: States):
+	if dead:
+		return
+	
 	state = newState
 	
 	match state:
@@ -68,7 +71,7 @@ func _ready() -> void:
 	await wait(3)
 	
 	get_parent().get_node("BossMusic").play()
-	await changeState(States.IDLE)
+	changeState(States.IDLE)
 	$CanvasLayer/BossBar.show()
 	
 	while($CanvasLayer/BossBar.value != 100):
@@ -79,34 +82,41 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if (rotating):
-		rotate(0.01)
-	
-	if (munching):
-		rotate_in_player_direction(delta)
-	
-	velocity = Vector2.ZERO
-	
-	if(bar_fully_loaded):
-		$CanvasLayer/BossBar.value = health
-	
 	if health < 1 and !dead:
 		die()
 	
-	match state:
-		States.IDLE:
-			pass
-		States.HUNTING:
-			previous_player_distance = find_player_distance()
-			hunting()
-		States.ATTACKING:
-			attacking()
-		States.SCARED:
-			scared()
+	if dead and state != States.DEAD:
+		state = States.DEAD
 	
-	move_and_slide()
+	if !dead:
+		if (rotating):
+			rotate(0.01)
+		
+		if (munching):
+			rotate_in_player_direction(delta)
+		
+		velocity = Vector2.ZERO
+		
+		if(bar_fully_loaded):
+			$CanvasLayer/BossBar.value = health
+		
+		match state:
+			States.IDLE:
+				pass
+			States.HUNTING:
+				previous_player_distance = find_player_distance()
+				hunting()
+			States.ATTACKING:
+				attacking()
+			States.SCARED:
+				scared()
+		
+		move_and_slide()
 
 func rotate_in_player_direction(delta):
+	if (dead):
+		return
+	
 	var teeth_direction = global_position.direction_to($Body/Teeth.global_position)
 	var rotation_speed = 0.007
 	
@@ -130,34 +140,37 @@ func depleteHealth():
 	$AnimationPlayer.stop()
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	
-	if health < 1:
+	if health < 1 and get_node_or_null("Body/Head/teeth_area") != null:
 		$Body/Head/teeth_area.queue_free()
-		$SplatterRing/spikes.queue_free()
 		return
 	close_openings()
-	$SplatterRing/spikes.set_deferred("monitorable", true)
-	$SplatterRing/spikes.set_deferred("monitoring", true)
-	await changeState(States.SCARED)
+	if get_node_or_null("SplatterRing/spikes") != null:
+		$SplatterRing/spikes.set_deferred("monitorable", true)
+		$SplatterRing/spikes.set_deferred("monitoring", true)
+	changeState(States.SCARED)
 
 func die():
+	$Body.queue_free()
+	$SplatterRing.queue_free()
 	$ExplosionCompression.play()
 	$Explosion.play()
 	dead = true
-	changeState(States.DEAD)
 	print("DEAD")
-	var goalScene = preload("res://scenes/goal.tscn")
-	var goal = goalScene.instantiate()
-	call_deferred("add_sibling", goal)
 	
-	goal.global_position = global_position
-	$SplatterRing/fullParticles.show()
-	await wait(1)
-	$Explosion.play()
-	await wait(1)
-	$Explosion.play()
+	get_parent().get_node("BossMusic").stop()
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	$fullParticles.show()
+	await wait(0.1)
+	get_parent().get_node("ground tilemap").queue_free()
+	await wait(2)
+	get_parent().get_node("BottomSplatterwall").queue_free()
 	queue_free()
 
 func idle():
+	if (dead):
+		return
+	
 	$AnimationPlayer.play("RESET", 0.3)
 	
 	if (done_hunting):
@@ -165,29 +178,38 @@ func idle():
 		changeState(States.ATTACKING)
 	
 	if (find_player_distance() > 1500 or !on_screen):
-		await changeState(States.HUNTING)
+		changeState(States.HUNTING)
 		return
 	
-	await changeState(States.ATTACKING)
+	changeState(States.ATTACKING)
 
 func hunting():
+	if (dead):
+		return
+	
 	if (!on_screen):
 		move_toward_player(move_speed)
 	elif (find_player_distance() > hunt_distance):
 		move_toward_player(move_speed)
 	else:
 		done_hunting = true
-		await changeState(States.IDLE)
+		changeState(States.IDLE)
 
 func scared():
+	if (dead):
+		return
+	
 	if (find_player_distance() < 1500):
 		move_away_from_player(sprint_speed)
 	else:
 		print("scared to idle")
 		recently_hit = true
-		await changeState(States.IDLE)
+		changeState(States.IDLE)
 
 func attack():
+	if (dead):
+		return
+	
 	mid_attack = true
 	var decided_atk = decide_attack()
 	
@@ -204,9 +226,9 @@ func attack():
 	print("Decided Attack: ")
 	print(decided_atk)
 	
-	match decided_atk:
+	match 1:
 		0:
-			await changeState(States.IDLE)
+			changeState(States.IDLE)
 		1:
 			await munch(standard_munch_time)
 		2:
@@ -221,9 +243,11 @@ func attack():
 	close_openings()
 	
 	mid_attack = false
-	await changeState(States.IDLE)
+	changeState(States.IDLE)
 
 func decide_attack():
+	if (dead):
+		return
 	#if(recently_hit and randi_range(1, 10) > 2):
 		#print("decided 5")
 		#recently_hit = false
@@ -257,6 +281,9 @@ func decide_attack():
 			return [1, 1, 3, 2, 2].pick_random()
 
 func attacking():
+	if (dead):
+		return
+	
 	if (moving_to_center):
 		move_toward_center(move_speed)
 	
@@ -268,6 +295,9 @@ func attacking():
 		$AttackTimer.timeout.emit()
 
 func spray(total_time: float, time_between_bullets):
+	if (dead):
+		return
+	
 	create_opening(-1)
 	$AttackTimer.one_shot = true
 	$AttackTimer.start(total_time)
@@ -281,9 +311,12 @@ func spray(total_time: float, time_between_bullets):
 	$AttackTimer.stop()
 
 func shoot_bullet(time: float):
+	if (dead):
+		return
+	
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
-	call_deferred("add_sibling", bullet)
+	add_sibling(bullet)
 	
 	bullet.get_node("AnimationPlayer").play("windUp")
 	bullet.global_position = $SplatterRing.get_random_global_ring_position(true)
@@ -293,6 +326,9 @@ func shoot_bullet(time: float):
 	bullet.shoot(global_position.direction_to(bullet.global_position))
 
 func missile_attack(total_time):
+	if (dead):
+		return
+	
 	await wait(0.5)
 	create_player_direction_opening()
 	$AttackTimer.one_shot = true
@@ -309,6 +345,9 @@ func missile_attack(total_time):
 	$AttackTimer.stop()
 
 func shoot_normal_missile():
+	if (dead):
+		return
+	
 	var missileScene = preload("res://scenes/missile_boss_abstraction.tscn")
 	var missile = missileScene.instantiate()
 	add_sibling(missile)
@@ -317,6 +356,9 @@ func shoot_normal_missile():
 	missile.shoot(find_player_direction())
 
 func shoot_follow_missile():
+	if (dead):
+		return
+	
 	var missileScene = preload("res://scenes/missile_boss_abstraction.tscn")
 	var missile = missileScene.instantiate()
 	add_sibling(missile)
@@ -325,6 +367,9 @@ func shoot_follow_missile():
 	missile.follow(player, 5)
 
 func feint(time):
+	if (dead):
+		return
+	
 	create_player_direction_opening()
 	#TODO play slight tell animation #nvm i think
 	feinting = true
@@ -339,6 +384,9 @@ func feint(time):
 	rotating = false
 
 func feint_success():
+	if (dead):
+		return
+	
 	rotating = false
 	play_feint_move_animation(false)
 	await $AnimationPlayer.animation_finished
@@ -354,6 +402,9 @@ func feint_success():
 	await $BossBurp.finished
 
 func play_feint_move_animation(backwards: bool, opening:String = $SplatterRing.get_current_opening().name):
+	if (dead):
+		return
+	
 	if(!backwards):
 		match opening:
 			"OpeningTop": $AnimationPlayer.play("feint_top")
@@ -376,6 +427,9 @@ func play_feint_move_animation(backwards: bool, opening:String = $SplatterRing.g
 			"OpeningTopLeft": $AnimationPlayer.play_backwards("feint_top_left")
 
 func munch(time):
+	if (dead):
+		return
+	
 	munching = true
 	create_tripple_player_direction_opening()
 	middle_opening_name = $SplatterRing.get_nearest_opening_to(player.position, false).name
@@ -386,6 +440,9 @@ func munch(time):
 	munching = false
 
 func munch_success():
+	if (dead):
+		return
+	
 	await wait(0.15)
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	$Body/Teeth.play("bite")
@@ -400,6 +457,9 @@ func munch_success():
 	await $BossBurp.finished
 
 func center_attack():
+	if (dead):
+		return
+	
 	moving_to_center = true
 	await center.boss_entered_signal
 	moving_to_center = false
@@ -417,33 +477,60 @@ func move_toward_center(speed: int):
 	velocity = find_center_direction() * speed
 
 func find_center_direction():
+	if (dead):
+		return
+	
 	return global_position.direction_to(center.global_position)
 
 func move_toward_player(speed: int):
+	if (dead):
+		return
+	
 	velocity = find_player_direction() * speed
 
 func move_away_from_player(speed: int):
+	if (dead):
+		return
+	
 	velocity = -find_player_direction() * speed
 
 func get_current_opening():
-	$SplatterRing.get_current_opening()
+	if (dead):
+		return
+	
+	if get_node_or_null("SplatterRing") != null:$SplatterRing.get_current_opening()
 
 func create_opening(i: int):
+	if (dead):
+		return
+	
 	if(-1 < i and i < 8):
-		$SplatterRing.create_opening(i)
+		if get_node_or_null("SplatterRing") != null:$SplatterRing.create_opening(i)
 	else:
-		$SplatterRing.create_random_opening()
+		if get_node_or_null("SplatterRing") != null:$SplatterRing.create_random_opening()
 
 func create_player_direction_opening():
-	$SplatterRing.create_opening_close_to(player.global_position)
+	if (dead):
+		return
+	
+	if get_node_or_null("SplatterRing") != null:$SplatterRing.create_opening_close_to(player.global_position)
 
 func create_tripple_player_direction_opening():
-	$SplatterRing.create_tripple_opening_close_to(player.global_position)
+	if (dead):
+		return
+	
+	if get_node_or_null("SplatterRing") != null:$SplatterRing.create_tripple_opening_close_to(player.global_position)
 
 func close_openings():
-	$SplatterRing.close_openings()
+	if (dead):
+		return
+	
+	if get_node_or_null("SplatterRing") != null:$SplatterRing.close_openings()
 
 func clear_shot(object):
+	if (dead):
+		return
+	
 	var space_state = get_world_2d().direct_space_state
 	
 	var params = PhysicsRayQueryParameters2D.new()
@@ -459,22 +546,38 @@ func clear_shot(object):
 	return false
 
 func find_player_direction():
+	if (dead):
+		return
+	
 	return global_position.direction_to(player.global_position)
 
 func find_player_distance():
+	if (dead):
+		return
+	
 	return global_position.distance_to(player.global_position)
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_screen_entered() -> void:
+	if (dead):
+		return
+	
 	on_screen = true
 
 func _on_screen_exited() -> void:
+	if (dead):
+		return
+	
 	on_screen = false
 
 func _on_teeth_area_body_entered(body: Node2D) -> void:
+	if (dead):
+		return
+	
 	if(body == player and munching):
 		munching = false
+		$SplatterRing.queue_free()
 		munch_success()
 		$Body/Head/teeth_area.queue_free()

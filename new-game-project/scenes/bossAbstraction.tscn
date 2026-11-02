@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://bmby367u0l4ou" path="res://frames/bossframes/teeth_bite/frame_1_delay-0.1s.png" id="18_sqgrm"]
 [ext_resource type="Texture2D" uid="uid://boakm3w6klkic" path="res://frames/bossframes/teeth_bite/frame_2_delay-0.1s.png" id="19_ib71g"]
 [ext_resource type="Texture2D" uid="uid://vb6e4q7nk1vg" path="res://frames/bossframes/teeth_bite/frame_3_delay-0.1s.png" id="20_lw7kb"]
+[ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="26_ush8r"]
+[ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="27_rhevn"]
+[ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="28_8mb2t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okipd"]
 content_margin_left = 2.0
@@ -389,7 +392,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vwgko"]
-radius = 42.000755
+radius = 35.214527
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rs1r3"]
 animations = [{
@@ -421,6 +424,26 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7x0ad"]
 radius = 21.189621
+
+[sub_resource type="Curve" id="Curve_vm6kl"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jnjwr"]
+curve = SubResource("Curve_vm6kl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v4dbo"]
+emission_shape = 1
+emission_sphere_radius = 400.0
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_jnjwr")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+collision_mode = 2
 
 [node name="BossAbstraction" type="CharacterBody2D" unique_id=1907947351]
 collision_layer = 32768
@@ -524,6 +547,30 @@ scale = Vector2(15, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1400846276]
 shape = SubResource("CircleShape2D_7x0ad")
+
+[node name="fullParticles" type="Node2D" parent="." unique_id=1618583788]
+visible = false
+
+[node name="GPUParticlesFull1" type="GPUParticles2D" parent="fullParticles" unique_id=748451816]
+amount = 69
+texture = ExtResource("26_ush8r")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_v4dbo")
+
+[node name="GPUParticlesFull2" type="GPUParticles2D" parent="fullParticles" unique_id=77987879]
+amount = 40
+texture = ExtResource("27_rhevn")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_v4dbo")
+
+[node name="GPUParticlesFull3" type="GPUParticles2D" parent="fullParticles" unique_id=966802567]
+amount = 25
+texture = ExtResource("28_8mb2t")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_v4dbo")
 
 [connection signal="body_entered" from="Body/Head/teeth_area" to="." method="_on_teeth_area_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]

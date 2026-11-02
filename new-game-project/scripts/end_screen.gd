@@ -13,5 +13,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	fading_rect.fade_out = true
 
 func _on_go_to_next_chapter():
-	Global.level = 0
-	get_tree().call_deferred("change_scene_to_file", "res://levels/museum_1.tscn")
+	Global.change_to_level(Global.level_museum)

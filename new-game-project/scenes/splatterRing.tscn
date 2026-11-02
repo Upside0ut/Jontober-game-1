@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_ln83t"]
 [ext_resource type="Shape2D" uid="uid://bwc8ovaqlskcr" path="res://scenes/rectangular_opening_collision.tres" id="5_jnjwr"]
 
-[sub_resource type="Curve" id="Curve_wt34f"]
+[sub_resource type="Curve" id="Curve_vm6kl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09689922, 1), 0.0, 0.0, 0, 0, Vector2(0.77131784, 0.99200004), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_jnjwr"]
-curve = SubResource("Curve_wt34f")
+curve = SubResource("Curve_vm6kl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0ya7"]
 emission_shape = 6
@@ -20,19 +20,6 @@ emission_ring_height = 1.0
 emission_ring_radius = 300.0
 emission_ring_inner_radius = 300.0
 emission_ring_cone_angle = 90.0
-angle_min = -720.0
-angle_max = 720.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.29999998
-scale_max = 0.79999995
-alpha_curve = SubResource("CurveTexture_jnjwr")
-hue_variation_min = -2.2351742e-08
-hue_variation_max = -2.2351742e-08
-collision_mode = 2
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jnjwr"]
-emission_shape = 1
-emission_sphere_radius = 400.0
 angle_min = -720.0
 angle_max = 720.0
 gravity = Vector3(0, 0, 0)
@@ -73,30 +60,6 @@ texture = ExtResource("4_ln83t")
 lifetime = 0.1
 visibility_rect = Rect2(-325, -325, 650, 650)
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
-
-[node name="fullParticles" type="Node2D" parent="." unique_id=1877901784]
-visible = false
-
-[node name="GPUParticlesFull1" type="GPUParticles2D" parent="fullParticles" unique_id=1668495956]
-amount = 69
-texture = ExtResource("2_w1mq1")
-lifetime = 0.1
-visibility_rect = Rect2(-325, -325, 650, 650)
-process_material = SubResource("ParticleProcessMaterial_jnjwr")
-
-[node name="GPUParticlesFull2" type="GPUParticles2D" parent="fullParticles" unique_id=526426401]
-amount = 40
-texture = ExtResource("3_hb6ii")
-lifetime = 0.1
-visibility_rect = Rect2(-325, -325, 650, 650)
-process_material = SubResource("ParticleProcessMaterial_jnjwr")
-
-[node name="GPUParticlesFull3" type="GPUParticles2D" parent="fullParticles" unique_id=2005969107]
-amount = 25
-texture = ExtResource("4_ln83t")
-lifetime = 0.1
-visibility_rect = Rect2(-325, -325, 650, 650)
-process_material = SubResource("ParticleProcessMaterial_jnjwr")
 
 [node name="spikes" type="Area2D" parent="." unique_id=933651931]
 

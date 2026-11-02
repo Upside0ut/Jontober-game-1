@@ -127,6 +127,9 @@ func change_from_lvl_to_menu(path: String):
 func change_to_boss_fancy():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/pre_boss.tscn")
 
+func change_to_museum_fancy():
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/end.tscn")
+
 func add_current_level_to_config():
 	var config = ConfigFile.new()
 	var err: Error = config.load("user://levels.cfg")

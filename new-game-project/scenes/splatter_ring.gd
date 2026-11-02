@@ -127,8 +127,9 @@ func _on_opening_body_entered(body: Node2D, opening: Area2D) -> void:
 	if(!opening.visible):
 		return
 	
-	$spikes.set_deferred("monitorable", false)
-	$spikes.set_deferred("monitoring", false)
+	if (get_node_or_null("spikes") != null):
+		$spikes.set_deferred("monitorable", false)
+		$spikes.set_deferred("monitoring", false)
 	
 	if(get_parent().feinting):
 		get_parent().feint_success()
