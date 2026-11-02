@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum States {IDLE, HUNTING, ATTACKING, SCARED, DASHING}
+enum States {IDLE, HUNTING, ATTACKING, SCARED, DASHING, DEAD}
 var state
 
 var rng = RandomNumberGenerator.new()
@@ -13,6 +13,7 @@ var stuck_too_long = false
 var current_dash_point
 var dash_counter = 0
 var on_screen = false
+var attacking_while_not_on_screen_counter = 0
 var bar_fully_loaded = false
 var rotating = false
 var recently_hit = false
@@ -21,17 +22,20 @@ var mid_attack = false
 var done_hunting = false
 var munching = false
 var middle_opening_name = null
+var last_decided_atk = 0
+var dead = false
 
 var move_speed = 1000
 var sprint_speed = 2400
 var health = 100
-var on_hit_depleted_health = 25
+var on_hit_depleted_health = 100
 
 var hunt_distance = rng.randi_range(500, 1500)
+var attacking_while_not_on_screen_threshhold = 60 * 3
 
-var standard_spray_time = 10
+var standard_spray_time = 7
 var standard_bullet_time = 0.5
-var standard_munch_time = 7
+var standard_munch_time = 9
 var standard_feint_time = 5
 var standard_missile_atk_time = 10
 
@@ -78,14 +82,16 @@ func _physics_process(delta: float) -> void:
 	if (rotating):
 		rotate(0.01)
 	
+	if (munching):
+		rotate_in_player_direction(delta)
+	
 	velocity = Vector2.ZERO
 	
 	if(bar_fully_loaded):
 		$CanvasLayer/BossBar.value = health
 	
-	if health < 1:
+	if health < 1 and !dead:
 		die()
-	
 	
 	match state:
 		States.IDLE:
@@ -100,11 +106,20 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func rotate_in_player_direction(delta):
+	var teeth_direction = global_position.direction_to($Body/Teeth.global_position)
+	var rotation_speed = 0.007
+	
+	if (teeth_direction.angle() < find_player_direction().angle()):
+		rotate(rotation_speed)
+	elif (find_player_direction().angle() < teeth_direction.angle()):
+		rotate(-rotation_speed)
+
 func depleteHealth():
 	print("Damaged: ")
 	print(on_hit_depleted_health)
 	health -= on_hit_depleted_health
-	#play damage anymation
+	
 	$AttackTimer.stop()
 	$AttackTimer.timeout.emit()
 	
@@ -113,22 +128,37 @@ func depleteHealth():
 	$Bossdmgsound.play()
 	await wait(0.3)
 	$AnimationPlayer.stop()
-	if munching:
-		play_feint_move_animation(true, middle_opening_name)
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	
+	if health < 1:
+		$Body/Head/teeth_area.queue_free()
+		$SplatterRing/spikes.queue_free()
+		return
 	close_openings()
 	$SplatterRing/spikes.set_deferred("monitorable", true)
 	$SplatterRing/spikes.set_deferred("monitoring", true)
 	await changeState(States.SCARED)
 
 func die():
+	$ExplosionCompression.play()
+	$Explosion.play()
+	dead = true
+	changeState(States.DEAD)
 	print("DEAD")
+	var goalScene = preload("res://scenes/goal.tscn")
+	var goal = goalScene.instantiate()
+	call_deferred("add_sibling", goal)
+	
+	goal.global_position = global_position
+	$SplatterRing/fullParticles.show()
+	await wait(1)
+	$Explosion.play()
+	await wait(1)
+	$Explosion.play()
 	queue_free()
 
 func idle():
-	if recently_hit:
-		await changeState(States.ATTACKING)
+	$AnimationPlayer.play("RESET", 0.3)
 	
 	if (done_hunting):
 		done_hunting = false
@@ -161,13 +191,20 @@ func attack():
 	mid_attack = true
 	var decided_atk = decide_attack()
 	
-	while (($FeintCooldown.time_left > 0 or health > 50) and decided_atk == 3):
+	var retrys = 0
+	while(decided_atk == last_decided_atk and retrys <= 3):
+		retrys += 1
 		decided_atk = decide_attack()
+	
+	while (($FeintCooldown.time_left > 0) and decided_atk == 3):
+		decided_atk = decide_attack()
+	
+	last_decided_atk = decided_atk
 	
 	print("Decided Attack: ")
 	print(decided_atk)
 	
-	match 1:
+	match decided_atk:
 		0:
 			await changeState(States.IDLE)
 		1:
@@ -195,24 +232,40 @@ func decide_attack():
 	
 	if(find_player_distance() > 1000):
 		if(clear_shot(player)):
-			return [1, 2, 4, 4].pick_random()
+			return [1, 2, 2, 4, 4, 4].pick_random()
 		else:
-			return [1, 1, 1, 1, 4].pick_random()
+			return [2, 2, 2, 4, 4, 4].pick_random()
 	
 	if(find_player_distance() > 600):
 		if(clear_shot(player)):
-			return [1, 2, 4,  1, 2, 4,  2, 4,  3].pick_random()
+			if (health > 50):
+				return [1, 1, 2, 2, 2, 4, 4].pick_random()
+			else:
+				return [3, 1, 1, 2, 2, 2, 4, 4].pick_random()
 		else:
-			return [2, 2, 2,  4, 4, 4,  1].pick_random()
+			return [2, 2, 2, 4, 4].pick_random()
 	
-	if(clear_shot(player)):
-		return [2, 2, 4, 3, 3].pick_random()
-	
-	return [2, 2, 2, 2, 4, 4, 4, 3].pick_random()
+	if (health > 50):
+		if(clear_shot(player)):
+			return [1, 1, 1, 1, 2, 2, 2].pick_random()
+		else:
+			return [1, 1, 2, 2].pick_random()
+	else:
+		if(clear_shot(player)):
+			return [1, 1, 1, 1, 1, 3, 3, 3, 2, 2].pick_random()
+		else:
+			return [1, 1, 3, 2, 2].pick_random()
 
 func attacking():
 	if (moving_to_center):
 		move_toward_center(move_speed)
+	
+	if(!on_screen):
+		attacking_while_not_on_screen_counter += 1
+	
+	if(attacking_while_not_on_screen_counter > attacking_while_not_on_screen_threshhold):
+		$AttackTimer.stop()
+		$AttackTimer.timeout.emit()
 
 func spray(total_time: float, time_between_bullets):
 	create_opening(-1)
@@ -221,15 +274,7 @@ func spray(total_time: float, time_between_bullets):
 	
 	rotating = true
 	
-	var spray_while_not_on_screen_conuter = 0
 	while $AttackTimer.time_left > 0:
-		if (!on_screen):
-			if (spray_while_not_on_screen_conuter > 5):
-				$AttackTimer.stop()
-				$AttackTimer.timeout.emit()
-				break
-			spray_while_not_on_screen_conuter += 1
-		
 		await shoot_bullet(time_between_bullets)
 	
 	rotating = false
@@ -238,7 +283,7 @@ func spray(total_time: float, time_between_bullets):
 func shoot_bullet(time: float):
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
 	var bullet = bulletScene.instantiate()
-	add_sibling(bullet)
+	call_deferred("add_sibling", bullet)
 	
 	bullet.get_node("AnimationPlayer").play("windUp")
 	bullet.global_position = $SplatterRing.get_random_global_ring_position(true)
@@ -284,6 +329,7 @@ func feint(time):
 	#TODO play slight tell animation #nvm i think
 	feinting = true
 	rotating = true
+	$AttackTimer.one_shot = true
 	$AttackTimer.start(time)
 	await $AttackTimer.timeout
 	
@@ -303,7 +349,6 @@ func feint_success():
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.die() #mb if this is supposed to be private or sm but it really looks ugly otherwise sooory
 	await wait(0.2)
-	play_feint_move_animation(true)
 	$Body/Teeth.play_backwards("bite")
 	$BossBurp.play()
 	await $BossBurp.finished
@@ -335,21 +380,21 @@ func munch(time):
 	create_tripple_player_direction_opening()
 	middle_opening_name = $SplatterRing.get_nearest_opening_to(player.position, false).name
 	play_feint_move_animation(false, middle_opening_name)
+	$AttackTimer.one_shot = true
 	$AttackTimer.start(time)
 	await $AttackTimer.timeout
 	munching = false
 
 func munch_success():
-	$AttackTimer.stop()
-	$AttackTimer.timeout.emit()
+	await wait(0.15)
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	$Body/Teeth.play("bite")
-	await $Body/Teeth.animation_finished
+	await wait(0.05)
 	player.die()
+	await $Body/Teeth.animation_finished
 	await wait(0.2)
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	print("MIGHT CRASH RN, IF NAME NULL CUS I FUCKED UP")
-	play_feint_move_animation(true, middle_opening_name)
 	$Body/Teeth.play_backwards("bite")
 	$BossBurp.play()
 	await $BossBurp.finished
@@ -429,7 +474,7 @@ func _on_screen_exited() -> void:
 	on_screen = false
 
 func _on_teeth_area_body_entered(body: Node2D) -> void:
-	$Body/Head/teeth_area.queue_free()
 	if(body == player and munching):
 		munching = false
 		munch_success()
+		$Body/Head/teeth_area.queue_free()

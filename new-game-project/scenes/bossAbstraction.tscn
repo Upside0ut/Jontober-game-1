@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://c1jqc0buu1cj3" path="res://sound_effects/bossBurp.mp3" id="4_gpj6j"]
 [ext_resource type="Texture2D" uid="uid://b6o4ihf57xmep" path="res://frames/bossframes/weirdLipThing/frame_00_delay-0.1s.png" id="4_kpon3"]
 [ext_resource type="Texture2D" uid="uid://7rtml3ciuqft" path="res://frames/bossframes/weirdLipThing/frame_01_delay-0.1s.png" id="5_c51kp"]
+[ext_resource type="AudioStream" uid="uid://78u0ibygb41m" path="res://sound_effects/explosion.wav" id="5_ib71g"]
+[ext_resource type="AudioStream" uid="uid://diev8ucfkrh7u" path="res://sound_effects/explosion_compression_eq.mp3" id="6_lw7kb"]
 [ext_resource type="Texture2D" uid="uid://b0sdj68nyhpuw" path="res://frames/bossframes/weirdLipThing/frame_02_delay-0.1s.png" id="6_okipd"]
 [ext_resource type="Texture2D" uid="uid://cegj8jyykbmy8" path="res://frames/bossframes/weirdLipThing/frame_03_delay-0.1s.png" id="7_qp8m4"]
 [ext_resource type="Texture2D" uid="uid://ddw2okx7wgqh0" path="res://frames/bossframes/weirdLipThing/frame_04_delay-0.1s.png" id="8_u6bdx"]
@@ -386,8 +388,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rs1r3"]
-radius = 63.507874
+[sub_resource type="CircleShape2D" id="CircleShape2D_vwgko"]
+radius = 42.000755
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rs1r3"]
 animations = [{
@@ -462,7 +464,15 @@ volume_db = -5.0
 [node name="BossBurp" type="AudioStreamPlayer" parent="." unique_id=1712371740]
 stream = ExtResource("4_gpj6j")
 
+[node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=768639663]
+stream = ExtResource("5_ib71g")
+
+[node name="ExplosionCompression" type="AudioStreamPlayer" parent="." unique_id=94930278]
+stream = ExtResource("6_lw7kb")
+parameters/looping = true
+
 [node name="Body" type="Node2D" parent="." unique_id=781731260]
+visibility_layer = 2
 
 [node name="Background" type="TextureRect" parent="Body" unique_id=583160611]
 anchors_preset = 8
@@ -482,6 +492,7 @@ texture = ExtResource("2_3kr0g")
 metadata/_edit_use_anchors_ = true
 
 [node name="Head" type="AnimatedSprite2D" parent="Body" unique_id=317845324]
+visibility_layer = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7x0ad")
 animation = &"mouththingy"
@@ -492,9 +503,13 @@ speed_scale = 2.0
 [node name="teeth_area" type="Area2D" parent="Body/Head" unique_id=1953475357]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Head/teeth_area" unique_id=1255082592]
-shape = SubResource("CircleShape2D_rs1r3")
+position = Vector2(-1.7500014, -2.5000005)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CircleShape2D_vwgko")
 
 [node name="Teeth" type="AnimatedSprite2D" parent="Body" unique_id=256918630]
+visibility_layer = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rs1r3")
 autoplay = "default"

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var move_speed = 700
+var move_speed = 600
 var following = false
 var target
 

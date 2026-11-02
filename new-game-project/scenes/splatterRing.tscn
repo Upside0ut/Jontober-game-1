@@ -30,6 +30,19 @@ hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
 collision_mode = 2
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jnjwr"]
+emission_shape = 1
+emission_sphere_radius = 400.0
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_jnjwr")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+collision_mode = 2
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvwpn"]
 radius = 300.0
 
@@ -61,12 +74,37 @@ lifetime = 0.1
 visibility_rect = Rect2(-325, -325, 650, 650)
 process_material = SubResource("ParticleProcessMaterial_u0ya7")
 
+[node name="fullParticles" type="Node2D" parent="." unique_id=1877901784]
+visible = false
+
+[node name="GPUParticlesFull1" type="GPUParticles2D" parent="fullParticles" unique_id=1668495956]
+amount = 69
+texture = ExtResource("2_w1mq1")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_jnjwr")
+
+[node name="GPUParticlesFull2" type="GPUParticles2D" parent="fullParticles" unique_id=526426401]
+amount = 40
+texture = ExtResource("3_hb6ii")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_jnjwr")
+
+[node name="GPUParticlesFull3" type="GPUParticles2D" parent="fullParticles" unique_id=2005969107]
+amount = 25
+texture = ExtResource("4_ln83t")
+lifetime = 0.1
+visibility_rect = Rect2(-325, -325, 650, 650)
+process_material = SubResource("ParticleProcessMaterial_jnjwr")
+
 [node name="spikes" type="Area2D" parent="." unique_id=933651931]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes" unique_id=884058648]
 shape = SubResource("CircleShape2D_nvwpn")
 
 [node name="OpeningTop" type="Area2D" parent="." unique_id=1467807575]
+visible = false
 position = Vector2(0, -300)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTop" unique_id=1505604448]
@@ -76,6 +114,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningTopRight" type="Area2D" parent="." unique_id=484902016]
+visible = false
 position = Vector2(210, -210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopRight" unique_id=1315349108]
@@ -86,6 +125,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningRight" type="Area2D" parent="." unique_id=706442723]
+visible = false
 position = Vector2(300, 0)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningRight" unique_id=1469659570]
@@ -96,6 +136,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningBottomRight" type="Area2D" parent="." unique_id=1224518769]
+visible = false
 position = Vector2(210, 210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomRight" unique_id=849898299]
@@ -106,6 +147,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningBottom" type="Area2D" parent="." unique_id=636135488]
+visible = false
 position = Vector2(0, 300)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottom" unique_id=1754393642]
@@ -115,6 +157,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningBottomLeft" type="Area2D" parent="." unique_id=1822276765]
+visible = false
 position = Vector2(-210, 210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningBottomLeft" unique_id=1061535549]
@@ -125,6 +168,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningLeft" type="Area2D" parent="." unique_id=383867447]
+visible = false
 position = Vector2(-300, 0)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningLeft" unique_id=2088609519]
@@ -135,6 +179,7 @@ shape = ExtResource("5_jnjwr")
 occluder = SubResource("OccluderPolygon2D_rs1r3")
 
 [node name="OpeningTopLeft" type="Area2D" parent="." unique_id=1957515551]
+visible = false
 position = Vector2(-210, -210)
 
 [node name="LightOcclusionCollider2D" type="CollisionShape2D" parent="OpeningTopLeft" unique_id=1668636886]
