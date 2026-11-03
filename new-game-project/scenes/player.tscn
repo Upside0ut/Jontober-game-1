@@ -177,6 +177,7 @@ _data = {
 radius = 74.1485
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=581014257]
+collision_mask = 3
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_g2els")
@@ -191,6 +192,7 @@ texture = SubResource("AnimatedTexture_6y8d2")
 target_position = Vector2(0, 76)
 
 [node name="hitbox (spikes)" type="Area2D" parent="." unique_id=76159056]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox (spikes)" unique_id=1382862213]
 shape = SubResource("CircleShape2D_u0ya7")
@@ -218,6 +220,7 @@ stream = ExtResource("7_fjrip")
 volume_db = -6.0
 
 [node name="pickup_area" type="Area2D" parent="." unique_id=726209358]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_area" unique_id=1630802307]
 shape = SubResource("CircleShape2D_a7vx6")

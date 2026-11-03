@@ -1,3 +1,4 @@
+class_name PauseMenu
 extends CanvasLayer
 
 @onready var anim_player = $PauseScreen/AnimationPlayer

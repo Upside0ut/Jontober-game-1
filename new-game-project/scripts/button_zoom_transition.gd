@@ -1,6 +1,7 @@
 extends Camera2D
 
 @export var zoom_signaling_node : Node
+@export var title_text : Label
 @export var fader : Node
 @export var song : Node
 @export var fade_time := 0.8
@@ -36,6 +37,7 @@ func fade_then_change(level) -> void:
 	fader.fade_out_by_default = false
 	fader.modulate.a = 0.0
 	var tween := create_tween()
+	tween.tween_property(title_text,"self_modulate:a", 0.0, fade_time/2)
 	tween.tween_property(fader, "modulate:a", 1.0, fade_time)
 	tween.tween_property(song, "volume_linear", 0.0, fade_time)
 	await tween.finished

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chp448cbirpbb"]
 
-[ext_resource type="Script" uid="uid://gohxggj1a7qf" path="res://scenes/boss_abstraction.gd" id="1_j3vxj"]
+[ext_resource type="Script" uid="uid://gohxggj1a7qf" path="res://scripts/boss_abstraction.gd" id="1_j3vxj"]
 [ext_resource type="Texture2D" uid="uid://cffnoswnm0ysf" path="res://textures/boss/jontober_boss_body.png" id="2_3kr0g"]
 [ext_resource type="PackedScene" uid="uid://qgo7iscdcgxk" path="res://scenes/splatterRing.tscn" id="3_17mkm"]
 [ext_resource type="AudioStream" uid="uid://c3846uww6veje" path="res://sound_effects/BossShootSplatter.mp3" id="3_u6bdx"]

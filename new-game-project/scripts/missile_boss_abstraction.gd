@@ -5,7 +5,7 @@ var follow_move_speed = 400
 var following = false
 var target
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if(following and target != null):
 		shoot(find_direction_to(target))
 	
@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 func shoot(direction: Vector2):
 	velocity = direction * move_speed
 
+@warning_ignore("shadowed_variable")
 func follow(target: Node2D, time: float):
 	move_speed = follow_move_speed
 	

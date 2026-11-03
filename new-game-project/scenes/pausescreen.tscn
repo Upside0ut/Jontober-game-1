@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://du1g4w782w0ba" path="res://textures/abstract_landscape_1.png" id="1_4ydd4"]
 [ext_resource type="Script" uid="uid://uxtif6q2vjig" path="res://scripts/pausescreen.gd" id="1_fvd0d"]
-[ext_resource type="Shader" uid="uid://ydq6cogapgy2" path="res://scenes/pausescreen.gdshader" id="2_fvd0d"]
+[ext_resource type="Shader" uid="uid://ydq6cogapgy2" path="res://shader/pausescreen.gdshader" id="2_fvd0d"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="3_fvd0d"]
 [ext_resource type="PackedScene" uid="uid://cqud6q2o5lkja" path="res://scenes/options.tscn" id="7_38q3y"]
 [ext_resource type="StyleBox" uid="uid://dbo73a3tt6nx6" path="res://styles/pause_button1.tres" id="7_v5dkp"]

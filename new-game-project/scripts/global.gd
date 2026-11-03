@@ -7,6 +7,7 @@ class Level:
 	
 	var is_current_level = false
 	
+	@warning_ignore("shadowed_variable")
 	func _init(lvl_name:String, path:String, is_b_route:bool):
 		self.lvl_name = lvl_name
 		self.path = path
@@ -123,6 +124,16 @@ func change_from_lvl_to_menu(path: String):
 		current_level = null
 		get_tree().call_deferred("change_scene_to_file", path)
 		print("current level is now null")
+	else:
+		# the reason i added change_scene_to_file again 
+		# is so that if anyone gets an error and the
+		# 'path: String' variable in the function is the issue, 
+		# please just hardcode this to "res://scenes/titlescreen.tscn" below 
+		# - Circcle                                       |
+		#                                                 V
+		get_tree().call_deferred("change_scene_to_file", path)
+		push_warning("current_level was null before setting it to null in Global.change_from_lvl_to_menu(path: String), if you used 'Run Current Scene' to playtest, disregard this warning (Circcle)")
+	
 
 func change_to_boss_fancy():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/pre_boss.tscn")
@@ -135,9 +146,13 @@ func add_current_level_to_config():
 	var err: Error = config.load("user://levels.cfg")
 	if err != OK:
 		return
-	config.set_value("LEVELS", current_level.lvl_name, true)
-	config.save("user://levels.cfg")
-	print("Level set to true in file: ", current_level.lvl_name)
+		
+	if current_level == null:
+		push_warning("Current level was found null when adding to config, skipping saving! Perhaps you used 'Run Current Scene' to playtest? If so, disregard this warning. (Circcle)")
+	else:
+		config.set_value("LEVELS", current_level.lvl_name, true)
+		config.save("user://levels.cfg")
+		print("Level set to true in file: ", current_level.lvl_name)
 
 func check_previous_level_beaten(level: Level):
 	var config = ConfigFile.new()
@@ -219,7 +234,7 @@ static var achievements = {
 static var skins = {
 "default" : true,
 "haprandy" : true,
-"boss_skin" : false,
+"iris" : false,
 "falling_guy" : true,
 "free_randy" : false,
 "wheel" : true,
@@ -256,7 +271,7 @@ func set_achievement(achievement_key : String, value : bool = true):
 func update_rewards(achievement_key):
 	match achievement_key:
 		"boss_beaten":
-			skins["boss_skin"] = true
+			skins["iris"] = true
 		"night_five_beaten":
 			skins["agnese"] = true
 		"game_beaten":

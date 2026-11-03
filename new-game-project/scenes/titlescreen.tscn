@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://d27xt8n64d5lb" path="res://frames/jontober_baller_game_background_main_menu4.png" id="4_hcbn3"]
 [ext_resource type="Texture2D" uid="uid://dqrkw4giqjoor" path="res://frames/jontober_baller_game_background_main_menu5.png" id="5_ybki2"]
 [ext_resource type="Texture2D" uid="uid://cj2qjvq7vlj84" path="res://frames/jontober_baller_game_background_main_menu6.png" id="6_lsij0"]
-[ext_resource type="Texture2D" uid="uid://cpey6das2whvk" path="res://scripts/FUNKYtitlescreen_transparent.png" id="9_hcbn3"]
-[ext_resource type="Shader" uid="uid://maog1cdx4xwh" path="res://scenes/wavy.gdshader" id="11_8or72"]
+[ext_resource type="Texture2D" uid="uid://cpey6das2whvk" path="res://textures/FUNKYtitlescreen_transparent.png" id="9_hcbn3"]
+[ext_resource type="Shader" uid="uid://maog1cdx4xwh" path="res://shader/wavy.gdshader" id="11_8or72"]
 [ext_resource type="AudioStream" uid="uid://bngoyqt4dwfyg" path="res://music/funky ball.mp3" id="14_ybki2"]
+[ext_resource type="PackedScene" uid="uid://cqud6q2o5lkja" path="res://scenes/options.tscn" id="15_lsij0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]
 animations = [{
@@ -188,12 +189,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=583852188]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=583852188 node_paths=PackedStringArray("options_menu")]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 10
 script = ExtResource("2_3jj3l")
+options_menu = NodePath("../../../Options Menu")
 
 [node name="play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=692935566]
 layout_mode = 2
@@ -238,7 +240,10 @@ autoplay = true
 stream = ExtResource("14_ybki2")
 parameters/looping = true
 
+[node name="Options Menu" parent="." unique_id=1889404676 instance=ExtResource("15_lsij0")]
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/options" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/lvlSelect" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_lvl_select_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/skins" to="MarginContainer/HBoxContainer/VBoxContainer" method="_on_skins_pressed"]

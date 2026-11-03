@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ntfy3ktno5gr"]
 
-[ext_resource type="Script" uid="uid://d0imercs6j47k" path="res://scenes/pre_boss.gd" id="1_2an6b"]
+[ext_resource type="Script" uid="uid://d0imercs6j47k" path="res://scripts/pre_boss.gd" id="1_2an6b"]
 [ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="2_2an6b"]
 
 [node name="screen" type="Control" unique_id=1558512898]

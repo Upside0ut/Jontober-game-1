@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 		timer.timeout.emit()
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://levels/level_01.tscn")
+	Global.change_to_level(Global.level1)

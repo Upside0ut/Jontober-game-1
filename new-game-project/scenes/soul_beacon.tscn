@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dsum5gh322o71" path="res://sound_effects/beaconstart.mp3" id="6_icdpw"]
 [ext_resource type="AudioStream" uid="uid://dbhe6gextlffs" path="res://sound_effects/beacon_loop.mp3" id="7_31536"]
 [ext_resource type="AudioStream" uid="uid://b347fonh0laci" path="res://sound_effects/beacon_loop2.mp3" id="8_icdpw"]
-[ext_resource type="Shader" uid="uid://d070a4wd6e3eq" path="res://textures/soul_beacon.gdshader" id="9_3pbtw"]
+[ext_resource type="Shader" uid="uid://d070a4wd6e3eq" path="res://shader/soul_beacon.gdshader" id="9_3pbtw"]
 [ext_resource type="Texture2D" uid="uid://bi4qqm786fjsf" path="res://textures/plinko_peg.png" id="10_3pbtw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7vx6"]

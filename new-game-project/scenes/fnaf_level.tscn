@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dd0r1p0bfna3v" path="res://sound_effects/fnaf_sfx/unique_sfx/830459__shaunhillyard__flashlight-click-on.wav" id="11_0tchg"]
 [ext_resource type="Script" uid="uid://ccxjh7xwqfmvm" path="res://Circcle's scripts/fnaf scripts/alarm_light.gd" id="11_ad12r"]
 [ext_resource type="Script" uid="uid://b0bcm3q60cxf6" path="res://Circcle's scripts/fnaf scripts/fnaf_pulley.gd" id="11_s1d5t"]
-[ext_resource type="Script" uid="uid://blwwq21oge042" path="res://scenes/player_cam.gd" id="12_7bxxh"]
+[ext_resource type="Script" uid="uid://blwwq21oge042" path="res://scripts/player_cam.gd" id="12_7bxxh"]
 [ext_resource type="Texture2D" uid="uid://dkj7b7vp5pud8" path="res://FNAF sprites/agnese_door.png" id="12_dfx1n"]
 [ext_resource type="Texture2D" uid="uid://2ug4ebl8vvrt" path="res://FNAF sprites/agnese_jumpscare.png" id="13_bsc56"]
 [ext_resource type="AudioStream" uid="uid://bw4y3l4jg0dgt" path="res://sound_effects/fnaf_sfx/unique_sfx/396470__kev_durr__electric-sparks.wav" id="14_8xtj6"]

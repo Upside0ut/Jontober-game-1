@@ -3,6 +3,9 @@ extends CharacterBody2D
 enum States {IDLE, HUNTING, ATTACKING, SCARED, DASHING, DEAD}
 var state
 
+## in seconds
+@export var wait_before_fight : float = 3.5
+
 var rng = RandomNumberGenerator.new()
 
 var player
@@ -69,7 +72,7 @@ func _ready() -> void:
 	$CanvasLayer/BossBar.hide()
 	$CanvasLayer/BossBar.value = 0
 	
-	await wait(3)
+	await wait(wait_before_fight)
 	
 	get_parent().get_node("BossMusic").play()
 	changeState(States.IDLE)
@@ -89,6 +92,9 @@ func _physics_process(delta: float) -> void:
 	if dead and state != States.DEAD:
 		state = States.DEAD
 	
+	if(bar_fully_loaded):
+			$CanvasLayer/BossBar.value = clamp(health,0,100)
+	
 	if !dead:
 		if (rotating):
 			rotate(0.01)
@@ -97,9 +103,6 @@ func _physics_process(delta: float) -> void:
 			rotate_in_player_direction(delta)
 		
 		velocity = Vector2.ZERO
-		
-		if(bar_fully_loaded):
-			$CanvasLayer/BossBar.value = health
 		
 		match state:
 			States.IDLE:
@@ -114,7 +117,7 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 
-func rotate_in_player_direction(delta):
+func rotate_in_player_direction(_delta):
 	if (dead):
 		return
 	
@@ -162,10 +165,20 @@ func die():
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	$fullParticles.show()
+	
+	# these 2 queue_free()s were originally swapped
+	# and it was impossible for u to win
+	# i also felt that the boss fight was way too
+	# difficult to just throw u into the next level like that
+	# so i changed them around, u can still leave faster if u jump
+	# off early now - Circcle
+	
 	await wait(0.1)
-	get_parent().get_node("ground tilemap").queue_free()
-	await wait(2)
 	get_parent().get_node("BottomSplatterwall").queue_free()
+	await wait(2)
+	get_parent().get_node("ground tilemap").queue_free()
+	
+	
 	queue_free()
 
 func idle():

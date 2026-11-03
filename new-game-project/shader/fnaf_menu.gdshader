@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+global uniform float global_shadertime;
+
 uniform bool should_change = false;
 uniform float alpha = 1.0;
 uniform float inner_radius = 0.0;
@@ -16,7 +18,7 @@ void fragment() {
 	
 	if (should_change)
 	{
-		float changing = mix(0.9,1.1,abs(sin(TIME*2.0)));
+		float changing = mix(0.9,1.1,abs(sin(global_shadertime*2.0)));
 		q = 1.0-(1.0-sqrt(x*x+y*y)/changing+0.2)/(1.0-inner_radius);
 	}
 	else

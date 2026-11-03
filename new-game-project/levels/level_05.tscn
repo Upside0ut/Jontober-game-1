@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://chovgxy3cpspd"]
 
-[ext_resource type="Script" uid="uid://cnckhk67vch5s" path="res://levels/level_05.gd" id="1_0vajx"]
+[ext_resource type="Script" uid="uid://cnckhk67vch5s" path="res://scripts/level_05.gd" id="1_0vajx"]
 [ext_resource type="PackedScene" uid="uid://bggpuh2olvcxx" path="res://scenes/parallax_2d.tscn" id="1_6q6br"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_7d3dm"]
 [ext_resource type="Texture2D" uid="uid://dn17j0u6gd6vw" path="res://textures/star.png" id="2_0vajx"]
@@ -12,10 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://c1bvikmhy3lda" path="res://music/rolling-rei-wav.mp3" id="7_a6hey"]
 [ext_resource type="PackedScene" uid="uid://dihji23xxltkc" path="res://scenes/checkpoint.tscn" id="7_kdo1k"]
 [ext_resource type="PackedScene" uid="uid://bwgdsv7k4emea" path="res://scenes/pausescreen.tscn" id="7_n8w53"]
-[ext_resource type="Script" uid="uid://ce5ueidts3v4b" path="res://levels/blackwall.gd" id="8_plso3"]
+[ext_resource type="Script" uid="uid://ce5ueidts3v4b" path="res://scripts/blackwall.gd" id="8_plso3"]
 [ext_resource type="Texture2D" uid="uid://c3lgvuuy2x1j" path="res://textures/abstract_landscape_3.png" id="12_6q6br"]
 [ext_resource type="AudioStream" uid="uid://v8s4dwjyfjqr" path="res://sound_effects/dramatica.wav" id="13_0163i"]
-[ext_resource type="Script" uid="uid://cye7d8ticra2f" path="res://levels/lava_lvl_secret_entrance1.gd" id="13_ywhho"]
+[ext_resource type="Script" uid="uid://cye7d8ticra2f" path="res://scripts/lava_lvl_secret_entrance1.gd" id="13_ywhho"]
 [ext_resource type="PackedScene" uid="uid://dl4ibjff8dtbe" path="res://scenes/touch_controls.tscn" id="18_0vajx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb100"]

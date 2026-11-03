@@ -43,10 +43,6 @@ func _ready() -> void:
 	$spikes.set_deferred("monitorable", true)
 	close_openings()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func get_current_opening():
 	for o in opening_array:
 		if o.visible:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxthsd40a2hon" path="res://Circcle's scripts/fnaf scripts/fnaf_menu.gd" id="1_42mc7"]
 [ext_resource type="Script" uid="uid://brapf33fhgt83" path="res://scripts/fade-in.gd" id="2_73xbk"]
 [ext_resource type="Shader" uid="uid://de8m3acdiayap" path="res://shader/fnaf_menu.gdshader" id="2_yqvsr"]
-[ext_resource type="Script" uid="uid://djfr0cfakj85n" path="res://scenes/texture_rect.gd" id="3_pituf"]
+[ext_resource type="Script" uid="uid://djfr0cfakj85n" path="res://scripts/texture_rect.gd" id="3_pituf"]
 [ext_resource type="Texture2D" uid="uid://f8robg8p26u3" path="res://FNAF sprites/randymainmenu.png" id="3_tufyr"]
 [ext_resource type="Texture2D" uid="uid://cap6a5p5lrc2h" path="res://FNAF sprites/Flashlight_circle.webp" id="6_cf7ta"]
 [ext_resource type="FontFile" uid="uid://bmj3soh6ae6e6" path="res://Mbkaos-axwLg.otf" id="6_hxqqk"]

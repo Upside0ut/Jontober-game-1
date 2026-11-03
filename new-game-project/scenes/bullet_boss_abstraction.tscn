@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh1r6aahw1ucl"]
 
-[ext_resource type="Script" uid="uid://rb01eg63vxwr" path="res://scenes/bullet_boss_abstraction.gd" id="1_qg1vb"]
+[ext_resource type="Script" uid="uid://rb01eg63vxwr" path="res://scripts/bullet_boss_abstraction.gd" id="1_qg1vb"]
 [ext_resource type="Texture2D" uid="uid://cwt85fbqdrfif" path="res://textures/splatter1.png" id="2_i2frg"]
 [ext_resource type="Texture2D" uid="uid://bw1thakcvrxeb" path="res://textures/splatter2.png" id="3_aw8g4"]
 [ext_resource type="Texture2D" uid="uid://yhkisoajaaam" path="res://textures/splatter3.png" id="4_k7fxh"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wemj4s1m0m1i"]
 
-[ext_resource type="Script" uid="uid://c57ev0o02g1ad" path="res://scenes/dynamite.gd" id="1_0uglm"]
+[ext_resource type="Script" uid="uid://c57ev0o02g1ad" path="res://scripts/dynamite.gd" id="1_0uglm"]
 [ext_resource type="Texture2D" uid="uid://ck4cfgnmilfrx" path="res://frames/dynamite1.png" id="1_sxxsn"]
 [ext_resource type="Texture2D" uid="uid://ylb34phaayoe" path="res://frames/dynamite2.png" id="2_0uglm"]
 [ext_resource type="Texture2D" uid="uid://bkfv148dhri2s" path="res://frames/dynamite3.png" id="3_uy6oj"]

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bg7ycqgvw1rt"]
 
-[ext_resource type="Script" uid="uid://b7581e0m8fvue" path="res://levels/security_level.gd" id="1_3dkde"]
+[ext_resource type="Script" uid="uid://b7581e0m8fvue" path="res://scripts/security_level.gd" id="1_3dkde"]
 [ext_resource type="Texture2D" uid="uid://bah6niob5efkt" path="res://textures/rollingrandy_blocks_spritesheet1.png" id="1_v15j0"]
 [ext_resource type="PackedScene" uid="uid://b6653xivhaw8b" path="res://scenes/player_2.tscn" id="2_cjxvm"]
 [ext_resource type="Texture2D" uid="uid://dvadlseyj5sr5" path="res://textures/pumpkin2.png" id="2_mmvu6"]

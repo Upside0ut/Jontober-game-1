@@ -15,6 +15,8 @@ var dead = false
 # has_dynamite becomes true when the player enters a dynamite pickup area
 var has_dynamite = false
 
+var can_move := true
+
 func _ready() -> void:
 	
 	if Global.current_skin_name and $Icon.texture != Global.current_skin_png:
@@ -30,10 +32,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	
-	# !!!!! Circcle here, I commented out the allow_jump bool and just made it so that
+	check_cheat()
+	if not can_move: return
+	
+	# I commented out the allow_jump bool and just made it so that
 	# when the player inputs a jump, the raycast is forced an update and it checks
 	# if u can jump, you could double jump still because as you left the ground
-	# the raycast re-enabled allow_jump, hopefully this is how u intended it!
+	# the raycast re-enabled allow_jump, hopefully this is how u intended it
+	# - Circcle
 	
 	if ray_cast_2d.is_colliding(): #check if player is on the floor
 		#allow_jump = true
@@ -78,7 +84,6 @@ func _physics_process(delta: float) -> void:
 		freeze = true
 		lock_rotation = true
 
-
 func _on_hitbox_spikes_area_entered(area: Area2D) -> void:
 	if area.name == "spikes":
 		die()
@@ -111,3 +116,16 @@ func pickup_item(area: Area2D) -> void:
 			print("boom!")
 			has_dynamite = true
 			area.get_parent().queue_free()
+
+
+var hack_enabled := false
+
+func check_cheat() -> void:
+	if OS.is_debug_build():
+		if Input.is_key_pressed(KEY_H) \
+		and Input.is_key_pressed(KEY_A) \
+		and Input.is_key_pressed(KEY_C) \
+		and Input.is_key_pressed(KEY_K):
+			hack_enabled = true
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hack_enabled:
+			global_position = get_global_mouse_position()

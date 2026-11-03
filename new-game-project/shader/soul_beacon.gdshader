@@ -1,6 +1,8 @@
 shader_type canvas_item;
 render_mode blend_add;
 
+global uniform float global_shadertime;
+
 group_uniforms appearance;
 uniform vec4 core_color : source_color = vec4(1.0, 0.85, 0.45, 1.0);
 uniform vec4 hot_color : source_color = vec4(1.0, 0.55, 0.12, 1.0);
@@ -75,7 +77,7 @@ float fbm3(vec3 p, int octaves) {
 void fragment() {
     vec2 uv = UV - vec2(0.5);
     float dist = length(uv);
-    float t = TIME;
+    float t = global_shadertime;
     vec4 col = vec4(0.0);
 
     if (dist <= sun_radius) {
