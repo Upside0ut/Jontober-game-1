@@ -38,6 +38,7 @@ var standard_bullet_time = 0.5
 var standard_munch_time = 9
 var standard_feint_time = 5
 var standard_missile_atk_time = 10
+var shake_time_after_each_atk = 1
 
 var feint_cooldown_time = 20
 
@@ -226,7 +227,7 @@ func attack():
 	print("Decided Attack: ")
 	print(decided_atk)
 	
-	match 1:
+	match decided_atk:
 		0:
 			changeState(States.IDLE)
 		1:
@@ -240,8 +241,11 @@ func attack():
 		5:
 			await center_attack()
 	
-	close_openings()
+	$AnimationPlayer.play("shake")
+	await wait(shake_time_after_each_atk)
+	$AnimationPlayer.stop()
 	
+	close_openings()
 	mid_attack = false
 	changeState(States.IDLE)
 
@@ -311,7 +315,7 @@ func spray(total_time: float, time_between_bullets):
 	$AttackTimer.stop()
 
 func shoot_bullet(time: float):
-	if (dead):
+	if (dead or get_node_or_null("SplatterRing") == null):
 		return
 	
 	var bulletScene = preload("res://scenes/bullet_boss_abstraction.tscn")
