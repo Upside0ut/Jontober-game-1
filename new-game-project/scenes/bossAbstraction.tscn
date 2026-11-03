@@ -495,7 +495,6 @@ stream = ExtResource("6_lw7kb")
 parameters/looping = true
 
 [node name="Body" type="Node2D" parent="." unique_id=781731260]
-visibility_layer = 2
 
 [node name="Background" type="TextureRect" parent="Body" unique_id=583160611]
 anchors_preset = 8
@@ -540,6 +539,7 @@ frame_progress = 0.62592214
 speed_scale = 2.0
 
 [node name="SplatterRing" parent="." unique_id=314029043 instance=ExtResource("3_17mkm")]
+z_index = 1
 position = Vector2(0, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1776404460]

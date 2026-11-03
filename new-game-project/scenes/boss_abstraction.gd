@@ -38,7 +38,7 @@ var standard_bullet_time = 0.5
 var standard_munch_time = 9
 var standard_feint_time = 5
 var standard_missile_atk_time = 10
-var shake_time_after_each_atk = 1
+var shake_time_after_each_atk = 0.5
 
 var feint_cooldown_time = 20
 
@@ -260,9 +260,9 @@ func decide_attack():
 	
 	if(find_player_distance() > 1000):
 		if(clear_shot(player)):
-			return [1, 2, 2, 4, 4, 4].pick_random()
+			return [1, 2, 2, 4, 4, 4, 4].pick_random()
 		else:
-			return [2, 2, 2, 4, 4, 4].pick_random()
+			return [2, 2, 4, 4, 4, 4].pick_random()
 	
 	if(find_player_distance() > 600):
 		if(clear_shot(player)):
@@ -282,7 +282,7 @@ func decide_attack():
 		if(clear_shot(player)):
 			return [1, 1, 1, 1, 1, 3, 3, 3, 2, 2].pick_random()
 		else:
-			return [1, 1, 3, 2, 2].pick_random()
+			return [3, 3, 3, 1, 1, 2, 2].pick_random()
 
 func attacking():
 	if (dead):

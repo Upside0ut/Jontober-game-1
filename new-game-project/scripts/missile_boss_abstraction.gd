@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var move_speed = 600
+var follow_move_speed = 400
 var following = false
 var target
 
@@ -14,6 +15,8 @@ func shoot(direction: Vector2):
 	velocity = direction * move_speed
 
 func follow(target: Node2D, time: float):
+	move_speed = follow_move_speed
+	
 	self.target = target
 	following = true
 	await wait(time)
