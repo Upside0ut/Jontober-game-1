@@ -8,4 +8,4 @@ func _process(_delta: float) -> void:
 		Input.is_action_pressed("HELP_P") and
 		get_node_or_null("BossAbstraction") != null):
 			if $BossAbstraction.health > 30:
-				$BossAbstraction.health = 0
+				$BossAbstraction.health = 30
