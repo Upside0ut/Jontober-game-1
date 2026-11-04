@@ -134,7 +134,8 @@ func populate_screen_options():
 		main_screen.add_item("Display %d" % (i + 1))
 
 func apply_main_screen(selected_screen : int = 0):
-	DisplayServer.window_set_current_screen(selected_screen)
+	var valid_screen = clampi(selected_screen,0,DisplayServer.get_screen_count()-1)
+	DisplayServer.window_set_current_screen(valid_screen)
 
 func apply_resolution(resolution : String = "1152x648"):
 	if get_window().mode == Window.MODE_WINDOWED:
@@ -168,7 +169,7 @@ func set_option_visuals(
 		if resolution_type.get_item_text(i) == saved_res:
 			resolution_type.select(i)
 	for i in range(main_screen.item_count):
-		if main_screen.get_item_text(i) == "Display %d" % saved_screen:
+		if main_screen.get_item_text(i) == "Display %d" % (saved_screen + 1):
 			main_screen.select(i)
 	volume_slider.value = saved_volume
 	
