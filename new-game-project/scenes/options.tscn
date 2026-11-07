@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://d4kgucr4cplys" path="res://textures/button_grabber_grabbed_big.png" id="23_71f54"]
 [ext_resource type="Texture2D" uid="uid://cmv4d1tjbtq8i" path="res://textures/button_grabber_big.png" id="24_dtwl8"]
 [ext_resource type="Script" uid="uid://cumt7wpfounmp" path="res://scripts/volume_slider_options.gd" id="25_71f54"]
+[ext_resource type="AudioStream" uid="uid://xihhhiy3wg7" path="res://music/Ball Game Level Selector.mp3" id="27_dtwl8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyjrx"]
 shader = ExtResource("2_53st6")
@@ -238,6 +239,11 @@ volume_slider = NodePath("Options Screen/MAIN BOX/ScrollContainer/VBoxContainer/
 apply_button = NodePath("Options Screen/MAIN BOX/ScrollContainer/VBoxContainer/Bottom Buttons/Apply Settings")
 reset_button = NodePath("Options Screen/MAIN BOX/ScrollContainer/VBoxContainer/Bottom Buttons/Reset Settings")
 back_button = NodePath("Options Screen/BACK/HBoxContainer/BackButton")
+
+[node name="OptionsMusic" type="AudioStreamPlayer" parent="." unique_id=949295495]
+stream = ExtResource("27_dtwl8")
+autoplay = true
+parameters/looping = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2110472778]
 z_index = -10

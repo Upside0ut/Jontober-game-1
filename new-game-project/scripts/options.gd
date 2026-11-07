@@ -24,11 +24,13 @@ func options_opened():
 	if (OS.get_name() == "Web"):
 		disable_graphic_settings()
 	$"Options Screen/AnimationPlayer".play("blur")
+	$OptionsMusic.play()
 	show()
 	optioning = true
 
 func options_closed():
 	if $"Options Screen/AnimationPlayer".is_playing(): return
+	$OptionsMusic.stop()
 	
 	if trying_to_reset:
 		trying_to_reset = false
