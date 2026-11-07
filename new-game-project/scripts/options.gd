@@ -39,7 +39,7 @@ func options_closed():
 	$"Options Screen/AnimationPlayer".play_backwards("blur")
 	await $"Options Screen/AnimationPlayer".animation_finished
 	
-	load_options()
+	#load_options()
 	optioning = false
 	hide()
 	
@@ -50,7 +50,7 @@ func _ready():
 	reset_button.pressed.connect(_on_reset)
 	back_button.pressed.connect(options_closed)
 	populate_screen_options()
-	load_options()
+	#load_options()
 	hide()
 
 # i realize it sorta late that maybe this shouldve been load_settings()...
@@ -126,7 +126,7 @@ func _on_reset():
 func reset_settings():
 	set_option_visuals()
 	save_options()
-	load_options()
+	#load_options()
 
 func populate_screen_options():
 	var screens := DisplayServer.get_screen_count()
