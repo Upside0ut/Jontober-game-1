@@ -21,6 +21,8 @@ var config_path = "user://settings.cfg"
 
 func options_opened():
 	get_tree().paused = true
+	if (OS.get_name() == "Web"):
+		disable_graphic_settings()
 	$"Options Screen/AnimationPlayer".play("blur")
 	show()
 	optioning = true
@@ -39,7 +41,7 @@ func options_closed():
 	$"Options Screen/AnimationPlayer".play_backwards("blur")
 	await $"Options Screen/AnimationPlayer".animation_finished
 	
-	#load_options()
+	load_options()
 	optioning = false
 	hide()
 	
@@ -50,8 +52,13 @@ func _ready():
 	reset_button.pressed.connect(_on_reset)
 	back_button.pressed.connect(options_closed)
 	populate_screen_options()
-	#load_options()
+	load_options()
 	hide()
+
+func disable_graphic_settings():
+	main_screen.disabled = true
+	window_type.disabled = true
+	resolution_type.disabled = true
 
 # i realize it sorta late that maybe this shouldve been load_settings()...
 func load_options():
@@ -64,11 +71,13 @@ func load_options():
 	var saved_res = config.get_value("Window", "resolution", "1152x648")
 	var saved_volume = config.get_value("Volume", "volume_linear", 1.0)
 	
-	set_option_visuals(saved_type,saved_res,saved_volume,saved_screen)
+	set_option_visuals(saved_type, saved_res, saved_volume, saved_screen)
 	
-	apply_main_screen(saved_screen)
-	apply_resolution(saved_res)
-	apply_window_type(saved_type)
+	if (OS.get_name() != "Web"):
+		apply_main_screen(saved_screen)
+		apply_resolution(saved_res)
+		apply_window_type(saved_type)
+	
 	AudioServer.set_bus_volume_linear(0, saved_volume)
 
 func save_options():
@@ -126,7 +135,7 @@ func _on_reset():
 func reset_settings():
 	set_option_visuals()
 	save_options()
-	#load_options()
+	load_options()
 
 func populate_screen_options():
 	var screens := DisplayServer.get_screen_count()
