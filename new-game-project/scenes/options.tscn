@@ -239,6 +239,15 @@ apply_button = NodePath("Options Screen/MAIN BOX/ScrollContainer/VBoxContainer/B
 reset_button = NodePath("Options Screen/MAIN BOX/ScrollContainer/VBoxContainer/Bottom Buttons/Reset Settings")
 back_button = NodePath("Options Screen/BACK/HBoxContainer/BackButton")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2110472778]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3647059, 0.07058824, 0.59607846, 1)
+
 [node name="Options Screen" type="Control" parent="." unique_id=267177685]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
